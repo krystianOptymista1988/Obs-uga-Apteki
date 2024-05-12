@@ -121,6 +121,12 @@
     <Compile Include="RecieptsShow.Designer.cs">
       <DependentUpon>RecieptsShow.cs</DependentUpon>
     </Compile>
+    <Compile Include="SellMedicine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SellMedicine.Designer.cs">
+      <DependentUpon>SellMedicine.cs</DependentUpon>
+    </Compile>
     <Compile Include="Support.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +138,12 @@
     </Compile>
     <Compile Include="MedicineWarehouse.Designer.cs">
       <DependentUpon>MedicineWarehouse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utilization.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utilization.Designer.cs">
+      <DependentUpon>Utilization.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Deliveries.resx">
       <DependentUpon>Deliveries.cs</DependentUpon>

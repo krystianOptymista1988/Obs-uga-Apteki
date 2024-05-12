@@ -11,6 +11,7 @@ namespace Obsługa_Apteki
        public int Id { get; set; }
        public string Name { get; set; }
        public string category { get; set; }
+        public string Producent { get; set; }   
        public DateTime ExpiredDate { get; set; }
        private double PriceOfBuy { get; set; }
        public double PriceOfSell { get; set; }

@@ -87,6 +87,7 @@
             this.btnRecipe.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnRecipe.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.btnRecipe.UseVisualStyleBackColor = true;
+            this.btnRecipe.Click += new System.EventHandler(this.btnRecipe_Click);
             // 
             // btnPatient
             // 

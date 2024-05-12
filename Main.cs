@@ -75,5 +75,12 @@ namespace Obsługa_Apteki
 
             Support.ShowDialog();
         }
+
+        private void btnRecipe_Click(object sender, EventArgs e)
+        {
+            var RecieptsShow = new RecieptsShow();
+
+            RecieptsShow.ShowDialog();
+        }
     }
 }
