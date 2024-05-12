@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Obsługa_Apteki
 {
-    internal class MedicineAntibiotique
+    internal class MedicineAntibiotique : Medicine
     {
+
     }
 }

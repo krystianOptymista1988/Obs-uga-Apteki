@@ -46,9 +46,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Delivery.cs" />
+    <Compile Include="Deliveries.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Deliveries.Designer.cs">
+      <DependentUpon>Deliveries.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DeliveryAddEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeliveryAddEdit.Designer.cs">
+      <DependentUpon>DeliveryAddEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Doctor.cs" />
     <Compile Include="FileActions.cs" />
     <Compile Include="MedicineAntibiotique.cs" />
+    <Compile Include="MedicineCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MedicineCard.Designer.cs">
+      <DependentUpon>MedicineCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MedicineNormal.cs" />
     <Compile Include="MedicineNotRefunded.cs" />
     <Compile Include="MedicineOnReciept.cs" />
     <Compile Include="PatientShow.cs">
@@ -73,15 +93,69 @@
     </Compile>
     <Compile Include="Person.cs" />
     <Compile Include="Pharmaceut.cs" />
+    <Compile Include="PharmaceutAddEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PharmaceutAddEdit.Designer.cs">
+      <DependentUpon>PharmaceutAddEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pharmaceuts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pharmaceuts.Designer.cs">
+      <DependentUpon>Pharmaceuts.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reciept.cs" />
     <Compile Include="MedicineRefunded.cs" />
+    <Compile Include="RecieptAddEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RecieptAddEdit.Designer.cs">
+      <DependentUpon>RecieptAddEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RecieptsShow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RecieptsShow.Designer.cs">
+      <DependentUpon>RecieptsShow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Support.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Support.Designer.cs">
+      <DependentUpon>Support.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MedicineWarehouse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MedicineWarehouse.Designer.cs">
+      <DependentUpon>MedicineWarehouse.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Deliveries.resx">
+      <DependentUpon>Deliveries.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeliveryAddEdit.resx">
+      <DependentUpon>DeliveryAddEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MedicineCard.resx">
+      <DependentUpon>MedicineCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PatientAddEdit.resx">
+      <DependentUpon>PatientAddEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PatientShow.resx">
       <DependentUpon>PatientShow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PharmaceutAddEdit.resx">
+      <DependentUpon>PharmaceutAddEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pharmaceuts.resx">
+      <DependentUpon>Pharmaceuts.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -92,6 +166,18 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="RecieptAddEdit.resx">
+      <DependentUpon>RecieptAddEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RecieptsShow.resx">
+      <DependentUpon>RecieptsShow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Support.resx">
+      <DependentUpon>Support.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MedicineWarehouse.resx">
+      <DependentUpon>MedicineWarehouse.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

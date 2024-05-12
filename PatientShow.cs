@@ -16,5 +16,27 @@ namespace Obsługa_Apteki
         {
             InitializeComponent();
         }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            var addEditPatient = new PatientAddEdit();
+            addEditPatient.ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var addEditPatient = new PatientAddEdit();
+            addEditPatient.ShowDialog();
+        }
     }
 }

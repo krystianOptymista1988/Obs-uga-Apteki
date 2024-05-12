@@ -17,13 +17,13 @@ namespace Obsługa_Apteki
             _filePath = filePath;
         }
 
-        public void SerializeToFile(T students)
+        public void SerializeToFile(T medicines)
         {
             var serializer = new XmlSerializer(typeof(T));
 
             using (var streamWriter = new StreamWriter(_filePath))
             {
-                serializer.Serialize(streamWriter, students);
+                serializer.Serialize(streamWriter, medicines);
                 streamWriter.Close();
             }
         }
@@ -37,9 +37,9 @@ namespace Obsługa_Apteki
 
             using (var streamReader = new StreamReader(_filePath))
             {
-                var students = (T)serializer.Deserialize(streamReader);
+                var medicines = (T)serializer.Deserialize(streamReader);
                 streamReader.Close();
-                return students;
+                return medicines;
             }
         }
 

@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace Obsługa_Apteki
 {
-    internal class Pharmaceut
+    internal class Pharmaceut : Person
     {
+        private int Salary {  get; set; }
+        public DateTime DateOfHire {  get; set; }
+
+        public List<Patient> Patients { get; set; }
+
     }
 }

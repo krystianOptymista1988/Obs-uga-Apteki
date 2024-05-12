@@ -8,13 +8,16 @@ namespace Obsługa_Apteki
 {
     public abstract class Medicine
     {
-        int Id { get; set; }
-        string Name { get; set; }
-        string category { get; set; }
-        DateTime ExpiredDate { get; set; }
-        double Price { get; set; }
-        bool IsRefunded { get; set; }
-        double PercentageOfRefunding { get; set; }
-        string ActiveSubstance { get; set; }
+       public int Id { get; set; }
+       public string Name { get; set; }
+       public string category { get; set; }
+       public DateTime ExpiredDate { get; set; }
+       private double PriceOfBuy { get; set; }
+       public double PriceOfSell { get; set; }
+       private double MargePrice { get; set; }
+       public int QuantityInPackage { get; set; }
+       public int QuantityOfPackages { get; set; }
+       public bool IsRefunded { get; set; }
+       public string ActiveSubstance { get; set; }
     }
 }

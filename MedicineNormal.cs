@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace Obsługa_Apteki
 {
-    internal class MedicineRefunded : Medicine
+    internal class MedicineNormal : Medicine 
     {
-        public double PercentageOfRefunding { get; set; }
-        public double PriceAfterRefunding { get; set; }
     }
 }

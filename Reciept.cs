@@ -13,6 +13,7 @@ namespace Obsługa_Apteki
         public List<Medicine> Medicines { get; set; }
         public DateTime DateOfRegistry { get; set; }
         public DateTime DateOfExpire { get; set; }
+        public Doctor Doctor { get; set; }
 
     }
 }

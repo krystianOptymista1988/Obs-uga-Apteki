@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Obsługa_Apteki
 {
-    internal class MedicineNotRefunded
+    internal class MedicineNotRefunded : Medicine
     {
     }
 }

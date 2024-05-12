@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Obsługa_Apteki
 {
-    internal class Patient
+    internal class Patient : Person
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -14,8 +14,11 @@ namespace Obsługa_Apteki
         public DateTime DateOfBirth { get; set; }
         public int PESEL { get; set; }
         public string Adress { get; set; }  
+        public string PostalCode { get; set; }
         public int Mobile {  get; set; }
         public string Commnent { get; set; }
+
+        public List<Reciept> RecieptList { get; set;}
 
 
     }

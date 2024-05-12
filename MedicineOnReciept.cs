@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Obsługa_Apteki
 {
-    internal class MedicineOnReciept
+    interface  IMedicineOnReciept
     {
+      //  Doctor Doctor { get; }
+       // Reciept Reciept { get; }
     }
 }

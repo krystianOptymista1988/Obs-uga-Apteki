@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Obsługa_Apteki
 {
-    public partial class PatientAddEdit : Form
+    public partial class PharmaceutAddEdit : Form
     {
-        public PatientAddEdit()
+        public PharmaceutAddEdit()
         {
             InitializeComponent();
         }

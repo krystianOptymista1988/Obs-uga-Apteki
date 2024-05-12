@@ -21,6 +21,8 @@ namespace Obsługa_Apteki
             toolTip1.SetToolTip(btnRecipe, "Moduł do zarządzania receptami");
             toolTip1.SetToolTip(btnSell, "Moduł sprzedaży leków");
             toolTip1.SetToolTip(btnUtilization, "Zgłoś przeterminowane leki do utylizacji");
+            toolTip1.SetToolTip(btnPharmaceuts, "Zarządzaj pracownikami Apteki");
+            toolTip1.SetToolTip(btnSupport, "Informacje o autorach oraz kontakt");
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -43,6 +45,35 @@ namespace Obsługa_Apteki
             var PatientShow = new PatientShow();
            
             PatientShow.ShowDialog();
+        }
+
+        private void btnMedicines_Click(object sender, EventArgs e)
+        {
+            var Warehouse = new MedicineWarehouse();
+
+            Warehouse.ShowDialog();
+        }
+
+        private void btnDelivery_Click(object sender, EventArgs e)
+        {
+            var Deliveries = new Deliveries();
+
+            Deliveries.ShowDialog();
+
+        }
+
+        private void btnPharmaceuts_Click(object sender, EventArgs e)
+        {
+            var Pharmaceuts = new Pharmaceuts();
+
+            Pharmaceuts.ShowDialog();
+        }
+
+        private void btnSupport_Click(object sender, EventArgs e)
+        {
+            var Support = new Support();
+
+            Support.ShowDialog();
         }
     }
 }

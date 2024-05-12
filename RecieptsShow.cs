@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace Obsługa_Apteki
 {
-    public partial class PatientAddEdit : Form
+    public partial class RecieptsShow : Form
     {
-        public PatientAddEdit()
+        public RecieptsShow()
         {
             InitializeComponent();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Close();
         }
     }
 }
