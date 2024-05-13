@@ -32,7 +32,8 @@ namespace Obsługa_Apteki
 
         private void button5_Click(object sender, EventArgs e)
         {
-
+            var Utilization = new Utilization();
+            Utilization.ShowDialog();
         }
 
         private void toolTip1_Popup(object sender, PopupEventArgs e)
@@ -81,6 +82,13 @@ namespace Obsługa_Apteki
             var RecieptsShow = new RecieptsShow();
 
             RecieptsShow.ShowDialog();
+        }
+
+        private void btnSell_Click(object sender, EventArgs e)
+        {
+            var SellMedicine = new SellMedicine();
+
+            SellMedicine.ShowDialog();
         }
     }
 }

@@ -47,9 +47,10 @@
             this.btnMedicines.ForeColor = System.Drawing.Color.Tomato;
             this.btnMedicines.Image = ((System.Drawing.Image)(resources.GetObject("btnMedicines.Image")));
             this.btnMedicines.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnMedicines.Location = new System.Drawing.Point(75, 48);
+            this.btnMedicines.Location = new System.Drawing.Point(112, 74);
+            this.btnMedicines.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnMedicines.Name = "btnMedicines";
-            this.btnMedicines.Size = new System.Drawing.Size(149, 193);
+            this.btnMedicines.Size = new System.Drawing.Size(224, 297);
             this.btnMedicines.TabIndex = 0;
             this.btnMedicines.Text = "Baza Leków";
             this.btnMedicines.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -63,9 +64,10 @@
             this.btnDelivery.ForeColor = System.Drawing.Color.Tomato;
             this.btnDelivery.Image = ((System.Drawing.Image)(resources.GetObject("btnDelivery.Image")));
             this.btnDelivery.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnDelivery.Location = new System.Drawing.Point(84, 287);
+            this.btnDelivery.Location = new System.Drawing.Point(126, 442);
+            this.btnDelivery.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnDelivery.Name = "btnDelivery";
-            this.btnDelivery.Size = new System.Drawing.Size(149, 193);
+            this.btnDelivery.Size = new System.Drawing.Size(224, 297);
             this.btnDelivery.TabIndex = 6;
             this.btnDelivery.Text = "Zamówienia";
             this.btnDelivery.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -79,9 +81,10 @@
             this.btnRecipe.ForeColor = System.Drawing.Color.Tomato;
             this.btnRecipe.Image = ((System.Drawing.Image)(resources.GetObject("btnRecipe.Image")));
             this.btnRecipe.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnRecipe.Location = new System.Drawing.Point(320, 48);
+            this.btnRecipe.Location = new System.Drawing.Point(480, 74);
+            this.btnRecipe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnRecipe.Name = "btnRecipe";
-            this.btnRecipe.Size = new System.Drawing.Size(149, 193);
+            this.btnRecipe.Size = new System.Drawing.Size(224, 297);
             this.btnRecipe.TabIndex = 7;
             this.btnRecipe.Text = "Recepty";
             this.btnRecipe.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -95,9 +98,10 @@
             this.btnPatient.ForeColor = System.Drawing.Color.Tomato;
             this.btnPatient.Image = ((System.Drawing.Image)(resources.GetObject("btnPatient.Image")));
             this.btnPatient.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnPatient.Location = new System.Drawing.Point(553, 48);
+            this.btnPatient.Location = new System.Drawing.Point(830, 74);
+            this.btnPatient.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnPatient.Name = "btnPatient";
-            this.btnPatient.Size = new System.Drawing.Size(149, 193);
+            this.btnPatient.Size = new System.Drawing.Size(224, 297);
             this.btnPatient.TabIndex = 8;
             this.btnPatient.Text = "Pacjenci";
             this.btnPatient.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -111,14 +115,16 @@
             this.btnSell.ForeColor = System.Drawing.Color.Tomato;
             this.btnSell.Image = ((System.Drawing.Image)(resources.GetObject("btnSell.Image")));
             this.btnSell.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSell.Location = new System.Drawing.Point(553, 287);
+            this.btnSell.Location = new System.Drawing.Point(830, 442);
+            this.btnSell.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnSell.Name = "btnSell";
-            this.btnSell.Size = new System.Drawing.Size(149, 193);
+            this.btnSell.Size = new System.Drawing.Size(224, 297);
             this.btnSell.TabIndex = 9;
             this.btnSell.Text = "Sprzedaż";
             this.btnSell.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSell.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.btnSell.UseVisualStyleBackColor = true;
+            this.btnSell.Click += new System.EventHandler(this.btnSell_Click);
             // 
             // btnUtilization
             // 
@@ -126,9 +132,10 @@
             this.btnUtilization.ForeColor = System.Drawing.Color.Tomato;
             this.btnUtilization.Image = ((System.Drawing.Image)(resources.GetObject("btnUtilization.Image")));
             this.btnUtilization.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnUtilization.Location = new System.Drawing.Point(320, 287);
+            this.btnUtilization.Location = new System.Drawing.Point(480, 442);
+            this.btnUtilization.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnUtilization.Name = "btnUtilization";
-            this.btnUtilization.Size = new System.Drawing.Size(149, 193);
+            this.btnUtilization.Size = new System.Drawing.Size(224, 297);
             this.btnUtilization.TabIndex = 10;
             this.btnUtilization.Text = "Utylizacja";
             this.btnUtilization.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -146,9 +153,10 @@
             this.btnPharmaceuts.ForeColor = System.Drawing.Color.Tomato;
             this.btnPharmaceuts.Image = ((System.Drawing.Image)(resources.GetObject("btnPharmaceuts.Image")));
             this.btnPharmaceuts.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnPharmaceuts.Location = new System.Drawing.Point(787, 48);
+            this.btnPharmaceuts.Location = new System.Drawing.Point(1180, 74);
+            this.btnPharmaceuts.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnPharmaceuts.Name = "btnPharmaceuts";
-            this.btnPharmaceuts.Size = new System.Drawing.Size(149, 193);
+            this.btnPharmaceuts.Size = new System.Drawing.Size(224, 297);
             this.btnPharmaceuts.TabIndex = 11;
             this.btnPharmaceuts.Text = "Farmaceuci";
             this.btnPharmaceuts.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -162,9 +170,10 @@
             this.btnSupport.ForeColor = System.Drawing.Color.Tomato;
             this.btnSupport.Image = ((System.Drawing.Image)(resources.GetObject("btnSupport.Image")));
             this.btnSupport.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSupport.Location = new System.Drawing.Point(787, 287);
+            this.btnSupport.Location = new System.Drawing.Point(1180, 442);
+            this.btnSupport.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnSupport.Name = "btnSupport";
-            this.btnSupport.Size = new System.Drawing.Size(149, 193);
+            this.btnSupport.Size = new System.Drawing.Size(224, 297);
             this.btnSupport.TabIndex = 12;
             this.btnSupport.Text = "Support";
             this.btnSupport.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -174,9 +183,9 @@
             // 
             // Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(991, 562);
+            this.ClientSize = new System.Drawing.Size(1486, 865);
             this.Controls.Add(this.btnSupport);
             this.Controls.Add(this.btnPharmaceuts);
             this.Controls.Add(this.btnUtilization);
@@ -186,6 +195,7 @@
             this.Controls.Add(this.btnDelivery);
             this.Controls.Add(this.btnMedicines);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Main";
             this.Text = "Pharm Assistant - Twoja apteka";
             this.ResumeLayout(false);
