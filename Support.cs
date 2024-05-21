@@ -14,13 +14,7 @@ namespace Obsługa_Apteki
     {
         public Support()
         {
-            InitializeComponent();
-            
-        }
-
-        private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
-        {
-          
+            InitializeComponent();         
         }
 
     }
