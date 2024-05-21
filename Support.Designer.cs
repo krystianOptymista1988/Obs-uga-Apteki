@@ -32,6 +32,7 @@
             this.lblSupport = new System.Windows.Forms.Label();
             this.lblPhoneNumber1 = new System.Windows.Forms.Label();
             this.groupBoxPhone = new System.Windows.Forms.GroupBox();
+            this.lblPhoneNumber2 = new System.Windows.Forms.Label();
             this.lblPhoneTip = new System.Windows.Forms.Label();
             this.lblContactDays = new System.Windows.Forms.Label();
             this.groupBoxMail = new System.Windows.Forms.GroupBox();
@@ -46,7 +47,7 @@
             // 
             this.lblSupport.AutoSize = true;
             this.lblSupport.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblSupport.Location = new System.Drawing.Point(284, 9);
+            this.lblSupport.Location = new System.Drawing.Point(284, 0);
             this.lblSupport.Name = "lblSupport";
             this.lblSupport.Size = new System.Drawing.Size(230, 50);
             this.lblSupport.TabIndex = 0;
@@ -65,6 +66,7 @@
             // groupBoxPhone
             // 
             this.groupBoxPhone.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBoxPhone.Controls.Add(this.lblPhoneNumber2);
             this.groupBoxPhone.Controls.Add(this.lblPhoneTip);
             this.groupBoxPhone.Controls.Add(this.lblContactDays);
             this.groupBoxPhone.Controls.Add(this.lblPhoneNumber1);
@@ -75,6 +77,16 @@
             this.groupBoxPhone.TabIndex = 2;
             this.groupBoxPhone.TabStop = false;
             this.groupBoxPhone.Text = "Kontakt telefoniczny:";
+            // 
+            // lblPhoneNumber2
+            // 
+            this.lblPhoneNumber2.AutoSize = true;
+            this.lblPhoneNumber2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.lblPhoneNumber2.Location = new System.Drawing.Point(6, 73);
+            this.lblPhoneNumber2.Name = "lblPhoneNumber2";
+            this.lblPhoneNumber2.Size = new System.Drawing.Size(129, 20);
+            this.lblPhoneNumber2.TabIndex = 4;
+            this.lblPhoneNumber2.Text = "+48 503 105 800";
             // 
             // lblPhoneTip
             // 
@@ -91,7 +103,7 @@
             // lblContactDays
             // 
             this.lblContactDays.AutoSize = true;
-            this.lblContactDays.Location = new System.Drawing.Point(6, 93);
+            this.lblContactDays.Location = new System.Drawing.Point(6, 110);
             this.lblContactDays.Name = "lblContactDays";
             this.lblContactDays.Size = new System.Drawing.Size(159, 60);
             this.lblContactDays.TabIndex = 2;
@@ -114,10 +126,10 @@
             // lblMailDays
             // 
             this.lblMailDays.AutoSize = true;
-            this.lblMailDays.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblMailDays.Location = new System.Drawing.Point(6, 113);
+            this.lblMailDays.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblMailDays.Location = new System.Drawing.Point(6, 122);
             this.lblMailDays.Name = "lblMailDays";
-            this.lblMailDays.Size = new System.Drawing.Size(158, 48);
+            this.lblMailDays.Size = new System.Drawing.Size(183, 60);
             this.lblMailDays.TabIndex = 2;
             this.lblMailDays.Text = "Zazwyczaj odpowiadamy\r\nna wiadomości w ciągu \r\n1 - 2 dni roboczych.";
             // 
@@ -179,5 +191,6 @@
         private System.Windows.Forms.Label lblMail1;
         private System.Windows.Forms.Label lblMailTip;
         private System.Windows.Forms.Label lblMailDays;
+        private System.Windows.Forms.Label lblPhoneNumber2;
     }
 }
