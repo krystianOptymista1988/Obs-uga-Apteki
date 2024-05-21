@@ -35,9 +35,9 @@
             this.lblPhoneTip = new System.Windows.Forms.Label();
             this.lblContactDays = new System.Windows.Forms.Label();
             this.groupBoxMail = new System.Windows.Forms.GroupBox();
-            this.lblMail1 = new System.Windows.Forms.Label();
-            this.lblMailTip = new System.Windows.Forms.Label();
             this.lblMailDays = new System.Windows.Forms.Label();
+            this.lblMailTip = new System.Windows.Forms.Label();
+            this.lblMail1 = new System.Windows.Forms.Label();
             this.groupBoxPhone.SuspendLayout();
             this.groupBoxMail.SuspendLayout();
             this.SuspendLayout();
@@ -46,7 +46,7 @@
             // 
             this.lblSupport.AutoSize = true;
             this.lblSupport.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblSupport.Location = new System.Drawing.Point(284, 34);
+            this.lblSupport.Location = new System.Drawing.Point(284, 9);
             this.lblSupport.Name = "lblSupport";
             this.lblSupport.Size = new System.Drawing.Size(230, 50);
             this.lblSupport.TabIndex = 0;
@@ -56,7 +56,7 @@
             // 
             this.lblPhoneNumber1.AutoSize = true;
             this.lblPhoneNumber1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.lblPhoneNumber1.Location = new System.Drawing.Point(50, 38);
+            this.lblPhoneNumber1.Location = new System.Drawing.Point(6, 36);
             this.lblPhoneNumber1.Name = "lblPhoneNumber1";
             this.lblPhoneNumber1.Size = new System.Drawing.Size(129, 20);
             this.lblPhoneNumber1.TabIndex = 1;
@@ -69,9 +69,9 @@
             this.groupBoxPhone.Controls.Add(this.lblContactDays);
             this.groupBoxPhone.Controls.Add(this.lblPhoneNumber1);
             this.groupBoxPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.groupBoxPhone.Location = new System.Drawing.Point(40, 103);
+            this.groupBoxPhone.Location = new System.Drawing.Point(12, 101);
             this.groupBoxPhone.Name = "groupBoxPhone";
-            this.groupBoxPhone.Size = new System.Drawing.Size(265, 302);
+            this.groupBoxPhone.Size = new System.Drawing.Size(220, 288);
             this.groupBoxPhone.TabIndex = 2;
             this.groupBoxPhone.TabStop = false;
             this.groupBoxPhone.Text = "Kontakt telefoniczny:";
@@ -81,7 +81,7 @@
             this.lblPhoneTip.AutoSize = true;
             this.lblPhoneTip.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.lblPhoneTip.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.lblPhoneTip.Location = new System.Drawing.Point(37, 197);
+            this.lblPhoneTip.Location = new System.Drawing.Point(7, 192);
             this.lblPhoneTip.Name = "lblPhoneTip";
             this.lblPhoneTip.Size = new System.Drawing.Size(185, 60);
             this.lblPhoneTip.TabIndex = 3;
@@ -91,7 +91,7 @@
             // lblContactDays
             // 
             this.lblContactDays.AutoSize = true;
-            this.lblContactDays.Location = new System.Drawing.Point(50, 95);
+            this.lblContactDays.Location = new System.Drawing.Point(6, 93);
             this.lblContactDays.Name = "lblContactDays";
             this.lblContactDays.Size = new System.Drawing.Size(159, 60);
             this.lblContactDays.TabIndex = 2;
@@ -104,23 +104,22 @@
             this.groupBoxMail.Controls.Add(this.lblMailTip);
             this.groupBoxMail.Controls.Add(this.lblMail1);
             this.groupBoxMail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.groupBoxMail.Location = new System.Drawing.Point(499, 103);
+            this.groupBoxMail.Location = new System.Drawing.Point(551, 101);
             this.groupBoxMail.Name = "groupBoxMail";
-            this.groupBoxMail.Size = new System.Drawing.Size(266, 302);
+            this.groupBoxMail.Size = new System.Drawing.Size(237, 288);
             this.groupBoxMail.TabIndex = 3;
             this.groupBoxMail.TabStop = false;
             this.groupBoxMail.Text = "Kontakt mailowy:";
             // 
-            // lblMail1
+            // lblMailDays
             // 
-            this.lblMail1.AutoSize = true;
-            this.lblMail1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblMail1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.lblMail1.Location = new System.Drawing.Point(1, 39);
-            this.lblMail1.Name = "lblMail1";
-            this.lblMail1.Size = new System.Drawing.Size(265, 18);
-            this.lblMail1.TabIndex = 0;
-            this.lblMail1.Text = "chx101583@student.chorzow.merito.pl";
+            this.lblMailDays.AutoSize = true;
+            this.lblMailDays.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblMailDays.Location = new System.Drawing.Point(6, 113);
+            this.lblMailDays.Name = "lblMailDays";
+            this.lblMailDays.Size = new System.Drawing.Size(158, 48);
+            this.lblMailDays.TabIndex = 2;
+            this.lblMailDays.Text = "Zazwyczaj odpowiadamy\r\nna wiadomości w ciągu \r\n1 - 2 dni roboczych.";
             // 
             // lblMailTip
             // 
@@ -129,30 +128,34 @@
             this.lblMailTip.ForeColor = System.Drawing.SystemColors.Highlight;
             this.lblMailTip.Location = new System.Drawing.Point(6, 197);
             this.lblMailTip.Name = "lblMailTip";
-            this.lblMailTip.Size = new System.Drawing.Size(266, 45);
+            this.lblMailTip.Size = new System.Drawing.Size(191, 60);
             this.lblMailTip.TabIndex = 1;
-            this.lblMailTip.Text = "Wskazówka:\r\nPodaj numer zamówienia w tytule wiadomości, \r\ndzięki temu szybciej od" +
-    "powiemy.";
+            this.lblMailTip.Text = "Wskazówka:\r\nPodaj numer zamówienia w tytule\r\nwiadomości, dzięki temu \r\nszybciej o" +
+    "dpowiemy.";
             // 
-            // lblMailDays
+            // lblMail1
             // 
-            this.lblMailDays.AutoSize = true;
-            this.lblMailDays.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblMailDays.Location = new System.Drawing.Point(6, 113);
-            this.lblMailDays.Name = "lblMailDays";
-            this.lblMailDays.Size = new System.Drawing.Size(251, 32);
-            this.lblMailDays.TabIndex = 2;
-            this.lblMailDays.Text = "Zazwyczaj odpowiadamy na wiadomości\r\nw ciągu 1 - 2 dni roboczych.";
+            this.lblMail1.AutoSize = true;
+            this.lblMail1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblMail1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.lblMail1.Location = new System.Drawing.Point(1, 39);
+            this.lblMail1.Name = "lblMail1";
+            this.lblMail1.Size = new System.Drawing.Size(232, 16);
+            this.lblMail1.TabIndex = 0;
+            this.lblMail1.Text = "chx101583@student.chorzow.merito.pl";
             // 
             // Support
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.BackColor = System.Drawing.SystemColors.Info;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.groupBoxMail);
             this.Controls.Add(this.groupBoxPhone);
             this.Controls.Add(this.lblSupport);
+            this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Support";
             this.Text = "Support";
