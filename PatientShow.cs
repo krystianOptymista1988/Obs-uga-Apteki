@@ -72,14 +72,14 @@ namespace Obsługa_Apteki
 
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void btnAddPatient_Click(object sender, EventArgs e)
         {
             var addEditPatient = new PatientAddEdit();
             addEditPatient.ShowDialog();
             Close();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnEditPatient_Click(object sender, EventArgs e)
         {
             var addEditPatient = new PatientAddEdit();
             addEditPatient.ShowDialog();

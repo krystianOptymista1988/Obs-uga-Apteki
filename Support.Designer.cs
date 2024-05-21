@@ -65,6 +65,8 @@
             // 
             // groupBoxPhone
             // 
+            this.groupBoxPhone.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBoxPhone.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.groupBoxPhone.Controls.Add(this.lblPhoneNumber2);
             this.groupBoxPhone.Controls.Add(this.lblPhoneTip);
@@ -111,6 +113,8 @@
             // 
             // groupBoxMail
             // 
+            this.groupBoxMail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBoxMail.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.groupBoxMail.Controls.Add(this.lblMailDays);
             this.groupBoxMail.Controls.Add(this.lblMailTip);
