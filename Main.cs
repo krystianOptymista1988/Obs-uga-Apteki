@@ -1,19 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Obsługa_Apteki
 {
     public partial class Main : Form
     {
+
+
         public Main()
         {
+
             InitializeComponent();
             toolTip1.SetToolTip(btnDelivery, "Tutaj zamówisz leki na magazyn");
             toolTip1.SetToolTip(btnMedicines, "Sprawdź wszystkie leki w twojej aptece");
@@ -23,6 +19,9 @@ namespace Obsługa_Apteki
             toolTip1.SetToolTip(btnUtilization, "Zgłoś przeterminowane leki do utylizacji");
             toolTip1.SetToolTip(btnPharmaceuts, "Zarządzaj pracownikami Apteki");
             toolTip1.SetToolTip(btnSupport, "Informacje o autorach oraz kontakt");
+
+            InitializeDatabase();
+          
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -30,6 +29,10 @@ namespace Obsługa_Apteki
 
         }
 
+        private void InitializeDatabase()
+        {
+          //  SqlDatabaseService.Instance.Initialize(@"57.128.195.227", "apteka", "apteka", "Projekt123!");
+        }
         private void button5_Click(object sender, EventArgs e)
         {
             var Utilization = new Utilization();
@@ -92,3 +95,4 @@ namespace Obsługa_Apteki
         }
     }
 }
+

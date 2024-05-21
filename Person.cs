@@ -6,17 +6,19 @@ using System.Threading.Tasks;
 
 namespace Obsługa_Apteki
 {
-    abstract class Person
+    public abstract class Person
     {
         public string Name { get; set; }
         public string Surname { get; set; }
         public DateTime DateOfBirth { get; set; }
 
-        public int PESEL { get; set; }
-        public int Mobile { get; set; }
+        public string PESEL { get; set; }
+        public string Mobile { get; set; }
 
         public string Adress { get; set; }
         public string PostalCode { get; set; }
+
+        public List<Reciept> RecieptList { get; set; }
 
 
 

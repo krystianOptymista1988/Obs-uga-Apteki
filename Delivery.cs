@@ -1,18 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Obsługa_Apteki
 {
-    internal class Delivery
+    public class Delivery
     {
-        public List<Medicine> Medicines { get; set; }  
+        
+        public int DeliveryId { get; set; } 
         public DateTime DateOfDelivery { get; set; }
 
         public DateTime DateOfCreate { get; set; }
-        public Pharmaceut PharmaceutOrdering { get; set; }
+        public int PharmaceutOrdering { get; set; }
+
+        public List<Medicine> OrderedMedicines { get; set; }
 
         public double Value { get; set; }
 
