@@ -11,7 +11,7 @@ namespace Obsługa_Apteki.Modele.Configurations
     {
         public BillConfiguration()
         {
-            ToTable("dbo.Patients");
+            ToTable("dbo.Bills");
 
             HasKey(x => x.BillId);
 

@@ -8,7 +8,7 @@ namespace Obsługa_Apteki
     {
         public Bill()
         {
-           // Medicines = new ICollection<Medicine>();
+           Medicines = new List<Medicine>();
         }
         public int BillId { get; set; }
         public DateTime DatoOfBill { get; set; }
