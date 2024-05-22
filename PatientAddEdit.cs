@@ -77,8 +77,6 @@ namespace Obsługa_Apteki
             if (pesel != null)
             {
                 Text = "Edytowanie danych Pacjenta";
-
-
                 patient = _context.Patients.FirstOrDefault(x => x.PESEL == pesel);
 
                 if (patient == null)
@@ -101,6 +99,7 @@ namespace Obsługa_Apteki
             tbPESEL.Text = patient.PESEL;
             tbPostalCode.Text = patient.PostalCode;
             dtpDateOfBirth.Text = patient.DateOfBirth.ToString();
+
         }
 
         private Patient CreatePatient()
@@ -119,6 +118,7 @@ namespace Obsługa_Apteki
 
         private Patient CreatePatient(Patient id)
         {
+            int pharmaceutID = int.Parse(cbPharmaceut.SelectedValue.ToString());
 
             patient.Name = tbName.Text;
             patient.Surname = tbSurname.Text;
@@ -129,6 +129,8 @@ namespace Obsługa_Apteki
             patient.Mobile = tbMobile.Text;
             patient.Comment = tbComment.Text;
             patient.PharmaceutId = int.Parse(cbPharmaceut.SelectedValue.ToString());
+            patient.Pharmaceut = GetPharmaceutFromId(pharmaceutID);
+            MessageBox.Show(patient.PharmaceutId.ToString());
             id = patient;
             return id;
         }
@@ -143,6 +145,10 @@ namespace Obsługa_Apteki
             cbPharmaceut.DataSource = _pharmaceuts;
             cbPharmaceut.DisplayMember = "FullName";
             cbPharmaceut.ValueMember = "PharmaceutId";
+        }
+        public Pharmaceut GetPharmaceutFromId(int pharmaceutId)
+        {
+            return _context.Pharmaceuts.Find(pharmaceutId);
         }
     }
 

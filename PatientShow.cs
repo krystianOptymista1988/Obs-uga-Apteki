@@ -119,6 +119,7 @@ namespace Obsługa_Apteki
             dataGridView1.Columns[nameof(Patient.PharmaceutId)].HeaderText = "Farmaceuta";
             dataGridView1.Columns[nameof(Patient.RecieptList)].HeaderText = "Recepty";
             dataGridView1.Columns[nameof(Patient.Mobile)].HeaderText = "Telefon";
+            dataGridView1.Columns[nameof(Patient.Pharmaceut)].Visible = false;
 
 
         }
