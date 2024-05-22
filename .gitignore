@@ -361,3 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/PatientAddEdit.cs
+/PatientAddEdit.Designer.cs
+/PatientAddEdit.resx
