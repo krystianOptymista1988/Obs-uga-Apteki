@@ -52,7 +52,7 @@
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.Size = new System.Drawing.Size(1716, 1048);
+            this.dataGridView1.Size = new System.Drawing.Size(1716, 1071);
             this.dataGridView1.TabIndex = 0;
             // 
             // btnDeletePatient
@@ -162,7 +162,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(1829, 1220);
+            this.ClientSize = new System.Drawing.Size(1829, 1243);
             this.Controls.Add(this.lblSearchValue);
             this.Controls.Add(this.cbCategory);
             this.Controls.Add(this.lblCategory);
