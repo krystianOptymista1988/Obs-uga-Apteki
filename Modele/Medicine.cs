@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Obsługa_Apteki.Modele;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace Obsługa_Apteki
 {
@@ -10,13 +13,15 @@ namespace Obsługa_Apteki
          Reciepts = new List<Reciept>();
          Doctor = new List<Doctor>();
          Deliveries = new List<Delivery>();
+         ExpiredDates = new List<ExpiredDate>();
         }
-
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int MedicineId { get; set; }
         public string Name { get; set; }
         public string Category { get; set; }
         public string Producent { get; set; }
-        public DateTime ExpiredDate { get; set; }
+        public ICollection<ExpiredDate> ExpiredDates { get; set; }
         private double PriceOfBuy { get; set; }
         public double PriceOfSell { get; set; }
         private double PriceMarge { get; set; }

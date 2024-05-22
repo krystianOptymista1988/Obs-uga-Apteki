@@ -139,10 +139,12 @@
     <Compile Include="Modele\Configurations\BillConfiguration.cs" />
     <Compile Include="Modele\Configurations\DeliveryConfiguration.cs" />
     <Compile Include="Modele\Configurations\DoctorConfiguration.cs" />
+    <Compile Include="Modele\Configurations\ExpiredDateConfiguration.cs" />
     <Compile Include="Modele\Configurations\MedicineConfiguration.cs" />
     <Compile Include="Modele\Configurations\PatientConfiguration.cs" />
     <Compile Include="Modele\Configurations\PharmaceutConfiguration.cs" />
     <Compile Include="Modele\Configurations\ReicieptConfiguration.cs" />
+    <Compile Include="Modele\ExpiredDate.cs" />
     <Compile Include="Modele\Models.cs" />
     <Compile Include="Modele\Delivery.cs" />
     <Compile Include="Deliveries.cs">
@@ -320,6 +322,7 @@
     <Folder Include="Modele\Wrappers\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="EntitityFramework\DbScripts\SetNewClassesAndRelations.sql" />
     <Content Include="EntitityFramework\DbScripts\SetProperties.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

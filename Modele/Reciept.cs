@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Obsługa_Apteki
 {
@@ -12,6 +13,7 @@ namespace Obsługa_Apteki
         }
 
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int RecieptId { get; set; }
         public ICollection<Medicine> Medicines { get; set; } // 1 do wielu, 1 recepta może zawierać wiele leków
         public DateTime DateOfRegistry { get; set; }

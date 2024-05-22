@@ -46,13 +46,17 @@
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(52, 108);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.Size = new System.Drawing.Size(1716, 1071);
+            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.ShowCellToolTips = false;
+            this.dataGridView1.ShowEditingIcon = false;
+            this.dataGridView1.Size = new System.Drawing.Size(1832, 949);
             this.dataGridView1.TabIndex = 0;
             // 
             // btnDeletePatient
@@ -61,7 +65,7 @@
             this.btnDeletePatient.BackColor = System.Drawing.Color.MistyRose;
             this.btnDeletePatient.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnDeletePatient.Image = ((System.Drawing.Image)(resources.GetObject("btnDeletePatient.Image")));
-            this.btnDeletePatient.Location = new System.Drawing.Point(1582, 29);
+            this.btnDeletePatient.Location = new System.Drawing.Point(1673, 1087);
             this.btnDeletePatient.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnDeletePatient.Name = "btnDeletePatient";
             this.btnDeletePatient.Size = new System.Drawing.Size(148, 62);
@@ -76,7 +80,7 @@
             this.btnEditPatient.BackColor = System.Drawing.Color.LightYellow;
             this.btnEditPatient.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnEditPatient.Image = ((System.Drawing.Image)(resources.GetObject("btnEditPatient.Image")));
-            this.btnEditPatient.Location = new System.Drawing.Point(1404, 29);
+            this.btnEditPatient.Location = new System.Drawing.Point(1473, 1087);
             this.btnEditPatient.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnEditPatient.Name = "btnEditPatient";
             this.btnEditPatient.Size = new System.Drawing.Size(148, 62);
@@ -106,7 +110,7 @@
             this.btnAddPatient.BackColor = System.Drawing.Color.Honeydew;
             this.btnAddPatient.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnAddPatient.Image = ((System.Drawing.Image)(resources.GetObject("btnAddPatient.Image")));
-            this.btnAddPatient.Location = new System.Drawing.Point(1196, 29);
+            this.btnAddPatient.Location = new System.Drawing.Point(1251, 1089);
             this.btnAddPatient.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnAddPatient.Name = "btnAddPatient";
             this.btnAddPatient.Size = new System.Drawing.Size(165, 59);
@@ -164,8 +168,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(1829, 1243);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(1945, 1163);
             this.Controls.Add(this.lblSearchValue);
             this.Controls.Add(this.cbCategory);
             this.Controls.Add(this.lblCategory);
