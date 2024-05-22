@@ -10,7 +10,7 @@ namespace Obsługa_Apteki
             InitializeComponent();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
         {
             var RecieptAddEdit = new RecieptAddEdit();
             RecieptAddEdit.ShowDialog();
