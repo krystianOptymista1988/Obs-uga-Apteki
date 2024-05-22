@@ -1,14 +1,8 @@
 ﻿using Obsługa_Apteki.Entities;
-using Obsługa_Apteki.Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.Entity;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
@@ -18,13 +12,13 @@ namespace Obsługa_Apteki
     {
         public int _patientId;
         private string pesel;
-        private AptekaDbContext _context;
+        private AptekaTestDbContext _context;
         public Patient patient;
         public int _pharmaceutId;
         List<Pharmaceut> _pharmaceuts;
 
 
-        public PatientAddEdit(string patientId, AptekaDbContext context)
+        public PatientAddEdit(string patientId, AptekaTestDbContext context)
         {
             InitializeComponent();
             _context = context;
@@ -35,7 +29,7 @@ namespace Obsługa_Apteki
         public PatientAddEdit()
         {
             InitializeComponent();
-            _context = new AptekaDbContext();
+            _context = new AptekaTestDbContext();
             LoadComboboxData();
         }
 
@@ -43,23 +37,23 @@ namespace Obsługa_Apteki
         {
             try
             {
-                  
 
 
-                if (tbId.Text != null) 
+
+                if (tbId.Text != null)
                 {
-               // var existingPatient = _context.Patients.SingleOrDefault(p => p.PatientId == patient.PatientId);
+                    // var existingPatient = _context.Patients.SingleOrDefault(p => p.PatientId == patient.PatientId);
                     _context.Patients.Attach(patient);
                     patient = CreatePatient(patient);
                     _context.Entry(patient).State = EntityState.Modified;
                     MessageBox.Show("Aktualizowano dane Pacjenta");
                 }
-                else 
-                { 
+                else
+                {
                     patient = new Patient();
                     patient = CreatePatient();
                     _context.Patients.Add(patient);
-                MessageBox.Show("Dodano Pacjenta");
+                    MessageBox.Show("Dodano Pacjenta");
                 }
                 _context.SaveChanges();
                 this.DialogResult = DialogResult.OK;
@@ -84,9 +78,9 @@ namespace Obsługa_Apteki
             {
                 Text = "Edytowanie danych Pacjenta";
 
-               
+
                 patient = _context.Patients.FirstOrDefault(x => x.PESEL == pesel);
-                
+
                 if (patient == null)
                 {
                     throw new Exception("Brak użytkownika o podanym Id");
@@ -97,7 +91,7 @@ namespace Obsługa_Apteki
         }
         private void FillTextBoxes(Patient patient)
         {
-            
+
             tbId.Text = patient.PatientId.ToString();
             tbName.Text = patient.Name;
             tbSurname.Text = patient.Surname;
@@ -141,7 +135,7 @@ namespace Obsługa_Apteki
 
         private void cbPharmaceut_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
+
         }
         private void LoadComboboxData()
         {

@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Obsługa_Apteki
 {
-    public abstract class Person
+    public class Person
     {
         public string Name { get; set; }
         public string Surname { get; set; }
@@ -18,7 +15,7 @@ namespace Obsługa_Apteki
         public string Adress { get; set; }
         public string PostalCode { get; set; }
 
-        public List<Reciept> RecieptList { get; set; }
+        
 
 
 

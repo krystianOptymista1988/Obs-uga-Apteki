@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Obsługa_Apteki
+﻿namespace Obsługa_Apteki
 {
-    public interface IMedicineRefunded 
+    public interface IMedicineRefunded
     {
-        double? PercentageOfRefunding { get; set; }
-        double? PriceAfterRefunding { get; set; }
+      //  double? PercentageOfRefunding { get; set; }
+      //  double? PriceAfterRefunding { get; set; }
     }
 }

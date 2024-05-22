@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Obsługa_Apteki
 {
-    internal interface IMedicineOnReciept
+    public interface IMedicineOnReciept
     {
-        int? DoctorId { get; }
-        int? RecieptId { get; }  
+     //   ICollection<Doctor> DoctorId { get; set; } // 1 do wielu
+       // ICollection<Reciept> Reciepts { get; set; } // 1 do wielu tzn 1 lek może znaleźć się na wielu receptach
     }
 }

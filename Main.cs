@@ -20,8 +20,8 @@ namespace Obsługa_Apteki
             toolTip1.SetToolTip(btnPharmaceuts, "Zarządzaj pracownikami Apteki");
             toolTip1.SetToolTip(btnSupport, "Informacje o autorach oraz kontakt");
 
-            InitializeDatabase();
-          
+            
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -29,10 +29,6 @@ namespace Obsługa_Apteki
 
         }
 
-        private void InitializeDatabase()
-        {
-          //  SqlDatabaseService.Instance.Initialize(@"57.128.195.227", "apteka", "apteka", "Projekt123!");
-        }
         private void button5_Click(object sender, EventArgs e)
         {
             var Utilization = new Utilization();
@@ -47,7 +43,7 @@ namespace Obsługa_Apteki
         private void btnPatient_Click(object sender, EventArgs e)
         {
             var PatientShow = new PatientShow();
-           
+
             PatientShow.ShowDialog();
         }
 

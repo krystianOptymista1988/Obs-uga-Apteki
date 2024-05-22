@@ -1,17 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Obsługa_Apteki
 {
     public class Doctor : Person
     {
-        [Key]
-        public int DoctorId { get; set; }   
-        public List<Patient> Patients = new List<Patient>();
-        public List<Reciept> Reciepts = new List<Reciept>();
+        public Doctor()
+        {
+            Patients = new List<Patient>();
+            Reciepts = new List<Reciept>();
+        }
+
+        public int DoctorId { get; set; }
+        public ICollection<Patient> Patients = new List<Patient>();
+        public ICollection<Reciept> Reciepts = new List<Reciept>();
     }
 }

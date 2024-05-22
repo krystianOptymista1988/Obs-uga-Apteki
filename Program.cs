@@ -1,33 +1,27 @@
 ﻿using Obsługa_Apteki.Entities;
 using System;
-using System.Collections.Generic;
-using System.Data.Common;
 using System.Data.Entity;
-using System.Data.Entity.Infrastructure.Interception;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Obsługa_Apteki
 {
     internal static class Program
     {
-       // public static string FilePath =
-       //  Path.Combine(Environment.CurrentDirectory, "pharmacy.txt");
+        // public static string FilePath =
+        //  Path.Combine(Environment.CurrentDirectory, "pharmacy.txt");
         /// <summary>
         /// Główny punkt wejścia dla aplikacji.
         /// </summary>
         [STAThread]
         static void Main()
         {
-            Database.SetInitializer(new AptekaDbInitializer());
-            using (var context = new AptekaDbContext())
-            {
-               context.TablesCheck();
-            }
+           Database.SetInitializer(new AptekaDbInitializer());
+         //   using (var context = new AptekaTestDbContext()) 
+      //     {
+         //       context.TablesCheck();
+       //     }
 
-            DbContextTester.TestConnection();
+          DbContextTester.TestConnection();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -37,7 +31,7 @@ namespace Obsługa_Apteki
         {
             public static void TestConnection()
             {
-                using (var context = new AptekaDbContext())
+                using (var context = new AptekaTestDbContext())
                 {
                     if (context.Database.Exists())
                     {

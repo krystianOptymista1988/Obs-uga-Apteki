@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Obsługa_Apteki.Entities
+﻿namespace Obsługa_Apteki.Entities
 {
-    internal class DbActions
+    public interface IDbActions
     {
+
+       // public void GetData()
+        
+
+        
     }
 }

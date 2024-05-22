@@ -1,8 +1,6 @@
-﻿using System.Data.Entity;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System;
 
 namespace Obsługa_Apteki.Models
 {
@@ -27,7 +25,7 @@ namespace Obsługa_Apteki.Models
         public List<Medicine> Medicines { get; set; }
         public DateTime DateOfRegistry { get; set; }
         public DateTime DateOfExpire { get; set; }
-        
+
     }
 
     public class Pharmaceut
@@ -46,7 +44,7 @@ namespace Obsługa_Apteki.Models
         private int Salary { get; set; }
         public DateTime DateOfHire { get; set; }
 
-        
+
     }
     public class Delivery
     {

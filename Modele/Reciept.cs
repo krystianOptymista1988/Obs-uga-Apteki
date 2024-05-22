@@ -1,21 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Obsługa_Apteki
 {
     public class Reciept
     {
+        public Reciept()
+        {
+            Medicines = new List<Medicine>();
+        }
+
         [Key]
         public int RecieptId { get; set; }
-        public Patient Patient { get; set; }
-        public List<Medicine> Medicines { get; set; }
+        public ICollection<Medicine> Medicines { get; set; } // 1 do wielu, 1 recepta może zawierać wiele leków
         public DateTime DateOfRegistry { get; set; }
         public DateTime DateOfExpire { get; set; }
-        public Doctor Doctor { get; set; }
+
+        public int DoctorId { get; set; } // 1 do 1 tzn 1 lekarz może wystawić 1 receptę
+        public Doctor Doctor { get; set; } // 1 do 1
+        public int PatientId { get; set; }  // 1 do 1
+        public Patient Patient { get; set; } // 1 do 1
 
     }
 }

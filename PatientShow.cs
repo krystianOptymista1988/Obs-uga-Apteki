@@ -1,42 +1,31 @@
-﻿using MySql.Data.MySqlClient;
-using Obsługa_Apteki.Entities;
+﻿using Obsługa_Apteki.Entities;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.Entity;
-using System.Drawing;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Runtime.Remoting.Contexts;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static Obsługa_Apteki.Entities.AptekaDbContext;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 
 namespace Obsługa_Apteki
 {
     public partial class PatientShow : Form
     {
-        private AptekaDbContext context;
+        private AptekaTestDbContext context;
         private List<Patient> patients = new List<Patient>();
         public PatientShow()
         {
-            context = new AptekaDbContext();
+            context = new AptekaTestDbContext();
             InitializeComponent();
-           
+
 
             RefreshPatients();
         }
 
         public void RefreshPatients()
         {
-            
+
             try
             {
-                using (var context = new AptekaDbContext()) 
+                using (var context = new AptekaTestDbContext())
                 {
                     patients = context.Patients.ToList();
                     dataGridView1.DataSource = patients;
@@ -103,7 +92,7 @@ namespace Obsługa_Apteki
         private void ComboboxDataLoad()
         {
             cbCategory.Items.Clear();
-            
+
             foreach (DataGridViewColumn column in dataGridView1.Columns)
             {
                 cbCategory.Items.Add(column.HeaderText);
@@ -117,7 +106,7 @@ namespace Obsługa_Apteki
         private void DGVHeadersSet()
         {
             dataGridView1.Columns[nameof(Patient.PatientId)].HeaderText = "ID";
-            dataGridView1.Columns[nameof (Patient.PatientId)].DisplayIndex = 0;
+            dataGridView1.Columns[nameof(Patient.PatientId)].DisplayIndex = 0;
             dataGridView1.Columns[nameof(Patient.Name)].HeaderText = "Imię";
             dataGridView1.Columns[nameof(Patient.Name)].DisplayIndex = 1;
             dataGridView1.Columns[nameof(Patient.Surname)].HeaderText = "Nazwisko";
@@ -127,9 +116,11 @@ namespace Obsługa_Apteki
             dataGridView1.Columns[nameof(Patient.Adress)].HeaderText = "Adres";
             dataGridView1.Columns[nameof(Patient.DateOfBirth)].HeaderText = "Data Urodzenia";
             dataGridView1.Columns[nameof(Patient.PostalCode)].HeaderText = "Kod Pocztowy";
+            dataGridView1.Columns[nameof(Patient.PharmaceutId)].HeaderText = "Farmaceuta";
+            dataGridView1.Columns[nameof(Patient.RecieptList)].HeaderText = "Recepty";
             dataGridView1.Columns[nameof(Patient.Mobile)].HeaderText = "Telefon";
-            
-            
+
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -142,7 +133,7 @@ namespace Obsługa_Apteki
 
                 if (result == DialogResult.Yes)
                 {
-                    using (var context = new AptekaDbContext()) 
+                    using (var context = new AptekaDbContext())
                     {
                         var patient = context.Patients.FirstOrDefault(p => p.PatientId == patientId);
 

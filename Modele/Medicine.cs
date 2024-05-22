@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Obsługa_Apteki
 {
-    public class Medicine : IMedicineRefunded, IMedicineOnReciept
+    public class Medicine 
     {
+        public Medicine()
+        {
+         Reciepts = new List<Reciept>();
+         Doctor = new List<Doctor>();
+         Deliveries = new List<Delivery>();
+        }
 
         public int MedicineId { get; set; }
         public string Name { get; set; }
@@ -17,7 +20,7 @@ namespace Obsługa_Apteki
         private double PriceOfBuy { get; set; }
         public double PriceOfSell { get; set; }
         private double PriceMarge { get; set; }
-        public int QuantityInPackage { get; set; }
+        public int QuantityInPackage { get; set; } //jak to zrobić ? 
         public int QuantityOfPackages { get; set; }
         public bool IsRefunded { get; set; }
         public double? PercentageOfRefunding { get; set; }
@@ -26,8 +29,9 @@ namespace Obsługa_Apteki
         public bool IsAntibiotique { get; set; }
 
         public bool IsOnReciept { get; set; }
-        public int? DoctorId { get; }
-        public int? RecieptId { get; }
+        public ICollection<Doctor> Doctor { get; set; } // 1 do wielu
+        public ICollection<Reciept> Reciepts { get; set; } // 1 do wielu tzn 1 lek może znaleźć się na wielu receptach
+        public ICollection<Delivery> Deliveries { get; set; }
 
     }
 }
