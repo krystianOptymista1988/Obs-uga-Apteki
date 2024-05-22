@@ -134,7 +134,7 @@ namespace Obsługa_Apteki
 
                 if (result == DialogResult.Yes)
                 {
-                    using (var context = new AptekaDbContext())
+                    using (var context = new AptekaTestDbContext())
                     {
                         var patient = context.Patients.FirstOrDefault(p => p.PatientId == patientId);
 

@@ -126,24 +126,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\202405221651311_SetProperties.cs" />
-    <Compile Include="Migrations\202405221651311_SetProperties.Designer.cs">
+    <Compile Include="EntitityFramework\Migrations\202405221651311_SetProperties.cs" />
+    <Compile Include="EntitityFramework\Migrations\202405221651311_SetProperties.Designer.cs">
       <DependentUpon>202405221651311_SetProperties.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="EntitityFramework\Migrations\Configuration.cs" />
     <Compile Include="Modele\Bill.cs" />
     <Compile Include="EntitityFramework\AptekaDbInitializer.cs" />
-    <Compile Include="EntitityFramework\AptekaDbContext.cs" />
     <Compile Include="EntitityFramework\AptekaTestDbContext.cs" />
     <Compile Include="EntitityFramework\DbActions.cs" />
-    <Compile Include="Modele\Configurations\BillConfiguration.cs" />
-    <Compile Include="Modele\Configurations\DeliveryConfiguration.cs" />
-    <Compile Include="Modele\Configurations\DoctorConfiguration.cs" />
-    <Compile Include="Modele\Configurations\ExpiredDateConfiguration.cs" />
-    <Compile Include="Modele\Configurations\MedicineConfiguration.cs" />
-    <Compile Include="Modele\Configurations\PatientConfiguration.cs" />
-    <Compile Include="Modele\Configurations\PharmaceutConfiguration.cs" />
-    <Compile Include="Modele\Configurations\ReicieptConfiguration.cs" />
+    <Compile Include="EntitityFramework\Configurations\BillConfiguration.cs" />
+    <Compile Include="EntitityFramework\Configurations\DeliveryConfiguration.cs" />
+    <Compile Include="EntitityFramework\Configurations\DoctorConfiguration.cs" />
+    <Compile Include="EntitityFramework\Configurations\ExpiredDateConfiguration.cs" />
+    <Compile Include="EntitityFramework\Configurations\MedicineConfiguration.cs" />
+    <Compile Include="EntitityFramework\Configurations\PatientConfiguration.cs" />
+    <Compile Include="EntitityFramework\Configurations\PharmaceutConfiguration.cs" />
+    <Compile Include="EntitityFramework\Configurations\ReicieptConfiguration.cs" />
     <Compile Include="Modele\ExpiredDate.cs" />
     <Compile Include="Modele\Models.cs" />
     <Compile Include="Modele\Delivery.cs" />
@@ -250,7 +249,7 @@
     <EmbeddedResource Include="MedicineCard.resx">
       <DependentUpon>MedicineCard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202405221651311_SetProperties.resx">
+    <EmbeddedResource Include="EntitityFramework\Migrations\202405221651311_SetProperties.resx">
       <DependentUpon>202405221651311_SetProperties.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PatientAddEdit.resx">
