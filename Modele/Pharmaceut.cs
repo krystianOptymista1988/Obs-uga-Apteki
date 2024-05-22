@@ -16,5 +16,7 @@ namespace Obsługa_Apteki
 
         public List<Patient> Patients { get; set; }
 
+        public string FullName => $"{Name} {Surname}";
+
     }
 }

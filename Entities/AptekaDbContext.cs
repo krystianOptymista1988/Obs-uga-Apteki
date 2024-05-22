@@ -28,7 +28,8 @@ namespace Obsługa_Apteki.Entities
             
         public AptekaDbContext() : base("name=AptekaContext")
             {
-            }
+            this.Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
+        }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
             {

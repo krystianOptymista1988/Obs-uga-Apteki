@@ -126,8 +126,8 @@
     <Compile Include="Entities\AptekaDbInitializer.cs" />
     <Compile Include="Entities\AptekaDbContext.cs" />
     <Compile Include="Entities\DbActions.cs" />
-    <Compile Include="Entities\Models.cs" />
-    <Compile Include="Delivery.cs" />
+    <Compile Include="Modele\Models.cs" />
+    <Compile Include="Modele\Delivery.cs" />
     <Compile Include="Deliveries.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,7 +140,7 @@
     <Compile Include="DeliveryAddEdit.Designer.cs">
       <DependentUpon>DeliveryAddEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="Doctor.cs" />
+    <Compile Include="Modele\Doctor.cs" />
     <Compile Include="Entities\FileActions.cs" />
     <Compile Include="MedicineCard.cs">
       <SubType>Form</SubType>
@@ -149,7 +149,7 @@
       <DependentUpon>MedicineCard.cs</DependentUpon>
     </Compile>
     <Compile Include="Entities\MySqlDatabaseService.cs" />
-    <Compile Include="MedicineOnReciept.cs" />
+    <Compile Include="Modele\MedicineOnReciept.cs" />
     <Compile Include="PatientShow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,16 +162,16 @@
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="Medicine.cs" />
-    <Compile Include="Patient.cs" />
+    <Compile Include="Modele\Medicine.cs" />
+    <Compile Include="Modele\Patient.cs" />
     <Compile Include="PatientAddEdit.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="PatientAddEdit.Designer.cs">
       <DependentUpon>PatientAddEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="Person.cs" />
-    <Compile Include="Pharmaceut.cs" />
+    <Compile Include="Modele\Person.cs" />
+    <Compile Include="Modele\Pharmaceut.cs" />
     <Compile Include="PharmaceutAddEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -186,8 +186,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reciept.cs" />
-    <Compile Include="MedicineRefunded.cs" />
+    <Compile Include="Modele\Reciept.cs" />
+    <Compile Include="Modele\MedicineRefunded.cs" />
     <Compile Include="RecieptAddEdit.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -48,7 +48,9 @@
             this.dtpDateOfBirth = new System.Windows.Forms.DateTimePicker();
             this.tbComment = new System.Windows.Forms.RichTextBox();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.cbPharmaceut = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -219,7 +221,7 @@
             // 
             this.btnAdd.BackColor = System.Drawing.Color.ForestGreen;
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnAdd.Location = new System.Drawing.Point(266, 640);
+            this.btnAdd.Location = new System.Drawing.Point(266, 685);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(184, 46);
@@ -228,26 +230,48 @@
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button2
+            // btnDelete
             // 
-            this.button2.BackColor = System.Drawing.Color.Brown;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button2.ForeColor = System.Drawing.Color.Black;
-            this.button2.Location = new System.Drawing.Point(476, 640);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(184, 46);
-            this.button2.TabIndex = 19;
-            this.button2.Text = "Anuluj";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnDelete.BackColor = System.Drawing.Color.Crimson;
+            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnDelete.Location = new System.Drawing.Point(488, 685);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(184, 46);
+            this.btnDelete.TabIndex = 19;
+            this.btnDelete.Text = "Anuluj";
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // cbPharmaceut
+            // 
+            this.cbPharmaceut.Font = new System.Drawing.Font("Microsoft Tai Le", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.cbPharmaceut.FormattingEnabled = true;
+            this.cbPharmaceut.Location = new System.Drawing.Point(236, 631);
+            this.cbPharmaceut.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cbPharmaceut.Name = "cbPharmaceut";
+            this.cbPharmaceut.Size = new System.Drawing.Size(210, 32);
+            this.cbPharmaceut.TabIndex = 20;
+            this.cbPharmaceut.SelectedIndexChanged += new System.EventHandler(this.cbPharmaceut_SelectedIndexChanged);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(40, 637);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(184, 20);
+            this.label10.TabIndex = 21;
+            this.label10.Text = "Farmaceuta Prowadzący";
             // 
             // PatientAddEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(700, 692);
-            this.Controls.Add(this.button2);
+            this.ClientSize = new System.Drawing.Size(700, 766);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.cbPharmaceut);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.tbComment);
             this.Controls.Add(this.dtpDateOfBirth);
@@ -297,6 +321,8 @@
         private System.Windows.Forms.DateTimePicker dtpDateOfBirth;
         private System.Windows.Forms.RichTextBox tbComment;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.ComboBox cbPharmaceut;
+        private System.Windows.Forms.Label label10;
     }
 }
