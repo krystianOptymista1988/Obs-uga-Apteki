@@ -15,6 +15,22 @@ namespace Obsługa_Apteki.Modele.Configurations
 
                 HasKey(x => x.DoctorId);
 
+            Property(c => c.Adress)
+               .HasMaxLength(100);
+
+            Property(c => c.Name)
+                .HasMaxLength(20)
+                .IsRequired();
+
+            Property(c => c.Surname)
+                .HasMaxLength(20)
+                .IsRequired();
+
+            Property(c => c.Mobile)
+               .HasMaxLength(15);
+
+            Property(c => c.DateOfBirth)
+               .HasColumnType("date");
         }
     }
 }

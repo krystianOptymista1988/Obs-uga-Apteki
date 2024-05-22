@@ -16,7 +16,8 @@ namespace Obsługa_Apteki.Modele.Configurations
             HasKey(x => x.DeliveryId);
             HasMany(m => m.OrderedMedicines);
             
-
+            Property(c => c.DateOfDelivery)
+                .HasColumnType("date");
         }
     }
 }

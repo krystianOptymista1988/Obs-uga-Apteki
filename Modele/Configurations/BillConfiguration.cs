@@ -15,6 +15,8 @@ namespace Obsługa_Apteki.Modele.Configurations
 
             HasKey(x => x.BillId);
 
+            
+
         }
     }
 }

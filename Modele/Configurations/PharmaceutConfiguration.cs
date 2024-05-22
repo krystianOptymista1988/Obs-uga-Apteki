@@ -15,6 +15,26 @@ namespace Obsługa_Apteki.Modele.Configurations
             ToTable("dbo.Pharmaceuts");
 
             HasKey(x => x.PharmaceutId);
+
+            Property(c => c.Adress)
+               .HasMaxLength(100);
+
+            Property(c => c.Name)
+                .HasMaxLength(20)
+                .IsRequired();
+
+            Property(c => c.Surname)
+                .HasMaxLength(20)
+                .IsRequired();
+
+            Property(c => c.Mobile)
+               .HasMaxLength(15);
+
+            Property(c => c.DateOfBirth)
+               .HasColumnType("date");
+
+            Property(d => d.DateOfHire)
+                .HasColumnType("date");
         }
     }
 }

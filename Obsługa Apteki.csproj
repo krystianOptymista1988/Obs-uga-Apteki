@@ -126,11 +126,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\202405221651311_SetProperties.cs" />
+    <Compile Include="Migrations\202405221651311_SetProperties.Designer.cs">
+      <DependentUpon>202405221651311_SetProperties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Modele\Bill.cs" />
-    <Compile Include="Entities\AptekaDbInitializer.cs" />
-    <Compile Include="Entities\AptekaDbContext.cs" />
-    <Compile Include="Entities\AptekaTestDbContext.cs" />
-    <Compile Include="Entities\DbActions.cs" />
+    <Compile Include="EntitityFramework\AptekaDbInitializer.cs" />
+    <Compile Include="EntitityFramework\AptekaDbContext.cs" />
+    <Compile Include="EntitityFramework\AptekaTestDbContext.cs" />
+    <Compile Include="EntitityFramework\DbActions.cs" />
     <Compile Include="Modele\Configurations\BillConfiguration.cs" />
     <Compile Include="Modele\Configurations\DeliveryConfiguration.cs" />
     <Compile Include="Modele\Configurations\DoctorConfiguration.cs" />
@@ -243,6 +248,9 @@
     <EmbeddedResource Include="MedicineCard.resx">
       <DependentUpon>MedicineCard.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202405221651311_SetProperties.resx">
+      <DependentUpon>202405221651311_SetProperties.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PatientAddEdit.resx">
       <DependentUpon>PatientAddEdit.cs</DependentUpon>
     </EmbeddedResource>
@@ -310,6 +318,9 @@
     <Folder Include="Modele\Converters\" />
     <Folder Include="Modele\Domenowe\" />
     <Folder Include="Modele\Wrappers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="EntitityFramework\DbScripts\SetProperties.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -16,6 +16,23 @@ namespace Obsługa_Apteki.Modele.Configurations
             ToTable("dbo.Patients");
 
             HasKey(x => x.PatientId);
+
+            Property(c => c.Adress)
+               .HasMaxLength(100);
+
+            Property(c => c.Name)
+                .HasMaxLength(20)
+                .IsRequired();
+
+            Property(c => c.Surname)
+                .HasMaxLength(20)
+                .IsRequired();
+
+            Property(c => c.Mobile)
+               .HasMaxLength(15);
+
+            Property(c => c.DateOfBirth)
+               .HasColumnType("date");
         }
     }
 }
