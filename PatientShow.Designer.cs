@@ -43,6 +43,9 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(35, 70);
@@ -52,6 +55,7 @@
             // 
             // btnDeletePatient
             // 
+            this.btnDeletePatient.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnDeletePatient.BackColor = System.Drawing.Color.MistyRose;
             this.btnDeletePatient.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnDeletePatient.Image = ((System.Drawing.Image)(resources.GetObject("btnDeletePatient.Image")));
@@ -65,6 +69,7 @@
             // 
             // btnEditPatient
             // 
+            this.btnEditPatient.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnEditPatient.BackColor = System.Drawing.Color.LightYellow;
             this.btnEditPatient.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnEditPatient.Image = ((System.Drawing.Image)(resources.GetObject("btnEditPatient.Image")));
@@ -92,6 +97,7 @@
             // 
             // btnAddPatient
             // 
+            this.btnAddPatient.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnAddPatient.BackColor = System.Drawing.Color.Honeydew;
             this.btnAddPatient.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnAddPatient.Image = ((System.Drawing.Image)(resources.GetObject("btnAddPatient.Image")));
