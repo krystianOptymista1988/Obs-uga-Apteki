@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Obsługa_Apteki.Modele.Configurations
 {
-    internal class BillConfiguration : EntityTypeConfiguration<Bill>
+    public class BillConfiguration : EntityTypeConfiguration<Bill>
     {
         public BillConfiguration()
         {
@@ -15,7 +15,8 @@ namespace Obsługa_Apteki.Modele.Configurations
 
             HasKey(x => x.BillId);
 
-            
+            Property(x => x.DateOfBill)
+                .IsRequired();
 
         }
     }

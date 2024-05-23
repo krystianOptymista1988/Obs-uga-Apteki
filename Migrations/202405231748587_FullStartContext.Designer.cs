@@ -7,13 +7,13 @@ namespace Obsługa_Apteki.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class FullOfClassAndRelations : IMigrationMetadata
+    public sealed partial class FullStartContext : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(FullOfClassAndRelations));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(FullStartContext));
         
         string IMigrationMetadata.Id
         {
-            get { return "202405230641396_FullOfClassAndRelations"; }
+            get { return "202405231748587_FullStartContext"; }
         }
         
         string IMigrationMetadata.Source

@@ -1,5 +1,8 @@
-﻿using System.Collections;
+﻿using Obsługa_Apteki.Modele;
+using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace Obsługa_Apteki
 {
@@ -7,12 +10,19 @@ namespace Obsługa_Apteki
     {
         public QuantityOnMagazine()
         {
-            Medicines = new List<Medicine>();
+            BillQuantities = new List<BillQuantity>();
         }
 
-        public int QuantityAddId { get; set; } 
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int QuantityOnMagazineId { get; set; }
+
         public int Quantities { get; set; }
-        public ICollection<Medicine> Medicines { get; set; }    
+
+        public int MedicineId { get; set; }
+        public Medicine Medicine { get; set; }
+
+        public ICollection<BillQuantity> BillQuantities { get; set; }
 
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
 using System.Linq;
 using System.Text;
@@ -13,18 +14,16 @@ namespace Obsługa_Apteki.EntitityFramework.Configurations
         {
             ToTable("dbo.QuantitiesOnMagazine");
 
-            HasKey(x => x.QuantityAddId);
+            HasKey(x => x.QuantityOnMagazineId);
 
+            Property(x => x.Quantities)
+                .IsRequired();
 
-
-            HasMany(m => m.Medicines)
-                        .WithMany(d => d.QuantityOfPackages)
-                        .Map(md =>
-                        {
-                            md.ToTable("QuantitiesOfMedicines"); // Nazwa tabeli pośredniczącej
-                            md.MapLeftKey("QuantityAddId");      // Nazwa kolumny dla Medicine
-                            md.MapRightKey("MedicineId");     // Nazwa kolumny dla Delivery
-                        });
+            
+            Property(x => x.QuantityOnMagazineId)
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)
+                .HasColumnName("QuantityOnMagazineId")
+                .IsRequired();
         }
     } 
 }

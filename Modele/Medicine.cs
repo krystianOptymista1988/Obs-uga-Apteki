@@ -14,7 +14,7 @@ namespace Obsługa_Apteki
          Doctor = new List<Doctor>();
          Deliveries = new List<Delivery>();
          ExpiredDates = new List<ExpiredDate>();
-         QuantityOfPackages = new List<QuantityOnMagazine>();
+         QuantityOnMagazines = new List<QuantityOnMagazine>();
         }
 
         [Key]
@@ -25,10 +25,9 @@ namespace Obsługa_Apteki
         public string Producent { get; set; }
         public ICollection<ExpiredDate> ExpiredDates { get; set; }
         private double PriceOfBuy { get; set; }
-        public double PriceOfSell { get; set; }
+        public double Price { get; set; }
         private double PriceMarge { get; set; }
         public int QuantityInPackage { get; set; } 
-        public ICollection<QuantityOnMagazine> QuantityOfPackages { get; set; } 
         public bool IsRefunded { get; set; }
         public double? PercentageOfRefunding { get; set; }
         public double? PriceAfterRefunding { get; set; }
@@ -39,6 +38,7 @@ namespace Obsługa_Apteki
         public ICollection<Doctor> Doctor { get; set; } // 1 do wielu
         public ICollection<Reciept> Reciepts { get; set; } // 1 do wielu tzn 1 lek może znaleźć się na wielu receptach
         public ICollection<Delivery> Deliveries { get; set; }
+        public ICollection<QuantityOnMagazine> QuantityOnMagazines { get; set; }
 
     }
 }

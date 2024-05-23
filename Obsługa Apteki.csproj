@@ -126,11 +126,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntitityFramework\Configurations\BillQuantityConfiguration.cs" />
     <Compile Include="EntitityFramework\Configurations\QuantityOnMagazineConfiguration.cs" />
     <Compile Include="EntitityFramework\Migrations\Configuration.cs" />
-    <Compile Include="Migrations\202405230641396_FullOfClassAndRelations.cs" />
-    <Compile Include="Migrations\202405230641396_FullOfClassAndRelations.Designer.cs">
-      <DependentUpon>202405230641396_FullOfClassAndRelations.cs</DependentUpon>
+    <Compile Include="Migrations\202405231748587_FullStartContext.cs" />
+    <Compile Include="Migrations\202405231748587_FullStartContext.Designer.cs">
+      <DependentUpon>202405231748587_FullStartContext.cs</DependentUpon>
     </Compile>
     <Compile Include="Modele\Bill.cs" />
     <Compile Include="EntitityFramework\AptekaDbInitializer.cs" />
@@ -145,6 +146,7 @@
     <Compile Include="EntitityFramework\Configurations\PharmaceutConfiguration.cs" />
     <Compile Include="EntitityFramework\Configurations\ReicieptConfiguration.cs" />
     <Compile Include="Modele\ExpiredDate.cs" />
+    <Compile Include="Modele\BillQuantity.cs" />
     <Compile Include="Modele\Models.cs" />
     <Compile Include="Modele\Delivery.cs" />
     <Compile Include="Deliveries.cs">
@@ -251,8 +253,8 @@
     <EmbeddedResource Include="MedicineCard.resx">
       <DependentUpon>MedicineCard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202405230641396_FullOfClassAndRelations.resx">
-      <DependentUpon>202405230641396_FullOfClassAndRelations.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202405231748587_FullStartContext.resx">
+      <DependentUpon>202405231748587_FullStartContext.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PatientAddEdit.resx">
       <DependentUpon>PatientAddEdit.cs</DependentUpon>
@@ -284,6 +286,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RecieptsShow.resx">
       <DependentUpon>RecieptsShow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SellMedicine.resx">
+      <DependentUpon>SellMedicine.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Support.resx">
       <DependentUpon>Support.cs</DependentUpon>

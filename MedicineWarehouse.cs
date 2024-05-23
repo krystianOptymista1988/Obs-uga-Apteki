@@ -48,13 +48,13 @@ namespace Obsługa_Apteki
             dataGridView1.Columns[nameof(Medicine.Deliveries)].Visible = false;
             dataGridView1.Columns[nameof(Medicine.Doctor)].Visible = false;
             dataGridView1.Columns[nameof(Medicine.ExpiredDates)].Visible = false;
-            dataGridView1.Columns[nameof(Medicine.PriceOfSell)].HeaderText = "Cena";
+            dataGridView1.Columns[nameof(Medicine.Price)].HeaderText = "Cena";
             dataGridView1.Columns[nameof(Medicine.Producent)].HeaderText = "Producent";
             dataGridView1.Columns[nameof(Medicine.Producent)].DisplayIndex = 4;
             dataGridView1.Columns[nameof(Medicine.PercentageOfRefunding)].Visible = false;
             dataGridView1.Columns[nameof(Medicine.PriceAfterRefunding)].HeaderText = "Cena NFZ";
             dataGridView1.Columns[nameof(Medicine.QuantityInPackage)].HeaderText = "Ilość w Op";
-            dataGridView1.Columns[nameof(Medicine.QuantityOfPackages)].HeaderText = "Na Magazynie";
+            dataGridView1.Columns[nameof(Medicine.QuantityOnMagazines)].HeaderText = "Na Magazynie";
             dataGridView1.Columns[nameof(Medicine.IsAntibiotique)].Visible = false;
             dataGridView1.Columns[nameof(Medicine.Reciepts)].Visible = false;
 

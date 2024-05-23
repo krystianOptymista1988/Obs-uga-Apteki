@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Obsługa_Apteki.Modele.Configurations
 {
-    internal class DoctorConfiguration : EntityTypeConfiguration<Doctor>
+    public class DoctorConfiguration : EntityTypeConfiguration<Doctor>
     {
         public DoctorConfiguration()
         {
