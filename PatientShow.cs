@@ -1,6 +1,8 @@
 ﻿using Obsługa_Apteki.Entities;
+using Obsługa_Apteki.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -9,49 +11,36 @@ namespace Obsługa_Apteki
 {
     public partial class PatientShow : Form
     {
-        private DbActions _dbAction;
-        private List<Patient> _patients = new List<Patient>();
+        private DbActions _dbAction = new DbActions();
+        private List<Patient> patients = new List<Patient>();
+        private Patient _patient;
         public PatientShow()
         {
             
             InitializeComponent();
-            RefreshPatients();
-        }
-
-        public void RefreshPatients()
-        {
-
-            try
-            {
-                using (var context = new AptekaTestDbContext())
-                {
-                    _patients = context.Patients.ToList();
-                    dataGridView1.DataSource = _patients;
-                }
-
-
-                if (_patients.Any())
-                {
-                    dataGridView1.DataSource = _patients;
-                }
-                else
-                {
-                    MessageBox.Show("Brak pacjentów w bazie danych.", "Informacja", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            catch (Exception ex)
-            {
-                if (ex.InnerException != null)
-                {
-                    MessageBox.Show($"Wystąpił błąd podczas odświeżania listy pacjentów: {ex.Message}\nSzczegóły: {ex.InnerException.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    MessageBox.Show($"Wystąpił błąd podczas odświeżania listy pacjentów: {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
+            DataLoad();
             DGVHeadersSet();
             ComboboxDataLoad();
+        }
+
+        private void DataLoad()
+        {
+            patients = _dbAction.GetPatients();
+
+            if (patients == null || patients.Count == 0)
+            {
+                var columnNames = _dbAction.GetColumnNames<Patient>();
+                var dataTable = new DataTable();
+                foreach (var columnName in columnNames)
+                {
+                    dataTable.Columns.Add(columnName);
+                }
+                dataGridView1.DataSource = dataTable;
+            }
+            else
+            {
+                dataGridView1.DataSource = patients;
+            }
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -79,7 +68,7 @@ namespace Obsługa_Apteki
                 PatientAddEdit editForm = new PatientAddEdit(patientId, _context);
                 if (editForm.ShowDialog() == DialogResult.OK)
                 {
-                    RefreshPatients();
+                    DataLoad();
                 }
             }
             else
@@ -145,7 +134,7 @@ namespace Obsługa_Apteki
                                 context.SaveChanges();
                                 MessageBox.Show("Pacjent został usunięty.");
 
-                                RefreshPatients();
+                                DataLoad();
                             }
                             catch (Exception ex)
                             {
