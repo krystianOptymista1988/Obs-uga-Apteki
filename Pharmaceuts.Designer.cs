@@ -42,9 +42,10 @@
             // 
             this.cbCategory.Font = new System.Drawing.Font("Microsoft Tai Le", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.cbCategory.FormattingEnabled = true;
-            this.cbCategory.Location = new System.Drawing.Point(251, 23);
+            this.cbCategory.Location = new System.Drawing.Point(376, 35);
+            this.cbCategory.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cbCategory.Name = "cbCategory";
-            this.cbCategory.Size = new System.Drawing.Size(269, 24);
+            this.cbCategory.Size = new System.Drawing.Size(402, 32);
             this.cbCategory.TabIndex = 18;
             // 
             // button4
@@ -52,9 +53,10 @@
             this.button4.BackColor = System.Drawing.Color.Honeydew;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
-            this.button4.Location = new System.Drawing.Point(364, 399);
+            this.button4.Location = new System.Drawing.Point(546, 627);
+            this.button4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(111, 40);
+            this.button4.Size = new System.Drawing.Size(166, 49);
             this.button4.TabIndex = 15;
             this.button4.Text = "Dodaj";
             this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -66,9 +68,10 @@
             this.button3.BackColor = System.Drawing.Color.LightBlue;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.Location = new System.Drawing.Point(619, 11);
+            this.button3.Location = new System.Drawing.Point(928, 17);
+            this.button3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(118, 46);
+            this.button3.Size = new System.Drawing.Size(177, 50);
             this.button3.TabIndex = 14;
             this.button3.Text = "Wyszukaj";
             this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -79,9 +82,10 @@
             this.button2.BackColor = System.Drawing.Color.LightYellow;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.Location = new System.Drawing.Point(518, 399);
+            this.button2.Location = new System.Drawing.Point(777, 627);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(99, 40);
+            this.button2.Size = new System.Drawing.Size(148, 49);
             this.button2.TabIndex = 13;
             this.button2.Text = "Edytuj";
             this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -93,9 +97,10 @@
             this.button1.BackColor = System.Drawing.Color.MistyRose;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(656, 399);
+            this.button1.Location = new System.Drawing.Point(984, 627);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(99, 40);
+            this.button1.Size = new System.Drawing.Size(148, 49);
             this.button1.TabIndex = 12;
             this.button1.Text = "Usuń";
             this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -105,16 +110,19 @@
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(33, 66);
+            this.dataGridView1.Location = new System.Drawing.Point(50, 102);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(735, 310);
+            this.dataGridView1.RowHeadersWidth = 62;
+            this.dataGridView1.Size = new System.Drawing.Size(1102, 500);
             this.dataGridView1.TabIndex = 11;
             // 
             // Pharmaceuts
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(1200, 692);
             this.Controls.Add(this.cbCategory);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
@@ -122,6 +130,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Pharmaceuts";
             this.Text = "Farmaceuci";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

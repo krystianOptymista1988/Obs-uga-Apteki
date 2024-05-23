@@ -135,7 +135,7 @@
     <Compile Include="Modele\Bill.cs" />
     <Compile Include="EntitityFramework\AptekaDbInitializer.cs" />
     <Compile Include="EntitityFramework\AptekaTestDbContext.cs" />
-    <Compile Include="EntitityFramework\DbActions.cs" />
+    <Compile Include="EntitityFramework\Converters\DbActions.cs" />
     <Compile Include="EntitityFramework\Configurations\BillConfiguration.cs" />
     <Compile Include="EntitityFramework\Configurations\DeliveryConfiguration.cs" />
     <Compile Include="EntitityFramework\Configurations\DoctorConfiguration.cs" />
@@ -318,7 +318,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Modele\Converters\" />
     <Folder Include="Modele\Domenowe\" />
     <Folder Include="Modele\Wrappers\" />
   </ItemGroup>

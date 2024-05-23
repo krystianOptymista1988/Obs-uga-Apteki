@@ -10,13 +10,12 @@ namespace Obsługa_Apteki
 {
     public partial class MedicineWarehouse : Form
     {
-        private AptekaTestDbContext _context;
+        private DbActions _dbAction = new DbActions();
         private List<Medicine> _medicines;
 
         public MedicineWarehouse()
         {
             InitializeComponent();
-            _context = new AptekaTestDbContext();
             RefreshData();
             DGVHeadersFill();
             LoadComboboxData();
@@ -66,7 +65,8 @@ namespace Obsługa_Apteki
         public void RefreshData()
         {
             dataGridView1.Rows.Clear();
-            _medicines = _context.Medicines.ToList();
+            
+            _medicines = _dbAction.GetMedicines();
             dataGridView1.DataSource = _medicines;  
         }
 

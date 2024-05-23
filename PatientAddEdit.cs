@@ -3,6 +3,7 @@ using Obsługa_Apteki.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Drawing.Text;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -11,18 +12,17 @@ namespace Obsługa_Apteki
 {
     public partial class PatientAddEdit : Form
     {
-        public int _patientId;
+        private int _patientId;
         private string pesel;
-        private AptekaTestDbContext _context;
-        public Patient patient;
-        public int _pharmaceutId;
+        private DbActions _dbAction;
+        private Patient patient;
+        private int _pharmaceutId;
         List<Pharmaceut> _pharmaceuts;
-
+        
 
         public PatientAddEdit(string patientId, AptekaTestDbContext context)
         {
             InitializeComponent();
-            _context = context;
             LoadComboboxData();
             pesel = patientId;
             GetPatientData();
@@ -30,17 +30,14 @@ namespace Obsługa_Apteki
         public PatientAddEdit()
         {
             InitializeComponent();
-            _context = new AptekaTestDbContext();
             LoadComboboxData();
         }
 
         private void button2_Click(object sender, EventArgs e)
-        {
+        {  
+                    var _context = _dbAction.GetContext();
             try
             {
-
-
-
                 if (!string.IsNullOrEmpty(tbId.Text))
                 {
                     // var existingPatient = _context.Patients.SingleOrDefault(p => p.PatientId == patient.PatientId);
@@ -76,6 +73,7 @@ namespace Obsługa_Apteki
 
         private void GetPatientData()
         {
+            var _context = _dbAction.GetContext();
             if (pesel != null)
             {
                 Text = "Edytowanie danych Pacjenta";
@@ -118,11 +116,10 @@ namespace Obsługa_Apteki
             patient.Comment = tbComment.Text;
             patient.PharmaceutId = int.Parse(cbPharmaceut.SelectedValue.ToString());
             patient.Pharmaceut = GetPharmaceutFromId(pharmaceutID);
-            MessageBox.Show(patient.PatientId.ToString());
             return patient;
         }
 
-        private Patient CreatePatient(Patient id)
+        private Patient CreatePatient(Patient patient)
         {
             int pharmaceutID = int.Parse(cbPharmaceut.SelectedValue.ToString());
 
@@ -137,8 +134,8 @@ namespace Obsługa_Apteki
             patient.PharmaceutId = int.Parse(cbPharmaceut.SelectedValue.ToString());
             patient.Pharmaceut = GetPharmaceutFromId(pharmaceutID);
             MessageBox.Show(patient.PharmaceutId.ToString());
-            id = patient;
-            return id;
+            
+            return patient;
         }
 
         private void cbPharmaceut_SelectedIndexChanged(object sender, EventArgs e)
@@ -147,13 +144,14 @@ namespace Obsługa_Apteki
         }
         private void LoadComboboxData()
         {
-            _pharmaceuts = _context.Pharmaceuts.ToList();
+            _pharmaceuts = _dbAction.GetPharmaceuts();
             cbPharmaceut.DataSource = _pharmaceuts;
             cbPharmaceut.DisplayMember = "FullName";
             cbPharmaceut.ValueMember = "PharmaceutId";
         }
         public Pharmaceut GetPharmaceutFromId(int pharmaceutId)
         {
+            var _context = _dbAction.GetContext();
             return _context.Pharmaceuts.Find(pharmaceutId);
         }
     }

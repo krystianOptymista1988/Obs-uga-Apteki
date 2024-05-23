@@ -9,14 +9,12 @@ namespace Obsługa_Apteki
 {
     public partial class PatientShow : Form
     {
-        private AptekaTestDbContext context;
-        private List<Patient> patients = new List<Patient>();
+        private DbActions _dbAction;
+        private List<Patient> _patients = new List<Patient>();
         public PatientShow()
         {
-            context = new AptekaTestDbContext();
+            
             InitializeComponent();
-
-
             RefreshPatients();
         }
 
@@ -27,14 +25,14 @@ namespace Obsługa_Apteki
             {
                 using (var context = new AptekaTestDbContext())
                 {
-                    patients = context.Patients.ToList();
-                    dataGridView1.DataSource = patients;
+                    _patients = context.Patients.ToList();
+                    dataGridView1.DataSource = _patients;
                 }
 
 
-                if (patients.Any())
+                if (_patients.Any())
                 {
-                    dataGridView1.DataSource = patients;
+                    dataGridView1.DataSource = _patients;
                 }
                 else
                 {
@@ -74,11 +72,11 @@ namespace Obsługa_Apteki
         }
 
         private void btnEditPatient_Click(object sender, EventArgs e)
-        {
+        { var _context = _dbAction.GetContext();
             if (dataGridView1.CurrentRow != null)
             {
                 string patientId = (string)dataGridView1.CurrentRow.Cells["PESEL"].Value;
-                PatientAddEdit editForm = new PatientAddEdit(patientId, context);
+                PatientAddEdit editForm = new PatientAddEdit(patientId, _context);
                 if (editForm.ShowDialog() == DialogResult.OK)
                 {
                     RefreshPatients();
