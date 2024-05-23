@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PharmaceutAddEdit));
             this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.tbComment = new System.Windows.Forms.RichTextBox();
             this.dtpDateOfBirth = new System.Windows.Forms.DateTimePicker();
             this.tbPostalCode = new System.Windows.Forms.TextBox();
@@ -50,10 +50,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.nmSallary = new System.Windows.Forms.NumericUpDown();
             this.label11 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.dtpHire = new System.Windows.Forms.DateTimePicker();
+            ((System.ComponentModel.ISupportInitialize)(this.nmSallary)).BeginInit();
             this.SuspendLayout();
             // 
             // button2
@@ -72,19 +72,20 @@
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button1
+            // btnAdd
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(272, 635);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(184, 46);
-            this.button1.TabIndex = 38;
-            this.button1.Text = "Akceptuj";
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
+            this.btnAdd.Location = new System.Drawing.Point(272, 635);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(184, 46);
+            this.btnAdd.TabIndex = 38;
+            this.btnAdd.Text = "Akceptuj";
+            this.btnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // tbComment
             // 
@@ -271,18 +272,13 @@
             this.label10.TabIndex = 40;
             this.label10.Text = "Wynagrodzenie";
             // 
-            // numericUpDown1
+            // nmSallary
             // 
-            this.numericUpDown1.Increment = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Location = new System.Drawing.Point(418, 23);
-            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(165, 26);
-            this.numericUpDown1.TabIndex = 41;
+            this.nmSallary.Location = new System.Drawing.Point(418, 23);
+            this.nmSallary.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.nmSallary.Name = "nmSallary";
+            this.nmSallary.Size = new System.Drawing.Size(165, 26);
+            this.nmSallary.TabIndex = 41;
             // 
             // label11
             // 
@@ -295,15 +291,15 @@
             this.label11.TabIndex = 42;
             this.label11.Text = "Data Zatrudnienia";
             // 
-            // dateTimePicker1
+            // dtpHire
             // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(225, 326);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(319, 26);
-            this.dateTimePicker1.TabIndex = 43;
-            this.dateTimePicker1.Value = new System.DateTime(2024, 5, 12, 16, 31, 20, 0);
+            this.dtpHire.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.dtpHire.Location = new System.Drawing.Point(225, 326);
+            this.dtpHire.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dtpHire.Name = "dtpHire";
+            this.dtpHire.Size = new System.Drawing.Size(319, 26);
+            this.dtpHire.TabIndex = 43;
+            this.dtpHire.Value = new System.DateTime(2024, 5, 12, 16, 31, 20, 0);
             // 
             // PharmaceutAddEdit
             // 
@@ -311,12 +307,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(718, 753);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dtpHire);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.nmSallary);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.tbComment);
             this.Controls.Add(this.dtpDateOfBirth);
             this.Controls.Add(this.tbPostalCode);
@@ -341,7 +337,7 @@
             this.MinimumSize = new System.Drawing.Size(740, 809);
             this.Name = "PharmaceutAddEdit";
             this.Text = "PharmaceutAddEdit";
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmSallary)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -350,7 +346,7 @@
         #endregion
 
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.RichTextBox tbComment;
         private System.Windows.Forms.DateTimePicker dtpDateOfBirth;
         private System.Windows.Forms.TextBox tbPostalCode;
@@ -370,8 +366,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown nmSallary;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpHire;
     }
 }

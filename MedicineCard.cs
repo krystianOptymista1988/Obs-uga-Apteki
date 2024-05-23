@@ -8,5 +8,10 @@ namespace Obsługa_Apteki
         {
             InitializeComponent();
         }
+
+        private void btnAdd_Click(object sender, System.EventArgs e)
+        {
+
+        }
     }
 }

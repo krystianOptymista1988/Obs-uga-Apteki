@@ -61,19 +61,29 @@ namespace Obsługa_Apteki
         }
 
         private void btnEditPatient_Click(object sender, EventArgs e)
-        { var _context = _dbAction.GetContext();
-            if (dataGridView1.CurrentRow != null)
+        {
+            try
             {
-                string patientId = (string)dataGridView1.CurrentRow.Cells["PESEL"].Value;
-                PatientAddEdit editForm = new PatientAddEdit(patientId, _context);
-                if (editForm.ShowDialog() == DialogResult.OK)
+                if (dataGridView1.CurrentRow != null)
                 {
-                    DataLoad();
+                    string patientId = (string)dataGridView1.CurrentRow.Cells["PESEL"].Value;
+                    using (var _context = _dbAction.GetContext())
+                    {
+                        PatientAddEdit editForm = new PatientAddEdit(patientId, _context);
+                        if (editForm.ShowDialog() == DialogResult.OK)
+                        {
+                            DataLoad();
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Wybierz pacjenta do edycji.");
                 }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Wybierz pacjenta do edycji.");
+                MessageBox.Show("Błąd podczas edycji pacjenta: " + ex.Message);
             }
         }
         private void ComboboxDataLoad()

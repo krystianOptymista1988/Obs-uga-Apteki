@@ -22,7 +22,7 @@ namespace Obsługa_Apteki
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnSearch_Click(object sender, EventArgs e)
         {
 
         }
@@ -83,6 +83,28 @@ namespace Obsługa_Apteki
             {
                 comboBox1.SelectedIndex = 0;
             }
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            var medicineCard = new MedicineCard();
+            medicineCard.ShowDialog();
+            Close();
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAddDelivery_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

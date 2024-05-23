@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Drawing.Text;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Windows.Forms;
 
 
@@ -14,7 +15,8 @@ namespace Obsługa_Apteki
     {
         private int _patientId;
         private string pesel;
-        private DbActions _dbAction;
+        private DbActions _dbAction = new DbActions();
+        private AptekaTestDbContext _context = new AptekaTestDbContext();
         private Patient patient;
         private int _pharmaceutId;
         List<Pharmaceut> _pharmaceuts;
@@ -23,8 +25,9 @@ namespace Obsługa_Apteki
         public PatientAddEdit(string patientId, AptekaTestDbContext context)
         {
             InitializeComponent();
-            LoadComboboxData();
+            _context = context;
             pesel = patientId;
+            LoadComboboxData();
             GetPatientData();
         }
         public PatientAddEdit()
@@ -34,30 +37,41 @@ namespace Obsługa_Apteki
         }
 
         private void button2_Click(object sender, EventArgs e)
-        {  
-                    var _context = _dbAction.GetContext();
+        {
             try
             {
-                if (!string.IsNullOrEmpty(tbId.Text))
+                using (_context)
                 {
-                    // var existingPatient = _context.Patients.SingleOrDefault(p => p.PatientId == patient.PatientId);
-                    _context.Patients.Attach(patient);
-                    patient = CreatePatient(patient);
-                    _context.Entry(patient).State = EntityState.Modified;
-                    MessageBox.Show("Aktualizowano dane Pacjenta");
+
+                    if (!string.IsNullOrEmpty(tbId.Text))
+                    {
+                        int id = int.Parse(tbId.Text);
+                        patient = _context.Patients.SingleOrDefault(p => p.PatientId == id);
+                        if (patient != null)
+                        {
+                            patient = CreatePatient();
+                            _context.Entry(patient).State = EntityState.Modified;
+                            _context.SaveChanges();
+                            MessageBox.Show("Aktualizowano dane Farmaceuty");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Nie znaleziono Farmaceuty o podanym ID");
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        patient = new Patient();
+                        patient = CreatePatient(patient);
+                        _context.Patients.Add(patient);
+                        _context.SaveChanges();
+                        MessageBox.Show($"Dodano nowego Farmaceutę: ID {patient.PharmaceutId}, Name {patient.Name}");
+                    }
+                    _context.SaveChanges();  
                 }
-                else
-                {
-                    patient = new Patient();
-                    patient = CreatePatient();
-                    _context.Entry(patient);
-                    MessageBox.Show(patient.PatientId.ToString() + patient.Name.ToString() );
-                    _context.Patients.Add(patient);
-                }
-                _context.SaveChanges();
                 this.DialogResult = DialogResult.OK;
                 this.Close();
-
             }
             catch (Exception ex)
             {
@@ -67,7 +81,7 @@ namespace Obsługa_Apteki
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            PatientShow patientShowForm = new PatientShow();
+           // PatientShow patientShowForm = new PatientShow();
             Close();
         }
 

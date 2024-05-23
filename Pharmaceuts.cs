@@ -25,10 +25,31 @@ namespace Obsługa_Apteki
             PharmaceutAddEdit.ShowDialog();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnEdit_Click(object sender, EventArgs e)
         {
-            var PharmaceutAddEdit = new PharmaceutAddEdit();
-            PharmaceutAddEdit.ShowDialog();
+            try
+            {
+                if (dataGridView1.CurrentRow != null)
+                {
+                    string patientId = (string)dataGridView1.CurrentRow.Cells["PESEL"].Value;
+                    using (var _context = _dbAction.GetContext())
+                    {
+                        PharmaceutAddEdit editForm = new PharmaceutAddEdit(patientId, _context);
+                        if (editForm.ShowDialog() == DialogResult.OK)
+                        {
+                            DataLoad();
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Wybierz pacjenta do edycji.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Błąd podczas edycji pacjenta: " + ex.Message);
+            }
         }
 
         private void DataLoad()
@@ -63,7 +84,6 @@ namespace Obsługa_Apteki
             dataGridView1.Columns[nameof(Pharmaceut.Name)].Visible = false;
             dataGridView1.Columns[nameof(Pharmaceut.Surname)].Visible = false;
             dataGridView1.Columns[nameof(Pharmaceut.DateOfHire)].HeaderText = "Data zatrudnienia";
-            dataGridView1.Columns[nameof(Pharmaceut.Patients)].Visible = false;
             dataGridView1.Columns[nameof(Pharmaceut.PostalCode)].DisplayIndex = 8;
             dataGridView1.Columns[nameof(Pharmaceut.PostalCode)].HeaderText = "Kod Pocztowy";
             dataGridView1.Columns[nameof(Pharmaceut.Mobile)].HeaderText = "Telefon";

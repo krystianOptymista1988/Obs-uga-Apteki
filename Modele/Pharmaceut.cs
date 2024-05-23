@@ -10,8 +10,10 @@ namespace Obsługa_Apteki
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int PharmaceutId { get; set; }
-        private int Salary { get; set; }
+        public int Salary { get; set; }
         public DateTime DateOfHire { get; set; }
+
+        public string Comment { get; set; } 
 
         public List<Patient> Patients { get; set; }
 

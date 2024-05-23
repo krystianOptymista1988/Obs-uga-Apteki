@@ -39,7 +39,7 @@ namespace Obsługa_Apteki.Entities
 
         public List<Pharmaceut> GetPharmaceuts()
         {
-            using (var context = _context)
+            using (var context = new AptekaTestDbContext())
             {
                 return context.Pharmaceuts.ToList();
             }
