@@ -40,7 +40,7 @@ namespace Obsługa_Apteki
         {
             pharmaceut.Name = tbName.Text;
             pharmaceut.Surname = tbSurname.Text;
-            pharmaceut.DateOfBirth = DateTime.Parse(dtpDateOfBirth.Text);
+            pharmaceut.DateOfBirth = DateTime.Parse(dtpDateOfBirth.Value.ToString());
             pharmaceut.PESEL = tbPESEL.Text;
             pharmaceut.Adress = tbAdress.Text;
             pharmaceut.PostalCode = tbPostalCode.Text;
@@ -58,7 +58,7 @@ namespace Obsługa_Apteki
 
             pharmaceut.Name = tbName.Text;
             pharmaceut.Surname = tbSurname.Text;
-            pharmaceut.DateOfBirth = DateTime.Parse(dtpDateOfBirth.Text);
+            pharmaceut.DateOfBirth = DateTime.Parse(dtpDateOfBirth.Value.ToString());
             pharmaceut.PESEL = tbPESEL.Text;
             pharmaceut.Adress = tbAdress.Text;
             pharmaceut.PostalCode = tbPostalCode.Text;

@@ -3,6 +3,7 @@ using Obsługa_Apteki.Models;
 using Org.BouncyCastle.Asn1.Cmp;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -11,7 +12,8 @@ namespace Obsługa_Apteki
     public partial class MedicineWarehouse : Form
     {
         private DbActions _dbAction = new DbActions();
-        private List<Medicine> _medicines;
+        private List<Medicine> medicines;
+        private Medicine _medicine;
 
         public MedicineWarehouse()
         {
@@ -66,8 +68,8 @@ namespace Obsługa_Apteki
         {
             dataGridView1.Rows.Clear();
             
-            _medicines = _dbAction.GetMedicines();
-            dataGridView1.DataSource = _medicines;  
+            medicines = _dbAction.GetMedicines();
+            dataGridView1.DataSource = medicines;  
         }
 
         private void LoadComboboxData()
@@ -94,7 +96,29 @@ namespace Obsługa_Apteki
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                if (dataGridView1.CurrentRow != null)
+                {
+                    int MedicineId = (int)dataGridView1.CurrentRow.Cells["ID"].Value;
+                    using (var _context = _dbAction.GetContext())
+                    {
+                        MedicineCard editForm = new MedicineCard(MedicineId, _context);
+                        if (editForm.ShowDialog() == DialogResult.OK)
+                        {
+                            DataLoad();
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Wybierz Asortyment do edycji.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Błąd podczas edycji Asortymentu: " + ex.Message);
+            }
         }
 
         private void btnAddDelivery_Click(object sender, EventArgs e)
@@ -105,6 +129,26 @@ namespace Obsługa_Apteki
         private void btnDelete_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void DataLoad()
+        {
+            medicines = _dbAction.GetMedicines();
+
+            if (medicines == null || medicines.Count == 0)
+            {
+                var columnNames = _dbAction.GetColumnNames<Medicine>();
+                var dataTable = new DataTable();
+                foreach (var columnName in columnNames)
+                {
+                    dataTable.Columns.Add(columnName);
+                }
+                dataGridView1.DataSource = dataTable;
+            }
+            else
+            {
+                dataGridView1.DataSource = medicines;
+            }
         }
     }
 }

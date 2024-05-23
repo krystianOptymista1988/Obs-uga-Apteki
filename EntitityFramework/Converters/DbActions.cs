@@ -22,7 +22,7 @@ namespace Obsługa_Apteki.Entities
 
         public List<Medicine> GetMedicines()
         {
-            using (var context = _context) 
+            using (var context = new AptekaTestDbContext()) 
             {
                 return context.Medicines.ToList();
             }
