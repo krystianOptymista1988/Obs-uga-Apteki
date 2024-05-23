@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Obsługa_Apteki
 {
-    public class Person
+    public abstract class Person
     {
         public string Name { get; set; }
         public string Surname { get; set; }

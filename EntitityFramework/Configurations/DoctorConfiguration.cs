@@ -11,7 +11,7 @@ namespace Obsługa_Apteki.Modele.Configurations
     {
         public DoctorConfiguration()
         {
-                ToTable("dbo.Patients");
+                ToTable("dbo.Doctors");
 
                 HasKey(x => x.DoctorId);
 

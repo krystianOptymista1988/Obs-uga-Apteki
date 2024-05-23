@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Obsługa_Apteki
 {
-    internal class Bill
+    public class Bill
     {
         public Bill()
         {

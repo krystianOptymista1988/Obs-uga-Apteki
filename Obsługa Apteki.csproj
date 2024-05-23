@@ -126,11 +126,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EntitityFramework\Migrations\202405221651311_SetProperties.cs" />
-    <Compile Include="EntitityFramework\Migrations\202405221651311_SetProperties.Designer.cs">
-      <DependentUpon>202405221651311_SetProperties.cs</DependentUpon>
-    </Compile>
+    <Compile Include="EntitityFramework\Configurations\QuantityOnMagazineConfiguration.cs" />
     <Compile Include="EntitityFramework\Migrations\Configuration.cs" />
+    <Compile Include="Migrations\202405230641396_FullOfClassAndRelations.cs" />
+    <Compile Include="Migrations\202405230641396_FullOfClassAndRelations.Designer.cs">
+      <DependentUpon>202405230641396_FullOfClassAndRelations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modele\Bill.cs" />
     <Compile Include="EntitityFramework\AptekaDbInitializer.cs" />
     <Compile Include="EntitityFramework\AptekaTestDbContext.cs" />
@@ -166,6 +167,7 @@
       <DependentUpon>MedicineCard.cs</DependentUpon>
     </Compile>
     <Compile Include="Modele\MedicineOnReciept.cs" />
+    <Compile Include="Modele\QuantityOnMagazine.cs" />
     <Compile Include="PatientShow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -249,8 +251,8 @@
     <EmbeddedResource Include="MedicineCard.resx">
       <DependentUpon>MedicineCard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EntitityFramework\Migrations\202405221651311_SetProperties.resx">
-      <DependentUpon>202405221651311_SetProperties.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202405230641396_FullOfClassAndRelations.resx">
+      <DependentUpon>202405230641396_FullOfClassAndRelations.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PatientAddEdit.resx">
       <DependentUpon>PatientAddEdit.cs</DependentUpon>
@@ -321,6 +323,7 @@
     <Folder Include="Modele\Wrappers\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="EntitityFramework\DbScripts\AddCompleteRelationsAndClasses_1.sql" />
     <Content Include="EntitityFramework\DbScripts\SetNewClassesAndRelations.sql" />
     <Content Include="EntitityFramework\DbScripts\SetProperties.sql" />
   </ItemGroup>

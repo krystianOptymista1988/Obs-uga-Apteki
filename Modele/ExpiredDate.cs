@@ -18,10 +18,10 @@ namespace Obsługa_Apteki.Modele
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int EpiredDateId { get; set; }
+        public int ExpiredDateId { get; set; }
         public DateTime DateofExpire{ get; set; }
         public ICollection<Delivery> Deliveries { get; set; }
         public ICollection<Medicine> Medicines { get; set;}
-        public object ExpiredDateId { get; internal set; }
+        
     }
 }

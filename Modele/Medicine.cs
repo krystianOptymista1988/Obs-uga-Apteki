@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Obsługa_Apteki
 {
-    public class Medicine 
+    public class Medicine : IMedicineOnReciept
     {
         public Medicine()
         {
@@ -14,7 +14,9 @@ namespace Obsługa_Apteki
          Doctor = new List<Doctor>();
          Deliveries = new List<Delivery>();
          ExpiredDates = new List<ExpiredDate>();
+         QuantityOfPackages = new List<QuantityOnMagazine>();
         }
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int MedicineId { get; set; }
@@ -25,8 +27,8 @@ namespace Obsługa_Apteki
         private double PriceOfBuy { get; set; }
         public double PriceOfSell { get; set; }
         private double PriceMarge { get; set; }
-        public int QuantityInPackage { get; set; } //jak to zrobić ? 
-        public int QuantityOfPackages { get; set; }
+        public int QuantityInPackage { get; set; } 
+        public ICollection<QuantityOnMagazine> QuantityOfPackages { get; set; } 
         public bool IsRefunded { get; set; }
         public double? PercentageOfRefunding { get; set; }
         public double? PriceAfterRefunding { get; set; }
