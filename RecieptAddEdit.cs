@@ -13,5 +13,10 @@ namespace Obsługa_Apteki
         {
 
         }
+
+        private void comboBox1_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+
+        }
     }
 }

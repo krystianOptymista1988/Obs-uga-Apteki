@@ -148,5 +148,10 @@ namespace Obsługa_Apteki
         {
 
         }
+
+        private void nmSallary_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

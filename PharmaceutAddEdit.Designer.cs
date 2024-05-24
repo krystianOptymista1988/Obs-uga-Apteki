@@ -258,6 +258,7 @@
             this.nmSallary.Name = "nmSallary";
             this.nmSallary.Size = new System.Drawing.Size(110, 20);
             this.nmSallary.TabIndex = 41;
+            this.nmSallary.ValueChanged += new System.EventHandler(this.nmSallary_ValueChanged);
             // 
             // label11
             // 
