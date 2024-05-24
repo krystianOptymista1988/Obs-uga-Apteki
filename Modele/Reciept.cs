@@ -24,5 +24,7 @@ namespace Obsługa_Apteki
         public int PatientId { get; set; }  // 1 do 1
         public Patient Patient { get; set; } // 1 do 1
 
+        public int Quantity { get; set; }
+
     }
 }
