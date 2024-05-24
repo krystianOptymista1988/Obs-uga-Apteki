@@ -34,28 +34,28 @@
             this.tbName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbCategory = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.tbProducent = new System.Windows.Forms.TextBox();
+            this.tbQuantityInPackage = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.tbPrice = new System.Windows.Forms.TextBox();
+            this.tbPriceOfBuy = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.tbMargePrice = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.tbActiveSubstance = new System.Windows.Forms.TextBox();
+            this.cbPercentageOfRefunde = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.tbRefundedPrice = new System.Windows.Forms.TextBox();
+            this.cbIsRefunded = new System.Windows.Forms.CheckBox();
+            this.cbIsAntibiotique = new System.Windows.Forms.CheckBox();
+            this.cbIsOnReciept = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.tbId = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnDelete
@@ -117,13 +117,13 @@
             this.label2.TabIndex = 24;
             this.label2.Text = "Kategoria";
             // 
-            // textBox1
+            // tbCategory
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBox1.Location = new System.Drawing.Point(472, 97);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(176, 28);
-            this.textBox1.TabIndex = 25;
+            this.tbCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.tbCategory.Location = new System.Drawing.Point(472, 97);
+            this.tbCategory.Name = "tbCategory";
+            this.tbCategory.Size = new System.Drawing.Size(176, 28);
+            this.tbCategory.TabIndex = 25;
             // 
             // label3
             // 
@@ -135,21 +135,21 @@
             this.label3.TabIndex = 26;
             this.label3.Text = "Producent";
             // 
-            // textBox2
+            // tbProducent
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBox2.Location = new System.Drawing.Point(472, 153);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(176, 28);
-            this.textBox2.TabIndex = 27;
+            this.tbProducent.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.tbProducent.Location = new System.Drawing.Point(472, 153);
+            this.tbProducent.Name = "tbProducent";
+            this.tbProducent.Size = new System.Drawing.Size(176, 28);
+            this.tbProducent.TabIndex = 27;
             // 
-            // textBox4
+            // tbQuantityInPackage
             // 
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBox4.Location = new System.Drawing.Point(150, 150);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(176, 28);
-            this.textBox4.TabIndex = 31;
+            this.tbQuantityInPackage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.tbQuantityInPackage.Location = new System.Drawing.Point(150, 150);
+            this.tbQuantityInPackage.Name = "tbQuantityInPackage";
+            this.tbQuantityInPackage.Size = new System.Drawing.Size(176, 28);
+            this.tbQuantityInPackage.TabIndex = 31;
             // 
             // label5
             // 
@@ -171,21 +171,23 @@
             this.label6.TabIndex = 29;
             this.label6.Text = "Cena Sprzedaży";
             // 
-            // textBox5
+            // tbPrice
             // 
-            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBox5.Location = new System.Drawing.Point(342, 463);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(147, 28);
-            this.textBox5.TabIndex = 28;
+            this.tbPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.tbPrice.Location = new System.Drawing.Point(342, 463);
+            this.tbPrice.Name = "tbPrice";
+            this.tbPrice.ReadOnly = true;
+            this.tbPrice.Size = new System.Drawing.Size(147, 28);
+            this.tbPrice.TabIndex = 28;
+            this.tbPrice.TextChanged += new System.EventHandler(this.tbPrice_TextChanged);
             // 
-            // textBox6
+            // tbPriceOfBuy
             // 
-            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBox6.Location = new System.Drawing.Point(147, 331);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(151, 28);
-            this.textBox6.TabIndex = 39;
+            this.tbPriceOfBuy.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.tbPriceOfBuy.Location = new System.Drawing.Point(147, 331);
+            this.tbPriceOfBuy.Name = "tbPriceOfBuy";
+            this.tbPriceOfBuy.Size = new System.Drawing.Size(151, 28);
+            this.tbPriceOfBuy.TabIndex = 39;
             // 
             // label7
             // 
@@ -197,13 +199,14 @@
             this.label7.TabIndex = 38;
             this.label7.Text = "Cena zakupu";
             // 
-            // textBox7
+            // tbMargePrice
             // 
-            this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBox7.Location = new System.Drawing.Point(505, 381);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(143, 28);
-            this.textBox7.TabIndex = 37;
+            this.tbMargePrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.tbMargePrice.Location = new System.Drawing.Point(505, 381);
+            this.tbMargePrice.Name = "tbMargePrice";
+            this.tbMargePrice.Size = new System.Drawing.Size(143, 28);
+            this.tbMargePrice.TabIndex = 37;
+            this.tbMargePrice.TextChanged += new System.EventHandler(this.tbMargePrice_TextChanged);
             // 
             // label8
             // 
@@ -225,21 +228,23 @@
             this.label9.TabIndex = 35;
             this.label9.Text = "Substancja Aktywna";
             // 
-            // textBox8
+            // tbActiveSubstance
             // 
-            this.textBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBox8.Location = new System.Drawing.Point(472, 219);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(176, 28);
-            this.textBox8.TabIndex = 34;
+            this.tbActiveSubstance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.tbActiveSubstance.Location = new System.Drawing.Point(472, 219);
+            this.tbActiveSubstance.Name = "tbActiveSubstance";
+            this.tbActiveSubstance.Size = new System.Drawing.Size(176, 28);
+            this.tbActiveSubstance.TabIndex = 34;
             // 
-            // textBox9
+            // cbPercentageOfRefunde
             // 
-            this.textBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBox9.Location = new System.Drawing.Point(472, 271);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(176, 28);
-            this.textBox9.TabIndex = 45;
+            this.cbPercentageOfRefunde.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.cbPercentageOfRefunde.Location = new System.Drawing.Point(472, 271);
+            this.cbPercentageOfRefunde.Name = "cbPercentageOfRefunde";
+            this.cbPercentageOfRefunde.ReadOnly = true;
+            this.cbPercentageOfRefunde.Size = new System.Drawing.Size(176, 28);
+            this.cbPercentageOfRefunde.TabIndex = 45;
+            this.cbPercentageOfRefunde.TextChanged += new System.EventHandler(this.cbPercentageOfRefunde_TextChanged);
             // 
             // label10
             // 
@@ -261,46 +266,50 @@
             this.label12.TabIndex = 41;
             this.label12.Text = "Cena Refundowana";
             // 
-            // textBox11
+            // tbRefundedPrice
             // 
-            this.textBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBox11.Location = new System.Drawing.Point(505, 331);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(143, 28);
-            this.textBox11.TabIndex = 40;
+            this.tbRefundedPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.tbRefundedPrice.Location = new System.Drawing.Point(505, 331);
+            this.tbRefundedPrice.Name = "tbRefundedPrice";
+            this.tbRefundedPrice.ReadOnly = true;
+            this.tbRefundedPrice.Size = new System.Drawing.Size(143, 28);
+            this.tbRefundedPrice.TabIndex = 40;
             // 
-            // checkBox1
+            // cbIsRefunded
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.checkBox1.Location = new System.Drawing.Point(46, 274);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(157, 26);
-            this.checkBox1.TabIndex = 46;
-            this.checkBox1.Text = "Refundowany";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.cbIsRefunded.AutoSize = true;
+            this.cbIsRefunded.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.cbIsRefunded.Location = new System.Drawing.Point(46, 274);
+            this.cbIsRefunded.Name = "cbIsRefunded";
+            this.cbIsRefunded.Size = new System.Drawing.Size(157, 26);
+            this.cbIsRefunded.TabIndex = 46;
+            this.cbIsRefunded.Text = "Refundowany";
+            this.cbIsRefunded.UseVisualStyleBackColor = true;
+            this.cbIsRefunded.CheckedChanged += new System.EventHandler(this.cbIsRefunded_CheckedChanged);
             // 
-            // checkBox2
+            // cbIsAntibiotique
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.checkBox2.Location = new System.Drawing.Point(46, 383);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(129, 26);
-            this.checkBox2.TabIndex = 47;
-            this.checkBox2.Text = "Antybiotyk";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.cbIsAntibiotique.AutoSize = true;
+            this.cbIsAntibiotique.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.cbIsAntibiotique.Location = new System.Drawing.Point(46, 383);
+            this.cbIsAntibiotique.Name = "cbIsAntibiotique";
+            this.cbIsAntibiotique.Size = new System.Drawing.Size(129, 26);
+            this.cbIsAntibiotique.TabIndex = 47;
+            this.cbIsAntibiotique.Text = "Antybiotyk";
+            this.cbIsAntibiotique.UseVisualStyleBackColor = true;
+            this.cbIsAntibiotique.CheckedChanged += new System.EventHandler(this.cbIsAntibiotique_CheckedChanged);
             // 
-            // checkBox3
+            // cbIsOnReciept
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.checkBox3.Location = new System.Drawing.Point(46, 215);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(134, 26);
-            this.checkBox3.TabIndex = 48;
-            this.checkBox3.Text = "Na receptę";
-            this.checkBox3.UseVisualStyleBackColor = true;
+            this.cbIsOnReciept.AutoSize = true;
+            this.cbIsOnReciept.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.cbIsOnReciept.Location = new System.Drawing.Point(46, 215);
+            this.cbIsOnReciept.Name = "cbIsOnReciept";
+            this.cbIsOnReciept.Size = new System.Drawing.Size(134, 26);
+            this.cbIsOnReciept.TabIndex = 48;
+            this.cbIsOnReciept.Text = "Na receptę";
+            this.cbIsOnReciept.UseVisualStyleBackColor = true;
+            this.cbIsOnReciept.CheckedChanged += new System.EventHandler(this.cbIsOnReciept_CheckedChanged);
             // 
             // label4
             // 
@@ -312,13 +321,14 @@
             this.label4.TabIndex = 49;
             this.label4.Text = "ID";
             // 
-            // textBox3
+            // tbId
             // 
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBox3.Location = new System.Drawing.Point(133, 30);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(70, 28);
-            this.textBox3.TabIndex = 50;
+            this.tbId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.tbId.Location = new System.Drawing.Point(133, 30);
+            this.tbId.Name = "tbId";
+            this.tbId.ReadOnly = true;
+            this.tbId.Size = new System.Drawing.Size(70, 28);
+            this.tbId.TabIndex = 50;
             // 
             // MedicineCard
             // 
@@ -326,28 +336,28 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(686, 596);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.tbId);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.checkBox3);
-            this.Controls.Add(this.checkBox2);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.textBox9);
+            this.Controls.Add(this.cbIsOnReciept);
+            this.Controls.Add(this.cbIsAntibiotique);
+            this.Controls.Add(this.cbIsRefunded);
+            this.Controls.Add(this.cbPercentageOfRefunde);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.textBox11);
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.tbRefundedPrice);
+            this.Controls.Add(this.tbPriceOfBuy);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.textBox7);
+            this.Controls.Add(this.tbMargePrice);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.textBox8);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.tbActiveSubstance);
+            this.Controls.Add(this.tbQuantityInPackage);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.tbPrice);
+            this.Controls.Add(this.tbProducent);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbCategory);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tbName);
@@ -370,27 +380,27 @@
         private System.Windows.Forms.TextBox tbName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbCategory;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox tbProducent;
+        private System.Windows.Forms.TextBox tbQuantityInPackage;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox tbPrice;
+        private System.Windows.Forms.TextBox tbPriceOfBuy;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox tbMargePrice;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox tbActiveSubstance;
+        private System.Windows.Forms.TextBox cbPercentageOfRefunde;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.TextBox tbRefundedPrice;
+        private System.Windows.Forms.CheckBox cbIsRefunded;
+        private System.Windows.Forms.CheckBox cbIsAntibiotique;
+        private System.Windows.Forms.CheckBox cbIsOnReciept;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox tbId;
     }
 }

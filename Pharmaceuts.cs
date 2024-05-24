@@ -9,7 +9,6 @@ namespace Obsługa_Apteki
     public partial class Pharmaceuts : Form
     {
         private DbActions _dbAction = new DbActions();
-        private Pharmaceut _pharmaceut;
         private List<Pharmaceut> pharmaceuts;
 
         public Pharmaceuts()

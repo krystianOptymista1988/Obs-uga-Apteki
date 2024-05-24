@@ -11,7 +11,6 @@ namespace Obsługa_Apteki
     {
         private DbActions _dbAction = new DbActions();
         private List<Reciept> reciepts = new List<Reciept>();
-        private Reciept _reciept;
 
         public RecieptsShow()
         {

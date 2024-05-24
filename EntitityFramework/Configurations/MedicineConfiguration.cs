@@ -19,9 +19,9 @@ namespace Obsługa_Apteki.Modele.Configurations
                 .WithMany(d => d.OrderedMedicines)
                 .Map(md =>
                 {
-                    md.ToTable("MedicineDeliveries"); // Nazwa tabeli pośredniczącej
-                    md.MapLeftKey("MedicineId");      // Nazwa kolumny dla Medicine
-                    md.MapRightKey("DeliveryId");     // Nazwa kolumny dla Delivery
+                    md.ToTable("MedicineDeliveries"); 
+                    md.MapLeftKey("MedicineId");     
+                    md.MapRightKey("DeliveryId");     
                 });
         }
     }

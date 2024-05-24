@@ -11,11 +11,11 @@ namespace Obsługa_Apteki.Modele.Configurations
     {
         public BillConfiguration()
         {
-            ToTable("dbo.Bills");
+            ToTable("dbo.Bills");    //komenda do tworzenia nowej tabeli
 
-            HasKey(x => x.BillId);
+            HasKey(x => x.BillId); // ta ustawia klucz w tej tabeli na Id 
 
-            Property(x => x.DateOfBill)
+            Property(x => x.DateOfBill) // Wymaga wprowadzenia daty  
                 .IsRequired();
 
         }

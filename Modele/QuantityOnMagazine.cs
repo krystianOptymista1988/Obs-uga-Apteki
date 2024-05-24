@@ -11,6 +11,7 @@ namespace Obsługa_Apteki
         public QuantityOnMagazine()
         {
             BillQuantities = new List<BillQuantity>();
+            ExpiredDates = new List<ExpiredDate>();
         }
 
         [Key]
@@ -23,6 +24,7 @@ namespace Obsługa_Apteki
         public Medicine Medicine { get; set; }
 
         public ICollection<BillQuantity> BillQuantities { get; set; }
+        public ICollection<ExpiredDate> ExpiredDates { get; set; }
 
     }
 }

@@ -14,7 +14,14 @@ namespace Obsługa_Apteki.Modele.Configurations
             ToTable("dbo.Reciepts");
 
             HasKey(x => x.RecieptId);
-            HasMany(m => m.Medicines);
+            HasMany(m => m.Medicines)
+           .WithMany()
+           .Map(md =>
+           {
+               md.ToTable("RecieptMedicines");
+               md.MapLeftKey("RecieptId");
+               md.MapRightKey("MedicineId");
+           });
         }
     }
 }

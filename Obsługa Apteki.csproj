@@ -147,6 +147,7 @@
     <Compile Include="EntitityFramework\Configurations\ReicieptConfiguration.cs" />
     <Compile Include="Modele\ExpiredDate.cs" />
     <Compile Include="Modele\BillQuantity.cs" />
+    <Compile Include="Modele\ExpiredMedicines.cs" />
     <Compile Include="Modele\Models.cs" />
     <Compile Include="Modele\Delivery.cs" />
     <Compile Include="Deliveries.cs">
@@ -296,6 +297,9 @@
     <EmbeddedResource Include="MedicineWarehouse.resx">
       <DependentUpon>MedicineWarehouse.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Utilization.resx">
+      <DependentUpon>Utilization.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -322,10 +326,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Modele\Domenowe\" />
-    <Folder Include="Modele\Wrappers\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="EntitityFramework\DbScripts\AddCompleteRelationsAndClasses_1.sql" />
     <Content Include="EntitityFramework\DbScripts\SetNewClassesAndRelations.sql" />

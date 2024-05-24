@@ -13,7 +13,6 @@ namespace Obsługa_Apteki
     {
         private DbActions _dbAction = new DbActions();
         private List<Patient> patients = new List<Patient>();
-        private Patient _patient;
         public PatientShow()
         {
             

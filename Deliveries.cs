@@ -11,7 +11,6 @@ namespace Obsługa_Apteki
     public partial class Deliveries : Form
     {
         private DbActions _dbAction = new DbActions();
-        private Delivery _delivery;
         private List<Delivery> deliveries;
         
 

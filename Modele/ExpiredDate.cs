@@ -14,6 +14,7 @@ namespace Obsługa_Apteki.Modele
         {
             Deliveries = new List<Delivery>();
             Medicines = new List<Medicine>();
+            QuantityOnMagazines = new List<QuantityOnMagazine>();
         }
 
         [Key]
@@ -22,6 +23,7 @@ namespace Obsługa_Apteki.Modele
         public DateTime DateofExpire{ get; set; }
         public ICollection<Delivery> Deliveries { get; set; }
         public ICollection<Medicine> Medicines { get; set;}
-        
+        public ICollection<QuantityOnMagazine> QuantityOnMagazines { get; set; }
+
     }
 }

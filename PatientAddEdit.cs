@@ -13,7 +13,6 @@ namespace Obsługa_Apteki
 {
     public partial class PatientAddEdit : Form
     {
-        private int _patientId;
         private string pesel;
         private DbActions _dbAction = new DbActions();
         private AptekaTestDbContext _context = new AptekaTestDbContext();

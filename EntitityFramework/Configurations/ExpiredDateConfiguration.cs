@@ -16,23 +16,33 @@ namespace Obsługa_Apteki.Modele.Configurations
             HasKey(x => x.ExpiredDateId);
 
             Property(c => c.DateofExpire)
-            .HasColumnType("date");
+                .HasColumnType("date");
 
             HasMany(m => m.Medicines)
-                    .WithMany(d => d.ExpiredDates)
-                    .Map(md =>
-                    {
-                        md.ToTable("ExpiredDateMedicines"); // Nazwa tabeli pośredniczącej
-                        md.MapLeftKey("ExpiredDateId");      // Nazwa kolumny dla Medicine
-                        md.MapRightKey("MedicineId");     // Nazwa kolumny dla Delivery
-                    });
+                .WithMany(d => d.ExpiredDates)
+                .Map(md =>
+                {
+                    md.ToTable("ExpiredDateMedicines"); //To jest relacja wiele do wielu
+                    md.MapLeftKey("ExpiredDateId");     //łączy leki z terminami ważności
+                    md.MapRightKey("MedicineId");       // w nowej tabeli ale nie wiem czy będzie działać
+                });
+
             HasMany(d => d.Deliveries)
                 .WithMany(d => d.ExpiredDates)
                 .Map(md =>
                 {
-                    md.ToTable("ExpiredDateTables");
-                    md.MapLeftKey("ExpiredDateID");
-                    md.MapRightKey("DeliveryId");
+                    md.ToTable("ExpiredDateDeliveries");
+                    md.MapLeftKey("ExpiredDateId");     // tak samo jak wyżej
+                    md.MapRightKey("DeliveryId");       // ten gostek na udemy to ciężko tłumaczy
+                });
+
+            HasMany(e => e.QuantityOnMagazines)
+                .WithMany(q => q.ExpiredDates)
+                .Map(eq =>
+                {
+                    eq.ToTable("ExpiredDateQuantities"); 
+                    eq.MapLeftKey("ExpiredDateId");      // tak samo jak wyżej
+                    eq.MapRightKey("QuantityOnMagazineId"); 
                 });
         }
     }

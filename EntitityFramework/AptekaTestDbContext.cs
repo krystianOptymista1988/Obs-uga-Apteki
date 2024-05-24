@@ -16,7 +16,7 @@ namespace Obsługa_Apteki.Entities
         }
         public DbSet<Bill> Bills { get; set; }
         public DbSet<BillQuantity> BillQuantities { get; set; }
-        public DbSet<Delivery> Delivery { get; set; }
+        public DbSet<Delivery> Deliveries { get; set; }
         public DbSet<Doctor> Doctors { get; set; }
         public DbSet<ExpiredDate> ExpiredDates { get; set; }
         public DbSet<Medicine> Medicines { get; set; }

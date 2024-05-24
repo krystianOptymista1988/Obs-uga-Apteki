@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.Remoting.Contexts;
 using System.Windows.Forms;
+using static Obsługa_Apteki.Modele.ExpiredMedicines;
 
 namespace Obsługa_Apteki.Entities
 {
@@ -33,7 +34,7 @@ namespace Obsługa_Apteki.Entities
             using (var context = _context)
             {
 
-                    return context.Delivery.ToList();
+                    return context.Deliveries.ToList();
             }
         }
 
@@ -99,6 +100,29 @@ namespace Obsługa_Apteki.Entities
              var columnNames = properties.Select(p => p.Name).ToList();
              return columnNames;
         }
-        
+
+        public List<ExpiredMedicineInfo> GetExpiredMedicinesWithQuantities()
+        {
+            using (var context = _context)
+            {
+                var currentDate = DateTime.Now;
+
+                var expiredMedicines = context.Medicines
+                    .Select(m => new ExpiredMedicineInfo
+                    {
+                        MedicineId = m.MedicineId,
+                        Name = m.Name,
+                        Category = m.Category,
+                        DateOfExpire = m.ExpiredDates.FirstOrDefault(ed => ed.DateofExpire < currentDate).DateofExpire,
+                        ExpiredQuantity = m.QuantityOnMagazines
+                                         .Where(q => q.ExpiredDates.Any(ed => ed.DateofExpire < currentDate))
+                                         .Sum(q => q.Quantities)
+                    })
+                    .Where(em => em.DateOfExpire < currentDate)
+                    .ToList();
+
+                return expiredMedicines;
+            }
+        }
     }
 }

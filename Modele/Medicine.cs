@@ -24,9 +24,9 @@ namespace Obsługa_Apteki
         public string Category { get; set; }
         public string Producent { get; set; }
         public ICollection<ExpiredDate> ExpiredDates { get; set; }
-        private double PriceOfBuy { get; set; }
+        public double PriceOfBuy { get; set; }
         public double Price { get; set; }
-        private double PriceMarge { get; set; }
+        public double PriceMarge { get; set; }
         public int QuantityInPackage { get; set; } 
         public bool IsRefunded { get; set; }
         public double? PercentageOfRefunding { get; set; }

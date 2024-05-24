@@ -10,7 +10,6 @@ namespace Obsługa_Apteki
 {
     public partial class PharmaceutAddEdit : Form
     {
-        private string _patientId;
         private string pesel;
         private DbActions _dbAction = new DbActions();
         private Pharmaceut pharmaceut = new Pharmaceut();

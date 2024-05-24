@@ -19,11 +19,23 @@ namespace Obsługa_Apteki.EntitityFramework.Configurations
             Property(x => x.Quantities)
                 .IsRequired();
 
-            
             Property(x => x.QuantityOnMagazineId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)
                 .HasColumnName("QuantityOnMagazineId")
                 .IsRequired();
+
+            HasRequired(q => q.Medicine)
+                .WithMany(m => m.QuantityOnMagazines)
+                .HasForeignKey(q => q.MedicineId);
+
+            HasMany(q => q.ExpiredDates)
+                .WithMany(e => e.QuantityOnMagazines)
+                .Map(qe =>
+                {
+                    qe.ToTable("ExpiredDateQuantities");
+                    qe.MapLeftKey("QuantityOnMagazineId");
+                    qe.MapRightKey("ExpiredDateId");
+                });
         }
     } 
 }

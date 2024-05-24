@@ -14,15 +14,15 @@ namespace Obsługa_Apteki.EntitityFramework.Configurations
         {
             ToTable("dbo.BillQuantities");
 
-            HasKey(iq => new { iq.BillId, iq.QuantityOnMagazineId });
+            HasKey(a => new { a.BillId, a.QuantityOnMagazineId });
 
-            HasRequired(iq => iq.Bill)
+            HasRequired(b => b.Bill)                
                 .WithMany(b => b.BillQuantities)
-                .HasForeignKey(iq => iq.BillId);
+                .HasForeignKey(b => b.BillId);
 
-            HasRequired(iq => iq.QuantityOnMagazine)
-                .WithMany(q => q.BillQuantities)
-                .HasForeignKey(iq => iq.QuantityOnMagazineId);
+            HasRequired(c => c.QuantityOnMagazine)
+                .WithMany(c => c.BillQuantities)
+                .HasForeignKey(c => c.QuantityOnMagazineId);
         }
     }
 }

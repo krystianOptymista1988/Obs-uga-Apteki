@@ -12,8 +12,8 @@ namespace Obsługa_Apteki
     public partial class MedicineWarehouse : Form
     {
         private DbActions _dbAction = new DbActions();
+        private AptekaTestDbContext _context = new AptekaTestDbContext();
         private List<Medicine> medicines;
-        private Medicine _medicine;
 
         public MedicineWarehouse()
         {
