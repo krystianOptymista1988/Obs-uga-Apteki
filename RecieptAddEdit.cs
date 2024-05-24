@@ -28,48 +28,48 @@ namespace Obsługa_Apteki
             DataLoad();
         }
 
-        private void btnAccept_Click(object sender, System.EventArgs e)
-        {
-            try
-            {
-                using (_context)
-                {
+        //private void btnAccept_Click(object sender, System.EventArgs e)
+        //{
+        //    try
+        //    {
+        //        using (_context)
+        //        {
 
-                    if (!string.IsNullOrEmpty(tbId.Text))
-                    {
-                        // Aktualizowanie istniejącej recepty
-                        int id = int.Parse(tbId.Text);
-                        reciept = _context.Reciepts.SingleOrDefault(p => p.RecieptId == id);
-                        if (reciept != null)
-                        {
-                            reciept = CreateReciept();
-                            _context.Entry(reciept).State = EntityState.Modified;
-                            MessageBox.Show("Aktualizowano dane Recepty");
-                        }
-                        else
-                        {
-                            MessageBox.Show("Nie znaleziono Recepty o podanym ID");
-                            return;
-                        }
-                    }
-                    else
-                    {
-                        // Dodawanie nowej recepty
-                        reciept = new Reciept();
-                        reciept = CreateReciept(reciept);
-                        _context.Reciepts.Add(reciept);
-                        MessageBox.Show($"Dodano nową receptę: ID {reciept.RecieptId}");
-                    }
-                    _context.SaveChanges();
-                }
-                this.DialogResult = DialogResult.OK;
-                this.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Błąd podczas zapisywania danych: " + ex.Message);
-            }
-        }
+        //            if (!string.IsNullOrEmpty(tbId.Text))
+        //            {
+        //                // Aktualizowanie istniejącej recepty
+        //                int id = int.Parse(tbId.Text);
+        //                reciept = _context.Reciepts.SingleOrDefault(p => p.RecieptId == id);
+        //                if (reciept != null)
+        //                {
+        //                    reciept = CreateReciept();
+        //                    _context.Entry(reciept).State = EntityState.Modified;
+        //                    MessageBox.Show("Aktualizowano dane Recepty");
+        //                }
+        //                else
+        //                {
+        //                    MessageBox.Show("Nie znaleziono Recepty o podanym ID");
+        //                    return;
+        //                }
+        //            }
+        //            else
+        //            {
+        //                // Dodawanie nowej recepty
+        //                reciept = new Reciept();
+        //                reciept = CreateReciept(reciept);
+        //                _context.Reciepts.Add(reciept);
+        //                MessageBox.Show($"Dodano nową receptę: ID {reciept.RecieptId}");
+        //            }
+        //            _context.SaveChanges();
+        //        }
+        //        this.DialogResult = DialogResult.OK;
+        //        this.Close();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("Błąd podczas zapisywania danych: " + ex.Message);
+        //    }
+        //}
 
         private Reciept CreateReciept()
         {
@@ -150,6 +150,49 @@ namespace Obsługa_Apteki
             else
             {
                 dataGridView1.DataSource = reciepts;
+            }
+        }
+
+        private void btnAccept_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                using (_context)
+                {
+
+                    if (!string.IsNullOrEmpty(tbId.Text))
+                    {
+                        // Aktualizowanie istniejącej recepty
+                        int id = int.Parse(tbId.Text);
+                        reciept = _context.Reciepts.SingleOrDefault(p => p.RecieptId == id);
+                        if (reciept != null)
+                        {
+                            reciept = CreateReciept();
+                            _context.Entry(reciept).State = EntityState.Modified;
+                            MessageBox.Show("Aktualizowano dane Recepty");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Nie znaleziono Recepty o podanym ID");
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        // Dodawanie nowej recepty
+                        reciept = new Reciept();
+                        reciept = CreateReciept(reciept);
+                        _context.Reciepts.Add(reciept);
+                        MessageBox.Show($"Dodano nową receptę: ID {reciept.RecieptId}");
+                    }
+                    _context.SaveChanges();
+                }
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Błąd podczas zapisywania danych: " + ex.Message);
             }
         }
     }
