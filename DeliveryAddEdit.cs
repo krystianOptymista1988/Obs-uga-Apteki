@@ -1,4 +1,6 @@
 ﻿using Obsługa_Apteki.Entities;
+using Obsługa_Apteki.Modele;
+using Obsługa_Apteki.Models;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -9,6 +11,11 @@ namespace Obsługa_Apteki
     {
         private AptekaTestDbContext _context = new AptekaTestDbContext();
         private DbActions _action = new DbActions();
+        private List<Stock> _stockList = new List<Stock>();
+        private List<Medicine> _medicine = new List<Medicine>();
+        private List<Pharmaceut> _pharmaceuts = new List<Pharmaceut>();  
+        private Stock stockItem = new Stock();
+        
         public DeliveryAddEdit()
         {
             InitializeComponent();
@@ -32,27 +39,34 @@ namespace Obsługa_Apteki
 
         private void ComboboxDataLoad()
         {
-            List<Medicine> medicines = new List<Medicine>();
-            List<string> list = new List<string>();
-            string FullName;
-            cbMedicines.Items.Clear();
-            medicines = _action.GetMedicines();
-            foreach (Medicine me in medicines) 
-            {
-                FullName = me.Name + me.Producent + me.Price;
-                list.Add(FullName);
-            }
-            cbMedicines.DataSource = list;
+            _medicine = _action.GetMedicines();
+            cbMedicines.DataSource = _medicine;
+            cbMedicines.DisplayMember = "Name";
+            cbMedicines.ValueMember = "MedicineId";
+          
 
-            List<Pharmaceut> pharmaceuts = new List<Pharmaceut>();
-            List<string> values = new List<string>();
-            cbPharmaceut.Items.Clear();
-            pharmaceuts = _action.GetPharmaceuts();
-            foreach (Pharmaceut pharmaceut in pharmaceuts)
-            {
-                values.Add(pharmaceut.FullName);
-            }
-            cbPharmaceut.DataSource = values;
+            _pharmaceuts = _action.GetPharmaceuts();
+            cbPharmaceut.DataSource = _pharmaceuts;
+            cbPharmaceut.DisplayMember = "FullName";
+            cbPharmaceut.ValueMember = "PharmaceutId";
+           
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            stockItem.Quantity = int.Parse(numericUpDown1.Value.ToString());
+            stockItem.MedicineId = int.Parse(cbMedicines.SelectedValue.ToString());
+            _stockList.Add(stockItem);
+            DGVRefresh();
+        }
+
+        private void DGVRefresh()
+        {
+            
+          dataGridView1.DataSource = null;
+
+            dataGridView1.DataSource = _stockList;
         }
     }
 }
