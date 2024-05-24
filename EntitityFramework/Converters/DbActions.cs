@@ -124,5 +124,50 @@ namespace Obsługa_Apteki.Entities
                 return expiredMedicines;
             }
         }
+
+        public void AddToStock(Delivery delivery)
+        {
+            foreach (var medicine in delivery.OrderedMedicines)
+            {
+                
+                var existingStock = _context.Stocks
+                                            .SingleOrDefault(q => q.MedicineId == medicine.MedicineId);
+
+                if (existingStock != null)
+                {
+                    
+                    existingStock.Quantity += medicine.Quantity;
+                }
+                else
+                {
+                    
+                    var newStock = new QuantityOnMagazine
+                    {
+                        MedicineId = medicine.MedicineId,
+                        Quantities = medicine.Quantity
+                    };
+                    _context.QuantitiesOnMagazine.Add(newStock);
+                }
+            }
+            _context.SaveChanges();
+        }
+
+        public void RemoveFromStock(Bill bill)
+        {
+            foreach (var medicine in bill.Medicines) 
+            {
+                var existingStock = _context.Stocks.SingleOrDefault(p => p.MedicineId == medicine.MedicineId);
+                if ( existingStock != null )
+                {
+                    existingStock.Quantity -= medicine.Quantity;
+                }
+                else
+                {
+                    MessageBox.Show("Brak wystarczającej ilości leku na magazynie");
+                }
+            }
+            _context.SaveChanges();
+        }
     }
+    
 }

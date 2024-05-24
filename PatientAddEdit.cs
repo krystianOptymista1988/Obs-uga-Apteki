@@ -17,7 +17,6 @@ namespace Obsługa_Apteki
         private DbActions _dbAction = new DbActions();
         private AptekaTestDbContext _context = new AptekaTestDbContext();
         private Patient patient;
-        private int _pharmaceutId;
         List<Pharmaceut> _pharmaceuts;
         
 

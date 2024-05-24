@@ -15,6 +15,7 @@ namespace Obsługa_Apteki
          Deliveries = new List<Delivery>();
          ExpiredDates = new List<ExpiredDate>();
          QuantityOnMagazines = new List<QuantityOnMagazine>();
+         MedicineDeliveries = new List<MedicineDelivery>();
         }
 
         [Key]
@@ -39,6 +40,9 @@ namespace Obsługa_Apteki
         public ICollection<Reciept> Reciepts { get; set; } // 1 do wielu tzn 1 lek może znaleźć się na wielu receptach
         public ICollection<Delivery> Deliveries { get; set; }
         public ICollection<QuantityOnMagazine> QuantityOnMagazines { get; set; }
+
+        public int Quantity {  get; set; }
+        public List<MedicineDelivery> MedicineDeliveries { get; set; }
 
     }
 }
