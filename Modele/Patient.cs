@@ -19,6 +19,7 @@ namespace Obsługa_Apteki
 
         public Pharmaceut Pharmaceut { get; set; } // 1 do 1
         public ICollection<Reciept> RecieptList { get; set; }
+        public string FullName => $"{Name} {Surname}";
 
 
     }

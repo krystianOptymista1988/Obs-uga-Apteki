@@ -150,6 +150,7 @@
             this.tbId.Name = "tbId";
             this.tbId.Size = new System.Drawing.Size(57, 20);
             this.tbId.TabIndex = 9;
+            this.tbId.TextChanged += new System.EventHandler(this.tbId_TextChanged);
             // 
             // tbName
             // 
@@ -209,6 +210,7 @@
             this.tbComment.Size = new System.Drawing.Size(418, 166);
             this.tbComment.TabIndex = 17;
             this.tbComment.Text = "";
+            this.tbComment.TextChanged += new System.EventHandler(this.tbComment_TextChanged);
             // 
             // btnAdd
             // 

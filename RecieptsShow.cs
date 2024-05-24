@@ -60,7 +60,7 @@ namespace Obsługa_Apteki
             dataGridView1.Columns[nameof(Reciept.PatientId)].Visible = false;
             dataGridView1.Columns[nameof(Reciept.Doctor)].Visible = false; ;
             dataGridView1.Columns[nameof(Reciept.Patient)].HeaderText = "Pacjent";
-         
+            dataGridView1.Columns[nameof(Reciept.Quantity)].HeaderText = "Ilość";
 
 
         }

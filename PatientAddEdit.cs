@@ -172,6 +172,16 @@ namespace Obsługa_Apteki
         {
 
         }
+
+        private void tbId_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbComment_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

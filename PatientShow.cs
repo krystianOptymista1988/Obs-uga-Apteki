@@ -172,5 +172,15 @@ namespace Obsługa_Apteki
         {
 
         }
+
+        private void btnSearchPatient_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
