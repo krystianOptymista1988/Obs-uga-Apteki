@@ -32,13 +32,13 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbMedicines = new System.Windows.Forms.ComboBox();
             this.button3 = new System.Windows.Forms.Button();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cbPharmaceut = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -85,16 +85,16 @@
             this.dataGridView1.Size = new System.Drawing.Size(737, 394);
             this.dataGridView1.TabIndex = 2;
             // 
-            // comboBox1
+            // cbMedicines
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(102, 63);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(242, 33);
-            this.comboBox1.TabIndex = 3;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.cbMedicines.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.cbMedicines.FormattingEnabled = true;
+            this.cbMedicines.Location = new System.Drawing.Point(102, 63);
+            this.cbMedicines.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cbMedicines.Name = "cbMedicines";
+            this.cbMedicines.Size = new System.Drawing.Size(242, 33);
+            this.cbMedicines.TabIndex = 3;
+            this.cbMedicines.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // button3
             // 
@@ -113,7 +113,7 @@
             // numericUpDown1
             // 
             this.numericUpDown1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.numericUpDown1.Location = new System.Drawing.Point(562, 66);
+            this.numericUpDown1.Location = new System.Drawing.Point(575, 66);
             this.numericUpDown1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(110, 30);
@@ -150,14 +150,14 @@
             this.dateTimePicker1.Size = new System.Drawing.Size(253, 30);
             this.dateTimePicker1.TabIndex = 8;
             // 
-            // comboBox2
+            // cbPharmaceut
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(158, 615);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(215, 28);
-            this.comboBox2.TabIndex = 9;
+            this.cbPharmaceut.FormattingEnabled = true;
+            this.cbPharmaceut.Location = new System.Drawing.Point(158, 615);
+            this.cbPharmaceut.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cbPharmaceut.Name = "cbPharmaceut";
+            this.cbPharmaceut.Size = new System.Drawing.Size(215, 28);
+            this.cbPharmaceut.TabIndex = 9;
             // 
             // label3
             // 
@@ -190,18 +190,19 @@
             this.ClientSize = new System.Drawing.Size(823, 805);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.cbPharmaceut);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cbMedicines);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.MinimumSize = new System.Drawing.Size(845, 861);
             this.Name = "DeliveryAddEdit";
             this.Text = "Dodaj lub Edytuj Zamówienie";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -216,13 +217,13 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbMedicines;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cbPharmaceut;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
     }

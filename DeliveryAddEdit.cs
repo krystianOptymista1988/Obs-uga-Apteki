@@ -35,14 +35,24 @@ namespace Obsługa_Apteki
             List<Medicine> medicines = new List<Medicine>();
             List<string> list = new List<string>();
             string FullName;
-            comboBox1.Items.Clear();
+            cbMedicines.Items.Clear();
             medicines = _action.GetMedicines();
             foreach (Medicine me in medicines) 
             {
                 FullName = me.Name + me.Producent + me.Price;
                 list.Add(FullName);
             }
-            comboBox1.DataSource = list;
+            cbMedicines.DataSource = list;
+
+            List<Pharmaceut> pharmaceuts = new List<Pharmaceut>();
+            List<string> values = new List<string>();
+            cbPharmaceut.Items.Clear();
+            pharmaceuts = _action.GetPharmaceuts();
+            foreach (Pharmaceut pharmaceut in pharmaceuts)
+            {
+                values.Add(pharmaceut.FullName);
+            }
+            cbPharmaceut.DataSource = values;
         }
     }
 }
