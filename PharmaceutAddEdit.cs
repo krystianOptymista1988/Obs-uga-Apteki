@@ -143,5 +143,10 @@ namespace Obsługa_Apteki
                 MessageBox.Show("Błąd podczas zapisywania danych: " + ex.Message);
             }
         }
+
+        private void tbName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

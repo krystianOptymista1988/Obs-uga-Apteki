@@ -162,5 +162,15 @@ namespace Obsługa_Apteki
                 MessageBox.Show("Proszę zaznaczyć pacjenta do usunięcia.");
             }
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnSearchPatient_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

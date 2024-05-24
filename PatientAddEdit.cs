@@ -167,6 +167,11 @@ namespace Obsługa_Apteki
             var _context = _dbAction.GetContext();
             return _context.Pharmaceuts.Find(pharmaceutId);
         }
+
+        private void tbName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }
