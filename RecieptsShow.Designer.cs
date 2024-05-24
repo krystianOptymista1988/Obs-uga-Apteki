@@ -42,10 +42,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(298, 40);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(199, 26);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(67, 22);
+            this.label1.Size = new System.Drawing.Size(48, 15);
             this.label1.TabIndex = 11;
             this.label1.Text = "Filtruj ";
             // 
@@ -53,11 +52,11 @@
             // 
             this.cbFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.cbFilter.FormattingEnabled = true;
-            this.cbFilter.Location = new System.Drawing.Point(375, 35);
-            this.cbFilter.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cbFilter.Location = new System.Drawing.Point(250, 23);
             this.cbFilter.Name = "cbFilter";
-            this.cbFilter.Size = new System.Drawing.Size(198, 30);
+            this.cbFilter.Size = new System.Drawing.Size(133, 23);
             this.cbFilter.TabIndex = 10;
+            this.cbFilter.SelectedIndexChanged += new System.EventHandler(this.cbFilter_SelectedIndexChanged);
             // 
             // btnImplement
             // 
@@ -65,10 +64,9 @@
             this.btnImplement.BackColor = System.Drawing.Color.LemonChiffon;
             this.btnImplement.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnImplement.Image = ((System.Drawing.Image)(resources.GetObject("btnImplement.Image")));
-            this.btnImplement.Location = new System.Drawing.Point(245, 588);
-            this.btnImplement.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnImplement.Location = new System.Drawing.Point(163, 382);
             this.btnImplement.Name = "btnImplement";
-            this.btnImplement.Size = new System.Drawing.Size(190, 49);
+            this.btnImplement.Size = new System.Drawing.Size(127, 32);
             this.btnImplement.TabIndex = 9;
             this.btnImplement.Text = "Zrealizuj";
             this.btnImplement.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -80,10 +78,9 @@
             this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
-            this.btnAdd.Location = new System.Drawing.Point(494, 588);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnAdd.Location = new System.Drawing.Point(329, 382);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(190, 49);
+            this.btnAdd.Size = new System.Drawing.Size(127, 32);
             this.btnAdd.TabIndex = 8;
             this.btnAdd.Text = "Dodaj";
             this.btnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -96,10 +93,9 @@
             this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
-            this.btnDelete.Location = new System.Drawing.Point(746, 588);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnDelete.Location = new System.Drawing.Point(497, 382);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(190, 49);
+            this.btnDelete.Size = new System.Drawing.Size(127, 32);
             this.btnDelete.TabIndex = 7;
             this.btnDelete.Text = "Usuń";
             this.btnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -113,19 +109,18 @@
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(49, 94);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dataGridView1.Location = new System.Drawing.Point(33, 61);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.Size = new System.Drawing.Size(869, 455);
+            this.dataGridView1.Size = new System.Drawing.Size(579, 296);
             this.dataGridView1.TabIndex = 6;
             // 
             // RecieptsShow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(971, 672);
+            this.ClientSize = new System.Drawing.Size(651, 448);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbFilter);
             this.Controls.Add(this.btnImplement);
@@ -133,8 +128,7 @@
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.dataGridView1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.MinimumSize = new System.Drawing.Size(993, 728);
+            this.MinimumSize = new System.Drawing.Size(667, 487);
             this.Name = "RecieptsShow";
             this.Text = "RecieptsShow";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

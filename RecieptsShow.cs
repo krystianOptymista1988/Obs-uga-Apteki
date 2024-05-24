@@ -65,5 +65,10 @@ namespace Obsługa_Apteki
 
 
         }
+
+        private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
