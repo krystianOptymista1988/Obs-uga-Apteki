@@ -44,5 +44,10 @@ namespace Obsługa_Apteki
             }
             comboBox1.DataSource = list;
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

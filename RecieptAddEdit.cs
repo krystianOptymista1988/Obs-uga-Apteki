@@ -2,6 +2,7 @@
 using Obsługa_Apteki.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
@@ -17,11 +18,14 @@ namespace Obsługa_Apteki
         private Reciept reciept = new Reciept();
         List<Medicine> _medicines;
         List<Patient> _patients;
+        private List<Reciept> reciepts;
         public RecieptAddEdit()
         {
             InitializeComponent();
             LoadMedicinesData();
             LoadPatientsData();
+            DGVHeadersSet();
+            DataLoad();
         }
 
         private void btnAccept_Click(object sender, System.EventArgs e)
@@ -75,6 +79,7 @@ namespace Obsługa_Apteki
             //pharmaceut.Salary = int.Parse(nmSallary.Value.ToString());
             reciept.Doctor.FullName = tbDoctor.Text;
             //// pharmaceut.Patients = new List<Patient>();
+            
             return reciept;
         }
 
@@ -112,8 +117,40 @@ namespace Obsługa_Apteki
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            var RecieptsShow = new RecieptsShow();
             Close();
+        }
+
+        private void DGVHeadersSet()
+        {
+            //dataGridView1.Columns[nameof(_medicines)].HeaderText = "Lek";
+            //dataGridView1.Columns[nameof(_medicines)].DisplayIndex = 0;
+            //dataGridView1.Columns[nameof(Reciept.Quantity)].HeaderText = "Ilość";
+            //dataGridView1.Columns[nameof(Reciept.Quantity)].DisplayIndex = 1;
+            //dataGridView1.Columns[nameof(Reciept.DoctorId)].Visible = false;
+            //dataGridView1.Columns[nameof(Reciept.PatientId)].Visible = false;
+            //dataGridView1.Columns[nameof(Reciept.DateOfRegistry)].Visible = false;
+            //dataGridView1.Columns[nameof(Reciept.DateOfExpire)].Visible = false;
+            //dataGridView1.Columns[nameof(Reciept.Doctor)].Visible = false;
+        }
+
+        private void DataLoad()
+        {
+            reciepts = _dbAction.GetReciepts();
+
+            if (reciepts == null || reciepts.Count == 0)
+            {
+                var columnNames = _dbAction.GetColumnNames<Reciept>();
+                var dataTable = new DataTable();
+                foreach (var columnName in columnNames)
+                {
+                    dataTable.Columns.Add(columnName);
+                }
+                dataGridView1.DataSource = dataTable;
+            }
+            else
+            {
+                dataGridView1.DataSource = reciepts;
+            }
         }
     }
 }

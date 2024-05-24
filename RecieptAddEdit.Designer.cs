@@ -89,8 +89,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.Size = new System.Drawing.Size(673, 242);
-            this.dataGridView1.TabIndex = 34;
-            // 
+            this.dataGridView1.TabIndex = 34;            // 
             // lblDoctor
             // 
             this.lblDoctor.AutoSize = true;
