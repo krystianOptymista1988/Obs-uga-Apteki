@@ -58,15 +58,14 @@ namespace Obsługa_Apteki
             stockItem.Quantity = int.Parse(numericUpDown1.Value.ToString());
             stockItem.MedicineId = int.Parse(cbMedicines.SelectedValue.ToString());
             _stockList.Add(stockItem);
-            DGVRefresh();
+          dataGridView1.DataSource = null;
+            dataGridView1.DataSource = _stockList;
+           // DGVRefresh();
         }
 
         private void DGVRefresh()
         {
             
-          dataGridView1.DataSource = null;
-
-            dataGridView1.DataSource = _stockList;
         }
 
      
