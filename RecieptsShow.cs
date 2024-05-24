@@ -10,6 +10,7 @@ namespace Obsługa_Apteki
     public partial class RecieptsShow : Form
     {
         private DbActions _dbAction = new DbActions();
+
         private List<Reciept> reciepts = new List<Reciept>();
 
         public RecieptsShow()
@@ -66,6 +67,11 @@ namespace Obsługa_Apteki
         }
 
         private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
