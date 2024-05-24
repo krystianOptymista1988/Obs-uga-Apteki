@@ -1,4 +1,5 @@
 ﻿using Obsługa_Apteki.Entities;
+using Obsługa_Apteki.Modele;
 using Obsługa_Apteki.Models;
 using System;
 using System.Collections.Generic;
@@ -19,18 +20,19 @@ namespace Obsługa_Apteki
         List<Medicine> _medicines;
         List<Patient> _patients;
         private List<Reciept> reciepts;
+
+        private List<Stock> _stockList = new List<Stock>();
         public RecieptAddEdit()
         {
             InitializeComponent();
             LoadMedicinesData();
-            LoadPatientsData();
-            DGVHeadersSet();
+            LoadPatientsData();            
         }
 
 
         private Reciept CreateReciept()
         {
-            reciept.Quantity = int.Parse(nudQuantity.Text);
+            reciept.Quantity = int.Parse(nudQuantity.Value.ToString());
             reciept.DateOfRegistry = DateTime.Parse(dtpDateOfRegistry.Value.ToString());
             reciept.DateOfExpire = DateTime.Parse(dtpDateOfExpire.Value.ToString());
             //pharmaceut.Salary = int.Parse(nmSallary.Value.ToString());
@@ -44,8 +46,7 @@ namespace Obsługa_Apteki
         {
             int recieptID = int.Parse(tbId.Text);
 
-            reciept.Quantity = int.Parse(nudQuantity.Text);
-            reciept.Quantity = int.Parse(nudQuantity.Text);
+            reciept.Quantity = int.Parse(nudQuantity.Value.ToString());
             reciept.DateOfRegistry = DateTime.Parse(dtpDateOfRegistry.Value.ToString());
             reciept.DateOfExpire = DateTime.Parse(dtpDateOfExpire.Value.ToString());
             //pharmaceut.Salary = int.Parse(nmSallary.Value.ToString());
@@ -76,20 +77,6 @@ namespace Obsługa_Apteki
         {
             Close();
         }
-
-        private void DGVHeadersSet()
-        {
-            //dataGridView1.Columns[nameof(_medicines)].HeaderText = "Lek";
-            //dataGridView1.Columns[nameof(_medicines)].DisplayIndex = 0;
-            //dataGridView1.Columns[nameof(Reciept.Quantity)].HeaderText = "Ilość";
-            //dataGridView1.Columns[nameof(Reciept.Quantity)].DisplayIndex = 1;
-            //dataGridView1.Columns[nameof(Reciept.DoctorId)].Visible = false;
-            //dataGridView1.Columns[nameof(Reciept.PatientId)].Visible = false;
-            //dataGridView1.Columns[nameof(Reciept.DateOfRegistry)].Visible = false;
-            //dataGridView1.Columns[nameof(Reciept.DateOfExpire)].Visible = false;
-            //dataGridView1.Columns[nameof(Reciept.Doctor)].Visible = false;
-        }
-
 
         private void btnAccept_Click_1(object sender, EventArgs e)
         {
@@ -133,5 +120,24 @@ namespace Obsługa_Apteki
                 MessageBox.Show("Błąd podczas zapisywania danych: " + ex.Message);
             }
         }
+
+        private void btnAddToList_Click(object sender, EventArgs e)
+        {
+            Stock stockItem = new Stock();
+            stockItem.Quantity = int.Parse(nudQuantity.Value.ToString());
+            stockItem.MedicineId = int.Parse(cbMedicines.SelectedValue.ToString());
+            _stockList.Add(stockItem);
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = _stockList;
+
+        }
+
+        //private void DGVRefresh()
+        //{
+
+        //    dataGridView1.DataSource = null;
+
+        //    dataGridView1.DataSource = _stockList;
+        //}
     }
 }

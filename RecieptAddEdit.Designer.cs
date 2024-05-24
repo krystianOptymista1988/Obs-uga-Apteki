@@ -179,6 +179,7 @@
             this.btnAddToList.Text = "Dodaj do Listy";
             this.btnAddToList.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAddToList.UseVisualStyleBackColor = false;
+            this.btnAddToList.Click += new System.EventHandler(this.btnAddToList_Click);
             // 
             // cbMedicines
             // 

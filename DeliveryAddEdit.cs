@@ -69,6 +69,9 @@ namespace Obsługa_Apteki
             dataGridView1.DataSource = _stockList;
         }
 
-     
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

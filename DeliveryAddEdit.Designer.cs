@@ -81,6 +81,7 @@
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.Size = new System.Drawing.Size(491, 256);
             this.dataGridView1.TabIndex = 2;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // cbMedicines
             // 
@@ -89,7 +90,7 @@
             this.cbMedicines.Location = new System.Drawing.Point(102, 63);
             this.cbMedicines.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cbMedicines.Name = "cbMedicines";
-            this.cbMedicines.Size = new System.Drawing.Size(242, 33);
+            this.cbMedicines.Size = new System.Drawing.Size(242, 24);
             this.cbMedicines.TabIndex = 3;
             this.cbMedicines.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
@@ -150,7 +151,7 @@
             this.cbPharmaceut.Location = new System.Drawing.Point(158, 615);
             this.cbPharmaceut.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cbPharmaceut.Name = "cbPharmaceut";
-            this.cbPharmaceut.Size = new System.Drawing.Size(215, 28);
+            this.cbPharmaceut.Size = new System.Drawing.Size(215, 21);
             this.cbPharmaceut.TabIndex = 9;
             // 
             // label3
