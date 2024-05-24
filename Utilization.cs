@@ -69,7 +69,7 @@ namespace Obsługa_Apteki
         {
             if (dataGridView1.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Please select at least one row to delete.");
+                MessageBox.Show("Wybierz partię leków do usunięcia");
                 return;
             }
 
