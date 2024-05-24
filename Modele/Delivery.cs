@@ -12,6 +12,7 @@ namespace Obsługa_Apteki
         {
             OrderedMedicines = new List<Medicine>();
             ExpiredDates = new List<ExpiredDate>();
+            MedicineDeliveries = new List<MedicineDelivery>();
         }
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -26,6 +27,7 @@ namespace Obsługa_Apteki
         public ICollection<ExpiredDate> ExpiredDates { get; set; }
 
         public double Value { get; set; }
+        public ICollection<MedicineDelivery> MedicineDeliveries { get; set; }
 
     }
 }

@@ -127,6 +127,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EntitityFramework\Configurations\BillQuantityConfiguration.cs" />
+    <Compile Include="EntitityFramework\Configurations\MedicineDeliveryConfiguration.cs" />
+    <Compile Include="EntitityFramework\Configurations\StockConfiguration.cs" />
     <Compile Include="EntitityFramework\Configurations\QuantityOnMagazineConfiguration.cs" />
     <Compile Include="EntitityFramework\Migrations\Configuration.cs" />
     <Compile Include="Migrations\202405231748587_FullStartContext.cs" />
@@ -148,6 +150,8 @@
     <Compile Include="Modele\ExpiredDate.cs" />
     <Compile Include="Modele\BillQuantity.cs" />
     <Compile Include="Modele\ExpiredMedicines.cs" />
+    <Compile Include="Modele\MedicineDelivery.cs" />
+    <Compile Include="Modele\Stock.cs" />
     <Compile Include="Modele\Models.cs" />
     <Compile Include="Modele\Delivery.cs" />
     <Compile Include="Deliveries.cs">

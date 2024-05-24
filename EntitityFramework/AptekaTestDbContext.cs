@@ -26,11 +26,7 @@ namespace Obsługa_Apteki.Entities
         public DbSet<QuantityOnMagazine> QuantitiesOnMagazine { get; set; }
         public DbSet<Reciept> Reciepts{ get;set; }
 
-
-
-
-
-
+        public DbSet<Stock> Stocks { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -45,7 +41,7 @@ namespace Obsługa_Apteki.Entities
             modelBuilder.Configurations.Add(new PharmaceutConfiguration());
             modelBuilder.Configurations.Add(new QuantityOnMagazineConfiguration());
             modelBuilder.Configurations.Add(new ReicieptConfiguration());
-            
+            modelBuilder.Configurations.Add(new StockConfiguration());
         }
 
     }

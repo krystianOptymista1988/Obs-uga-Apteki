@@ -14,14 +14,19 @@ namespace Obsługa_Apteki.Modele.Configurations
             ToTable("dbo.Deliveries");
 
             HasKey(x => x.DeliveryId);
-            HasMany(y => y.OrderedMedicines)
-                        .WithMany()
-            .Map(z =>
-            {
-                z.ToTable("MedicineDeliveries");
-                z.MapLeftKey("DeliveryId");
-                z.MapRightKey("MedicineId");
-            });
+
+            HasMany(d => d.OrderedMedicines)
+                .WithMany(m => m.Deliveries)
+                .Map(md =>
+                {
+                    md.ToTable("MedicineDeliveries");
+                    md.MapLeftKey("DeliveryId");
+                    md.MapRightKey("MedicineId");
+                });
+            HasMany(d => d.MedicineDeliveries)
+          .WithRequired(md => md.Delivery)
+          .HasForeignKey(md => md.DeliveryId);
+
 
             Property(c => c.DateOfDelivery)
                 .HasColumnType("date");

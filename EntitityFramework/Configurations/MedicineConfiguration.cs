@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Obsługa_Apteki.Modele.Configurations
 {
-    internal class MedicineConfiguration : EntityTypeConfiguration<Medicine>
+    public class MedicineConfiguration : EntityTypeConfiguration<Medicine>
     {
         public MedicineConfiguration()
         {
@@ -23,6 +23,9 @@ namespace Obsługa_Apteki.Modele.Configurations
                     md.MapLeftKey("MedicineId");     
                     md.MapRightKey("DeliveryId");     
                 });
+           // Has(m => m.MedicineDeliveries)
+          // .WithRequired(md => md.Medicine)
+          // .HasForeignKey(md => md.MedicineId);
         }
     }
 }
