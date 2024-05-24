@@ -137,6 +137,7 @@
             this.btnAccept.Text = "Akceptuj";
             this.btnAccept.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAccept.UseVisualStyleBackColor = false;
+            this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click_1);
             // 
             // lblQuantity
             // 
