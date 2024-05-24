@@ -146,12 +146,12 @@
             // 
             // cbPharmaceut
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(158, 615);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(215, 28);
-            this.comboBox2.TabIndex = 9;
+            this.cbPharmaceut.FormattingEnabled = true;
+            this.cbPharmaceut.Location = new System.Drawing.Point(158, 615);
+            this.cbPharmaceut.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cbPharmaceut.Name = "cbPharmaceut";
+            this.cbPharmaceut.Size = new System.Drawing.Size(215, 28);
+            this.cbPharmaceut.TabIndex = 9;
             // 
             // label3
             // 
