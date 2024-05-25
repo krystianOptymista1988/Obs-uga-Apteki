@@ -20,8 +20,8 @@ namespace Obsługa_Apteki
         List<Medicine> _medicines;
         List<Patient> _patients;
         private List<Reciept> reciepts;
-        private List<Stock> _stockList = new List<Stock>();
 
+        private List<Stock> _stockList = new List<Stock>();
         public RecieptAddEdit()
         {
             InitializeComponent();
@@ -126,28 +126,16 @@ namespace Obsługa_Apteki
             Stock stockItem = new Stock();
             stockItem.Quantity = int.Parse(nudQuantity.Value.ToString());
             stockItem.MedicineId = int.Parse(cbMedicines.SelectedValue.ToString());
-            if (_stockList.Count > 0)
-            {
-                foreach (Stock s in _stockList.ToList())
-                {
-                    if (s.MedicineId == stockItem.MedicineId)
-                    {
-                        s.Quantity += stockItem.Quantity;
-                        break;
-                    }
-                    else
-                    {
-                        _stockList.Add(stockItem);
-                    }
-                }
-
-            }
-            else
-                _stockList.Add(stockItem);
-
+            _stockList.Add(stockItem);
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = _stockList;
+
         }
 
+        private void DGVColumnSet()
+       {
+
+        
+        }
     }
 }
