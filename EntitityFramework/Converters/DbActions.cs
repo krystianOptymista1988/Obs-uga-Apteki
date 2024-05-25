@@ -168,6 +168,21 @@ namespace Obsługa_Apteki.Entities
             }
             _context.SaveChanges();
         }
+
+        public void AddDeliveryWithMedicines(Delivery delivery, List<MedicineDelivery> medicineDeliveries)
+        {
+            _context.Set<Delivery>().Add(delivery);
+
+
+            foreach (var medicineInDelivery in medicineDeliveries)
+            {
+                medicineInDelivery.DeliveryId = delivery.DeliveryId;
+                _context.Set<MedicineDelivery>().Add(medicineInDelivery);
+                _context.SaveChanges();
+            }
+
+            _context.SaveChanges();
+        }
     }
     
 }

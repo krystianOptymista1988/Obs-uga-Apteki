@@ -132,12 +132,10 @@ namespace Obsługa_Apteki
 
         }
 
-        //private void DGVRefresh()
-        //{
+        private void DGVColumnSet()
+       {
 
-        //    dataGridView1.DataSource = null;
-
-        //    dataGridView1.DataSource = _stockList;
-        //}
+        
+        }
     }
 }

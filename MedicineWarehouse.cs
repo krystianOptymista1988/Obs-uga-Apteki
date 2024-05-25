@@ -123,7 +123,9 @@ namespace Obsługa_Apteki
 
         private void btnAddDelivery_Click(object sender, EventArgs e)
         {
-
+            var DeliveryToStock = new DeliveryToStock();
+            DeliveryToStock.ShowDialog();
+            Close();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)

@@ -126,6 +126,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DeliveryToStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeliveryToStock.Designer.cs">
+      <DependentUpon>DeliveryToStock.cs</DependentUpon>
+    </Compile>
     <Compile Include="EntitityFramework\Configurations\BillQuantityConfiguration.cs" />
     <Compile Include="EntitityFramework\Configurations\MedicineDeliveryConfiguration.cs" />
     <Compile Include="EntitityFramework\Configurations\StockConfiguration.cs" />
@@ -147,6 +153,7 @@
     <Compile Include="EntitityFramework\Configurations\PatientConfiguration.cs" />
     <Compile Include="EntitityFramework\Configurations\PharmaceutConfiguration.cs" />
     <Compile Include="EntitityFramework\Configurations\ReicieptConfiguration.cs" />
+    <Compile Include="Modele\Category.cs" />
     <Compile Include="Modele\ExpiredDate.cs" />
     <Compile Include="Modele\BillQuantity.cs" />
     <Compile Include="Modele\ExpiredMedicines.cs" />
@@ -254,6 +261,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DeliveryAddEdit.resx">
       <DependentUpon>DeliveryAddEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeliveryToStock.resx">
+      <DependentUpon>DeliveryToStock.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MedicineCard.resx">
       <DependentUpon>MedicineCard.cs</DependentUpon>

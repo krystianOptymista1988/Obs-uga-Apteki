@@ -24,7 +24,8 @@ namespace Obsługa_Apteki
 
         private void DataLoad()
         {
-          deliveries = _dbAction.GetDeliveries();
+            _dbAction = new DbActions();
+            deliveries = _dbAction.GetDeliveries();
 
             if (deliveries == null || deliveries.Count == 0)
             {
@@ -44,10 +45,9 @@ namespace Obsługa_Apteki
 
         private void button3_Click(object sender, EventArgs e)
         {
-            var DeliveryAddEdit = new DeliveryAddEdit();
-            
-
-            DeliveryAddEdit.ShowDialog();
+            var deliveryAddEdit = new DeliveryAddEdit();
+            deliveryAddEdit.ShowDialog();
+           DataLoad();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -55,22 +55,25 @@ namespace Obsługa_Apteki
             var DeliveryAddEdit = new DeliveryAddEdit();
 
             DeliveryAddEdit.ShowDialog();
+           DataLoad();
         }
 
         private void DGVHeadersSet()
         {
-            dataGridView1.Columns[nameof(Delivery.DeliveryId)].HeaderText = "ID";
-            dataGridView1.Columns[nameof(Delivery.DeliveryId)].DisplayIndex = 0;
-            dataGridView1.Columns[nameof(Delivery.DateOfCreate)].HeaderText = "Data zamówienia";
-            dataGridView1.Columns[nameof(Delivery.DateOfCreate)].DisplayIndex = 1;
-            dataGridView1.Columns[nameof(Delivery.DateOfDelivery)].HeaderText = "Termin Realizacji";
-            dataGridView1.Columns[nameof(Delivery.DateOfDelivery)].DisplayIndex = 2;
-            dataGridView1.Columns[nameof(Delivery.Value)].HeaderText = "Wartość";
-            dataGridView1.Columns[nameof(Delivery.Value)].DisplayIndex = 3;
-            dataGridView1.Columns[nameof(Delivery.ExpiredDates)].Visible = false;
-            dataGridView1.Columns[nameof(Delivery.OrderedMedicines)].Visible = false;
-            dataGridView1.Columns[nameof(Delivery.PharmaceutOrdering)].HeaderText = "Zamawiający";
-
+            if (deliveries != null)
+            {
+                dataGridView1.Columns[nameof(Delivery.DeliveryId)].HeaderText = "ID";
+                dataGridView1.Columns[nameof(Delivery.DeliveryId)].DisplayIndex = 0;
+                dataGridView1.Columns[nameof(Delivery.DateOfCreate)].HeaderText = "Data zamówienia";
+                dataGridView1.Columns[nameof(Delivery.DateOfCreate)].DisplayIndex = 1;
+                dataGridView1.Columns[nameof(Delivery.DateOfDelivery)].HeaderText = "Termin Realizacji";
+                dataGridView1.Columns[nameof(Delivery.DateOfDelivery)].DisplayIndex = 2;
+                dataGridView1.Columns[nameof(Delivery.Value)].HeaderText = "Wartość";
+                dataGridView1.Columns[nameof(Delivery.Value)].DisplayIndex = 3;
+                dataGridView1.Columns[nameof(Delivery.ExpiredDates)].Visible = false;
+                dataGridView1.Columns[nameof(Delivery.OrderedMedicines)].Visible = false;
+                dataGridView1.Columns[nameof(Delivery.PharmaceutOrdering)].HeaderText = "Zamawiający";
+            }
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)

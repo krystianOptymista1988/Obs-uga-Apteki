@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Obsługa_Apteki.Modele.Configurations
 {
-    internal class DeliveryConfiguration : EntityTypeConfiguration<Delivery>
+    public class DeliveryConfiguration : EntityTypeConfiguration<Delivery>
     {
         public DeliveryConfiguration()
         {
