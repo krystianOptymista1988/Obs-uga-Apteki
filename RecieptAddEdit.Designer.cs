@@ -47,6 +47,7 @@
             this.lblDateOfRegistry = new System.Windows.Forms.Label();
             this.lblDateOfExpire = new System.Windows.Forms.Label();
             this.tbDoctor = new System.Windows.Forms.TextBox();
+            this.btnDeleteFromList = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudQuantity)).BeginInit();
             this.SuspendLayout();
@@ -172,7 +173,7 @@
             this.btnAddToList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.btnAddToList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnAddToList.Image = ((System.Drawing.Image)(resources.GetObject("btnAddToList.Image")));
-            this.btnAddToList.Location = new System.Drawing.Point(289, 62);
+            this.btnAddToList.Location = new System.Drawing.Point(140, 63);
             this.btnAddToList.Name = "btnAddToList";
             this.btnAddToList.Size = new System.Drawing.Size(229, 30);
             this.btnAddToList.TabIndex = 44;
@@ -231,12 +232,27 @@
             this.tbDoctor.Size = new System.Drawing.Size(177, 20);
             this.tbDoctor.TabIndex = 52;
             // 
+            // btnDeleteFromList
+            // 
+            this.btnDeleteFromList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btnDeleteFromList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnDeleteFromList.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteFromList.Image")));
+            this.btnDeleteFromList.Location = new System.Drawing.Point(411, 63);
+            this.btnDeleteFromList.Name = "btnDeleteFromList";
+            this.btnDeleteFromList.Size = new System.Drawing.Size(229, 30);
+            this.btnDeleteFromList.TabIndex = 53;
+            this.btnDeleteFromList.Text = "Usuń z Listy";
+            this.btnDeleteFromList.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnDeleteFromList.UseVisualStyleBackColor = false;
+            this.btnDeleteFromList.Click += new System.EventHandler(this.btnDeleteFromList_Click);
+            // 
             // RecieptAddEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 470);
+            this.Controls.Add(this.btnDeleteFromList);
             this.Controls.Add(this.tbDoctor);
             this.Controls.Add(this.lblDateOfExpire);
             this.Controls.Add(this.lblDateOfRegistry);
@@ -285,5 +301,6 @@
         private System.Windows.Forms.Label lblDateOfRegistry;
         private System.Windows.Forms.Label lblDateOfExpire;
         private System.Windows.Forms.TextBox tbDoctor;
+        private System.Windows.Forms.Button btnDeleteFromList;
     }
 }

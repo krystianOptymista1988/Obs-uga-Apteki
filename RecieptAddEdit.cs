@@ -35,7 +35,6 @@ namespace Obsługa_Apteki
             reciept.Quantity = int.Parse(nudQuantity.Value.ToString());
             reciept.DateOfRegistry = DateTime.Parse(dtpDateOfRegistry.Value.ToString());
             reciept.DateOfExpire = DateTime.Parse(dtpDateOfExpire.Value.ToString());
-            //pharmaceut.Salary = int.Parse(nmSallary.Value.ToString());
             reciept.Doctor.FullName = tbDoctor.Text;
             //// pharmaceut.Patients = new List<Patient>();
             
@@ -49,7 +48,6 @@ namespace Obsługa_Apteki
             reciept.Quantity = int.Parse(nudQuantity.Value.ToString());
             reciept.DateOfRegistry = DateTime.Parse(dtpDateOfRegistry.Value.ToString());
             reciept.DateOfExpire = DateTime.Parse(dtpDateOfExpire.Value.ToString());
-            //pharmaceut.Salary = int.Parse(nmSallary.Value.ToString());
             reciept.Doctor.FullName = tbDoctor.Text;
 
             return reciept;
@@ -80,45 +78,53 @@ namespace Obsługa_Apteki
 
         private void btnAccept_Click_1(object sender, EventArgs e)
         {
-            try
-            {
-                using (_context)
-                {
+            //try
+            //{
+            //    using (_context)
+            //    {
 
-                    if (!string.IsNullOrEmpty(tbId.Text))
-                    {
-                        // Aktualizowanie istniejącej recepty
-                        int id = int.Parse(tbId.Text);
-                        reciept = _context.Reciepts.SingleOrDefault(p => p.RecieptId == id);
-                        if (reciept != null)
-                        {
-                            reciept = CreateReciept();
-                            _context.Entry(reciept).State = EntityState.Modified;
-                            MessageBox.Show("Aktualizowano dane Recepty");
-                        }
-                        else
-                        {
-                            MessageBox.Show("Nie znaleziono Recepty o podanym ID");
-                            return;
-                        }
-                    }
-                    else
-                    {
-                        // Dodawanie nowej recepty
-                        reciept = new Reciept();
-                        reciept = CreateReciept(reciept);
-                        _context.Reciepts.Add(reciept);
-                        MessageBox.Show($"Dodano nową receptę: ID {reciept.RecieptId}");
-                    }
-                    _context.SaveChanges();
-                }
-                this.DialogResult = DialogResult.OK;
-                this.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Błąd podczas zapisywania danych: " + ex.Message);
-            }
+            //        if (!string.IsNullOrEmpty(tbId.Text))
+            //        {
+            //            // Aktualizowanie istniejącej recepty
+            //            int id = int.Parse(tbId.Text);
+            //            reciept = _context.Reciepts.SingleOrDefault(p => p.RecieptId == id);
+            //            if (reciept != null)
+            //            {
+            //                reciept = CreateReciept();
+            //                _context.Entry(reciept).State = EntityState.Modified;
+            //                MessageBox.Show("Aktualizowano dane Recepty");
+            //            }
+            //            else
+            //            {
+            //                MessageBox.Show("Nie znaleziono Recepty o podanym ID");
+            //                return;
+            //            }
+            //        }
+            //        else
+            //        {
+            //            // Dodawanie nowej recepty
+            //            reciept = new Reciept();
+            //            reciept = CreateReciept(reciept);
+            //            _context.Reciepts.Add(reciept);
+            //            MessageBox.Show($"Dodano nową receptę: ID {reciept.RecieptId}");
+            //        }
+            //        _context.SaveChanges();
+            //    }
+            //    this.DialogResult = DialogResult.OK;
+            //    this.Close();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Błąd podczas zapisywania danych: " + ex.Message);
+            //}
+
+            reciept.DateOfRegistry = DateTime.Now;
+            reciept.DateOfExpire = DateTime.Parse(dtpDateOfExpire.Value.ToString());
+            reciept.PatientId = int.Parse(cbPatients.SelectedValue.ToString());
+
+            _dbAction.AddRecieptWithMedicines(reciept, _stockList);
+
+            Close();
         }
 
         private void btnAddToList_Click(object sender, EventArgs e)
@@ -126,16 +132,48 @@ namespace Obsługa_Apteki
             Stock stockItem = new Stock();
             stockItem.Quantity = int.Parse(nudQuantity.Value.ToString());
             stockItem.MedicineId = int.Parse(cbMedicines.SelectedValue.ToString());
-            _stockList.Add(stockItem);
+            bool found = false;
+            foreach (Stock item in _stockList)
+            {
+                if (item.MedicineId == stockItem.MedicineId)
+                {
+                    item.Quantity += stockItem.Quantity;
+                    found = true;
+                    break;
+                }
+            }
+
+            if (!found)
+            {
+                _stockList.Add(stockItem);
+
+            }
+
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = _stockList;
+        }
+
+        private void btnDeleteFromList_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                int deleteId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["MedicineId"].Value);
+                foreach (Stock item in _stockList.ToList())
+                {
+                    if (item.MedicineId == deleteId)
+                    {
+                        _stockList.Remove(item);
+                    }
+                };
+            }
+            else
+            {
+                MessageBox.Show("Proszę zaznaczyć Lek do usunięcia.");
+            }
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = _stockList;
 
         }
-
-        private void DGVColumnSet()
-       {
-
-        
-        }
     }
+
 }
