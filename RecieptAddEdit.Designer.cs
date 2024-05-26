@@ -42,9 +42,7 @@
             this.nudQuantity = new System.Windows.Forms.NumericUpDown();
             this.btnAddToList = new System.Windows.Forms.Button();
             this.cbMedicines = new System.Windows.Forms.ComboBox();
-            this.dtpDateOfRegistry = new System.Windows.Forms.DateTimePicker();
             this.dtpDateOfExpire = new System.Windows.Forms.DateTimePicker();
-            this.lblDateOfRegistry = new System.Windows.Forms.Label();
             this.lblDateOfExpire = new System.Windows.Forms.Label();
             this.tbDoctor = new System.Windows.Forms.TextBox();
             this.btnDeleteFromList = new System.Windows.Forms.Button();
@@ -191,35 +189,18 @@
             this.cbMedicines.Size = new System.Drawing.Size(163, 23);
             this.cbMedicines.TabIndex = 43;
             // 
-            // dtpDateOfRegistry
-            // 
-            this.dtpDateOfRegistry.Location = new System.Drawing.Point(523, 359);
-            this.dtpDateOfRegistry.Name = "dtpDateOfRegistry";
-            this.dtpDateOfRegistry.Size = new System.Drawing.Size(200, 20);
-            this.dtpDateOfRegistry.TabIndex = 48;
-            // 
             // dtpDateOfExpire
             // 
-            this.dtpDateOfExpire.Location = new System.Drawing.Point(523, 385);
+            this.dtpDateOfExpire.Location = new System.Drawing.Point(523, 359);
             this.dtpDateOfExpire.Name = "dtpDateOfExpire";
             this.dtpDateOfExpire.Size = new System.Drawing.Size(200, 20);
             this.dtpDateOfExpire.TabIndex = 49;
-            // 
-            // lblDateOfRegistry
-            // 
-            this.lblDateOfRegistry.AutoSize = true;
-            this.lblDateOfRegistry.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblDateOfRegistry.Location = new System.Drawing.Point(408, 366);
-            this.lblDateOfRegistry.Name = "lblDateOfRegistry";
-            this.lblDateOfRegistry.Size = new System.Drawing.Size(87, 13);
-            this.lblDateOfRegistry.TabIndex = 50;
-            this.lblDateOfRegistry.Text = "Data Wydania";
             // 
             // lblDateOfExpire
             // 
             this.lblDateOfExpire.AutoSize = true;
             this.lblDateOfExpire.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblDateOfExpire.Location = new System.Drawing.Point(408, 392);
+            this.lblDateOfExpire.Location = new System.Drawing.Point(408, 361);
             this.lblDateOfExpire.Name = "lblDateOfExpire";
             this.lblDateOfExpire.Size = new System.Drawing.Size(90, 13);
             this.lblDateOfExpire.TabIndex = 51;
@@ -255,9 +236,7 @@
             this.Controls.Add(this.btnDeleteFromList);
             this.Controls.Add(this.tbDoctor);
             this.Controls.Add(this.lblDateOfExpire);
-            this.Controls.Add(this.lblDateOfRegistry);
             this.Controls.Add(this.dtpDateOfExpire);
-            this.Controls.Add(this.dtpDateOfRegistry);
             this.Controls.Add(this.lblQuantity);
             this.Controls.Add(this.lblMedicine);
             this.Controls.Add(this.nudQuantity);
@@ -296,9 +275,7 @@
         private System.Windows.Forms.NumericUpDown nudQuantity;
         private System.Windows.Forms.Button btnAddToList;
         private System.Windows.Forms.ComboBox cbMedicines;
-        private System.Windows.Forms.DateTimePicker dtpDateOfRegistry;
         private System.Windows.Forms.DateTimePicker dtpDateOfExpire;
-        private System.Windows.Forms.Label lblDateOfRegistry;
         private System.Windows.Forms.Label lblDateOfExpire;
         private System.Windows.Forms.TextBox tbDoctor;
         private System.Windows.Forms.Button btnDeleteFromList;

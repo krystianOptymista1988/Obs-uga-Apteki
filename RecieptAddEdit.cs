@@ -16,10 +16,11 @@ namespace Obsługa_Apteki
     {
         private DbActions _dbAction = new DbActions();
         private AptekaTestDbContext _context = new AptekaTestDbContext();
-        private Reciept reciept = new Reciept();
+        private Reciept _reciept = new Reciept();
         List<Medicine> _medicines;
         List<Patient> _patients;
         private List<Reciept> reciepts;
+        Stock stockItem;
 
         private List<Stock> _stockList = new List<Stock>();
         public RecieptAddEdit()
@@ -32,25 +33,23 @@ namespace Obsługa_Apteki
 
         private Reciept CreateReciept()
         {
-            reciept.Quantity = int.Parse(nudQuantity.Value.ToString());
-            reciept.DateOfRegistry = DateTime.Parse(dtpDateOfRegistry.Value.ToString());
-            reciept.DateOfExpire = DateTime.Parse(dtpDateOfExpire.Value.ToString());
-            reciept.Doctor.FullName = tbDoctor.Text;
-            //// pharmaceut.Patients = new List<Patient>();
+            _reciept.Quantity = int.Parse(nudQuantity.Value.ToString());
+            _reciept.DateOfRegistry = DateTime.Now;
+            _reciept.DateOfExpire = DateTime.Parse(dtpDateOfExpire.Value.ToString());
+            _reciept.Doctor.FullName = tbDoctor.Text;
             
-            return reciept;
+            return _reciept;
         }
 
-        private Reciept CreateReciept(Reciept reciept)
+        private Reciept CreateReciept(Reciept _reciept)
         {
             int recieptID = int.Parse(tbId.Text);
 
-            reciept.Quantity = int.Parse(nudQuantity.Value.ToString());
-            reciept.DateOfRegistry = DateTime.Parse(dtpDateOfRegistry.Value.ToString());
-            reciept.DateOfExpire = DateTime.Parse(dtpDateOfExpire.Value.ToString());
-            reciept.Doctor.FullName = tbDoctor.Text;
-
-            return reciept;
+            _reciept.Quantity = int.Parse(nudQuantity.Value.ToString());
+            _reciept.DateOfRegistry = DateTime.Now;
+            _reciept.DateOfExpire = DateTime.Parse(dtpDateOfExpire.Value.ToString());
+            _reciept.Doctor.FullName = tbDoctor.Text;
+            return _reciept;
         }
 
 
@@ -78,58 +77,11 @@ namespace Obsługa_Apteki
 
         private void btnAccept_Click_1(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    using (_context)
-            //    {
-
-            //        if (!string.IsNullOrEmpty(tbId.Text))
-            //        {
-            //            // Aktualizowanie istniejącej recepty
-            //            int id = int.Parse(tbId.Text);
-            //            reciept = _context.Reciepts.SingleOrDefault(p => p.RecieptId == id);
-            //            if (reciept != null)
-            //            {
-            //                reciept = CreateReciept();
-            //                _context.Entry(reciept).State = EntityState.Modified;
-            //                MessageBox.Show("Aktualizowano dane Recepty");
-            //            }
-            //            else
-            //            {
-            //                MessageBox.Show("Nie znaleziono Recepty o podanym ID");
-            //                return;
-            //            }
-            //        }
-            //        else
-            //        {
-            //            // Dodawanie nowej recepty
-            //            reciept = new Reciept();
-            //            reciept = CreateReciept(reciept);
-            //            _context.Reciepts.Add(reciept);
-            //            MessageBox.Show($"Dodano nową receptę: ID {reciept.RecieptId}");
-            //        }
-            //        _context.SaveChanges();
-            //    }
-            //    this.DialogResult = DialogResult.OK;
-            //    this.Close();
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("Błąd podczas zapisywania danych: " + ex.Message);
-            //}
-
-            reciept.DateOfRegistry = DateTime.Now;
-            reciept.DateOfExpire = DateTime.Parse(dtpDateOfExpire.Value.ToString());
-            reciept.PatientId = int.Parse(cbPatients.SelectedValue.ToString());
-
-            _dbAction.AddRecieptWithMedicines(reciept, _stockList);
-
-            Close();
         }
 
         private void btnAddToList_Click(object sender, EventArgs e)
         {
-            Stock stockItem = new Stock();
+            stockItem = new Stock();
             stockItem.Quantity = int.Parse(nudQuantity.Value.ToString());
             stockItem.MedicineId = int.Parse(cbMedicines.SelectedValue.ToString());
             bool found = false;

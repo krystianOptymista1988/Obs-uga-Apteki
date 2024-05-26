@@ -3,6 +3,7 @@ using Obsługa_Apteki.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Obsługa_Apteki
@@ -68,7 +69,6 @@ namespace Obsługa_Apteki
 
         private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
-
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
