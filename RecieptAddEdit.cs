@@ -19,7 +19,6 @@ namespace Obsługa_Apteki
         private Reciept _reciept = new Reciept();
         List<Medicine> _medicines;
         List<Patient> _patients;
-        private List<Reciept> reciepts;
         MedicineReciept stockItem;
         private List<MedicineReciept> _stockList = new List<MedicineReciept>();
 
@@ -29,7 +28,6 @@ namespace Obsługa_Apteki
             InitializeComponent();
             LoadMedicinesData();
             LoadPatientsData();
-            DGVColumnSet();
         }
 
         private void LoadMedicinesData()
@@ -91,6 +89,7 @@ namespace Obsługa_Apteki
 
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = _stockList;
+            DGVColumnSet();
         }
 
         private void btnDeleteFromList_Click(object sender, EventArgs e)
@@ -117,18 +116,21 @@ namespace Obsługa_Apteki
 
         private void DGVColumnSet()
         {
-            //if (_stockList != null && _stockList.Count > 0)
-            //{
+            if (_stockList != null && _stockList.Count > 0)
+            {
 
-                //dataGridView1.Columns[nameof(MedicineReciept.MedicineId)].HeaderText = "Id Leku";
-                //dataGridView1.Columns[nameof(MedicineReciept.MedicineId)].DisplayIndex = 0;
-                //dataGridView1.Columns[nameof(MedicineReciept.MedicineName)].HeaderText = "Nazwa leku";
-                //dataGridView1.Columns[nameof(MedicineReciept.MedicineName)].DisplayIndex = 1;
-                //dataGridView1.Columns[nameof(MedicineReciept.Quantity)].HeaderText = "Ilość";
-                //dataGridView1.Columns[nameof(MedicineReciept.Quantity)].DisplayIndex = 2;
-                //dataGridView1.Columns[nameof(MedicineReciept.Reciept)].Visible = false;
-                //dataGridView1.Columns[nameof(MedicineReciept.RecieptId)].Visible = false;
-            //}
+                dataGridView1.Columns[nameof(MedicineReciept.MedicineId)].HeaderText = "Id Leku";
+                dataGridView1.Columns[nameof(MedicineReciept.MedicineId)].DisplayIndex = 0;
+                dataGridView1.Columns[nameof(MedicineReciept.MedicineName)].HeaderText = "Nazwa leku";
+                dataGridView1.Columns[nameof(MedicineReciept.MedicineName)].DisplayIndex = 1;
+                dataGridView1.Columns[nameof(MedicineReciept.Quantity)].HeaderText = "Ilość";
+                dataGridView1.Columns[nameof(MedicineReciept.Quantity)].DisplayIndex = 2;
+                dataGridView1.Columns[nameof(MedicineReciept.Reciept)].Visible = false;
+                dataGridView1.Columns[nameof(MedicineReciept.RecieptId)].Visible = false;
+                dataGridView1.Columns[nameof(MedicineReciept.DoctorFullName)].Visible = false;
+                dataGridView1.Columns[nameof(MedicineReciept.MedicineRecieptId)].Visible = false;
+                dataGridView1.Columns[nameof(MedicineReciept.Medicine)].Visible = false;
+            }
         }
     }
 
