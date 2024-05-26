@@ -51,18 +51,27 @@ namespace Obsługa_Apteki
 
         private void DGVHeadersSet()
         {
-            dataGridView1.Columns[nameof(Reciept.RecieptId)].HeaderText = "ID";
-            dataGridView1.Columns[nameof(Reciept.RecieptId)].DisplayIndex = 0;
-            dataGridView1.Columns[nameof(Reciept.DoctorId)].HeaderText = "Lekarz wystawiający";
-            dataGridView1.Columns[nameof(Reciept.DoctorId)].DisplayIndex = 1;
-            dataGridView1.Columns[nameof(Reciept.DateOfRegistry)].HeaderText = "Data Wystawienia";
-            dataGridView1.Columns[nameof(Reciept.DateOfRegistry)].DisplayIndex = 2;
-            dataGridView1.Columns[nameof(Reciept.DateOfExpire)].HeaderText = "Data Wygaśnięcia";
-            dataGridView1.Columns[nameof(Reciept.DateOfExpire)].DisplayIndex = 3;
-            dataGridView1.Columns[nameof(Reciept.Medicines)].HeaderText = "Leki w recepcie";
-            dataGridView1.Columns[nameof(Reciept.PatientId)].Visible = false;
-            dataGridView1.Columns[nameof(Reciept.Doctor)].Visible = false; ;
-            dataGridView1.Columns[nameof(Reciept.Patient)].HeaderText = "Pacjent";
+            if (reciepts != null)
+            {
+                dataGridView1.Columns[nameof(Reciept.RecieptId)].HeaderText = "ID";
+                dataGridView1.Columns[nameof(Reciept.RecieptId)].DisplayIndex = 0;
+                dataGridView1.Columns[nameof(Reciept.DateOfRegistry)].HeaderText = "Data wydania";
+                dataGridView1.Columns[nameof(Reciept.DateOfRegistry)].DisplayIndex = 1;
+                dataGridView1.Columns[nameof(Reciept.DateOfExpire)].HeaderText = "Data ważności";
+                dataGridView1.Columns[nameof(Reciept.DateOfExpire)].DisplayIndex = 2;
+                dataGridView1.Columns[nameof(Reciept.PatientId)].HeaderText = "Pacjent";
+                dataGridView1.Columns[nameof(Reciept.PatientId)].DisplayIndex = 3;
+                dataGridView1.Columns[nameof(Reciept.DoctorId)].HeaderText = "Lekarz";
+                dataGridView1.Columns[nameof(Reciept.DoctorId)].DisplayIndex = 4;
+                dataGridView1.Columns[nameof(Reciept.AddedMedicines)].HeaderText = "Leki";
+                dataGridView1.Columns[nameof(Reciept.AddedMedicines)].DisplayIndex = 5;
+                dataGridView1.Columns[nameof(Reciept.Doctor)].Visible = false;
+                dataGridView1.Columns[nameof(Reciept.DoctorFullName)].Visible = false;
+                dataGridView1.Columns[nameof(Reciept.Quantity)].Visible = false;
+                dataGridView1.Columns[nameof(Reciept.MedicineReciept)].Visible = false;
+                dataGridView1.Columns[nameof(Reciept.Medicines)].Visible = false;
+                dataGridView1.Columns[nameof(Reciept.Patient)].Visible = false;
+            }
         }
 
         private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
