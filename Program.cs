@@ -33,11 +33,7 @@ namespace Obsługa_Apteki
             {
                 using (var context = new AptekaTestDbContext())
                 {
-                    if (context.Database.Exists())
-                    {
-                        MessageBox.Show("Baza danych istnieje i wszystkie tabele są już utworzone");
-                    }
-                    else
+                    if (!context.Database.Exists())
                     {
                         MessageBox.Show("Baza danych nie istnieje. Tworzenie nowej bazy danych.");
                         context.Database.Create();
