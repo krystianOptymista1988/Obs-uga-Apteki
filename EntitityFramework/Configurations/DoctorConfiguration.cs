@@ -31,6 +31,7 @@ namespace Obsługa_Apteki.Modele.Configurations
 
             Property(c => c.DateOfBirth)
                .HasColumnType("date");
+
         }
     }
 }
