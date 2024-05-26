@@ -20,38 +20,17 @@ namespace Obsługa_Apteki
         List<Medicine> _medicines;
         List<Patient> _patients;
         private List<Reciept> reciepts;
-        Stock stockItem;
+        MedicineReciept stockItem;
+        private List<MedicineReciept> _stockList = new List<MedicineReciept>();
 
-        private List<Stock> _stockList = new List<Stock>();
+
         public RecieptAddEdit()
         {
             InitializeComponent();
             LoadMedicinesData();
-            LoadPatientsData();            
+            LoadPatientsData();
+            DGVColumnSet();
         }
-
-
-        private Reciept CreateReciept()
-        {
-            _reciept.Quantity = int.Parse(nudQuantity.Value.ToString());
-            _reciept.DateOfRegistry = DateTime.Now;
-            _reciept.DateOfExpire = DateTime.Parse(dtpDateOfExpire.Value.ToString());
-            _reciept.Doctor.FullName = tbDoctor.Text;
-            
-            return _reciept;
-        }
-
-        private Reciept CreateReciept(Reciept _reciept)
-        {
-            int recieptID = int.Parse(tbId.Text);
-
-            _reciept.Quantity = int.Parse(nudQuantity.Value.ToString());
-            _reciept.DateOfRegistry = DateTime.Now;
-            _reciept.DateOfExpire = DateTime.Parse(dtpDateOfExpire.Value.ToString());
-            _reciept.Doctor.FullName = tbDoctor.Text;
-            return _reciept;
-        }
-
 
         private void LoadMedicinesData()
         {
@@ -77,15 +56,24 @@ namespace Obsługa_Apteki
 
         private void btnAccept_Click_1(object sender, EventArgs e)
         {
+            _dbAction = new DbActions();
+            _reciept.DateOfRegistry = DateTime.Now;
+            _reciept.DateOfExpire = DateTime.Parse(dtpDateOfExpire.Value.ToString());
+            _reciept.PatientId = int.Parse(cbPatients.SelectedValue.ToString());
+
+            _dbAction.AddRecieptWithMedicines(_reciept, _stockList);
+
+            Close();
         }
 
         private void btnAddToList_Click(object sender, EventArgs e)
         {
-            stockItem = new Stock();
+            stockItem = new MedicineReciept();
             stockItem.Quantity = int.Parse(nudQuantity.Value.ToString());
             stockItem.MedicineId = int.Parse(cbMedicines.SelectedValue.ToString());
+            stockItem.MedicineName = cbMedicines.Text;
             bool found = false;
-            foreach (Stock item in _stockList)
+            foreach (MedicineReciept item in _stockList)
             {
                 if (item.MedicineId == stockItem.MedicineId)
                 {
@@ -110,7 +98,7 @@ namespace Obsługa_Apteki
             if (dataGridView1.SelectedRows.Count > 0)
             {
                 int deleteId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["MedicineId"].Value);
-                foreach (Stock item in _stockList.ToList())
+                foreach (MedicineReciept item in _stockList.ToList())
                 {
                     if (item.MedicineId == deleteId)
                     {
@@ -125,6 +113,22 @@ namespace Obsługa_Apteki
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = _stockList;
 
+        }
+
+        private void DGVColumnSet()
+        {
+            //if (_stockList != null && _stockList.Count > 0)
+            //{
+
+                //dataGridView1.Columns[nameof(MedicineReciept.MedicineId)].HeaderText = "Id Leku";
+                //dataGridView1.Columns[nameof(MedicineReciept.MedicineId)].DisplayIndex = 0;
+                //dataGridView1.Columns[nameof(MedicineReciept.MedicineName)].HeaderText = "Nazwa leku";
+                //dataGridView1.Columns[nameof(MedicineReciept.MedicineName)].DisplayIndex = 1;
+                //dataGridView1.Columns[nameof(MedicineReciept.Quantity)].HeaderText = "Ilość";
+                //dataGridView1.Columns[nameof(MedicineReciept.Quantity)].DisplayIndex = 2;
+                //dataGridView1.Columns[nameof(MedicineReciept.Reciept)].Visible = false;
+                //dataGridView1.Columns[nameof(MedicineReciept.RecieptId)].Visible = false;
+            //}
         }
     }
 

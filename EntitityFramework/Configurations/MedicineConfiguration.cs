@@ -23,9 +23,11 @@ namespace Obsługa_Apteki.Modele.Configurations
                     md.MapLeftKey("MedicineId");     
                     md.MapRightKey("DeliveryId");     
                 });
-           // Has(m => m.MedicineDeliveries)
-          // .WithRequired(md => md.Medicine)
-          // .HasForeignKey(md => md.MedicineId);
+
+            // Has(m => m.MedicineDeliveries)
+            // .WithRequired(md => md.Medicine)
+            // .HasForeignKey(md => md.MedicineId);
+
         }
     }
 }

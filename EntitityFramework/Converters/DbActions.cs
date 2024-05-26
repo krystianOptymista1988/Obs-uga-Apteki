@@ -184,6 +184,21 @@ namespace Obsługa_Apteki.Entities
             _context.SaveChanges();
         }
 
+
+        public void AddRecieptWithMedicines(Reciept reciept, List<MedicineReciept> medicineReciepts)
+        {
+            _context.Set<Reciept>().Add(reciept);
+
+
+            foreach (var medicineInReciept in medicineReciepts)
+            {
+                medicineInReciept.RecieptId = reciept.RecieptId;
+                _context.Set<MedicineReciept>().Add(medicineInReciept);
+                _context.SaveChanges();
+            }
+
+            _context.SaveChanges();
+        }
     }
     
 }

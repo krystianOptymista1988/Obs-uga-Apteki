@@ -43,6 +43,7 @@ namespace Obsługa_Apteki
 
         public int Quantity {  get; set; }
         public List<MedicineDelivery> MedicineDeliveries { get; set; }
+        public List<MedicineReciept> MedicineReciepts { get; set; }
 
     }
 }

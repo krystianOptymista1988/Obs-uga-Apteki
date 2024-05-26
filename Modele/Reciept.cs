@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Obsługa_Apteki.Modele;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -20,11 +21,14 @@ namespace Obsługa_Apteki
         public DateTime DateOfExpire { get; set; }
 
         public int DoctorId { get; set; } // 1 do 1 tzn 1 lekarz może wystawić 1 receptę
+        public string DoctorFullName {  get; set; }
         public Doctor Doctor { get; set; } // 1 do 1
         public int PatientId { get; set; }  // 1 do 1
         public Patient Patient { get; set; } // 1 do 1
 
         public int Quantity { get; set; }
+        public ICollection<MedicineReciept> MedicineReciepts { get; set; }
+        public ICollection<Medicine> AddedMedicines { get; set; }
 
     }
 }

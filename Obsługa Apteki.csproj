@@ -134,9 +134,11 @@
     </Compile>
     <Compile Include="EntitityFramework\Configurations\BillQuantityConfiguration.cs" />
     <Compile Include="EntitityFramework\Configurations\MedicineDeliveryConfiguration.cs" />
+    <Compile Include="EntitityFramework\Configurations\MedicineRecieptConfiguration.cs" />
     <Compile Include="EntitityFramework\Configurations\StockConfiguration.cs" />
     <Compile Include="EntitityFramework\Configurations\QuantityOnMagazineConfiguration.cs" />
     <Compile Include="EntitityFramework\Migrations\Configuration.cs" />
+    <Compile Include="Modele\MedicineReciept.cs" />
     <Compile Include="Migrations\202405231748587_FullStartContext.cs" />
     <Compile Include="Migrations\202405231748587_FullStartContext.Designer.cs">
       <DependentUpon>202405231748587_FullStartContext.cs</DependentUpon>
