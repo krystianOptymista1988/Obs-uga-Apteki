@@ -62,13 +62,6 @@ namespace Obsługa_Apteki.Entities
             }
         }
 
-        public List<Doctor> GetDoctors()
-        {
-            using (var context = _context)
-            {
-                return context.Doctors.ToList();
-            }
-        }
 
         public List<ExpiredDate> GetExpiredDates()
         {

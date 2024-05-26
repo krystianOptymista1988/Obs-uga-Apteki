@@ -48,7 +48,6 @@ namespace Obsługa_Apteki
             dataGridView1.Columns[nameof(Medicine.IsOnReciept)].Visible = false;
             dataGridView1.Columns[nameof(Medicine.ActiveSubstance)].HeaderText = "Substancja Aktywna";
             dataGridView1.Columns[nameof(Medicine.Deliveries)].Visible = false;
-            dataGridView1.Columns[nameof(Medicine.Doctor)].Visible = false;
             dataGridView1.Columns[nameof(Medicine.ExpiredDates)].Visible = false;
             dataGridView1.Columns[nameof(Medicine.Price)].HeaderText = "Cena";
             dataGridView1.Columns[nameof(Medicine.Producent)].HeaderText = "Producent";

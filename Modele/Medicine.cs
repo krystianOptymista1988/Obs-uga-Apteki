@@ -11,7 +11,6 @@ namespace Obsługa_Apteki
         public Medicine()
         {
          Reciepts = new List<Reciept>();
-         Doctor = new List<Doctor>();
          Deliveries = new List<Delivery>();
          ExpiredDates = new List<ExpiredDate>();
          QuantityOnMagazines = new List<QuantityOnMagazine>();
@@ -36,7 +35,6 @@ namespace Obsługa_Apteki
         public bool IsAntibiotique { get; set; }
 
         public bool IsOnReciept { get; set; }
-        public ICollection<Doctor> Doctor { get; set; } // 1 do wielu
         public ICollection<Reciept> Reciepts { get; set; } // 1 do wielu tzn 1 lek może znaleźć się na wielu receptach
         public ICollection<Delivery> Deliveries { get; set; }
         public ICollection<QuantityOnMagazine> QuantityOnMagazines { get; set; }

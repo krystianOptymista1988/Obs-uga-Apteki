@@ -17,7 +17,6 @@ namespace Obsługa_Apteki.Entities
         public DbSet<Bill> Bills { get; set; }
         public DbSet<BillQuantity> BillQuantities { get; set; }
         public DbSet<Delivery> Deliveries { get; set; }
-        public DbSet<Doctor> Doctors { get; set; }
         public DbSet<ExpiredDate> ExpiredDates { get; set; }
         public DbSet<Medicine> Medicines { get; set; }
 
@@ -34,7 +33,6 @@ namespace Obsługa_Apteki.Entities
             modelBuilder.Configurations.Add(new BillConfiguration());
             modelBuilder.Configurations.Add(new BillQuantityConfiguration());
             modelBuilder.Configurations.Add(new DeliveryConfiguration());
-            modelBuilder.Configurations.Add(new DoctorConfiguration());
             modelBuilder.Configurations.Add(new ExpiredDateConfiguration());
             modelBuilder.Configurations.Add(new MedicineConfiguration());
             modelBuilder.Configurations.Add(new PatientConfiguration());

@@ -20,9 +20,7 @@ namespace Obsługa_Apteki
         public DateTime DateOfRegistry { get; set; }
         public DateTime DateOfExpire { get; set; }
 
-        public int DoctorId { get; set; } // 1 do 1 tzn 1 lekarz może wystawić 1 receptę
         public string DoctorFullName {  get; set; }
-        public Doctor Doctor { get; set; } // 1 do 1
         public int PatientId { get; set; }  // 1 do 1
         public Patient Patient { get; set; } // 1 do 1
 

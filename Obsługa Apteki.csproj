@@ -149,7 +149,6 @@
     <Compile Include="EntitityFramework\Converters\DbActions.cs" />
     <Compile Include="EntitityFramework\Configurations\BillConfiguration.cs" />
     <Compile Include="EntitityFramework\Configurations\DeliveryConfiguration.cs" />
-    <Compile Include="EntitityFramework\Configurations\DoctorConfiguration.cs" />
     <Compile Include="EntitityFramework\Configurations\ExpiredDateConfiguration.cs" />
     <Compile Include="EntitityFramework\Configurations\MedicineConfiguration.cs" />
     <Compile Include="EntitityFramework\Configurations\PatientConfiguration.cs" />
@@ -175,7 +174,6 @@
     <Compile Include="DeliveryAddEdit.Designer.cs">
       <DependentUpon>DeliveryAddEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="Modele\Doctor.cs" />
     <Compile Include="MedicineCard.cs">
       <SubType>Form</SubType>
     </Compile>

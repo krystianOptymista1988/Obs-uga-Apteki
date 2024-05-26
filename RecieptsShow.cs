@@ -61,11 +61,8 @@ namespace Obsługa_Apteki
                 dataGridView1.Columns[nameof(Reciept.DateOfExpire)].DisplayIndex = 2;
                 dataGridView1.Columns[nameof(Reciept.PatientId)].HeaderText = "Pacjent";
                 dataGridView1.Columns[nameof(Reciept.PatientId)].DisplayIndex = 3;
-                dataGridView1.Columns[nameof(Reciept.DoctorId)].HeaderText = "Lekarz";
-                dataGridView1.Columns[nameof(Reciept.DoctorId)].DisplayIndex = 4;
                 dataGridView1.Columns[nameof(Reciept.AddedMedicines)].HeaderText = "Leki";
                 dataGridView1.Columns[nameof(Reciept.AddedMedicines)].DisplayIndex = 5;
-                dataGridView1.Columns[nameof(Reciept.Doctor)].Visible = false;
                 dataGridView1.Columns[nameof(Reciept.DoctorFullName)].Visible = false;
                 dataGridView1.Columns[nameof(Reciept.Quantity)].Visible = false;
                 dataGridView1.Columns[nameof(Reciept.MedicineReciept)].Visible = false;

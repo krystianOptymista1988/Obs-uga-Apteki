@@ -59,7 +59,7 @@ namespace Obsługa_Apteki
             _reciept.DateOfRegistry = DateTime.Now;
             _reciept.DateOfExpire = DateTime.Parse(dtpDateOfExpire.Value.ToString());
             _reciept.PatientId = int.Parse(cbPatients.SelectedValue.ToString());
-            _reciept.DoctorFullName = tbDoctor.Text;
+            
             _dbAction.AddRecieptWithMedicines(_reciept, _stockList);
 
             Close();
@@ -134,6 +134,7 @@ namespace Obsługa_Apteki
                 dataGridView1.Columns[nameof(MedicineReciept.Medicine)].Visible = false;
             }
         }
+
     }
 
 }

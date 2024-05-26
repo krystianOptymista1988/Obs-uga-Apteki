@@ -57,20 +57,7 @@ namespace Obsługa_Apteki.Models
         public int PharmaceutId { get; set; }
 
     }
-    public class Doctor
-    {
-        [Key]
-        public int DoctorId { get; set; }
-        public string Name { get; set; }
-        public string Surname { get; set; }
-        public DateTime DateOfBirth { get; set; }
 
-        public string PESEL { get; set; }
-        public string Mobile { get; set; }
-
-        public string Adress { get; set; }
-        public string PostalCode { get; set; }
-    }
     public class Medicine
     {
         [Key]
