@@ -70,6 +70,7 @@ namespace Obsługa_Apteki
             stockItem.Quantity = int.Parse(nudQuantity.Value.ToString());
             stockItem.MedicineId = int.Parse(cbMedicines.SelectedValue.ToString());
             stockItem.MedicineName = cbMedicines.Text;
+
             bool found = false;
             foreach (MedicineReciept item in _stockList)
             {

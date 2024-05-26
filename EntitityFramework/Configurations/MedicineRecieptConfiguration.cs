@@ -16,11 +16,11 @@ namespace Obsługa_Apteki.EntitityFramework.Configurations
             HasKey(m => m.MedicineRecieptId);
 
             HasRequired(a => a.Reciept)
-                .WithMany(d => d.MedicineReciepts)
+                .WithMany(d => d.MedicineReciept)
                 .HasForeignKey(fk => fk.RecieptId);
 
             HasRequired(m => m.Medicine)
-                .WithMany(m => m.MedicineReciepts)
+                .WithMany(m => m.MedicineReciept)
                 .HasForeignKey(fk => fk.MedicineId);
         }
     }

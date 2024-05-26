@@ -27,7 +27,7 @@ namespace Obsługa_Apteki
         public Patient Patient { get; set; } // 1 do 1
 
         public int Quantity { get; set; }
-        public ICollection<MedicineReciept> MedicineReciepts { get; set; }
+        public ICollection<MedicineReciept> MedicineReciept { get; set; }
         public ICollection<Medicine> AddedMedicines { get; set; }
 
     }

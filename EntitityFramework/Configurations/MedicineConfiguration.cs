@@ -19,11 +19,18 @@ namespace Obsługa_Apteki.Modele.Configurations
                 .WithMany(d => d.OrderedMedicines)
                 .Map(md =>
                 {
-                    md.ToTable("MedicineDeliveries"); 
-                    md.MapLeftKey("MedicineId");     
-                    md.MapRightKey("DeliveryId");     
+                    md.ToTable("MedicineDeliveries");
+                    md.MapLeftKey("MedicineId");
+                    md.MapRightKey("DeliveryId");
                 });
-
+            HasMany(m => m.Reciepts)
+                .WithMany(d => d.AddedMedicines)
+                .Map(md =>
+                {
+                    md.ToTable("MedicineReciepts");
+                    md.MapLeftKey("MedicineId");
+                    md.MapRightKey("RecieptId");
+                });
             // Has(m => m.MedicineDeliveries)
             // .WithRequired(md => md.Medicine)
             // .HasForeignKey(md => md.MedicineId);
