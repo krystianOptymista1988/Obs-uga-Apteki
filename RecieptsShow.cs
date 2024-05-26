@@ -26,6 +26,7 @@ namespace Obsługa_Apteki
         {
             var RecieptAddEdit = new RecieptAddEdit();
             RecieptAddEdit.ShowDialog();
+            DataLoad();
         }
 
         private void DataLoad()
