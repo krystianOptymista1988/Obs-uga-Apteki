@@ -19,5 +19,7 @@ namespace Obsługa_Apteki
 
         public string FullName => $"{Name} {Surname}";
 
+        public string password { get; set; }
+
     }
 }

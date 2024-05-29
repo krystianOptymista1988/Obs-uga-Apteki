@@ -47,6 +47,7 @@ namespace Obsługa_Apteki
             pharmaceut.Salary= int.Parse(nmSallary.Value.ToString());
             pharmaceut.DateOfHire = DateTime.Parse(dtpHire.Value.ToString());
             pharmaceut.Comment = tbComment.Text;
+            pharmaceut.password = tbPassword.Text;
            // pharmaceut.Patients = new List<Patient>();
             return pharmaceut;
         }

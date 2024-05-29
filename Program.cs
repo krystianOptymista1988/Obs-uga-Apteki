@@ -25,7 +25,7 @@ namespace Obsługa_Apteki
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Main());
+            Application.Run(new LoginPanel());
         }
         public static class DbContextTester
         {

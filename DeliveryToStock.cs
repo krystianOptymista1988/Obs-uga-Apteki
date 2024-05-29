@@ -18,7 +18,7 @@ namespace Obsługa_Apteki
         private AptekaTestDbContext _context = new AptekaTestDbContext();
         private List<Delivery> _deliveries;
         private List<MedicineDelivery> _medicineDelivery;
-        private Stock _addStock;
+        //private Stock _addStock;
         public DeliveryToStock()
         {
             InitializeComponent();

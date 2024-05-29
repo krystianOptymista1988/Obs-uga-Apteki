@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Obsługa_Apteki
 {
@@ -7,10 +8,32 @@ namespace Obsługa_Apteki
     {
 
 
+        private LoginPanel loginPanel = new LoginPanel();
+
+        public bool LogOn { get; set; } = false;
+
         public Main()
         {
 
+         
+
             InitializeComponent();
+            if (LogOn == true) 
+            { 
+                InitializeComponents();
+            }
+            this.FormClosed += new FormClosedEventHandler(Main_FormClosed);
+
+
+        }
+
+        private void Main_FormClosed(object sender, FormClosedEventArgs e)
+        {
+           
+            Application.Exit();
+        }
+        private void InitializeComponents()
+        {
             toolTip1.SetToolTip(btnDelivery, "Tutaj zamówisz leki na magazyn");
             toolTip1.SetToolTip(btnMedicines, "Sprawdź wszystkie leki w twojej aptece");
             toolTip1.SetToolTip(btnPatient, "Zarządzaj pacjentami apteki w jednym miejscu");
@@ -20,10 +43,7 @@ namespace Obsługa_Apteki
             toolTip1.SetToolTip(btnPharmaceuts, "Zarządzaj pracownikami Apteki");
             toolTip1.SetToolTip(btnSupport, "Informacje o autorach oraz kontakt");
 
-            
-
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
 
