@@ -46,11 +46,12 @@
             // 
             this.dgvDeliveryDetails.BackgroundColor = System.Drawing.Color.White;
             this.dgvDeliveryDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDeliveryDetails.Location = new System.Drawing.Point(607, 66);
+            this.dgvDeliveryDetails.Location = new System.Drawing.Point(405, 43);
+            this.dgvDeliveryDetails.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgvDeliveryDetails.Name = "dgvDeliveryDetails";
             this.dgvDeliveryDetails.RowHeadersWidth = 62;
             this.dgvDeliveryDetails.RowTemplate.Height = 28;
-            this.dgvDeliveryDetails.Size = new System.Drawing.Size(477, 745);
+            this.dgvDeliveryDetails.Size = new System.Drawing.Size(318, 484);
             this.dgvDeliveryDetails.TabIndex = 0;
             // 
             // dgvDeliveryStock
@@ -58,22 +59,27 @@
             this.dgvDeliveryStock.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDeliveryStock.BackgroundColor = System.Drawing.Color.White;
             this.dgvDeliveryStock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDeliveryStock.Location = new System.Drawing.Point(35, 79);
+            this.dgvDeliveryStock.Location = new System.Drawing.Point(23, 51);
+            this.dgvDeliveryStock.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgvDeliveryStock.Name = "dgvDeliveryStock";
             this.dgvDeliveryStock.RowHeadersWidth = 62;
             this.dgvDeliveryStock.RowTemplate.Height = 28;
-            this.dgvDeliveryStock.Size = new System.Drawing.Size(477, 213);
+            this.dgvDeliveryStock.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvDeliveryStock.Size = new System.Drawing.Size(318, 138);
             this.dgvDeliveryStock.TabIndex = 1;
             // 
             // dgvDelivryInFuture
             // 
+            this.dgvDelivryInFuture.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDelivryInFuture.BackgroundColor = System.Drawing.Color.White;
             this.dgvDelivryInFuture.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDelivryInFuture.Location = new System.Drawing.Point(35, 465);
+            this.dgvDelivryInFuture.Location = new System.Drawing.Point(23, 302);
+            this.dgvDelivryInFuture.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgvDelivryInFuture.Name = "dgvDelivryInFuture";
             this.dgvDelivryInFuture.RowHeadersWidth = 62;
             this.dgvDelivryInFuture.RowTemplate.Height = 28;
-            this.dgvDelivryInFuture.Size = new System.Drawing.Size(477, 227);
+            this.dgvDelivryInFuture.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvDelivryInFuture.Size = new System.Drawing.Size(318, 148);
             this.dgvDelivryInFuture.TabIndex = 2;
             // 
             // btnShow
@@ -82,10 +88,9 @@
             this.btnShow.BackColor = System.Drawing.Color.LemonChiffon;
             this.btnShow.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnShow.Image = ((System.Drawing.Image)(resources.GetObject("btnShow.Image")));
-            this.btnShow.Location = new System.Drawing.Point(53, 341);
-            this.btnShow.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnShow.Location = new System.Drawing.Point(35, 222);
             this.btnShow.Name = "btnShow";
-            this.btnShow.Size = new System.Drawing.Size(190, 49);
+            this.btnShow.Size = new System.Drawing.Size(127, 32);
             this.btnShow.TabIndex = 5;
             this.btnShow.Text = "Pokaż";
             this.btnShow.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -97,10 +102,9 @@
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.Location = new System.Drawing.Point(300, 341);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button2.Location = new System.Drawing.Point(200, 222);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(190, 49);
+            this.button2.Size = new System.Drawing.Size(127, 32);
             this.button2.TabIndex = 4;
             this.button2.Text = "Dodaj";
             this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -112,10 +116,9 @@
             this.btnShowOrdered.BackColor = System.Drawing.Color.LemonChiffon;
             this.btnShowOrdered.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnShowOrdered.Image = ((System.Drawing.Image)(resources.GetObject("btnShowOrdered.Image")));
-            this.btnShowOrdered.Location = new System.Drawing.Point(171, 722);
-            this.btnShowOrdered.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnShowOrdered.Location = new System.Drawing.Point(114, 469);
             this.btnShowOrdered.Name = "btnShowOrdered";
-            this.btnShowOrdered.Size = new System.Drawing.Size(190, 49);
+            this.btnShowOrdered.Size = new System.Drawing.Size(127, 32);
             this.btnShowOrdered.TabIndex = 6;
             this.btnShowOrdered.Text = "Pokaż";
             this.btnShowOrdered.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -126,9 +129,10 @@
             this.lbDeliveryInFuture.AutoSize = true;
             this.lbDeliveryInFuture.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.lbDeliveryInFuture.ForeColor = System.Drawing.Color.DarkRed;
-            this.lbDeliveryInFuture.Location = new System.Drawing.Point(155, 420);
+            this.lbDeliveryInFuture.Location = new System.Drawing.Point(103, 273);
+            this.lbDeliveryInFuture.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbDeliveryInFuture.Name = "lbDeliveryInFuture";
-            this.lbDeliveryInFuture.Size = new System.Drawing.Size(239, 29);
+            this.lbDeliveryInFuture.Size = new System.Drawing.Size(163, 20);
             this.lbDeliveryInFuture.TabIndex = 7;
             this.lbDeliveryInFuture.Text = "Najbliższe Dostawy";
             // 
@@ -137,18 +141,19 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label1.ForeColor = System.Drawing.Color.DarkRed;
-            this.label1.Location = new System.Drawing.Point(140, 25);
+            this.label1.Location = new System.Drawing.Point(93, 16);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(277, 29);
+            this.label1.Size = new System.Drawing.Size(192, 20);
             this.label1.TabIndex = 8;
             this.label1.Text = "Dostawy na magazynie";
             // 
             // DeliveryToStock
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1117, 863);
+            this.ClientSize = new System.Drawing.Size(745, 561);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lbDeliveryInFuture);
             this.Controls.Add(this.btnShowOrdered);
@@ -157,6 +162,7 @@
             this.Controls.Add(this.dgvDelivryInFuture);
             this.Controls.Add(this.dgvDeliveryStock);
             this.Controls.Add(this.dgvDeliveryDetails);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "DeliveryToStock";
             this.Text = "DeliveryToStock";
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeliveryDetails)).EndInit();

@@ -8,7 +8,7 @@ namespace Obsługa_Apteki
     {
 
 
-        private LoginPanel loginPanel = new LoginPanel();
+       // private LoginPanel loginPanel = new LoginPanel();
 
         public bool LogOn { get; set; } = false;
 
@@ -18,10 +18,8 @@ namespace Obsługa_Apteki
          
 
             InitializeComponent();
-            if (LogOn == true) 
-            { 
-                InitializeComponents();
-            }
+            InitializeComponents();
+            
             this.FormClosed += new FormClosedEventHandler(Main_FormClosed);
 
 

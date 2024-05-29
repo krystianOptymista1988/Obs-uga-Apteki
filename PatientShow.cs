@@ -182,5 +182,10 @@ namespace Obsługa_Apteki
         {
 
         }
+
+        private void btnDeletePatient_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

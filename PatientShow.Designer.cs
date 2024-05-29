@@ -55,7 +55,7 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.ShowCellToolTips = false;
             this.dataGridView1.ShowEditingIcon = false;
-            this.dataGridView1.Size = new System.Drawing.Size(1141, 529);
+            this.dataGridView1.Size = new System.Drawing.Size(953, 408);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
             // 
@@ -65,13 +65,14 @@
             this.btnDeletePatient.BackColor = System.Drawing.Color.MistyRose;
             this.btnDeletePatient.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnDeletePatient.Image = ((System.Drawing.Image)(resources.GetObject("btnDeletePatient.Image")));
-            this.btnDeletePatient.Location = new System.Drawing.Point(1077, 619);
+            this.btnDeletePatient.Location = new System.Drawing.Point(889, 517);
             this.btnDeletePatient.Name = "btnDeletePatient";
             this.btnDeletePatient.Size = new System.Drawing.Size(99, 40);
             this.btnDeletePatient.TabIndex = 1;
             this.btnDeletePatient.Text = "Usuń";
             this.btnDeletePatient.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnDeletePatient.UseVisualStyleBackColor = false;
+            this.btnDeletePatient.Click += new System.EventHandler(this.btnDeletePatient_Click);
             // 
             // btnEditPatient
             // 
@@ -79,7 +80,7 @@
             this.btnEditPatient.BackColor = System.Drawing.Color.LightYellow;
             this.btnEditPatient.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnEditPatient.Image = ((System.Drawing.Image)(resources.GetObject("btnEditPatient.Image")));
-            this.btnEditPatient.Location = new System.Drawing.Point(943, 619);
+            this.btnEditPatient.Location = new System.Drawing.Point(733, 517);
             this.btnEditPatient.Name = "btnEditPatient";
             this.btnEditPatient.Size = new System.Drawing.Size(99, 40);
             this.btnEditPatient.TabIndex = 2;
@@ -108,7 +109,7 @@
             this.btnAddPatient.BackColor = System.Drawing.Color.Honeydew;
             this.btnAddPatient.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnAddPatient.Image = ((System.Drawing.Image)(resources.GetObject("btnAddPatient.Image")));
-            this.btnAddPatient.Location = new System.Drawing.Point(795, 621);
+            this.btnAddPatient.Location = new System.Drawing.Point(559, 519);
             this.btnAddPatient.Name = "btnAddPatient";
             this.btnAddPatient.Size = new System.Drawing.Size(110, 38);
             this.btnAddPatient.TabIndex = 5;
@@ -162,7 +163,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(913, 487);
+            this.ClientSize = new System.Drawing.Size(1056, 599);
             this.Controls.Add(this.lblSearchValue);
             this.Controls.Add(this.cbCategory);
             this.Controls.Add(this.lblCategory);

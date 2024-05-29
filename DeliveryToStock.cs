@@ -23,6 +23,7 @@ namespace Obsługa_Apteki
         {
             InitializeComponent();
             LoadDGVDeliveries();
+            DGVHeadersSet();
         }
 
         private void LoadDGVDeliveries()
@@ -46,5 +47,33 @@ namespace Obsługa_Apteki
             dgvDeliveryStock.DataSource = deliveriesInMagazine;
             dgvDelivryInFuture.DataSource = deliveryInFuture;
         }
+
+        private void DGVHeadersSet()
+        {
+            dgvDeliveryStock.Columns[nameof(Delivery.DeliveryId)].HeaderText = "ID";
+            dgvDeliveryStock.Columns[nameof(Delivery.DeliveryId)].DisplayIndex = 0;
+            dgvDeliveryStock.Columns[nameof(Delivery.DateOfCreate)].DisplayIndex = 1;
+            dgvDeliveryStock.Columns[nameof(Delivery.DateOfCreate)].HeaderText = "Data zamówienia";
+            dgvDeliveryStock.Columns[nameof(Delivery.DateOfDelivery)].DisplayIndex = 2;
+            dgvDeliveryStock.Columns[nameof(Delivery.DateOfDelivery)].HeaderText = "Data Dostawy";
+            dgvDeliveryStock.Columns[nameof(Delivery.Value)].HeaderText = "Wartość";
+            dgvDeliveryStock.Columns[nameof(Delivery.PharmaceutOrdering)].HeaderText = "Zamawiający";
+            dgvDeliveryStock.Columns[nameof(Delivery.ExpiredDates)].Visible = false;
+            dgvDeliveryStock.Columns[nameof(Delivery.MedicineDeliveries)].Visible = false;
+            dgvDeliveryStock.Columns[nameof(Delivery.OrderedMedicines)].Visible = false;
+
+            dgvDelivryInFuture.Columns[nameof(Delivery.DeliveryId)].HeaderText = "ID";
+            dgvDelivryInFuture.Columns[nameof(Delivery.DeliveryId)].DisplayIndex = 0;
+            dgvDelivryInFuture.Columns[nameof(Delivery.DateOfCreate)].DisplayIndex = 1;
+            dgvDelivryInFuture.Columns[nameof(Delivery.DateOfCreate)].HeaderText = "Data zamówienia";
+            dgvDelivryInFuture.Columns[nameof(Delivery.DateOfDelivery)].DisplayIndex = 2;
+            dgvDelivryInFuture.Columns[nameof(Delivery.DateOfDelivery)].HeaderText = "Data Dostawy";
+            dgvDelivryInFuture.Columns[nameof(Delivery.Value)].HeaderText = "Wartość";
+            dgvDelivryInFuture.Columns[nameof(Delivery.PharmaceutOrdering)].HeaderText = "Zamawiający";
+            dgvDelivryInFuture.Columns[nameof(Delivery.ExpiredDates)].Visible = false;
+            dgvDelivryInFuture.Columns[nameof(Delivery.MedicineDeliveries)].Visible = false;
+            dgvDelivryInFuture.Columns[nameof(Delivery.OrderedMedicines)].Visible = false;
+        }
+
     }
 }
