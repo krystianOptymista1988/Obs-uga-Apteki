@@ -192,6 +192,14 @@ namespace Obsługa_Apteki.Entities
 
             _context.SaveChanges();
         }
+
+        public List<MedicineDelivery> GetMedicineDeliveries()
+        {
+            using (var context = _context)
+            {
+                return context.MedicineDeliveries.ToList();
+            }
+        }
     }
     
 }

@@ -9,7 +9,7 @@ namespace Obsługa_Apteki.Entities
 {
     public class AptekaTestDbContext : DbContext
     {
-      
+
         public AptekaTestDbContext()
             : base("name=AptekaTestDbContext.cs")
         {
@@ -23,9 +23,11 @@ namespace Obsługa_Apteki.Entities
         public DbSet<Patient> Patients { get; set; }
         public DbSet<Pharmaceut> Pharmaceuts { get; set; }
         public DbSet<QuantityOnMagazine> QuantitiesOnMagazine { get; set; }
-        public DbSet<Reciept> Reciepts{ get;set; }
+        public DbSet<Reciept> Reciepts { get; set; }
 
         public DbSet<Stock> Stocks { get; set; }
+
+        public DbSet<MedicineDelivery> MedicineDeliveries {get; set;}
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -40,6 +42,7 @@ namespace Obsługa_Apteki.Entities
             modelBuilder.Configurations.Add(new QuantityOnMagazineConfiguration());
             modelBuilder.Configurations.Add(new ReicieptConfiguration());
             modelBuilder.Configurations.Add(new StockConfiguration());
+          //  modelBuilder.Configurations.Add(new MedicineDeliveryConfiguration());   
         }
 
     }

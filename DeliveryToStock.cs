@@ -75,5 +75,23 @@ namespace Obsługa_Apteki
             dgvDelivryInFuture.Columns[nameof(Delivery.OrderedMedicines)].Visible = false;
         }
 
+        private void btnShow_Click(object sender, EventArgs e)
+        {
+            if (dgvDeliveryStock.SelectedRows.Count > 0)
+            {
+                int deliveryId = Convert.ToInt32(dgvDeliveryStock.SelectedRows[0].Cells["DeliveryId"].Value);
+                _medicineDelivery = _dbAction.GetMedicineDeliveries();
+                List<MedicineDelivery> medicines = new List<MedicineDelivery>();
+                foreach (MedicineDelivery medicinesIn in medicines)
+                {
+                   // if(medi)
+                }
+                
+            }
+            else
+            {
+                MessageBox.Show("Proszę zaznaczyć dostawę do wyświetlenia.");
+            }
+        }
     }
 }
