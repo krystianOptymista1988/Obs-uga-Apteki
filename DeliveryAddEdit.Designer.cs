@@ -83,6 +83,7 @@
             this.dgvMedicinesDelivery.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMedicinesDelivery.Location = new System.Drawing.Point(26, 116);
             this.dgvMedicinesDelivery.Name = "dgvMedicinesDelivery";
+            this.dgvMedicinesDelivery.RowHeadersVisible = false;
             this.dgvMedicinesDelivery.RowHeadersWidth = 62;
             this.dgvMedicinesDelivery.Size = new System.Drawing.Size(705, 246);
             this.dgvMedicinesDelivery.TabIndex = 2;

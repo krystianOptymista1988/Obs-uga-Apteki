@@ -1,4 +1,5 @@
 ﻿using Obsługa_Apteki.Entities;
+using Obsługa_Apteki.Modele;
 using Obsługa_Apteki.Models;
 using Org.BouncyCastle.Asn1.Cmp;
 using System;
@@ -14,7 +15,7 @@ namespace Obsługa_Apteki
         private DbActions _dbAction = new DbActions();
         private AptekaTestDbContext _context = new AptekaTestDbContext();
         private List<Medicine> medicines;
-
+        private List<MedicineDelivery> _medicinedelivery;
         public MedicineWarehouse()
         {
             InitializeComponent();
@@ -55,9 +56,13 @@ namespace Obsługa_Apteki
             dataGridView1.Columns[nameof(Medicine.PercentageOfRefunding)].Visible = false;
             dataGridView1.Columns[nameof(Medicine.PriceAfterRefunding)].HeaderText = "Cena NFZ";
             dataGridView1.Columns[nameof(Medicine.QuantityInPackage)].HeaderText = "Ilość w Op";
-            dataGridView1.Columns[nameof(Medicine.QuantityOnMagazines)].HeaderText = "Na Magazynie";
+            dataGridView1.Columns[nameof(Medicine.QuantityOnMagazines)].Visible = false; 
             dataGridView1.Columns[nameof(Medicine.IsAntibiotique)].Visible = false;
             dataGridView1.Columns[nameof(Medicine.Reciepts)].Visible = false;
+            dataGridView1.Columns[nameof(Medicine.PriceOfBuy)].Visible = false;
+            dataGridView1.Columns[nameof(Medicine.PriceMarge)].Visible = false;
+            dataGridView1.Columns[nameof(Medicine.Quantity)].HeaderText = "Na Magazynie";
+
 
 
 
@@ -67,7 +72,19 @@ namespace Obsługa_Apteki
         {
             dataGridView1.Rows.Clear();
             
+            _medicinedelivery = _dbAction.GetMedicineDeliveries();
             medicines = _dbAction.GetMedicines();
+
+            foreach (var medicine in medicines)
+            {
+                foreach (var m in _medicinedelivery)
+                {
+                    if (medicine.MedicineId == m.MedicineId)
+                    {
+                        medicine.Quantity += m.Quantity;
+                    }
+                }
+            }
             dataGridView1.DataSource = medicines;  
         }
 
@@ -135,6 +152,8 @@ namespace Obsługa_Apteki
         private void DataLoad()
         {
             medicines = _dbAction.GetMedicines();
+            _medicinedelivery = _dbAction.GetMedicineDeliveries();
+
 
             if (medicines == null || medicines.Count == 0)
             {
@@ -148,6 +167,7 @@ namespace Obsługa_Apteki
             }
             else
             {
+             
                 dataGridView1.DataSource = medicines;
             }
         }

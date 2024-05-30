@@ -120,6 +120,7 @@ namespace Obsługa_Apteki.Entities
 
         public void AddToStock(Delivery delivery)
         {
+            _context = new AptekaTestDbContext();
             foreach (var medicine in delivery.OrderedMedicines)
             {
                 
@@ -162,6 +163,22 @@ namespace Obsługa_Apteki.Entities
             _context.SaveChanges();
         }
 
+        public void RemoveDelivery(Delivery delivery)
+        {
+            _context = new AptekaTestDbContext();
+                var existingDelivery = _context.Deliveries.SingleOrDefault(p => p.DeliveryId == delivery.DeliveryId);
+                if (existingDelivery != null)
+                {
+                _context.Deliveries.Remove(existingDelivery);
+                }
+                else
+                {
+                    MessageBox.Show("Brak wystarczającej ilości leku na magazynie");
+                }
+            
+            _context.SaveChanges();
+        }
+
         public void AddDeliveryWithMedicines(Delivery delivery, List<MedicineDelivery> medicineDeliveries)
         {
             _context.Set<Delivery>().Add(delivery);
@@ -195,6 +212,7 @@ namespace Obsługa_Apteki.Entities
 
         public List<MedicineDelivery> GetMedicineDeliveries()
         {
+           AptekaTestDbContext _context = new AptekaTestDbContext();
             using (var context = _context)
             {
                 return context.MedicineDeliveries.ToList();
