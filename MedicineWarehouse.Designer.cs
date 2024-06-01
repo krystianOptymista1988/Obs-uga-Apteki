@@ -187,6 +187,7 @@
             this.MinimumSize = new System.Drawing.Size(829, 492);
             this.Name = "MedicineWarehouse";
             this.Text = "Magazyn";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Warehouse_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

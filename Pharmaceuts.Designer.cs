@@ -109,6 +109,7 @@
             this.MinimumSize = new System.Drawing.Size(826, 517);
             this.Name = "Pharmaceuts";
             this.Text = "Farmaceuci";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
