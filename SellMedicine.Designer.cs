@@ -217,9 +217,9 @@
             // textBox4
             // 
             this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBox4.Location = new System.Drawing.Point(728, 989);
+            this.textBox4.Location = new System.Drawing.Point(701, 989);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(234, 35);
+            this.textBox4.Size = new System.Drawing.Size(276, 35);
             this.textBox4.TabIndex = 15;
             // 
             // comboBox1
