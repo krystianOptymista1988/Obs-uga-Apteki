@@ -178,6 +178,7 @@
             this.MinimumSize = new System.Drawing.Size(915, 492);
             this.Name = "PatientShow";
             this.Text = "Zarządzanie Pacjentami";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

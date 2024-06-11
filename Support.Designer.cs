@@ -175,6 +175,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Support";
             this.Text = "Support";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.groupBoxPhone.ResumeLayout(false);
             this.groupBoxPhone.PerformLayout();
             this.groupBoxMail.ResumeLayout(false);

@@ -134,6 +134,7 @@
             this.MinimumSize = new System.Drawing.Size(667, 487);
             this.Name = "RecieptsShow";
             this.Text = "RecieptsShow";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

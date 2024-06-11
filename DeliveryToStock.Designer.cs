@@ -188,6 +188,7 @@
             this.MinimumSize = new System.Drawing.Size(950, 595);
             this.Name = "DeliveryToStock";
             this.Text = "DeliveryToStock";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeliveryDetails)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeliveryStock)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDelivryInFuture)).EndInit();
