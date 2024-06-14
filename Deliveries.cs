@@ -45,6 +45,29 @@ namespace Obsługa_Apteki
 
         private void button3_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (dataGridView1.CurrentRow != null)
+                {
+                    string deliveryId = (string)dataGridView1.CurrentRow.Cells["DeliveryId"].Value;
+                    using (var _context = _dbAction.GetContext())
+                    {
+                        DeliveryAddEdit editForm = new DeliveryAddEdit(deliveryId, _context);
+                        if (editForm.ShowDialog() == DialogResult.OK)
+                        {
+                            DataLoad();
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Wybierz pacjenta do edycji.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Błąd podczas edycji pacjenta: " + ex.Message);
+            }
             var deliveryAddEdit = new DeliveryAddEdit();
             deliveryAddEdit.ShowDialog();
            DataLoad();
