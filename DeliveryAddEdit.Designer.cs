@@ -85,6 +85,7 @@
             this.dgvMedicinesDelivery.Name = "dgvMedicinesDelivery";
             this.dgvMedicinesDelivery.RowHeadersVisible = false;
             this.dgvMedicinesDelivery.RowHeadersWidth = 62;
+            this.dgvMedicinesDelivery.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMedicinesDelivery.Size = new System.Drawing.Size(705, 246);
             this.dgvMedicinesDelivery.TabIndex = 2;
             this.dgvMedicinesDelivery.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
@@ -146,7 +147,7 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(469, 453);
+            this.dateTimePicker1.Location = new System.Drawing.Point(480, 451);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(170, 23);
             this.dateTimePicker1.TabIndex = 8;
@@ -164,7 +165,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label3.Location = new System.Drawing.Point(367, 452);
+            this.label3.Location = new System.Drawing.Point(367, 454);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(107, 17);
             this.label3.TabIndex = 10;
@@ -175,7 +176,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label4.Location = new System.Drawing.Point(122, 452);
+            this.label4.Location = new System.Drawing.Point(113, 454);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(100, 17);
             this.label4.TabIndex = 11;

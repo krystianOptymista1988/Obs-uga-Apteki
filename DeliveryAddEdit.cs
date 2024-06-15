@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace Obsługa_Apteki
 {
@@ -17,6 +18,7 @@ namespace Obsługa_Apteki
         private List<Pharmaceut> _pharmaceuts = new List<Pharmaceut>();  
         private Delivery _delivery = new Delivery();
         private double deliveryCost;
+        private string deliveryID;
         
         public DeliveryAddEdit()
         {
@@ -24,6 +26,16 @@ namespace Obsługa_Apteki
             ComboboxDataLoad();
             LoadComboboxData();
            //DGVColumSet();    Coś mi się tu krzaczyło :(
+        }
+
+        public DeliveryAddEdit(string deliveryId,AptekaTestDbContext _context1 )
+        {
+            InitializeComponent();
+            ComboboxDataLoad();
+            LoadComboboxData();
+            deliveryID = deliveryId;
+            _context = _context1;
+
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -172,6 +184,30 @@ namespace Obsługa_Apteki
             _dbAction.AddDeliveryWithMedicines(_delivery, _deliveryList);
 
             Close();
+        }
+
+        private void GetDeliveryData()
+        {
+            var _context = _dbAction.GetContext();
+            int deliveryID2 = int.Parse(deliveryID);
+            if (deliveryID2 != 0)
+            {
+                Text = "Edytowanie danych Pacjenta";
+                _delivery = _context.Deliveries.FirstOrDefault(x => x.DeliveryId == deliveryID2);
+
+                if (_delivery == null)
+                {
+                    throw new Exception("Brak dostawy o podanym Id");
+                }
+
+                FillTextBoxes();
+            }
+        }
+
+        private void FillTextBoxes()
+        {
+            
+
         }
     }
     
