@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RecieptAddEdit));
-            this.tbId = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.lblPatient = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.lblDoctor = new System.Windows.Forms.Label();
@@ -49,25 +47,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudQuantity)).BeginInit();
             this.SuspendLayout();
-            // 
-            // tbId
-            // 
-            this.tbId.Enabled = false;
-            this.tbId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.tbId.Location = new System.Drawing.Point(71, 25);
-            this.tbId.Name = "tbId";
-            this.tbId.Size = new System.Drawing.Size(57, 21);
-            this.tbId.TabIndex = 31;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(47, 27);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(19, 15);
-            this.label1.TabIndex = 30;
-            this.label1.Text = "ID";
             // 
             // lblPatient
             // 
@@ -142,7 +121,7 @@
             // 
             this.lblQuantity.AutoSize = true;
             this.lblQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblQuantity.Location = new System.Drawing.Point(450, 31);
+            this.lblQuantity.Location = new System.Drawing.Point(428, 27);
             this.lblQuantity.Name = "lblQuantity";
             this.lblQuantity.Size = new System.Drawing.Size(106, 15);
             this.lblQuantity.TabIndex = 47;
@@ -152,7 +131,7 @@
             // 
             this.lblMedicine.AutoSize = true;
             this.lblMedicine.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblMedicine.Location = new System.Drawing.Point(169, 28);
+            this.lblMedicine.Location = new System.Drawing.Point(137, 28);
             this.lblMedicine.Name = "lblMedicine";
             this.lblMedicine.Size = new System.Drawing.Size(30, 15);
             this.lblMedicine.TabIndex = 46;
@@ -161,7 +140,7 @@
             // nudQuantity
             // 
             this.nudQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.nudQuantity.Location = new System.Drawing.Point(582, 27);
+            this.nudQuantity.Location = new System.Drawing.Point(547, 25);
             this.nudQuantity.Name = "nudQuantity";
             this.nudQuantity.Size = new System.Drawing.Size(73, 21);
             this.nudQuantity.TabIndex = 45;
@@ -184,7 +163,7 @@
             // 
             this.cbMedicines.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.cbMedicines.FormattingEnabled = true;
-            this.cbMedicines.Location = new System.Drawing.Point(216, 25);
+            this.cbMedicines.Location = new System.Drawing.Point(186, 25);
             this.cbMedicines.Name = "cbMedicines";
             this.cbMedicines.Size = new System.Drawing.Size(163, 23);
             this.cbMedicines.TabIndex = 43;
@@ -248,8 +227,6 @@
             this.Controls.Add(this.lblDoctor);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.lblPatient);
-            this.Controls.Add(this.tbId);
-            this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "RecieptAddEdit";
             this.Text = "RecieptAddEdit";
@@ -262,9 +239,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox tbId;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblPatient;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label lblDoctor;

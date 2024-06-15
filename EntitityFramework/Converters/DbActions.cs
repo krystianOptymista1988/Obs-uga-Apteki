@@ -210,6 +210,8 @@ namespace Obsługa_Apteki.Entities
             _context.SaveChanges();
         }
 
+
+
         public List<MedicineDelivery> GetMedicineDeliveries()
         {
            AptekaTestDbContext _context = new AptekaTestDbContext();

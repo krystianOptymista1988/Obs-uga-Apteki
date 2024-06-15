@@ -3,6 +3,7 @@ using Obsługa_Apteki.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -76,19 +77,42 @@ namespace Obsługa_Apteki
             }
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                int deleteId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["DeliveryId"].Value);
+                DeleteRowFromDatabase(deleteId);
+                Delivery itemToRemove = deliveries.SingleOrDefault(r => r.DeliveryId == deleteId);
+                if (itemToRemove != null)
+                {
+                    deliveries.Remove(itemToRemove);
+                }
+
+                dataGridView1.DataSource = null;
+                dataGridView1.DataSource = deliveries;
+                DGVHeadersSet();
+            }
+            else
+            {
+                MessageBox.Show("Proszę zaznaczyć receptę do usunięcia.");
+            }
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void DeleteRowFromDatabase(int recieptId)
         {
+            string connectionString = "Server=57.128.195.227;Database=aptekaProjekt;User Id=apteka;Password=Projekt123!;";
+            string query = "DELETE FROM Deliveries WHERE DeliveryId = @DeliveryId";
 
-        }
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@DeliveryId", recieptId);
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
         }
     }
 }

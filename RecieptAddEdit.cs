@@ -114,7 +114,7 @@ namespace Obsługa_Apteki
             }
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = _stockList;
-
+            DGVColumnSet();
         }
 
         private void DGVColumnSet()

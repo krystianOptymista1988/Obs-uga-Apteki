@@ -4,6 +4,7 @@ using Obsługa_Apteki.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,9 +19,9 @@ namespace Obsługa_Apteki
         public RecieptsShow()
         {
             InitializeComponent();
+            InitializeDataGridView();
             DataLoad();
             DGVHeadersSet();
-
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -34,7 +35,6 @@ namespace Obsługa_Apteki
         {
             _dbAction = new DbActions();
             reciepts = _dbAction.GetReciepts();
-
             if (reciepts == null || reciepts.Count == 0)
             {
                 var columnNames = _dbAction.GetColumnNames<Reciept>();
@@ -74,35 +74,51 @@ namespace Obsługa_Apteki
             }
         }
 
-        private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 0)
             {
                 int deleteId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["RecieptId"].Value);
-                foreach (Reciept item in reciepts.ToList())
+                DeleteRowFromDatabase(deleteId);
+                Reciept itemToRemove = reciepts.SingleOrDefault(r => r.RecieptId == deleteId);
+                if (itemToRemove != null)
                 {
-                    if (item.RecieptId == deleteId)
-                    {
-                        reciepts.Remove(item);
-                    }
-                };
+                    reciepts.Remove(itemToRemove);
+                }
+
+                dataGridView1.DataSource = null;
+                dataGridView1.DataSource = reciepts;
+                DGVHeadersSet();
             }
             else
             {
-                MessageBox.Show("Proszę zaznaczyć Lek do usunięcia.");
+                MessageBox.Show("Proszę zaznaczyć receptę do usunięcia.");
             }
-            dataGridView1.DataSource = null;
-            dataGridView1.DataSource = reciepts;
-            DGVHeadersSet();
+        }
+
+        private void DeleteRowFromDatabase(int recieptId)
+        {
+            string connectionString = "Server=57.128.195.227;Database=aptekaProjekt;User Id=apteka;Password=Projekt123!;";
+            string query = "DELETE FROM Reciepts WHERE RecieptId = @RecieptId";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@RecieptId", recieptId);
+
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+        }
+
+        private void InitializeDataGridView()
+        {
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.MultiSelect = true;
+            dataGridView1.ReadOnly = false;
+            dataGridView1.EnableHeadersVisualStyles = true;
+            dataGridView1.RowHeadersVisible = true;
         }
     }
 }
