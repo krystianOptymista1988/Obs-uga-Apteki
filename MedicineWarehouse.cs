@@ -16,6 +16,7 @@ namespace Obsługa_Apteki
         private AptekaTestDbContext _context = new AptekaTestDbContext();
         private List<Medicine> medicines;
         private List<MedicineDelivery> _medicinedelivery;
+        public int medicineId;
         public MedicineWarehouse()
         {
             InitializeComponent();
@@ -116,10 +117,10 @@ namespace Obsługa_Apteki
             {
                 if (dataGridView1.CurrentRow != null)
                 {
-                    int MedicineId = (int)dataGridView1.CurrentRow.Cells["ID"].Value;
-                    using (var _context = _dbAction.GetContext())
+                    medicineId = (int)dataGridView1.CurrentRow.Cells["MedicineId"].Value;
+                    using (var _context = new AptekaTestDbContext())
                     {
-                        MedicineCard editForm = new MedicineCard(MedicineId, _context);
+                        MedicineCard editForm = new MedicineCard(medicineId, _context);
                         if (editForm.ShowDialog() == DialogResult.OK)
                         {
                             DataLoad();
@@ -149,7 +150,7 @@ namespace Obsługa_Apteki
 
         }
 
-        private void DataLoad()
+        public void DataLoad()
         {
             medicines = _dbAction.GetMedicines();
             _medicinedelivery = _dbAction.GetMedicineDeliveries();
