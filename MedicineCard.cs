@@ -57,7 +57,28 @@ namespace Obsługa_Apteki
 
         private void FillTextBoxes(Medicine medicine)
         {
-            throw new NotImplementedException();
+            tbName.Text = medicine.Name;
+            tbId.Text = medicine.MedicineId.ToString() ;
+            tbCategory.Text = medicine.Category;
+            tbActiveSubstance.Text = medicine.ActiveSubstance;
+            tbMargePrice.Text = medicine.PriceMarge.ToString();
+            tbPrice.Text = medicine.Price.ToString();   
+            tbPriceOfBuy.Text = medicine.PriceOfBuy.ToString(); 
+            tbProducent.Text = medicine.Producent.ToString();
+            tbQuantityInPackage.Text = medicine.QuantityInPackage.ToString();
+            tbRefundedPrice.Text = medicine.PriceAfterRefunding.ToString();
+            if (medicine.IsOnReciept)
+            {
+                cbIsOnReciept.CheckState = CheckState.Checked;
+            }
+            if (medicine.IsRefunded)
+            {
+                cbIsRefunded.CheckState = CheckState.Checked;
+            }
+            if (medicine.IsAntibiotique)
+            {
+                cbIsAntibiotique.CheckState = CheckState.Checked;   
+            }    
         }
 
         private void btnAdd_Click(object sender, System.EventArgs e)
