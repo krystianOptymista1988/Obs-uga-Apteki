@@ -59,8 +59,20 @@ namespace Obsługa_Apteki
             _reciept.DateOfRegistry = DateTime.Now;
             _reciept.DateOfExpire = DateTime.Parse(dtpDateOfExpire.Value.ToString());
             _reciept.PatientId = int.Parse(cbPatients.SelectedValue.ToString());
+            var selectedPatient = cbPatients.SelectedItem as Patient;
+
+            if (selectedPatient != null)
+            {
+                _reciept.PatientFullName = selectedPatient.FullName;
+            }
+            else
+            {
+                MessageBox.Show("Proszę wybrać pacjenta.");
+                return;
+            }
+
             _reciept.DoctorFullName = tbDoctor.Text;
-            
+
             _dbAction.AddRecieptWithMedicines(_reciept, _stockList);
 
             Close();
@@ -72,7 +84,7 @@ namespace Obsługa_Apteki
             stockItem.Quantity = int.Parse(nudQuantity.Value.ToString());
             stockItem.MedicineId = int.Parse(cbMedicines.SelectedValue.ToString());
             stockItem.MedicineName = cbMedicines.Text;
-
+            
             bool found = false;
             foreach (MedicineReciept item in _stockList)
             {
@@ -87,7 +99,6 @@ namespace Obsługa_Apteki
             if (!found)
             {
                 _stockList.Add(stockItem);
-
             }
 
             dataGridView1.DataSource = null;

@@ -23,7 +23,7 @@ namespace Obsługa_Apteki
         public string DoctorFullName {  get; set; }
         public int PatientId { get; set; }  // 1 do 1
         public Patient Patient { get; set; } // 1 do 1
-
+        public string PatientFullName {  get; set; }
         public int Quantity { get; set; }
         public ICollection<MedicineReciept> MedicineReciept { get; set; }
         public ICollection<Medicine> AddedMedicines { get; set; }

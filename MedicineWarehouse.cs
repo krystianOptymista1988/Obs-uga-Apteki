@@ -5,6 +5,7 @@ using Org.BouncyCastle.Asn1.Cmp;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -146,7 +147,39 @@ namespace Obsługa_Apteki
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                int deleteId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["MedicineId"].Value);
+                DeleteRowFromDatabase(deleteId);
+                Medicine itemToRemove = medicines.SingleOrDefault(r => r.MedicineId == deleteId);
+                if (itemToRemove != null)
+                {
+                    medicines.Remove(itemToRemove);
+                }
 
+                dataGridView1.DataSource = null;
+                dataGridView1.DataSource = medicines;
+                DGVHeadersFill();
+            }
+            else
+            {
+                MessageBox.Show("Proszę zaznaczyć receptę do usunięcia.");
+            }
+        }
+
+        private void DeleteRowFromDatabase(int medicineId)
+        {
+            string connectionString = "Server=57.128.195.227;Database=aptekaProjekt;User Id=apteka;Password=Projekt123!;";
+            string query = "DELETE FROM Medicines WHERE MedicineId = @MedicineId";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@MedicineId", medicineId);
+
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
         }
 
         private void DataLoad()

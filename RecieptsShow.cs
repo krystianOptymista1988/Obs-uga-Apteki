@@ -35,6 +35,8 @@ namespace Obsługa_Apteki
         {
             _dbAction = new DbActions();
             reciepts = _dbAction.GetReciepts();
+
+
             if (reciepts == null || reciepts.Count == 0)
             {
                 var columnNames = _dbAction.GetColumnNames<Reciept>();
@@ -61,12 +63,12 @@ namespace Obsługa_Apteki
                 dataGridView1.Columns[nameof(Reciept.DateOfRegistry)].DisplayIndex = 1;
                 dataGridView1.Columns[nameof(Reciept.DateOfExpire)].HeaderText = "Data ważności";
                 dataGridView1.Columns[nameof(Reciept.DateOfExpire)].DisplayIndex = 2;
-                dataGridView1.Columns[nameof(Reciept.PatientId)].HeaderText = "Pacjent";
-                dataGridView1.Columns[nameof(Reciept.PatientId)].DisplayIndex = 3;
-                dataGridView1.Columns[nameof(Reciept.Medicines)].HeaderText = "Leki";
-                dataGridView1.Columns[nameof(Reciept.Medicines)].DisplayIndex = 5;
+                dataGridView1.Columns[nameof(Reciept.PatientFullName)].HeaderText = "Pacjent";
+                dataGridView1.Columns[nameof(Reciept.PatientFullName)].DisplayIndex = 3;
                 dataGridView1.Columns[nameof(Reciept.DoctorFullName)].HeaderText = "Lekarz";
-                dataGridView1.Columns[nameof(Reciept.DoctorFullName)].DisplayIndex = 6;
+                dataGridView1.Columns[nameof(Reciept.DoctorFullName)].DisplayIndex = 4;
+                dataGridView1.Columns[nameof(Reciept.PatientId)].Visible = false;
+                dataGridView1.Columns[nameof(Reciept.Medicines)].Visible = false;
                 dataGridView1.Columns[nameof(Reciept.Quantity)].Visible = false;
                 dataGridView1.Columns[nameof(Reciept.MedicineReciept)].Visible = false;
                 dataGridView1.Columns[nameof(Reciept.AddedMedicines)].Visible = false;
@@ -119,6 +121,11 @@ namespace Obsługa_Apteki
             dataGridView1.ReadOnly = false;
             dataGridView1.EnableHeadersVisualStyles = true;
             dataGridView1.RowHeadersVisible = true;
+        }
+
+        private void btnImplement_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

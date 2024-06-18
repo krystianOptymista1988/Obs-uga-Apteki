@@ -70,6 +70,7 @@
             this.btnImplement.Text = "Zrealizuj";
             this.btnImplement.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnImplement.UseVisualStyleBackColor = false;
+            this.btnImplement.Click += new System.EventHandler(this.btnImplement_Click);
             // 
             // btnAdd
             // 
@@ -114,7 +115,7 @@
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.Size = new System.Drawing.Size(579, 296);
-            this.dataGridView1.TabIndex = 6;           
+            this.dataGridView1.TabIndex = 6;
             // 
             // RecieptsShow
             // 

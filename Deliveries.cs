@@ -123,7 +123,7 @@ namespace Obsługa_Apteki
             }
         }
 
-        private void DeleteRowFromDatabase(int recieptId)
+        private void DeleteRowFromDatabase(int deliveryId)
         {
             string connectionString = "Server=57.128.195.227;Database=aptekaProjekt;User Id=apteka;Password=Projekt123!;";
             string query = "DELETE FROM Deliveries WHERE DeliveryId = @DeliveryId";
@@ -131,7 +131,7 @@ namespace Obsługa_Apteki
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@DeliveryId", recieptId);
+                command.Parameters.AddWithValue("@DeliveryId", deliveryId);
 
                 connection.Open();
                 command.ExecuteNonQuery();
