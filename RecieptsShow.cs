@@ -20,7 +20,6 @@ namespace Obsługa_Apteki
         {
             InitializeComponent();
             InitializeDataGridView();
-            _dbAction = new DbActions();
             DataLoad();
             DGVHeadersSet();
             dataGridView1.CellDoubleClick += DataGridView1_CellDoubleClick;
@@ -49,7 +48,7 @@ namespace Obsługa_Apteki
 
         private void DataLoad()
         {
-
+            _dbAction = new DbActions();
             reciepts = _dbAction.GetReciepts();
 
 

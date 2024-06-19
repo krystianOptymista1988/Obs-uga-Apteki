@@ -110,7 +110,6 @@ namespace Obsługa_Apteki
             tbPESEL.Text = patient.PESEL;
             tbPostalCode.Text = patient.PostalCode;
             dtpDateOfBirth.Text = patient.DateOfBirth.ToString();
-
         }
 
         private Patient CreatePatient()
@@ -127,7 +126,7 @@ namespace Obsługa_Apteki
             patient.Comment = tbComment.Text;
             patient.PharmaceutId = int.Parse(cbPharmaceut.SelectedValue.ToString());
             patient.Pharmaceut = GetPharmaceutFromId(pharmaceutID);
-                            
+
             return patient;
         }
 
