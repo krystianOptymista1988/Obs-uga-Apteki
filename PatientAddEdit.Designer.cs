@@ -150,7 +150,6 @@
             this.tbId.Name = "tbId";
             this.tbId.Size = new System.Drawing.Size(57, 20);
             this.tbId.TabIndex = 9;
-            this.tbId.TextChanged += new System.EventHandler(this.tbId_TextChanged);
             // 
             // tbName
             // 
@@ -158,7 +157,6 @@
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(121, 20);
             this.tbName.TabIndex = 10;
-            this.tbName.TextChanged += new System.EventHandler(this.tbName_TextChanged);
             // 
             // tbSurname
             // 
@@ -210,7 +208,6 @@
             this.tbComment.Size = new System.Drawing.Size(418, 166);
             this.tbComment.TabIndex = 17;
             this.tbComment.Text = "";
-            this.tbComment.TextChanged += new System.EventHandler(this.tbComment_TextChanged);
             // 
             // btnAdd
             // 
@@ -224,7 +221,7 @@
             this.btnAdd.Text = "Akceptuj";
             this.btnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAdd.UseVisualStyleBackColor = false;
-            this.btnAdd.Click += new System.EventHandler(this.button2_Click);
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnDelete
             // 

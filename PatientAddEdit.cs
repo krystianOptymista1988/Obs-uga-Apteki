@@ -35,16 +35,15 @@ namespace Obsługa_Apteki
             LoadComboboxData();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
         {
             try
             {
-                using (_context)
+                if (!string.IsNullOrEmpty(tbId.Text))
                 {
-
-                    if (!string.IsNullOrEmpty(tbId.Text))
+                    int id = int.Parse(tbId.Text);
+                    using (var context = new AptekaTestDbContext())
                     {
-                        int id = int.Parse(tbId.Text);
                         patient = _context.Patients.SingleOrDefault(p => p.PatientId == id);
                         if (patient != null)
                         {
@@ -59,14 +58,13 @@ namespace Obsługa_Apteki
                             return;
                         }
                     }
-                    else
-                    {
-                        patient = new Patient();
-                        patient = CreatePatient(patient);
-                        _context.Patients.Add(patient);
-                        _context.SaveChanges();
-                    }
-                    _context.SaveChanges();  
+                }
+                else
+                {
+                    patient = new Patient();
+                    patient = CreatePatient(patient);
+                    _context.Patients.Add(patient);
+                    _context.SaveChanges();
                 }
                 this.DialogResult = DialogResult.OK;
                 this.Close();
@@ -144,7 +142,6 @@ namespace Obsługa_Apteki
             patient.Comment = tbComment.Text;
             patient.PharmaceutId = int.Parse(cbPharmaceut.SelectedValue.ToString());
             patient.Pharmaceut = GetPharmaceutFromId(pharmaceutID);
-
             return patient;
         }
 
@@ -165,20 +162,6 @@ namespace Obsługa_Apteki
             return _context.Pharmaceuts.Find(pharmaceutId);
         }
 
-        private void tbName_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tbId_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tbComment_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 
 }

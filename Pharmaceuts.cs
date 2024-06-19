@@ -100,15 +100,7 @@ namespace Obsługa_Apteki
             if (dataGridView1.SelectedRows.Count > 0)
             {
                 int deleteId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["PharmaceutId"].Value);
-                //Pharmaceut itemToRemove = pharmaceuts.SingleOrDefault(p => p.PharmaceutId == deleteId);
-                //if (itemToRemove != null)
-                //{
-                //    _dbAction.RemovePharmaceut(itemToRemove);
-                //    pharmaceuts.Remove(itemToRemove);
-                //    dataGridView1.DataSource = null;
-                //    dataGridView1.DataSource = pharmaceuts;
-                //    DGVHeadersSet();
-                //}
+
                 using(var context = new AptekaTestDbContext())
                 {
                     Pharmaceut pharmaceutToRemove = context.Pharmaceuts.Find(deleteId);
@@ -146,53 +138,6 @@ namespace Obsługa_Apteki
                 MessageBox.Show("Proszę zaznaczyć farmaceutę do usunięcia.");
             }
         }
-
-        //private void btnDelete_Click(object sender, EventArgs e)
-        //{
-        //    if (dataGridView1.SelectedRows.Count > 0)
-        //    {
-        //        int deleteId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["PharmaceutId"].Value);
-
-        //        using (var context = new AptekaTestDbContext())
-        //        {
-        //            Pharmaceut pharmaceutToRemove = context.Pharmaceuts.Find(deleteId);
-        //            if (pharmaceutToRemove != null)
-        //            {
-        //                // Przygotowanie do usunięcia farmaceuty
-        //                var result = MessageBox.Show("Usunięcie tego farmaceuty spowoduje usunięcie powiązań z pacjentami. Czy na pewno chcesz kontynuować?",
-        //                                             "Potwierdzenie usunięcia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-        //                if (result == DialogResult.Yes)
-        //                {
-        //                    // Znajdź pacjentów powiązanych z usuwanym farmaceutą i ustaw ich pole PharmaceutId na null
-        //                    var patientsWithPharmaceut = context.Patients.Where(p => p.PharmaceutId == deleteId).ToList();
-        //                    foreach (var patient in patientsWithPharmaceut)
-        //                    {
-        //                        patient.PharmaceutId = null; // Ustawiamy PharmaceutId na null
-        //                    }
-
-        //                    // Usuń farmaceutę
-        //                    context.Pharmaceuts.Remove(pharmaceutToRemove);
-        //                    context.SaveChanges();
-
-        //                    // Odświeżanie danych w DataGridView
-        //                    pharmaceuts = _dbAction.GetPharmaceuts();
-        //                    dataGridView1.DataSource = null;
-        //                    dataGridView1.DataSource = pharmaceuts;
-        //                    DGVHeadersSet();
-        //                }
-        //            }
-        //            else
-        //            {
-        //                MessageBox.Show("Nie znaleziono farmaceuty do usunięcia.");
-        //            }
-        //        }
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("Proszę zaznaczyć farmaceutę do usunięcia.");
-        //    }
-        //}
 
         private void InitializeDataGridView()
         {
