@@ -24,6 +24,7 @@ namespace Obsługa_Apteki
 
         private void DataLoad()
         {
+            _dbAction = new DbActions();
             patients = _dbAction.GetPatients();
 
             if (patients == null || patients.Count == 0)
@@ -92,23 +93,29 @@ namespace Obsługa_Apteki
         }
         private void DGVHeadersSet()
         {
-            dataGridView1.Columns[nameof(Patient.PatientId)].HeaderText = "ID";
-            dataGridView1.Columns[nameof(Patient.PatientId)].DisplayIndex = 0;
-            dataGridView1.Columns[nameof(Patient.Name)].HeaderText = "Imię";
-            dataGridView1.Columns[nameof(Patient.Name)].DisplayIndex = 1;
-            dataGridView1.Columns[nameof(Patient.Surname)].HeaderText = "Nazwisko";
-            dataGridView1.Columns[nameof(Patient.Surname)].DisplayIndex = 2;
-            dataGridView1.Columns[nameof(Patient.Comment)].HeaderText = "Uwagi";
-            dataGridView1.Columns[nameof(Patient.Comment)].DisplayIndex = 8;
-            dataGridView1.Columns[nameof(Patient.Adress)].HeaderText = "Adres";
-            dataGridView1.Columns[nameof(Patient.DateOfBirth)].HeaderText = "Data Urodzenia";
-            dataGridView1.Columns[nameof(Patient.PostalCode)].HeaderText = "Kod Pocztowy";
-            dataGridView1.Columns[nameof(Patient.Pharmaceut)].Visible = false;
-            dataGridView1.Columns[nameof(Patient.RecieptList)].Visible = false;
-            dataGridView1.Columns[nameof(Patient.Mobile)].HeaderText = "Telefon";
-            dataGridView1.Columns[nameof(Patient.PharmaceutId)].Visible = false;
-            dataGridView1.Columns[nameof(Patient.FullName)].Visible = false;
-
+            if (patients != null && patients.Count > 0)
+            {
+                dataGridView1.Columns[nameof(Patient.PatientId)].HeaderText = "ID";
+                dataGridView1.Columns[nameof(Patient.PatientId)].DisplayIndex = 0;
+                dataGridView1.Columns[nameof(Patient.Name)].HeaderText = "Imię";
+                dataGridView1.Columns[nameof(Patient.Name)].DisplayIndex = 1;
+                dataGridView1.Columns[nameof(Patient.Surname)].HeaderText = "Nazwisko";
+                dataGridView1.Columns[nameof(Patient.Surname)].DisplayIndex = 2;
+                dataGridView1.Columns[nameof(Patient.Comment)].HeaderText = "Uwagi";
+                dataGridView1.Columns[nameof(Patient.Comment)].DisplayIndex = 3;
+                dataGridView1.Columns[nameof(Patient.Adress)].HeaderText = "Adres";
+                dataGridView1.Columns[nameof(Patient.Adress)].DisplayIndex = 4;
+                dataGridView1.Columns[nameof(Patient.DateOfBirth)].HeaderText = "Data Urodzenia";
+                dataGridView1.Columns[nameof(Patient.DateOfBirth)].DisplayIndex = 6;
+                dataGridView1.Columns[nameof(Patient.PostalCode)].HeaderText = "Kod Pocztowy";
+                dataGridView1.Columns[nameof(Patient.PostalCode)].DisplayIndex = 5;
+                dataGridView1.Columns[nameof(Patient.Pharmaceut)].Visible = false;
+                dataGridView1.Columns[nameof(Patient.RecieptList)].Visible = false;
+                dataGridView1.Columns[nameof(Patient.Mobile)].HeaderText = "Telefon";
+                dataGridView1.Columns[nameof(Patient.Mobile)].DisplayIndex = 7;
+                dataGridView1.Columns[nameof(Patient.PharmaceutId)].Visible = false;
+                dataGridView1.Columns[nameof(Patient.FullName)].Visible = false;
+            }
         }
 
         private void btnDeletePatient_Click(object sender, EventArgs e)

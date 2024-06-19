@@ -14,7 +14,6 @@ namespace Obsługa_Apteki
     public partial class PatientAddEdit : Form
     {
         private string pesel;
-        private int id;
         private DbActions _dbAction = new DbActions();
         private AptekaTestDbContext _context = new AptekaTestDbContext();
         private Patient patient;
@@ -42,7 +41,7 @@ namespace Obsługa_Apteki
                 if (!string.IsNullOrEmpty(tbId.Text))
                 {
                     int id = int.Parse(tbId.Text);
-                    using (var context = new AptekaTestDbContext())
+                    using (var _context = new AptekaTestDbContext())
                     {
                         patient = _context.Patients.SingleOrDefault(p => p.PatientId == id);
                         if (patient != null)
@@ -83,7 +82,7 @@ namespace Obsługa_Apteki
         private void GetPatientData()
         {
             var _context = _dbAction.GetContext();
-            if (pesel != null)
+            if (!string.IsNullOrEmpty(pesel))
             {
                 Text = "Edytowanie danych Pacjenta";
                 patient = _context.Patients.FirstOrDefault(x => x.PESEL == pesel);
@@ -123,7 +122,7 @@ namespace Obsługa_Apteki
             patient.Mobile = tbMobile.Text;
             patient.Comment = tbComment.Text;
             patient.PharmaceutId = int.Parse(cbPharmaceut.SelectedValue.ToString());
-            patient.Pharmaceut = GetPharmaceutFromId(pharmaceutID);
+            patient.Pharmaceut = _context.Pharmaceuts.Find(pharmaceutID);
 
             return patient;
         }
@@ -141,7 +140,7 @@ namespace Obsługa_Apteki
             patient.Mobile = tbMobile.Text;
             patient.Comment = tbComment.Text;
             patient.PharmaceutId = int.Parse(cbPharmaceut.SelectedValue.ToString());
-            patient.Pharmaceut = GetPharmaceutFromId(pharmaceutID);
+            patient.Pharmaceut = _context.Pharmaceuts.Find(pharmaceutID);
             return patient;
         }
 
@@ -155,11 +154,6 @@ namespace Obsługa_Apteki
             cbPharmaceut.DataSource = _pharmaceuts;
             cbPharmaceut.DisplayMember = "FullName";
             cbPharmaceut.ValueMember = "PharmaceutId";
-        }
-        public Pharmaceut GetPharmaceutFromId(int pharmaceutId)
-        {
-            var _context = _dbAction.GetContext();
-            return _context.Pharmaceuts.Find(pharmaceutId);
         }
 
     }
