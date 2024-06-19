@@ -125,8 +125,19 @@ namespace Obsługa_Apteki
             patient.Mobile = tbMobile.Text;
             patient.Comment = tbComment.Text;
             patient.PharmaceutId = int.Parse(cbPharmaceut.SelectedValue.ToString());
-            patient.Pharmaceut = GetPharmaceutFromId(pharmaceutID);
-            return patient;
+            //patient.Pharmaceut = GetPharmaceutFromId(pharmaceutID);
+            var selectedPharmaceut = cbPharmaceut.SelectedItem as Patient;
+
+            if (selectedPharmaceut != null)
+            {
+                patient.Pharmaceut.Surname = selectedPharmaceut.FullName;
+            }
+            else
+            {
+                MessageBox.Show("Proszę wybrać farmaceutę.");
+                return patient;
+            }
+                return patient;
         }
 
         private Patient CreatePatient(Patient patient)
@@ -142,8 +153,19 @@ namespace Obsługa_Apteki
             patient.Mobile = tbMobile.Text;
             patient.Comment = tbComment.Text;
             patient.PharmaceutId = int.Parse(cbPharmaceut.SelectedValue.ToString());
-            patient.Pharmaceut = GetPharmaceutFromId(pharmaceutID);
-            
+            //patient.Pharmaceut = GetPharmaceutFromId(pharmaceutID);
+            //var selectedPharmaceut = cbPharmaceut.SelectedItem as Pharmaceut;
+
+            //if (selectedPharmaceut != null)
+            //{
+            //    patient.Pharmaceut.FullName = selectedPharmaceut.FullName;
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Proszę wybrać farmaceutę.");
+            //    return;
+            //}
+
             return patient;
         }
 

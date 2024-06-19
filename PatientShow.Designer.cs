@@ -58,7 +58,6 @@
             this.dataGridView1.ShowEditingIcon = false;
             this.dataGridView1.Size = new System.Drawing.Size(953, 408);
             this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
             // 
             // btnDeletePatient
             // 
@@ -102,7 +101,6 @@
             this.btnSearchPatient.Text = "Wyszukaj";
             this.btnSearchPatient.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSearchPatient.UseVisualStyleBackColor = false;
-            this.btnSearchPatient.Click += new System.EventHandler(this.btnSearchPatient_Click_1);
             // 
             // btnAddPatient
             // 
@@ -127,7 +125,6 @@
             this.tbSearchValue.Size = new System.Drawing.Size(141, 23);
             this.tbSearchValue.TabIndex = 6;
             this.tbSearchValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.tbSearchValue.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // lblCategory
             // 
@@ -147,7 +144,6 @@
             this.cbCategory.Name = "cbCategory";
             this.cbCategory.Size = new System.Drawing.Size(141, 24);
             this.cbCategory.TabIndex = 9;
-            this.cbCategory.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // lblSearchValue
             // 
