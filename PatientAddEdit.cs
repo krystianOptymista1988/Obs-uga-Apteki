@@ -14,6 +14,7 @@ namespace Obsługa_Apteki
     public partial class PatientAddEdit : Form
     {
         private string pesel;
+        private int id;
         private DbActions _dbAction = new DbActions();
         private AptekaTestDbContext _context = new AptekaTestDbContext();
         private Patient patient;
@@ -125,19 +126,9 @@ namespace Obsługa_Apteki
             patient.Mobile = tbMobile.Text;
             patient.Comment = tbComment.Text;
             patient.PharmaceutId = int.Parse(cbPharmaceut.SelectedValue.ToString());
-            //patient.Pharmaceut = GetPharmaceutFromId(pharmaceutID);
-            var selectedPharmaceut = cbPharmaceut.SelectedItem as Patient;
-
-            if (selectedPharmaceut != null)
-            {
-                patient.Pharmaceut.Surname = selectedPharmaceut.FullName;
-            }
-            else
-            {
-                MessageBox.Show("Proszę wybrać farmaceutę.");
-                return patient;
-            }
-                return patient;
+            patient.Pharmaceut = GetPharmaceutFromId(pharmaceutID);
+                            
+            return patient;
         }
 
         private Patient CreatePatient(Patient patient)
@@ -153,18 +144,7 @@ namespace Obsługa_Apteki
             patient.Mobile = tbMobile.Text;
             patient.Comment = tbComment.Text;
             patient.PharmaceutId = int.Parse(cbPharmaceut.SelectedValue.ToString());
-            //patient.Pharmaceut = GetPharmaceutFromId(pharmaceutID);
-            //var selectedPharmaceut = cbPharmaceut.SelectedItem as Pharmaceut;
-
-            //if (selectedPharmaceut != null)
-            //{
-            //    patient.Pharmaceut.FullName = selectedPharmaceut.FullName;
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Proszę wybrać farmaceutę.");
-            //    return;
-            //}
+            patient.Pharmaceut = GetPharmaceutFromId(pharmaceutID);
 
             return patient;
         }
