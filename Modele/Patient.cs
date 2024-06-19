@@ -17,8 +17,6 @@ namespace Obsługa_Apteki
         public string Comment { get; set; }
         public int? PharmaceutId { get; set; }  //1 do 1    1 pacjent ma 1 opiekuna
 
-        public string PharmaceutFullName {  get; set; }
-
         public Pharmaceut Pharmaceut { get; set; } // 1 do 1
         public ICollection<Reciept> RecieptList { get; set; }
         public string FullName => $"{Name} {Surname}";
