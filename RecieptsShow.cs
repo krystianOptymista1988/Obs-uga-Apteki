@@ -22,12 +22,27 @@ namespace Obsługa_Apteki
             InitializeDataGridView();
             DataLoad();
             DGVHeadersSet();
+            dataGridView1.CellDoubleClick += DataGridView1_CellDoubleClick;
         }
 
+        public void DataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.RowIndex >= 0)
+            {
+                int selectedRecieptId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["RecieptId"].Value);
+                Reciept selectedReciept = reciepts.SingleOrDefault(r => r.RecieptId == selectedRecieptId);
+
+                if(selectedReciept != null)
+                {
+                    var recieptAddEdit = new RecieptAddEdit(selectedReciept);
+                    recieptAddEdit.ShowDialog();
+                }
+            }
+        }
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            var RecieptAddEdit = new RecieptAddEdit();
-            RecieptAddEdit.ShowDialog();
+            var recieptAddEdit = new RecieptAddEdit();
+            recieptAddEdit.ShowDialog();
             DataLoad();
         }
 
@@ -82,35 +97,20 @@ namespace Obsługa_Apteki
             if (dataGridView1.SelectedRows.Count > 0)
             {
                 int deleteId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["RecieptId"].Value);
-                DeleteRowFromDatabase(deleteId);
                 Reciept itemToRemove = reciepts.SingleOrDefault(r => r.RecieptId == deleteId);
                 if (itemToRemove != null)
                 {
+                    _dbAction.RemoveReciept(itemToRemove);
                     reciepts.Remove(itemToRemove);
+                    dataGridView1.DataSource = null;
+                    dataGridView1.DataSource = reciepts;
+                    DGVHeadersSet();
                 }
 
-                dataGridView1.DataSource = null;
-                dataGridView1.DataSource = reciepts;
-                DGVHeadersSet();
             }
             else
             {
                 MessageBox.Show("Proszę zaznaczyć receptę do usunięcia.");
-            }
-        }
-
-        private void DeleteRowFromDatabase(int recieptId)
-        {
-            string connectionString = "Server=57.128.195.227;Database=aptekaProjekt;User Id=apteka;Password=Projekt123!;";
-            string query = "DELETE FROM Reciepts WHERE RecieptId = @RecieptId";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@RecieptId", recieptId);
-
-                connection.Open();
-                command.ExecuteNonQuery();
             }
         }
 

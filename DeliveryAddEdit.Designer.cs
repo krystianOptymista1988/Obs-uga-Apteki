@@ -29,52 +29,52 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DeliveryAddEdit));
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnSend = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.dgvMedicinesDelivery = new System.Windows.Forms.DataGridView();
             this.cbMedicines = new System.Windows.Forms.ComboBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.btnAddToList = new System.Windows.Forms.Button();
+            this.nudQuantity = new System.Windows.Forms.NumericUpDown();
+            this.lblMedicines = new System.Windows.Forms.Label();
+            this.lblQuantity = new System.Windows.Forms.Label();
+            this.dtpDateOfDelivery = new System.Windows.Forms.DateTimePicker();
             this.cbPharmaceut = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.btn_delete = new System.Windows.Forms.Button();
+            this.lblDateOfDelivery = new System.Windows.Forms.Label();
+            this.lblPharmaceut = new System.Windows.Forms.Label();
+            this.btnDeleteFromList = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.lbDeliveryCost = new System.Windows.Forms.Label();
+            this.lblDeliveryCost = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMedicinesDelivery)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudQuantity)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // btnSend
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(160, 502);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(134, 27);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Wyślij ";
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnSend.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnSend.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnSend.Image = ((System.Drawing.Image)(resources.GetObject("btnSend.Image")));
+            this.btnSend.Location = new System.Drawing.Point(160, 502);
+            this.btnSend.Name = "btnSend";
+            this.btnSend.Size = new System.Drawing.Size(134, 27);
+            this.btnSend.TabIndex = 0;
+            this.btnSend.Text = "Wyślij ";
+            this.btnSend.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSend.UseVisualStyleBackColor = false;
+            this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
             // 
-            // button2
+            // btnCancel
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.Location = new System.Drawing.Point(439, 502);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(134, 27);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Anuluj";
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnCancel.Image = ((System.Drawing.Image)(resources.GetObject("btnCancel.Image")));
+            this.btnCancel.Location = new System.Drawing.Point(439, 502);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(134, 27);
+            this.btnCancel.TabIndex = 1;
+            this.btnCancel.Text = "Anuluj";
+            this.btnCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // dgvMedicinesDelivery
             // 
@@ -88,7 +88,6 @@
             this.dgvMedicinesDelivery.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMedicinesDelivery.Size = new System.Drawing.Size(705, 246);
             this.dgvMedicinesDelivery.TabIndex = 2;
-            this.dgvMedicinesDelivery.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // cbMedicines
             // 
@@ -99,58 +98,57 @@
             this.cbMedicines.Name = "cbMedicines";
             this.cbMedicines.Size = new System.Drawing.Size(185, 24);
             this.cbMedicines.TabIndex = 3;
-            this.cbMedicines.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // button3
+            // btnAddToList
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.Location = new System.Drawing.Point(291, 58);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(187, 35);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "Dodaj do zamówienia";
-            this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btnAddToList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btnAddToList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnAddToList.Image = ((System.Drawing.Image)(resources.GetObject("btnAddToList.Image")));
+            this.btnAddToList.Location = new System.Drawing.Point(277, 58);
+            this.btnAddToList.Name = "btnAddToList";
+            this.btnAddToList.Size = new System.Drawing.Size(207, 35);
+            this.btnAddToList.TabIndex = 4;
+            this.btnAddToList.Text = "Dodaj do zamówienia";
+            this.btnAddToList.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAddToList.UseVisualStyleBackColor = false;
+            this.btnAddToList.Click += new System.EventHandler(this.btnAddToList_Click);
             // 
-            // numericUpDown1
+            // nudQuantity
             // 
-            this.numericUpDown1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.numericUpDown1.Location = new System.Drawing.Point(535, 13);
-            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(73, 23);
-            this.numericUpDown1.TabIndex = 5;
+            this.nudQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.nudQuantity.Location = new System.Drawing.Point(535, 13);
+            this.nudQuantity.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.nudQuantity.Name = "nudQuantity";
+            this.nudQuantity.Size = new System.Drawing.Size(73, 23);
+            this.nudQuantity.TabIndex = 5;
             // 
-            // label1
+            // lblMedicines
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(124, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(34, 17);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Lek";
+            this.lblMedicines.AutoSize = true;
+            this.lblMedicines.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblMedicines.Location = new System.Drawing.Point(124, 16);
+            this.lblMedicines.Name = "lblMedicines";
+            this.lblMedicines.Size = new System.Drawing.Size(34, 17);
+            this.lblMedicines.TabIndex = 6;
+            this.lblMedicines.Text = "Lek";
             // 
-            // label2
+            // lblQuantity
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.Location = new System.Drawing.Point(397, 16);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(118, 17);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "ilość opakowań";
+            this.lblQuantity.AutoSize = true;
+            this.lblQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblQuantity.Location = new System.Drawing.Point(397, 16);
+            this.lblQuantity.Name = "lblQuantity";
+            this.lblQuantity.Size = new System.Drawing.Size(118, 17);
+            this.lblQuantity.TabIndex = 7;
+            this.lblQuantity.Text = "ilość opakowań";
             // 
-            // dateTimePicker1
+            // dtpDateOfDelivery
             // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(480, 451);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(170, 23);
-            this.dateTimePicker1.TabIndex = 8;
+            this.dtpDateOfDelivery.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.dtpDateOfDelivery.Location = new System.Drawing.Point(480, 451);
+            this.dtpDateOfDelivery.Name = "dtpDateOfDelivery";
+            this.dtpDateOfDelivery.Size = new System.Drawing.Size(170, 23);
+            this.dtpDateOfDelivery.TabIndex = 8;
             // 
             // cbPharmaceut
             // 
@@ -161,40 +159,39 @@
             this.cbPharmaceut.Size = new System.Drawing.Size(127, 21);
             this.cbPharmaceut.TabIndex = 9;
             // 
-            // label3
+            // lblDateOfDelivery
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label3.Location = new System.Drawing.Point(367, 454);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(107, 17);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "Data Dostawy";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+            this.lblDateOfDelivery.AutoSize = true;
+            this.lblDateOfDelivery.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblDateOfDelivery.Location = new System.Drawing.Point(367, 454);
+            this.lblDateOfDelivery.Name = "lblDateOfDelivery";
+            this.lblDateOfDelivery.Size = new System.Drawing.Size(107, 17);
+            this.lblDateOfDelivery.TabIndex = 10;
+            this.lblDateOfDelivery.Text = "Data Dostawy";
             // 
-            // label4
+            // lblPharmaceut
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label4.Location = new System.Drawing.Point(113, 454);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(100, 17);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "Zamawiający";
+            this.lblPharmaceut.AutoSize = true;
+            this.lblPharmaceut.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblPharmaceut.Location = new System.Drawing.Point(113, 454);
+            this.lblPharmaceut.Name = "lblPharmaceut";
+            this.lblPharmaceut.Size = new System.Drawing.Size(100, 17);
+            this.lblPharmaceut.TabIndex = 11;
+            this.lblPharmaceut.Text = "Zamawiający";
             // 
-            // btn_delete
+            // btnDeleteFromList
             // 
-            this.btn_delete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.btn_delete.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btn_delete.Image = ((System.Drawing.Image)(resources.GetObject("btn_delete.Image")));
-            this.btn_delete.Location = new System.Drawing.Point(148, 389);
-            this.btn_delete.Name = "btn_delete";
-            this.btn_delete.Size = new System.Drawing.Size(187, 36);
-            this.btn_delete.TabIndex = 13;
-            this.btn_delete.Text = "Usuń z zamówienia";
-            this.btn_delete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btn_delete.UseVisualStyleBackColor = false;
-            this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
+            this.btnDeleteFromList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btnDeleteFromList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnDeleteFromList.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteFromList.Image")));
+            this.btnDeleteFromList.Location = new System.Drawing.Point(148, 389);
+            this.btnDeleteFromList.Name = "btnDeleteFromList";
+            this.btnDeleteFromList.Size = new System.Drawing.Size(187, 36);
+            this.btnDeleteFromList.TabIndex = 13;
+            this.btnDeleteFromList.Text = "Usuń z zamówienia";
+            this.btnDeleteFromList.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnDeleteFromList.UseVisualStyleBackColor = false;
+            this.btnDeleteFromList.Click += new System.EventHandler(this.btnDeleteFromList_Click);
             // 
             // label5
             // 
@@ -206,16 +203,16 @@
             this.label5.TabIndex = 14;
             this.label5.Text = "wartość zamówienia :";
             // 
-            // lbDeliveryCost
+            // lblDeliveryCost
             // 
-            this.lbDeliveryCost.AutoSize = true;
-            this.lbDeliveryCost.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lbDeliveryCost.ForeColor = System.Drawing.Color.Firebrick;
-            this.lbDeliveryCost.Location = new System.Drawing.Point(525, 399);
-            this.lbDeliveryCost.Name = "lbDeliveryCost";
-            this.lbDeliveryCost.Size = new System.Drawing.Size(19, 20);
-            this.lbDeliveryCost.TabIndex = 15;
-            this.lbDeliveryCost.Text = "0";
+            this.lblDeliveryCost.AutoSize = true;
+            this.lblDeliveryCost.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblDeliveryCost.ForeColor = System.Drawing.Color.Firebrick;
+            this.lblDeliveryCost.Location = new System.Drawing.Point(525, 399);
+            this.lblDeliveryCost.Name = "lblDeliveryCost";
+            this.lblDeliveryCost.Size = new System.Drawing.Size(19, 20);
+            this.lblDeliveryCost.TabIndex = 15;
+            this.lblDeliveryCost.Text = "0";
             // 
             // DeliveryAddEdit
             // 
@@ -223,21 +220,21 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(771, 565);
-            this.Controls.Add(this.lbDeliveryCost);
+            this.Controls.Add(this.lblDeliveryCost);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.btn_delete);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.btnDeleteFromList);
+            this.Controls.Add(this.lblPharmaceut);
+            this.Controls.Add(this.lblDateOfDelivery);
             this.Controls.Add(this.cbPharmaceut);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.numericUpDown1);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.dtpDateOfDelivery);
+            this.Controls.Add(this.lblQuantity);
+            this.Controls.Add(this.lblMedicines);
+            this.Controls.Add(this.nudQuantity);
+            this.Controls.Add(this.btnAddToList);
             this.Controls.Add(this.cbMedicines);
             this.Controls.Add(this.dgvMedicinesDelivery);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnSend);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximumSize = new System.Drawing.Size(787, 610);
@@ -246,7 +243,7 @@
             this.Text = "Dodaj lub Edytuj Zamówienie";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.dgvMedicinesDelivery)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudQuantity)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -254,20 +251,20 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnSend;
+        private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.DataGridView dgvMedicinesDelivery;
         private System.Windows.Forms.ComboBox cbMedicines;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Button btnAddToList;
+        private System.Windows.Forms.NumericUpDown nudQuantity;
+        private System.Windows.Forms.Label lblMedicines;
+        private System.Windows.Forms.Label lblQuantity;
+        private System.Windows.Forms.DateTimePicker dtpDateOfDelivery;
         private System.Windows.Forms.ComboBox cbPharmaceut;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button btn_delete;
+        private System.Windows.Forms.Label lblDateOfDelivery;
+        private System.Windows.Forms.Label lblPharmaceut;
+        private System.Windows.Forms.Button btnDeleteFromList;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label lbDeliveryCost;
+        private System.Windows.Forms.Label lblDeliveryCost;
     }
 }

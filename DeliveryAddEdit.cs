@@ -38,20 +38,11 @@ namespace Obsługa_Apteki
 
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
+        private void btnCancel_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void ComboboxDataLoad()
         {
@@ -69,11 +60,13 @@ namespace Obsługa_Apteki
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnAddToList_Click(object sender, EventArgs e)
         {
             MedicineDelivery  stockItem = new MedicineDelivery();
-            stockItem.Quantity = int.Parse(numericUpDown1.Value.ToString());
+            stockItem.Quantity = int.Parse(nudQuantity.Value.ToString());
             stockItem.MedicineId = int.Parse(cbMedicines.SelectedValue.ToString());
+            stockItem.Medicine = new Medicine();
+            stockItem.Medicine.Name = cbMedicines.Text;
 
             bool found = false;
             foreach (MedicineDelivery item in _deliveryList)
@@ -98,12 +91,8 @@ namespace Obsługa_Apteki
             CountCostDelivery();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
-        }
-
-        private void btn_delete_Click(object sender, EventArgs e)
+        private void btnDeleteFromList_Click(object sender, EventArgs e)
         {
             if (dgvMedicinesDelivery.SelectedRows.Count > 0)
             {
@@ -134,10 +123,10 @@ namespace Obsługa_Apteki
             {
 
             dgvMedicinesDelivery.Columns[nameof(MedicineDelivery.Delivery)].Visible = false;
-            dgvMedicinesDelivery.Columns[nameof(MedicineDelivery.Medicine)].HeaderText= "Nazwa Leku";
+            dgvMedicinesDelivery.Columns[nameof(MedicineDelivery.Medicine.Name)].HeaderText= "Nazwa Leku";
             dgvMedicinesDelivery.Columns[nameof(MedicineDelivery.Quantity)].HeaderText = "Opakowania";
-            dgvMedicinesDelivery.Columns[nameof(MedicineDelivery.DeliveryId)].Visible = false;
             dgvMedicinesDelivery.Columns[nameof(MedicineDelivery.MedicineId)].HeaderText = "ID Leku";
+            dgvMedicinesDelivery.Columns[nameof(MedicineDelivery.QuantityInPackage)].Visible = false;
             }
         }
 
@@ -163,7 +152,7 @@ namespace Obsługa_Apteki
                 deliveryCost += cost;
             }
 
-            lbDeliveryCost.Text = deliveryCost.ToString();
+            lblDeliveryCost.Text = deliveryCost.ToString();
         }
 
         private void LoadComboboxData()
@@ -174,11 +163,11 @@ namespace Obsługa_Apteki
             cbPharmaceut.ValueMember = "PharmaceutId";
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnSend_Click(object sender, EventArgs e)
         {
-            _delivery.Value = double.Parse(lbDeliveryCost.Text);
+            _delivery.Value = double.Parse(lblDeliveryCost.Text);
             _delivery.DateOfCreate = DateTime.Now;
-            _delivery.DateOfDelivery = DateTime.Parse(dateTimePicker1.Value.ToString());
+            _delivery.DateOfDelivery = DateTime.Parse(dtpDateOfDelivery.Value.ToString());
             _delivery.PharmaceutOrdering = int.Parse(cbPharmaceut.SelectedValue.ToString());
 
             _dbAction.AddDeliveryWithMedicines(_delivery, _deliveryList);

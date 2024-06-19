@@ -151,16 +151,16 @@ namespace Obsługa_Apteki
             if (dataGridView1.SelectedRows.Count > 0)
             {
                 int deleteId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["MedicineId"].Value);
-                DeleteRowFromDatabase(deleteId);
-                Medicine itemToRemove = medicines.SingleOrDefault(r => r.MedicineId == deleteId);
+                Medicine itemToRemove = medicines.SingleOrDefault(m => m.MedicineId == deleteId);
                 if (itemToRemove != null)
                 {
+                    _dbAction.RemoveMedicine(itemToRemove);
                     medicines.Remove(itemToRemove);
+                    dataGridView1.DataSource = null;
+                    dataGridView1.DataSource = medicines;
+                    DGVHeadersFill();
                 }
 
-                dataGridView1.DataSource = null;
-                dataGridView1.DataSource = medicines;
-                DGVHeadersFill();
             }
             else
             {
@@ -168,20 +168,6 @@ namespace Obsługa_Apteki
             }
         }
 
-        private void DeleteRowFromDatabase(int medicineId)
-        {
-            string connectionString = "Server=57.128.195.227;Database=aptekaProjekt;User Id=apteka;Password=Projekt123!;";
-            string query = "DELETE FROM Medicines WHERE MedicineId = @MedicineId";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@MedicineId", medicineId);
-
-                connection.Open();
-                command.ExecuteNonQuery();
-            }
-        }
 
         public void DataLoad()
         {

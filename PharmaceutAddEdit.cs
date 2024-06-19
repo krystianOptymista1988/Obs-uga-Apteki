@@ -132,7 +132,7 @@ namespace Obsługa_Apteki
                         pharmaceut = new Pharmaceut();
                         pharmaceut = CreatePharmaceut(pharmaceut);
                         _context.Pharmaceuts.Add(pharmaceut);
-                        MessageBox.Show($"Dodano nowego Farmaceutę: ID {pharmaceut.PharmaceutId}, Name {pharmaceut.Name}");
+                       // MessageBox.Show($"Dodano nowego Farmaceutę: ID {pharmaceut.PharmaceutId}, Name {pharmaceut.Name}");
                     }
                     _context.SaveChanges();
                 }

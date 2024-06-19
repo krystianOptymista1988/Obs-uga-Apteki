@@ -1,7 +1,9 @@
 ﻿using Obsługa_Apteki.Entities;
+using Obsługa_Apteki.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Obsługa_Apteki
@@ -14,6 +16,7 @@ namespace Obsługa_Apteki
         public Pharmaceuts()
         {
             InitializeComponent();
+            InitializeDataGridView();
             DataLoad();
             DGVHeadersSet();
         }
@@ -88,6 +91,36 @@ namespace Obsługa_Apteki
             dataGridView1.Columns[nameof(Pharmaceut.Mobile)].HeaderText = "Telefon";
             dataGridView1.Columns[nameof(Pharmaceut.PharmaceutId)].Visible = false;
 
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                int deleteId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["PharmaceutId"].Value);
+                Pharmaceut itemToRemove = pharmaceuts.SingleOrDefault(p => p.PharmaceutId == deleteId);
+                if (itemToRemove != null)
+                {
+                    _dbAction.RemovePharmaceut(itemToRemove);
+                    pharmaceuts.Remove(itemToRemove);
+                    dataGridView1.DataSource = null;
+                    dataGridView1.DataSource = pharmaceuts;
+                    DGVHeadersSet();
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Proszę zaznaczyć farmaceutę do usunięcia.");
+            }
+        }
+        private void InitializeDataGridView()
+        {
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.MultiSelect = true;
+            dataGridView1.ReadOnly = false;
+            dataGridView1.EnableHeadersVisualStyles = true;
+            dataGridView1.RowHeadersVisible = true;
         }
     }
 }

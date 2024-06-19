@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Obsługa_Apteki.Modele
 {
-    public class MedicineDelivery
+    public class MedicineDelivery : Medicine
     {
 
         public int MedicineDeliveryId { get; set; }
@@ -17,6 +17,7 @@ namespace Obsługa_Apteki.Modele
         public int MedicineId { get; set; }
         public Medicine Medicine { get; set; }
         public int Quantity { get; set; }
+
     }
             
         

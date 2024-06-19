@@ -179,6 +179,70 @@ namespace Obsługa_Apteki.Entities
             _context.SaveChanges();
         }
 
+        public void RemoveReciept(Reciept reciept)
+        {
+            _context = new AptekaTestDbContext();
+            var existingReciept = _context.Reciepts.SingleOrDefault(p => p.RecieptId == reciept.RecieptId);
+            if(existingReciept != null)
+            {
+                _context.Reciepts.Remove(existingReciept);
+            }
+            else
+            {
+                MessageBox.Show("Nie wybrano żadnej recepty");
+            }
+
+            _context.SaveChanges();
+        }
+
+        public void RemovePatient(Patient patient)
+        {
+            _context = new AptekaTestDbContext();
+            var existingPatient = _context.Patients.SingleOrDefault(p => p.PatientId == patient.PatientId);
+            if (existingPatient != null)
+            {
+                _context.Patients.Remove(existingPatient);
+            }
+            else
+            {
+                MessageBox.Show("Nie wybrano żadnego pacjenta");
+            }
+
+            _context.SaveChanges();
+        }
+
+        public void RemoveMedicine(Medicine medicine)
+        {
+            _context = new AptekaTestDbContext();
+            var existingMedicine = _context.Medicines.SingleOrDefault(p => p.MedicineId == medicine.MedicineId);
+            if (existingMedicine != null)
+            {
+                _context.Medicines.Remove(existingMedicine);
+            }
+            else
+            {
+                MessageBox.Show("Nie wybrano żadnego leku");
+            }
+
+            _context.SaveChanges();
+        }
+
+        public void RemovePharmaceut(Pharmaceut pharmaceut)
+        {
+            _context = new AptekaTestDbContext();
+            var existingPharmaceut = _context.Pharmaceuts.SingleOrDefault(p => p.PharmaceutId == pharmaceut.PharmaceutId);
+            if (existingPharmaceut != null)
+            {
+                _context.Pharmaceuts.Remove(existingPharmaceut);
+            }
+            else
+            {
+                MessageBox.Show("Nie wybrano żadnego leku");
+            }
+
+            _context.SaveChanges();
+        }
+
         public void AddDeliveryWithMedicines(Delivery delivery, List<MedicineDelivery> medicineDeliveries)
         {
             _context.Set<Delivery>().Add(delivery);

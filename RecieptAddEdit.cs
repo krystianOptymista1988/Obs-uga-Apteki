@@ -21,7 +21,7 @@ namespace Obsługa_Apteki
         List<Patient> _patients;
         MedicineReciept stockItem;
         private List<MedicineReciept> _stockList = new List<MedicineReciept>();
-
+        List<Medicine> medicineReciept = new List<Medicine>();
 
         public RecieptAddEdit()
         {
@@ -29,6 +29,34 @@ namespace Obsługa_Apteki
             LoadMedicinesData();
             LoadPatientsData();
         }
+
+        public RecieptAddEdit(Reciept reciept)
+        {
+            InitializeComponent();
+            LoadMedicinesData();
+            LoadPatientsData();
+            _reciept = reciept;
+            LoadRecieptData();
+        }
+
+        public void LoadRecieptData()
+        {
+            if(_reciept != null)
+            {
+
+                tbDoctor.Text = _reciept.DoctorFullName;
+                cbPatients.Text = _reciept.PatientFullName;
+                dtpDateOfExpire.Value = _reciept.DateOfExpire;
+
+                dataGridView1.DataSource = null;                        ///Dokończyć!!! - jak wyświetlić leki z wybranej recepty?
+                dataGridView1.DataSource = _reciept.MedicineReciept;
+
+                DGVColumnSet();
+            }
+
+        }
+
+
 
         private void LoadMedicinesData()
         {
@@ -118,14 +146,15 @@ namespace Obsługa_Apteki
                         _stockList.Remove(item);
                     }
                 };
+                dataGridView1.DataSource = null;
+                dataGridView1.DataSource = _stockList;
+                DGVColumnSet();
             }
             else
             {
                 MessageBox.Show("Proszę zaznaczyć Lek do usunięcia.");
             }
-            dataGridView1.DataSource = null;
-            dataGridView1.DataSource = _stockList;
-            DGVColumnSet();
+
         }
 
         private void DGVColumnSet()

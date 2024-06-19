@@ -44,7 +44,7 @@ namespace Obsługa_Apteki
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnEdit_Click(object sender, EventArgs e)
         {
             try
             {
@@ -74,7 +74,7 @@ namespace Obsługa_Apteki
            DataLoad();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
         {
             var DeliveryAddEdit = new DeliveryAddEdit();
 
@@ -96,6 +96,7 @@ namespace Obsługa_Apteki
                 dataGridView1.Columns[nameof(Delivery.Value)].DisplayIndex = 3;
                 dataGridView1.Columns[nameof(Delivery.ExpiredDates)].Visible = false;
                 dataGridView1.Columns[nameof(Delivery.OrderedMedicines)].Visible = false;
+                dataGridView1.Columns[nameof(Delivery.MedicineDeliveries)].Visible = false;
                 dataGridView1.Columns[nameof(Delivery.PharmaceutOrdering)].HeaderText = "Zamawiający";
             }
         }
@@ -106,36 +107,22 @@ namespace Obsługa_Apteki
             if (dataGridView1.SelectedRows.Count > 0)
             {
                 int deleteId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["DeliveryId"].Value);
-                DeleteRowFromDatabase(deleteId);
-                Delivery itemToRemove = deliveries.SingleOrDefault(r => r.DeliveryId == deleteId);
+                Delivery itemToRemove = deliveries.SingleOrDefault(d => d.DeliveryId == deleteId);
                 if (itemToRemove != null)
                 {
+                    _dbAction.RemoveDelivery(itemToRemove);
                     deliveries.Remove(itemToRemove);
+                    dataGridView1.DataSource = null;
+                    dataGridView1.DataSource = deliveries;
+                    DGVHeadersSet();
                 }
 
-                dataGridView1.DataSource = null;
-                dataGridView1.DataSource = deliveries;
-                DGVHeadersSet();
             }
             else
             {
-                MessageBox.Show("Proszę zaznaczyć receptę do usunięcia.");
+                MessageBox.Show("Proszę zaznaczyć dostawę do usunięcia.");
             }
         }
 
-        private void DeleteRowFromDatabase(int deliveryId)
-        {
-            string connectionString = "Server=57.128.195.227;Database=aptekaProjekt;User Id=apteka;Password=Projekt123!;";
-            string query = "DELETE FROM Deliveries WHERE DeliveryId = @DeliveryId";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@DeliveryId", deliveryId);
-
-                connection.Open();
-                command.ExecuteNonQuery();
-            }
-        }
     }
 }

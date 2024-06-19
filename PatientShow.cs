@@ -185,7 +185,64 @@ namespace Obsługa_Apteki
 
         private void btnDeletePatient_Click(object sender, EventArgs e)
         {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                int deleteId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["PatientId"].Value);
+                Patient itemToRemove = patients.SingleOrDefault(r => r.PatientId == deleteId);
+                if (itemToRemove != null)
+                {
+                    _dbAction.RemovePatient(itemToRemove);
+                    patients.Remove(itemToRemove);
+                    dataGridView1.DataSource = null;
+                    dataGridView1.DataSource = patients;
+                    DGVHeadersSet();
+                }
 
+            }
+            else
+            {
+                MessageBox.Show("Proszę zaznaczyć pacjenta do usunięcia.");
+            }
+
+            //if (dataGridView1.SelectedRows.Count > 0)
+            //{
+            //    int patientId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["PatientId"].Value);
+
+            //    var result = MessageBox.Show("Czy na pewno chcesz usunąć tego pacjenta?", "Potwierdzenie usunięcia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            //    if (result == DialogResult.Yes)
+            //    {
+            //        using (var context = new AptekaTestDbContext())
+            //        {
+            //            var patient = context.Patients.FirstOrDefault(p => p.PatientId == patientId);
+
+            //            if (patient != null)
+            //            {
+            //                context.Patients.Remove(patient);
+
+            //                try
+            //                {
+            //                    context.SaveChanges();
+            //                    MessageBox.Show("Pacjent został usunięty.");
+
+            //                    DataLoad();
+            //                }
+            //                catch (Exception ex)
+            //                {
+            //                    MessageBox.Show("Wystąpił błąd podczas usuwania pacjenta: " + ex.Message);
+            //                }
+            //            }
+            //            else
+            //            {
+            //                MessageBox.Show("Nie znaleziono pacjenta w bazie danych.");
+            //            }
+            //        }
+            //    }
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Proszę zaznaczyć pacjenta do usunięcia.");
+            //}
         }
     }
 }

@@ -50,6 +50,7 @@
             // 
             // lblPatient
             // 
+            this.lblPatient.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lblPatient.AutoSize = true;
             this.lblPatient.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.lblPatient.Location = new System.Drawing.Point(103, 361);
@@ -60,6 +61,9 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.GridColor = System.Drawing.Color.White;
@@ -71,6 +75,7 @@
             // 
             // lblDoctor
             // 
+            this.lblDoctor.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lblDoctor.AutoSize = true;
             this.lblDoctor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.lblDoctor.Location = new System.Drawing.Point(27, 391);
@@ -81,6 +86,7 @@
             // 
             // cbPatients
             // 
+            this.cbPatients.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.cbPatients.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.cbPatients.FormattingEnabled = true;
             this.cbPatients.Location = new System.Drawing.Point(172, 356);
@@ -90,6 +96,7 @@
             // 
             // btnCancel
             // 
+            this.btnCancel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnCancel.ForeColor = System.Drawing.Color.Black;
@@ -105,6 +112,7 @@
             // 
             // btnAccept
             // 
+            this.btnAccept.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnAccept.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnAccept.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnAccept.Image = ((System.Drawing.Image)(resources.GetObject("btnAccept.Image")));
@@ -119,6 +127,7 @@
             // 
             // lblQuantity
             // 
+            this.lblQuantity.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblQuantity.AutoSize = true;
             this.lblQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.lblQuantity.Location = new System.Drawing.Point(428, 27);
@@ -129,6 +138,7 @@
             // 
             // lblMedicine
             // 
+            this.lblMedicine.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblMedicine.AutoSize = true;
             this.lblMedicine.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.lblMedicine.Location = new System.Drawing.Point(137, 28);
@@ -139,6 +149,7 @@
             // 
             // nudQuantity
             // 
+            this.nudQuantity.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.nudQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.nudQuantity.Location = new System.Drawing.Point(547, 25);
             this.nudQuantity.Name = "nudQuantity";
@@ -147,6 +158,7 @@
             // 
             // btnAddToList
             // 
+            this.btnAddToList.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnAddToList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.btnAddToList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnAddToList.Image = ((System.Drawing.Image)(resources.GetObject("btnAddToList.Image")));
@@ -161,6 +173,7 @@
             // 
             // cbMedicines
             // 
+            this.cbMedicines.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbMedicines.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.cbMedicines.FormattingEnabled = true;
             this.cbMedicines.Location = new System.Drawing.Point(186, 25);
@@ -170,6 +183,7 @@
             // 
             // dtpDateOfExpire
             // 
+            this.dtpDateOfExpire.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.dtpDateOfExpire.Location = new System.Drawing.Point(523, 359);
             this.dtpDateOfExpire.Name = "dtpDateOfExpire";
             this.dtpDateOfExpire.Size = new System.Drawing.Size(200, 20);
@@ -177,6 +191,7 @@
             // 
             // lblDateOfExpire
             // 
+            this.lblDateOfExpire.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lblDateOfExpire.AutoSize = true;
             this.lblDateOfExpire.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.lblDateOfExpire.Location = new System.Drawing.Point(408, 361);
@@ -187,6 +202,7 @@
             // 
             // tbDoctor
             // 
+            this.tbDoctor.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.tbDoctor.Location = new System.Drawing.Point(172, 391);
             this.tbDoctor.Name = "tbDoctor";
             this.tbDoctor.Size = new System.Drawing.Size(177, 20);
@@ -194,6 +210,7 @@
             // 
             // btnDeleteFromList
             // 
+            this.btnDeleteFromList.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnDeleteFromList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.btnDeleteFromList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnDeleteFromList.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteFromList.Image")));

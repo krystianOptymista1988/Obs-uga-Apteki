@@ -50,11 +50,11 @@ namespace Obsługa_Apteki
                             patient = CreatePatient();
                             _context.Entry(patient).State = EntityState.Modified;
                             _context.SaveChanges();
-                            MessageBox.Show("Aktualizowano dane Farmaceuty");
+                            MessageBox.Show("Aktualizowano dane Pacjenta");
                         }
                         else
                         {
-                            MessageBox.Show("Nie znaleziono Farmaceuty o podanym ID");
+                            MessageBox.Show("Nie znaleziono Pacjenta o podanym ID");
                             return;
                         }
                     }
@@ -64,7 +64,6 @@ namespace Obsługa_Apteki
                         patient = CreatePatient(patient);
                         _context.Patients.Add(patient);
                         _context.SaveChanges();
-                        MessageBox.Show($"Dodano nowego Farmaceutę: ID {patient.PharmaceutId}, Name {patient.Name}");
                     }
                     _context.SaveChanges();  
                 }
@@ -79,7 +78,6 @@ namespace Obsługa_Apteki
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-           // PatientShow patientShowForm = new PatientShow();
             Close();
         }
 
@@ -145,7 +143,6 @@ namespace Obsługa_Apteki
             patient.Comment = tbComment.Text;
             patient.PharmaceutId = int.Parse(cbPharmaceut.SelectedValue.ToString());
             patient.Pharmaceut = GetPharmaceutFromId(pharmaceutID);
-            MessageBox.Show(patient.PharmaceutId.ToString());
             
             return patient;
         }
