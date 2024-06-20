@@ -25,6 +25,7 @@ namespace Obsługa_Apteki
         {
             var PharmaceutAddEdit = new PharmaceutAddEdit();
             PharmaceutAddEdit.ShowDialog();
+            DataLoad();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -34,13 +35,12 @@ namespace Obsługa_Apteki
                 if (dataGridView1.CurrentRow != null)
                 {
                     string patientId = (string)dataGridView1.CurrentRow.Cells["PESEL"].Value;
-                    using (var _context = _dbAction.GetContext())
+                    var _context = _dbAction.GetContext();
+
+                    PharmaceutAddEdit editForm = new PharmaceutAddEdit(patientId, _context);
+                    if (editForm.ShowDialog() == DialogResult.OK)
                     {
-                        PharmaceutAddEdit editForm = new PharmaceutAddEdit(patientId, _context);
-                        if (editForm.ShowDialog() == DialogResult.OK)
-                        {
-                            DataLoad();
-                        }
+                        DataLoad();
                     }
                 }
                 else
@@ -75,22 +75,29 @@ namespace Obsługa_Apteki
         }
         private void DGVHeadersSet()
         {
-            dataGridView1.Columns[nameof(Pharmaceut.FullName)].HeaderText = "Imię i nazwisko";
-            dataGridView1.Columns[nameof(Pharmaceut.FullName)].DisplayIndex = 0;
+            dataGridView1.Columns[nameof(Pharmaceut.Name)].HeaderText = "Imię";
+            dataGridView1.Columns[nameof(Pharmaceut.Name)].DisplayIndex = 0;
+            dataGridView1.Columns[nameof(Pharmaceut.Surname)].HeaderText = "Nazwisko";
+            dataGridView1.Columns[nameof(Pharmaceut.Surname)].DisplayIndex = 1;
             dataGridView1.Columns[nameof(Pharmaceut.DateOfBirth)].HeaderText = "Data Urodzenia";
-            dataGridView1.Columns[nameof(Pharmaceut.DateOfBirth)].DisplayIndex = 4;
+            dataGridView1.Columns[nameof(Pharmaceut.DateOfBirth)].DisplayIndex = 2;
             dataGridView1.Columns[nameof(Pharmaceut.PESEL)].HeaderText = "PESEL";
-            dataGridView1.Columns[nameof(Pharmaceut.PESEL)].DisplayIndex = 1;
+            dataGridView1.Columns[nameof(Pharmaceut.PESEL)].DisplayIndex = 3;
             dataGridView1.Columns[nameof(Pharmaceut.Adress)].HeaderText = "Adress";
-            dataGridView1.Columns[nameof(Pharmaceut.Adress)].DisplayIndex = 3;
-            dataGridView1.Columns[nameof(Pharmaceut.Name)].Visible = false;
-            dataGridView1.Columns[nameof(Pharmaceut.Surname)].Visible = false;
-            dataGridView1.Columns[nameof(Pharmaceut.DateOfHire)].HeaderText = "Data zatrudnienia";
-            dataGridView1.Columns[nameof(Pharmaceut.PostalCode)].DisplayIndex = 8;
+            dataGridView1.Columns[nameof(Pharmaceut.Adress)].DisplayIndex = 4;
             dataGridView1.Columns[nameof(Pharmaceut.PostalCode)].HeaderText = "Kod Pocztowy";
+            dataGridView1.Columns[nameof(Pharmaceut.PostalCode)].DisplayIndex = 5;
+            dataGridView1.Columns[nameof(Pharmaceut.Salary)].HeaderText = "Wynagrodzenie za godzinę";
+            dataGridView1.Columns[nameof(Pharmaceut.Salary)].DisplayIndex = 6;
+            dataGridView1.Columns[nameof(Pharmaceut.DateOfHire)].HeaderText = "Data zatrudnienia";
+            dataGridView1.Columns[nameof(Pharmaceut.DateOfHire)].DisplayIndex = 7;
             dataGridView1.Columns[nameof(Pharmaceut.Mobile)].HeaderText = "Telefon";
+            dataGridView1.Columns[nameof(Pharmaceut.Mobile)].DisplayIndex =8; 
+            dataGridView1.Columns[nameof(Pharmaceut.Comment)].HeaderText = "Dodatkowe informacje";
+            dataGridView1.Columns[nameof(Pharmaceut.Comment)].DisplayIndex = 9;
             dataGridView1.Columns[nameof(Pharmaceut.PharmaceutId)].Visible = false;
-
+            dataGridView1.Columns[nameof(Pharmaceut.FullName)].Visible = false;
+            dataGridView1.Columns[nameof(Pharmaceut.password)].Visible = false;
         }
 
         private void btnDelete_Click(object sender, EventArgs e)

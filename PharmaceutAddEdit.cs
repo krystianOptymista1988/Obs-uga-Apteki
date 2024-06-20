@@ -14,8 +14,7 @@ namespace Obsługa_Apteki
         private DbActions _dbAction = new DbActions();
         private Pharmaceut pharmaceut = new Pharmaceut();
         private AptekaTestDbContext _context = new AptekaTestDbContext();
-       // private int _pharmaceutId;
-       // List<Pharmaceut> _pharmaceuts;
+
         public PharmaceutAddEdit()
         {
             InitializeComponent();
@@ -44,18 +43,16 @@ namespace Obsługa_Apteki
             pharmaceut.Adress = tbAdress.Text;
             pharmaceut.PostalCode = tbPostalCode.Text;
             pharmaceut.Mobile = tbMobile.Text;
-            pharmaceut.Salary= int.Parse(nmSallary.Value.ToString());
+            pharmaceut.Salary = (int)nmSallary.Value;
             pharmaceut.DateOfHire = DateTime.Parse(dtpHire.Value.ToString());
             pharmaceut.Comment = tbComment.Text;
             pharmaceut.password = tbPassword.Text;
-           // pharmaceut.Patients = new List<Patient>();
+
             return pharmaceut;
         }
 
-        private Pharmaceut CreatePharmaceut(Pharmaceut pharmaceut)
+        private Pharmaceut CreatePharmaceut(Pharmaceut newPharmaceut)
         {
-            int pharmaceutID = int.Parse(tbId.Text);
-
             pharmaceut.Name = tbName.Text;
             pharmaceut.Surname = tbSurname.Text;
             pharmaceut.DateOfBirth = DateTime.Parse(dtpDateOfBirth.Value.ToString());
@@ -63,24 +60,25 @@ namespace Obsługa_Apteki
             pharmaceut.Adress = tbAdress.Text;
             pharmaceut.PostalCode = tbPostalCode.Text;
             pharmaceut.Mobile = tbMobile.Text;
-            pharmaceut.Salary = int.Parse(nmSallary.Value.ToString());
+            pharmaceut.Salary = (int)nmSallary.Value;
             pharmaceut.DateOfHire = DateTime.Parse(dtpHire.Value.ToString());
             pharmaceut.Comment = tbComment.Text;
-            
-            return pharmaceut;
+            pharmaceut.password = tbPassword.Text;
+
+            return newPharmaceut;
         }
 
         private void GetPharmaceutData()
         {
             var _context = _dbAction.GetContext();
-            if (pesel != null)
+            if (!string.IsNullOrEmpty(pesel))
             {
                 Text = "Edytowanie danych Pacjenta";
                 pharmaceut = _context.Pharmaceuts.FirstOrDefault(x => x.PESEL == pesel);
 
                 if (pharmaceut == null)
                 {
-                    throw new Exception("Brak użytkownika o podanym Id");
+                    throw new Exception("Brak farmaceuty o podanym Id");
                 }
 
                 FillTextBoxes(pharmaceut);
@@ -98,16 +96,16 @@ namespace Obsługa_Apteki
             tbMobile.Text = pharmaceut.Mobile;
             tbPESEL.Text = pharmaceut.PESEL;
             tbPostalCode.Text = pharmaceut.PostalCode;
-            dtpDateOfBirth.Text = pharmaceut.DateOfBirth.ToString();
+            dtpDateOfBirth.Value = pharmaceut.DateOfBirth;
             dtpHire.Text = pharmaceut.DateOfHire.ToString();
+            nmSallary.Value = pharmaceut.Salary;
+            tbPassword.Text = pharmaceut.password;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             try
             {
-                using (_context)
-                {
                    
                     if (!string.IsNullOrEmpty(tbId.Text))
                     {
@@ -132,12 +130,12 @@ namespace Obsługa_Apteki
                         pharmaceut = new Pharmaceut();
                         pharmaceut = CreatePharmaceut(pharmaceut);
                         _context.Pharmaceuts.Add(pharmaceut);
-                       // MessageBox.Show($"Dodano nowego Farmaceutę: ID {pharmaceut.PharmaceutId}, Name {pharmaceut.Name}");
+
                     }
                     _context.SaveChanges();
-                }
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+
             }
             catch (Exception ex)
             {

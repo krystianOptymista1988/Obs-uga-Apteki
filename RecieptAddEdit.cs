@@ -21,8 +21,6 @@ namespace Obsługa_Apteki
         List<Patient> _patients;
         MedicineReciept stockItem;
         private List<MedicineReciept> _stockList = new List<MedicineReciept>();
-        List<Medicine> medicineReciept = new List<Medicine>();
-        private List<Reciept> reciepts = new List<Reciept>();
 
         public RecieptAddEdit()
         {
