@@ -34,10 +34,10 @@ namespace Obsługa_Apteki
             {
                 if (dataGridView1.CurrentRow != null)
                 {
-                    string patientId = (string)dataGridView1.CurrentRow.Cells["PESEL"].Value;
+                    string pharmaceutId = (string)dataGridView1.CurrentRow.Cells["PESEL"].Value;
                     var _context = _dbAction.GetContext();
 
-                    PharmaceutAddEdit editForm = new PharmaceutAddEdit(patientId, _context);
+                    PharmaceutAddEdit editForm = new PharmaceutAddEdit(pharmaceutId, _context);
                     if (editForm.ShowDialog() == DialogResult.OK)
                     {
                         DataLoad();
@@ -45,12 +45,12 @@ namespace Obsługa_Apteki
                 }
                 else
                 {
-                    MessageBox.Show("Wybierz pacjenta do edycji.");
+                    MessageBox.Show("Wybierz farmaceutę do edycji.");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Błąd podczas edycji pacjenta: " + ex.Message);
+                MessageBox.Show("Błąd podczas edycji farmaceuty: " + ex.Message);
             }
         }
 

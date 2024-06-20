@@ -73,7 +73,7 @@ namespace Obsługa_Apteki
             var _context = _dbAction.GetContext();
             if (!string.IsNullOrEmpty(pesel))
             {
-                Text = "Edytowanie danych Pacjenta";
+                Text = "Edytowanie danych Farmaceuty";
                 pharmaceut = _context.Pharmaceuts.FirstOrDefault(x => x.PESEL == pesel);
 
                 if (pharmaceut == null)

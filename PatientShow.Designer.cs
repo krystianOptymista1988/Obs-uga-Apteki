@@ -35,8 +35,6 @@
             this.btnSearchPatient = new System.Windows.Forms.Button();
             this.btnAddPatient = new System.Windows.Forms.Button();
             this.tbSearchValue = new System.Windows.Forms.TextBox();
-            this.lblCategory = new System.Windows.Forms.Label();
-            this.cbCategory = new System.Windows.Forms.ComboBox();
             this.lblSearchValue = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -101,6 +99,7 @@
             this.btnSearchPatient.Text = "Wyszukaj";
             this.btnSearchPatient.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSearchPatient.UseVisualStyleBackColor = false;
+            this.btnSearchPatient.Click += new System.EventHandler(this.btnSearchPatient_Click);
             // 
             // btnAddPatient
             // 
@@ -126,25 +125,6 @@
             this.tbSearchValue.TabIndex = 6;
             this.tbSearchValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // lblCategory
-            // 
-            this.lblCategory.AutoSize = true;
-            this.lblCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblCategory.Location = new System.Drawing.Point(52, 27);
-            this.lblCategory.Name = "lblCategory";
-            this.lblCategory.Size = new System.Drawing.Size(78, 17);
-            this.lblCategory.TabIndex = 8;
-            this.lblCategory.Text = "Kategoria";
-            // 
-            // cbCategory
-            // 
-            this.cbCategory.Font = new System.Drawing.Font("Microsoft Tai Le", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.cbCategory.FormattingEnabled = true;
-            this.cbCategory.Location = new System.Drawing.Point(136, 26);
-            this.cbCategory.Name = "cbCategory";
-            this.cbCategory.Size = new System.Drawing.Size(141, 24);
-            this.cbCategory.TabIndex = 9;
-            // 
             // lblSearchValue
             // 
             this.lblSearchValue.AutoSize = true;
@@ -162,8 +142,6 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1056, 599);
             this.Controls.Add(this.lblSearchValue);
-            this.Controls.Add(this.cbCategory);
-            this.Controls.Add(this.lblCategory);
             this.Controls.Add(this.tbSearchValue);
             this.Controls.Add(this.btnAddPatient);
             this.Controls.Add(this.btnSearchPatient);
@@ -189,8 +167,6 @@
         private System.Windows.Forms.Button btnSearchPatient;
         private System.Windows.Forms.Button btnAddPatient;
         private System.Windows.Forms.TextBox tbSearchValue;
-        private System.Windows.Forms.Label lblCategory;
-        private System.Windows.Forms.ComboBox cbCategory;
         private System.Windows.Forms.Label lblSearchValue;
     }
 }

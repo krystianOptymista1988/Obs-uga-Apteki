@@ -245,7 +245,6 @@
             this.cbPharmaceut.Name = "cbPharmaceut";
             this.cbPharmaceut.Size = new System.Drawing.Size(169, 24);
             this.cbPharmaceut.TabIndex = 20;
-            this.cbPharmaceut.SelectedIndexChanged += new System.EventHandler(this.cbPharmaceut_SelectedIndexChanged);
             // 
             // label10
             // 

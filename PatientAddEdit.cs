@@ -15,7 +15,7 @@ namespace Obsługa_Apteki
     {
         private string pesel;
         private DbActions _dbAction = new DbActions();
-        private AptekaTestDbContext _context = new AptekaTestDbContext();
+        private AptekaTestDbContext _context;
         private Patient patient;
         List<Pharmaceut> _pharmaceuts;
         
@@ -41,21 +41,18 @@ namespace Obsługa_Apteki
                 if (!string.IsNullOrEmpty(tbId.Text))
                 {
                     int id = int.Parse(tbId.Text);
-                    using (var _context = new AptekaTestDbContext())
+
+                    patient = _context.Patients.SingleOrDefault(p => p.PatientId == id);
+                    if (patient != null)
                     {
-                        patient = _context.Patients.SingleOrDefault(p => p.PatientId == id);
-                        if (patient != null)
-                        {
-                            patient = CreatePatient();
-                            _context.Entry(patient).State = EntityState.Modified;
-                            _context.SaveChanges();
-                            MessageBox.Show("Aktualizowano dane Pacjenta");
-                        }
-                        else
-                        {
-                            MessageBox.Show("Nie znaleziono Pacjenta o podanym ID");
-                            return;
-                        }
+                        patient = CreatePatient();
+                        _context.Entry(patient).State = EntityState.Modified;
+                        MessageBox.Show("Aktualizowano dane Pacjenta");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Nie znaleziono Pacjenta o podanym ID");
+                        return;
                     }
                 }
                 else
@@ -63,8 +60,8 @@ namespace Obsługa_Apteki
                     patient = new Patient();
                     patient = CreatePatient(patient);
                     _context.Patients.Add(patient);
-                    _context.SaveChanges();
                 }
+                _context.SaveChanges();
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
@@ -81,7 +78,6 @@ namespace Obsługa_Apteki
 
         private void GetPatientData()
         {
-            var _context = _dbAction.GetContext();
             if (!string.IsNullOrEmpty(pesel))
             {
                 Text = "Edytowanie danych Pacjenta";
@@ -127,7 +123,7 @@ namespace Obsługa_Apteki
             return patient;
         }
 
-        private Patient CreatePatient(Patient patient)
+        private Patient CreatePatient(Patient newPatient)
         {
             int pharmaceutID = int.Parse(cbPharmaceut.SelectedValue.ToString());
 
@@ -141,13 +137,9 @@ namespace Obsługa_Apteki
             patient.Comment = tbComment.Text;
             patient.PharmaceutId = int.Parse(cbPharmaceut.SelectedValue.ToString());
             patient.Pharmaceut = _context.Pharmaceuts.Find(pharmaceutID);
-            return patient;
+            return newPatient;
         }
 
-        private void cbPharmaceut_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
         private void LoadComboboxData()
         {
             _pharmaceuts = _dbAction.GetPharmaceuts();

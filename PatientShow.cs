@@ -19,12 +19,11 @@ namespace Obsługa_Apteki
             InitializeComponent();
             DataLoad();
             DGVHeadersSet();
-            ComboboxDataLoad();
+            tbSearchValue.KeyDown += tbSearchValue_KeyDown;
         }
 
         private void DataLoad()
         {
-            _dbAction = new DbActions();
             patients = _dbAction.GetPatients();
 
             if (patients == null || patients.Count == 0)
@@ -53,19 +52,20 @@ namespace Obsługa_Apteki
 
         private void btnEditPatient_Click(object sender, EventArgs e)
         {
+
             try
             {
                 if (dataGridView1.CurrentRow != null)
                 {
                     string patientId = (string)dataGridView1.CurrentRow.Cells["PESEL"].Value;
-                    using (var _context = _dbAction.GetContext())
+                    
+                    PatientAddEdit editForm = new PatientAddEdit(patientId, _dbAction.GetContext());
+
+                    if (editForm.ShowDialog() == DialogResult.OK)
                     {
-                        PatientAddEdit editForm = new PatientAddEdit(patientId, _context);
-                        if (editForm.ShowDialog() == DialogResult.OK)
-                        {
-                            DataLoad();
-                        }
+                        DataLoad();
                     }
+                    
                 }
                 else
                 {
@@ -77,20 +77,7 @@ namespace Obsługa_Apteki
                 MessageBox.Show("Błąd podczas edycji pacjenta: " + ex.Message);
             }
         }
-        private void ComboboxDataLoad()
-        {
-            cbCategory.Items.Clear();
 
-            foreach (DataGridViewColumn column in dataGridView1.Columns)
-            {
-                cbCategory.Items.Add(column.HeaderText);
-            }
-
-            if (cbCategory.Items.Count > 0)
-            {
-                cbCategory.SelectedIndex = 0;
-            }
-        }
         private void DGVHeadersSet()
         {
             if (patients != null && patients.Count > 0)
@@ -147,6 +134,42 @@ namespace Obsługa_Apteki
             else
             {
                 MessageBox.Show("Proszę zaznaczyć pacjenta do usunięcia.");
+            }
+
+        }
+
+        private void tbSearchValue_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                btnSearchPatient_Click(sender, e);
+            }
+        }
+
+        private void btnSearchPatient_Click(object sender, EventArgs e)
+        {
+            string searchText = tbSearchValue.Text.Trim();
+
+            if(!string.IsNullOrEmpty(searchText))
+            {
+                var filteredPatients = patients.Where(p => p.Surname.Contains(searchText)).ToList();
+
+                if(filteredPatients.Count > 0)
+                {
+                    dataGridView1.DataSource = null;
+                    dataGridView1.DataSource = filteredPatients;
+                    DGVHeadersSet();
+                }
+                else
+                {
+                    MessageBox.Show("Nie znaleziono pacjenta o podanym nazwisku.");
+                }
+            }
+            else
+            {
+                //jeśli pole wyszukiwania jest puste, wczytuje listę pacjentów jeszcze raz
+
+                DataLoad();
             }
         }
     }
