@@ -21,7 +21,6 @@ namespace Obsługa_Apteki
             InitializeComponent();
             InitializeDataGridView();
             DataLoad();
-            DGVHeadersSet();
             dataGridView1.CellDoubleClick += DataGridView1_CellDoubleClick;
         }
 
@@ -34,8 +33,8 @@ namespace Obsługa_Apteki
 
                 if(selectedReciept != null)
                 {
-                    var recieptAddEdit = new RecieptAddEdit(selectedReciept);
-                    recieptAddEdit.ShowDialog();
+                    var recieptData = new RecieptData(selectedReciept);
+                    recieptData.ShowDialog();
                 }
             }
         }
@@ -61,10 +60,13 @@ namespace Obsługa_Apteki
                     dataTable.Columns.Add(columnName);
                 }
                 dataGridView1.DataSource = dataTable;
+                dataGridView1.ColumnHeadersVisible = false;
             }
             else
             {
+                dataGridView1.DataSource = null;
                 dataGridView1.DataSource = reciepts;
+                DGVHeadersSet();
             }
         }
 
@@ -76,13 +78,18 @@ namespace Obsługa_Apteki
             if (dataGridView1.SelectedRows.Count > 0)
             {
                 int deleteId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["RecieptId"].Value);
-                Reciept itemToRemove = reciepts.SingleOrDefault(r => r.RecieptId == deleteId);
-                if (itemToRemove != null)
-                {
-                    _dbAction.RemoveReciept(itemToRemove);
-                    reciepts.Remove(itemToRemove);
+                var result = MessageBox.Show("Czy na pewno chcesz usunąć wybraną receptę?", "Potwierdzenie usunięcia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-                    DGVHeadersSet();
+                if (result == DialogResult.Yes)
+                {
+                    Reciept itemToRemove = reciepts.SingleOrDefault(r => r.RecieptId == deleteId);
+                    if (itemToRemove != null)
+                    {
+                        _dbAction.RemoveReciept(itemToRemove);
+                        reciepts.Remove(itemToRemove);
+
+                        DataLoad();
+                    }
                 }
 
             }
@@ -108,8 +115,6 @@ namespace Obsługa_Apteki
 
         private void DGVHeadersSet()
         {
-            dataGridView1.DataSource = null;
-            dataGridView1.DataSource = reciepts;
             if (reciepts != null && reciepts.Count > 0)
             {
                 dataGridView1.Columns[nameof(Reciept.RecieptId)].HeaderText = "ID";
@@ -130,5 +135,7 @@ namespace Obsługa_Apteki
                 dataGridView1.Columns[nameof(Reciept.Patient)].Visible = false;
             }
         }
+
+
     }
 }

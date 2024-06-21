@@ -28,7 +28,7 @@ namespace Obsługa_Apteki.Entities
         public DbSet<Stock> Stocks { get; set; }
 
         public DbSet<MedicineDelivery> MedicineDeliveries {get; set;}
-
+        public DbSet<MedicineReciept> MedicineReciepts { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

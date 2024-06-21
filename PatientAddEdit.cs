@@ -15,55 +15,55 @@ namespace Obsługa_Apteki
     {
         private string pesel;
         private DbActions _dbAction = new DbActions();
-        private AptekaTestDbContext _context;
+        private AptekaTestDbContext _context = new AptekaTestDbContext();
         private Patient patient;
         List<Pharmaceut> _pharmaceuts;
-        
 
-        public PatientAddEdit(string patientId, AptekaTestDbContext context)
-        {
-            InitializeComponent();
-            _context = context;
-            pesel = patientId;
-            LoadComboboxData();
-            GetPatientData();
-        }
         public PatientAddEdit()
         {
             InitializeComponent();
             LoadComboboxData();
         }
+        public PatientAddEdit(string patientId)
+        {
+            InitializeComponent();
+            pesel = patientId;
+            LoadComboboxData();
+            GetPatientData();
+        }
+
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             try
             {
-                if (!string.IsNullOrEmpty(tbId.Text))
-                {
-                    int id = int.Parse(tbId.Text);
-
-                    patient = _context.Patients.SingleOrDefault(p => p.PatientId == id);
-                    if (patient != null)
+                    if (!string.IsNullOrEmpty(tbId.Text))
                     {
-                        patient = CreatePatient();
-                        _context.Entry(patient).State = EntityState.Modified;
-                        MessageBox.Show("Aktualizowano dane Pacjenta");
+                        int id = int.Parse(tbId.Text);
+
+                        patient = _context.Patients.SingleOrDefault(p => p.PatientId == id);
+                        if (patient != null)
+                        {
+                            patient = CreatePatient();
+                            _context.Entry(patient).State = EntityState.Modified;
+                            MessageBox.Show("Aktualizowano dane Pacjenta");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Nie znaleziono Pacjenta o podanym ID");
+                            return;
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Nie znaleziono Pacjenta o podanym ID");
-                        return;
+                        patient = new Patient();
+                        patient = CreatePatient(patient);
+                        _context.Patients.Add(patient);
                     }
-                }
-                else
-                {
-                    patient = new Patient();
-                    patient = CreatePatient(patient);
-                    _context.Patients.Add(patient);
-                }
-                _context.SaveChanges();
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                    _context.SaveChanges();
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+               
             }
             catch (Exception ex)
             {

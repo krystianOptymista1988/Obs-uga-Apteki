@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Windows.Forms;
 
 
@@ -14,17 +15,17 @@ namespace Obsługa_Apteki
         private DbActions _dbAction = new DbActions();
         private List<Patient> patients = new List<Patient>();
         public PatientShow()
-        {
-            
+        {         
             InitializeComponent();
             DataLoad();
-            DGVHeadersSet();
             tbSearchValue.KeyDown += tbSearchValue_KeyDown;
         }
-
+       
         private void DataLoad()
         {
-            patients = _dbAction.GetPatients();
+            _dbAction = new DbActions();
+            patients = _dbAction.GetPatients(); 
+
 
             if (patients == null || patients.Count == 0)
             {
@@ -35,16 +36,20 @@ namespace Obsługa_Apteki
                     dataTable.Columns.Add(columnName);
                 }
                 dataGridView1.DataSource = dataTable;
+                dataGridView1.ColumnHeadersVisible = false;
             }
             else
             {
+                dataGridView1.DataSource = null;
                 dataGridView1.DataSource = patients;
+                DGVHeadersSet();
             }
         }
 
 
         private void btnAddPatient_Click(object sender, EventArgs e)
         {
+
             var addEditPatient = new PatientAddEdit();
             addEditPatient.ShowDialog();
             DataLoad();
@@ -58,14 +63,16 @@ namespace Obsługa_Apteki
                 if (dataGridView1.CurrentRow != null)
                 {
                     string patientId = (string)dataGridView1.CurrentRow.Cells["PESEL"].Value;
-                    
-                    PatientAddEdit editForm = new PatientAddEdit(patientId, _dbAction.GetContext());
 
-                    if (editForm.ShowDialog() == DialogResult.OK)
+                    using (var context = _dbAction.GetContext())
                     {
-                        DataLoad();
+                        PatientAddEdit editForm = new PatientAddEdit(patientId);
+
+                        if (editForm.ShowDialog() == DialogResult.OK)
+                        {
+                            DataLoad();   
+                        }
                     }
-                    
                 }
                 else
                 {
@@ -121,9 +128,8 @@ namespace Obsługa_Apteki
                     {
                         _dbAction.RemovePatient(itemToRemove);
                         patients.Remove(itemToRemove);
-                        dataGridView1.DataSource = null;
-                        dataGridView1.DataSource = patients;
-                        DGVHeadersSet();
+                        DataLoad();
+
                     }
                     else
                     {
@@ -137,7 +143,7 @@ namespace Obsługa_Apteki
             }
 
         }
-
+        //Wyszukiwanie pacjenta po wciśnięciu klawisza enter
         private void tbSearchValue_KeyDown(object sender, KeyEventArgs e)
         {
             if(e.KeyCode == Keys.Enter)
@@ -146,13 +152,14 @@ namespace Obsługa_Apteki
             }
         }
 
+        //wyszukiwanie pacjenta po kliknięciu przycisku "wyszukaj"
         private void btnSearchPatient_Click(object sender, EventArgs e)
         {
             string searchText = tbSearchValue.Text.Trim();
 
             if(!string.IsNullOrEmpty(searchText))
             {
-                var filteredPatients = patients.Where(p => p.Surname.Contains(searchText)).ToList();
+                var filteredPatients = patients.Where(p => p.FullName.Contains(searchText)).ToList();
 
                 if(filteredPatients.Count > 0)
                 {

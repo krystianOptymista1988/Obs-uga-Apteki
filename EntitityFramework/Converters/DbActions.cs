@@ -284,6 +284,15 @@ namespace Obsługa_Apteki.Entities
                 return context.MedicineDeliveries.ToList();
             }
         }
+
+        public List<MedicineReciept> GetMedicinesFromReciept(int recieptId)
+        {
+            
+            AptekaTestDbContext _context = new AptekaTestDbContext();
+           return _context.MedicineReciepts
+                .Where(mr => mr.RecieptId == recieptId)
+                .ToList();
+        }
     }
     
 }

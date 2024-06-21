@@ -232,6 +232,12 @@
     <Compile Include="RecieptAddEdit.Designer.cs">
       <DependentUpon>RecieptAddEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="RecieptData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RecieptData.Designer.cs">
+      <DependentUpon>RecieptData.cs</DependentUpon>
+    </Compile>
     <Compile Include="RecieptsShow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -307,6 +313,9 @@
     </Compile>
     <EmbeddedResource Include="RecieptAddEdit.resx">
       <DependentUpon>RecieptAddEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RecieptData.resx">
+      <DependentUpon>RecieptData.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RecieptsShow.resx">
       <DependentUpon>RecieptsShow.cs</DependentUpon>

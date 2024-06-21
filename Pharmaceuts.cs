@@ -18,7 +18,6 @@ namespace Obsługa_Apteki
             InitializeComponent();
             InitializeDataGridView();
             DataLoad();
-            DGVHeadersSet();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -67,10 +66,13 @@ namespace Obsługa_Apteki
                     dataTable.Columns.Add(columnName);
                 }
                 dataGridView1.DataSource = dataTable;
+                dataGridView1.ColumnHeadersVisible = false;
             }
             else
             {
+                dataGridView1.DataSource = null;
                 dataGridView1.DataSource = pharmaceuts;
+                DGVHeadersSet();
             }
         }
         private void DGVHeadersSet()
@@ -128,9 +130,7 @@ namespace Obsługa_Apteki
                             context.SaveChanges();
 
                             pharmaceuts = _dbAction.GetPharmaceuts();
-                            dataGridView1.DataSource = null;
-                            dataGridView1.DataSource = pharmaceuts;
-                            DGVHeadersSet();
+                            DataLoad();
                         }
                     }
                     else

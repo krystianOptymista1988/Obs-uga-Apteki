@@ -1,4 +1,5 @@
-﻿using Obsługa_Apteki.Entities;
+﻿
+using Obsługa_Apteki.Entities;
 using Obsługa_Apteki.Modele;
 using Obsługa_Apteki.Models;
 using System;
@@ -27,27 +28,11 @@ namespace Obsługa_Apteki
             InitializeComponent();
             LoadMedicinesData();
             LoadPatientsData();
+            DGVColumnSet();
         }
 
-        public RecieptAddEdit(Reciept reciept)
-        {
-            InitializeComponent();
-            LoadMedicinesData();
-            LoadPatientsData();
-            _reciept = reciept;
-            LoadRecieptData();
-        }
 
-        public void LoadRecieptData()
-        {
-            if(_reciept != null)
-            {
-                tbDoctor.Text = _reciept.DoctorFullName;
-                cbPatients.Text = _reciept.PatientFullName;  //jak wyświetlić leki z recepty w datagridview?????
-                dtpDateOfExpire.Value = _reciept.DateOfExpire;
-            }
 
-        }
 
         private void LoadMedicinesData()
         {
@@ -120,11 +105,16 @@ namespace Obsługa_Apteki
                 _stockList.Add(stockItem);
             }
 
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = _stockList;
             DGVColumnSet();
+            
         }
 
         private void btnDeleteFromList_Click(object sender, EventArgs e)
         {
+
+
             if (dataGridView1.SelectedRows.Count > 0)
             {
                 int deleteId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["MedicineId"].Value);
@@ -134,20 +124,30 @@ namespace Obsługa_Apteki
                     {
                         _stockList.Remove(item);
                     }
+
                 };
-                DGVColumnSet();
+
+                dataGridView1.DataSource = null;
+                if (_stockList.Count == 0)
+                {
+                    dataGridView1.ColumnHeadersVisible = false;
+                }
+                else
+                {
+                    dataGridView1.DataSource = _stockList;
+                    DGVColumnSet();
+                }
+
             }
             else
             {
                 MessageBox.Show("Proszę zaznaczyć Lek do usunięcia.");
             }
-
         }
 
         private void DGVColumnSet()
         {
-            dataGridView1.DataSource = null;
-            dataGridView1.DataSource = _stockList;
+
 
             if (_stockList != null && _stockList.Count > 0)
             {
@@ -164,6 +164,7 @@ namespace Obsługa_Apteki
                 dataGridView1.Columns[nameof(MedicineReciept.MedicineRecieptId)].Visible = false;
                 dataGridView1.Columns[nameof(MedicineReciept.Medicine)].Visible = false;
             }
+
         }
 
     }
