@@ -108,10 +108,7 @@ namespace Obsługa_Apteki
             dataGridView1.RowHeadersVisible = true;
         }
 
-        private void btnImplement_Click(object sender, EventArgs e)
-        {
 
-        }
 
         private void DGVHeadersSet()
         {

@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RecieptsShow));
-            this.btnImplement = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -37,28 +36,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnImplement
-            // 
-            this.btnImplement.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnImplement.BackColor = System.Drawing.Color.LemonChiffon;
-            this.btnImplement.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnImplement.Image = ((System.Drawing.Image)(resources.GetObject("btnImplement.Image")));
-            this.btnImplement.Location = new System.Drawing.Point(51, 382);
-            this.btnImplement.Name = "btnImplement";
-            this.btnImplement.Size = new System.Drawing.Size(127, 32);
-            this.btnImplement.TabIndex = 9;
-            this.btnImplement.Text = "Zrealizuj";
-            this.btnImplement.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnImplement.UseVisualStyleBackColor = false;
-            this.btnImplement.Click += new System.EventHandler(this.btnImplement_Click);
-            // 
             // btnAdd
             // 
             this.btnAdd.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
-            this.btnAdd.Location = new System.Drawing.Point(256, 382);
+            this.btnAdd.Location = new System.Drawing.Point(167, 382);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(127, 32);
             this.btnAdd.TabIndex = 8;
@@ -73,7 +57,7 @@
             this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
-            this.btnDelete.Location = new System.Drawing.Point(459, 382);
+            this.btnDelete.Location = new System.Drawing.Point(359, 382);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(127, 32);
             this.btnDelete.TabIndex = 7;
@@ -99,6 +83,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(225, 361);
             this.label1.Name = "label1";
@@ -113,7 +98,6 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(651, 448);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnImplement);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.dataGridView1);
@@ -129,7 +113,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button btnImplement;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.DataGridView dataGridView1;

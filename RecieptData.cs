@@ -18,6 +18,8 @@ namespace Obsługa_Apteki
         private DbActions _dbAction = new DbActions();
         private Reciept _reciept = new Reciept();
         private List<MedicineReciept> _medicines;
+        private AptekaTestDbContext _context;
+
 
         public RecieptData()
         {
@@ -30,7 +32,6 @@ namespace Obsługa_Apteki
             InitializeComponent();
             _reciept = reciept;
             LoadRecieptData();
-
         }
 
         public void LoadRecieptData()
@@ -38,7 +39,6 @@ namespace Obsługa_Apteki
 
             if (_reciept != null)
             {
-
                 tbDoctor.Text = _reciept.DoctorFullName;
                 tbPatient.Text = _reciept.PatientFullName;
                 tbDateOfExpire.Text = _reciept.DateOfExpire.ToString();
@@ -72,6 +72,13 @@ namespace Obsługa_Apteki
                 dataGridView1.Columns[nameof(MedicineReciept.MedicineRecieptId)].Visible = false;
                 dataGridView1.Columns[nameof(MedicineReciept.Medicine)].Visible = false;
             }
+        }
+
+        private void btnImplement_Click(object sender, EventArgs e)
+        {
+            _context = _dbAction.GetContext();
+            var SellMedicine = new SellMedicine(_reciept, _context);
+            SellMedicine.ShowDialog();
         }
     }
 }
