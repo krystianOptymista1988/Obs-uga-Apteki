@@ -3,39 +3,49 @@ using Obsługa_Apteki.Modele;
 using Obsługa_Apteki.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Windows.Forms;
-using System.Xml.Linq;
 
 namespace Obsługa_Apteki
 {
     public partial class DeliveryAddEdit : Form
     {
-        private AptekaTestDbContext _context = new AptekaTestDbContext();
-        private DbActions _dbAction = new DbActions();
-        private List<MedicineDelivery> _deliveryList = new List<MedicineDelivery>();
-        private List<Medicine> _medicines = new List<Medicine>();
-        private List<Pharmaceut> _pharmaceuts = new List<Pharmaceut>();  
-        private Delivery _delivery = new Delivery();
+        private AptekaTestDbContext _context;
+        private DbActions _dbAction;
+        private List<MedicineDelivery> _deliveryList;
+        private List<Modele.Medicine> _medicines;
+        private List<Pharmaceut> _pharmaceuts;
+        private Delivery _delivery;
         private double deliveryCost;
-        private string deliveryID;
-        
+        private int deliveryID;
+
         public DeliveryAddEdit()
         {
             InitializeComponent();
+            InitializeFields();
             ComboboxDataLoad();
             LoadComboboxData();
-           //DGVColumSet();    Coś mi się tu krzaczyło :(
         }
 
-        public DeliveryAddEdit(string deliveryId,AptekaTestDbContext _context1 )
+        public DeliveryAddEdit(int deliveryId, AptekaTestDbContext context)
         {
             InitializeComponent();
+            _context = context;
+            InitializeFields();
+            deliveryID = deliveryId;
             ComboboxDataLoad();
             LoadComboboxData();
-            deliveryID = deliveryId;
-            _context = _context1;
+            GetDeliveryData();
+        }
 
+        private void InitializeFields()
+        {
+            _dbAction = new DbActions();
+            _deliveryList = new List<MedicineDelivery>();
+            _medicines = new List<Modele.Medicine>();
+            _pharmaceuts = new List<Pharmaceut>();
+            _delivery = new Delivery();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -43,30 +53,36 @@ namespace Obsługa_Apteki
             Close();
         }
 
-
         private void ComboboxDataLoad()
         {
             _medicines = _dbAction.GetMedicines();
             cbMedicines.DataSource = _medicines;
             cbMedicines.DisplayMember = "Name";
             cbMedicines.ValueMember = "MedicineId";
-          
 
             _pharmaceuts = _dbAction.GetPharmaceuts();
             cbPharmaceut.DataSource = _pharmaceuts;
             cbPharmaceut.DisplayMember = "FullName";
             cbPharmaceut.ValueMember = "PharmaceutId";
-           
-
         }
 
         private void btnAddToList_Click(object sender, EventArgs e)
         {
-            MedicineDelivery  stockItem = new MedicineDelivery();
-            stockItem.Quantity = int.Parse(nudQuantity.Value.ToString());
-            stockItem.MedicineId = int.Parse(cbMedicines.SelectedValue.ToString());
-            stockItem.Medicine = new Medicine();
-            stockItem.Medicine.Name = cbMedicines.Text;
+            var selectedMedicineId = int.Parse(cbMedicines.SelectedValue.ToString());
+            var selectedMedicine = _context.Medicines.Find(selectedMedicineId);
+
+            if (selectedMedicine == null)
+            {
+                MessageBox.Show("Nie można znaleźć leku o podanym ID.");
+                return;
+            }
+
+            var stockItem = new MedicineDelivery
+            {
+                Quantity = int.Parse(nudQuantity.Value.ToString()),
+                MedicineId = selectedMedicineId,
+                Medicine = selectedMedicine
+            };
 
             bool found = false;
             foreach (MedicineDelivery item in _deliveryList)
@@ -79,11 +95,10 @@ namespace Obsługa_Apteki
                 }
             }
 
-           if (!found)
-          {
-                _deliveryList.Add(stockItem); 
-
-          }
+            if (!found)
+            {
+                _deliveryList.Add(stockItem);
+            }
 
             dgvMedicinesDelivery.DataSource = null;
             dgvMedicinesDelivery.DataSource = _deliveryList;
@@ -91,22 +106,12 @@ namespace Obsługa_Apteki
             CountCostDelivery();
         }
 
-
         private void btnDeleteFromList_Click(object sender, EventArgs e)
         {
             if (dgvMedicinesDelivery.SelectedRows.Count > 0)
             {
                 int deleteId = Convert.ToInt32(dgvMedicinesDelivery.SelectedRows[0].Cells["MedicineId"].Value);
-                List<MedicineDelivery> stockList = _deliveryList;
-                _deliveryList = new List<MedicineDelivery>();
-                foreach (MedicineDelivery item in stockList)
-                {
-                    if (item.MedicineId != deleteId)
-                    {
-                        _deliveryList.Add(item);
-                        
-                    }
-                };
+                _deliveryList = _deliveryList.Where(item => item.MedicineId != deleteId).ToList();
             }
             else
             {
@@ -119,14 +124,16 @@ namespace Obsługa_Apteki
 
         private void DGVComunSet()
         {
-            if(_deliveryList != null && _deliveryList.Count > 0)
+            if (_deliveryList != null && _deliveryList.Count > 0 && dgvMedicinesDelivery != null)
             {
-
-            dgvMedicinesDelivery.Columns[nameof(MedicineDelivery.Delivery)].Visible = false;
-            dgvMedicinesDelivery.Columns[nameof(MedicineDelivery.Medicine.Name)].HeaderText= "Nazwa Leku";
-            dgvMedicinesDelivery.Columns[nameof(MedicineDelivery.Quantity)].HeaderText = "Opakowania";
-            dgvMedicinesDelivery.Columns[nameof(MedicineDelivery.MedicineId)].HeaderText = "ID Leku";
-            dgvMedicinesDelivery.Columns[nameof(MedicineDelivery.QuantityInPackage)].Visible = false;
+                dgvMedicinesDelivery.Columns[nameof(MedicineDelivery.Delivery)].Visible = false;
+                dgvMedicinesDelivery.Columns[nameof(MedicineDelivery.MedicineName)].HeaderText = "Nazwa Leku";
+                dgvMedicinesDelivery.Columns[nameof(MedicineDelivery.Quantity)].HeaderText = "Opakowania";
+                dgvMedicinesDelivery.Columns[nameof(MedicineDelivery.MedicineId)].HeaderText = "ID Leku";
+                dgvMedicinesDelivery.Columns[nameof(MedicineDelivery.QuantityInPackage)].Visible = false;
+                dgvMedicinesDelivery.Columns[nameof(MedicineDelivery.MedicineDeliveryId)].Visible = false;
+                dgvMedicinesDelivery.Columns[nameof(MedicineDelivery.DeliveryId)].HeaderText = "ID Dostawy";
+                dgvMedicinesDelivery.Columns[nameof(MedicineDelivery.Medicine)].Visible = false;
             }
         }
 
@@ -136,9 +143,9 @@ namespace Obsługa_Apteki
             double cost2 = 0;
             deliveryCost = 0;
 
-            List<Medicine> medicines = new List<Medicine>();
+            List<Modele.Medicine> medicines = new List<Modele.Medicine>();
             medicines = _context.Medicines.ToList();
-            foreach (MedicineDelivery medicine in _deliveryList) 
+            foreach (MedicineDelivery medicine in _deliveryList)
             {
                 foreach (var item in medicines)
                 {
@@ -165,6 +172,11 @@ namespace Obsługa_Apteki
 
         private void btnSend_Click(object sender, EventArgs e)
         {
+            if (_delivery == null)
+            {
+                _delivery = new Delivery();
+            }
+
             _delivery.Value = double.Parse(lblDeliveryCost.Text);
             _delivery.DateOfCreate = DateTime.Now;
             _delivery.DateOfDelivery = DateTime.Parse(dtpDateOfDelivery.Value.ToString());
@@ -177,12 +189,13 @@ namespace Obsługa_Apteki
 
         private void GetDeliveryData()
         {
-            var _context = _dbAction.GetContext();
-            int deliveryID2 = int.Parse(deliveryID);
+            int deliveryID2 = deliveryID;
             if (deliveryID2 != 0)
             {
                 Text = "Edytowanie danych Pacjenta";
-                _delivery = _context.Deliveries.FirstOrDefault(x => x.DeliveryId == deliveryID2);
+                _delivery = _context.Deliveries
+                    .Include("MedicineDeliveries.Medicine") // Załaduj powiązane leki
+                    .FirstOrDefault(x => x.DeliveryId == deliveryID2);
 
                 if (_delivery == null)
                 {
@@ -190,14 +203,24 @@ namespace Obsługa_Apteki
                 }
 
                 FillTextBoxes();
+                LoadMedicineDeliveries();
             }
         }
 
         private void FillTextBoxes()
         {
-            
+            lblDeliveryCost.Text = _delivery.Value.ToString();
+            dtpDateOfDelivery.Value = _delivery.DateOfDelivery;
+            cbPharmaceut.SelectedValue = _delivery.PharmaceutOrdering;
+        }
 
+        private void LoadMedicineDeliveries()
+        {
+            _deliveryList = _delivery.MedicineDeliveries.ToList();
+            dgvMedicinesDelivery.DataSource = null;
+            dgvMedicinesDelivery.DataSource = _deliveryList;
+            DGVComunSet();
+            CountCostDelivery();
         }
     }
-    
 }

@@ -144,11 +144,8 @@
     <Compile Include="LoginPanel.Designer.cs">
       <DependentUpon>LoginPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modele\ExceptionExtensions.cs" />
     <Compile Include="Modele\MedicineReciept.cs" />
-    <Compile Include="Migrations\202405231748587_FullStartContext.cs" />
-    <Compile Include="Migrations\202405231748587_FullStartContext.Designer.cs">
-      <DependentUpon>202405231748587_FullStartContext.cs</DependentUpon>
-    </Compile>
     <Compile Include="Modele\Bill.cs" />
     <Compile Include="EntitityFramework\AptekaDbInitializer.cs" />
     <Compile Include="EntitityFramework\AptekaTestDbContext.cs" />
@@ -283,9 +280,6 @@
     <EmbeddedResource Include="MedicineCard.resx">
       <DependentUpon>MedicineCard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202405231748587_FullStartContext.resx">
-      <DependentUpon>202405231748587_FullStartContext.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="PatientAddEdit.resx">
       <DependentUpon>PatientAddEdit.cs</DependentUpon>
     </EmbeddedResource>
@@ -358,7 +352,9 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="EntitityFramework\DbScripts\AddCompleteRelationsAndClasses_1.sql" />
     <Content Include="EntitityFramework\DbScripts\SetNewClassesAndRelations.sql" />

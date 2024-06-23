@@ -12,7 +12,7 @@ namespace Obsługa_Apteki
     {
         public Bill()
         {
-            Medicines = new List<Medicine>();
+            Medicines = new List<Modele.Medicine>();
             BillQuantities = new List<BillQuantity>();
         }
 
@@ -22,7 +22,7 @@ namespace Obsługa_Apteki
         public DateTime DateOfBill { get; set; }
         public double BillPrice { get; set; }
 
-        public ICollection<Medicine> Medicines { get; set; }
+        public ICollection<Modele.Medicine> Medicines { get; set; }
 
         public ICollection<BillQuantity> BillQuantities { get; set; }
     }

@@ -8,16 +8,21 @@ using System.Threading.Tasks;
 
 namespace Obsługa_Apteki.Modele
 {
-    public class MedicineDelivery : Medicine
+    public class MedicineDelivery //: Medicine
     {
-
+        [Key]
         public int MedicineDeliveryId { get; set; }
         public int DeliveryId { get; set; }
-        public Delivery Delivery { get; set; }
+        public virtual Delivery Delivery { get; set; }
         public int MedicineId { get; set; }
-        public Medicine Medicine { get; set; }
+        public virtual Medicine Medicine { get; set; }
         public int Quantity { get; set; }
 
+        [NotMapped]
+        public string MedicineName => Medicine?.Name;
+
+        [NotMapped]
+        public int QuantityInPackage => Medicine?.QuantityInPackage ?? 0;
     }
             
         

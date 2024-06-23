@@ -1,32 +1,32 @@
-﻿using Obsługa_Apteki.Modele;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Obsługa_Apteki
+namespace Obsługa_Apteki.Modele
 {
     public class Reciept
     {
         public Reciept()
         {
-            Medicines = new List<Medicine>();
+            MedicineReciepts = new List<MedicineReciept>();
+            AddedMedicines = new List<Medicine>();
         }
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int RecieptId { get; set; }
-        public ICollection<Medicine> Medicines { get; set; } // 1 do wielu, 1 recepta może zawierać wiele leków
-        public DateTime DateOfRegistry { get; set; }
+        public DateTime DateOfIssue { get; set; }
+        public string PatientFullName { get; set; }
+        public string DoctorFullName { get; set; }
+        public virtual ICollection<MedicineReciept> MedicineReciepts { get; set; } // Dodano właściwość MedicineReciepts
+        public virtual ICollection<Medicine> AddedMedicines { get; set; }
+        public ICollection<object> Medicines { get; internal set; }
+        public DateTime DateOfRegistry { get; internal set; }
+        
         public DateTime DateOfExpire { get; set; }
-
-        public string DoctorFullName {  get; set; }
-        public int PatientId { get; set; }  // 1 do 1
-        public Patient Patient { get; set; } // 1 do 1
-        public string PatientFullName {  get; set; }
+        public int PatientId { get; internal set; }
         public int Quantity { get; set; }
-        public ICollection<MedicineReciept> MedicineReciept { get; set; }
-        public ICollection<Medicine> AddedMedicines { get; set; }
-
+        public virtual Patient Patient { get; set; }
     }
 }

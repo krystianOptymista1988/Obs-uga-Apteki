@@ -3,7 +3,6 @@ using Obsługa_Apteki.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -13,14 +12,12 @@ namespace Obsługa_Apteki
     {
         private DbActions _dbAction = new DbActions();
         private List<Delivery> deliveries;
-        
 
         public Deliveries()
         {
             InitializeComponent();
             DataLoad();
             DGVHeadersSet();
-            
         }
 
         private void DataLoad()
@@ -50,28 +47,32 @@ namespace Obsługa_Apteki
             {
                 if (dataGridView1.CurrentRow != null)
                 {
-                    string deliveryId = (string)dataGridView1.CurrentRow.Cells["DeliveryId"].Value;
-                    using (var _context = _dbAction.GetContext())
+                    var value = dataGridView1.CurrentRow.Cells["DeliveryId"].Value;
+                    if (value != null && int.TryParse(value.ToString(), out int deliveryId))
                     {
-                        DeliveryAddEdit editForm = new DeliveryAddEdit(deliveryId, _context);
-                        if (editForm.ShowDialog() == DialogResult.OK)
+                        using (var context = new AptekaTestDbContext())
                         {
-                            DataLoad();
+                            DeliveryAddEdit editForm = new DeliveryAddEdit(deliveryId, context);
+                            if (editForm.ShowDialog() == DialogResult.OK)
+                            {
+                                DataLoad();
+                            }
                         }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Nieprawidłowy format ID zamówienia.");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Wybierz pacjenta do edycji.");
+                    MessageBox.Show("Wybierz zamówienie do edycji.");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Błąd podczas edycji pacjenta: " + ex.Message);
+                MessageBox.Show("Błąd podczas edycji zamówienia: " + ex.Message);
             }
-            var deliveryAddEdit = new DeliveryAddEdit();
-            deliveryAddEdit.ShowDialog();
-           DataLoad();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -79,7 +80,7 @@ namespace Obsługa_Apteki
             var DeliveryAddEdit = new DeliveryAddEdit();
 
             DeliveryAddEdit.ShowDialog();
-           DataLoad();
+            DataLoad();
         }
 
         private void DGVHeadersSet()
@@ -101,7 +102,6 @@ namespace Obsługa_Apteki
             }
         }
 
-
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 0)
@@ -116,13 +116,11 @@ namespace Obsługa_Apteki
                     dataGridView1.DataSource = deliveries;
                     DGVHeadersSet();
                 }
-
             }
             else
             {
                 MessageBox.Show("Proszę zaznaczyć dostawę do usunięcia.");
             }
         }
-
     }
 }

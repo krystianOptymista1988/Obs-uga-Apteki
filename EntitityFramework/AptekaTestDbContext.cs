@@ -19,19 +19,18 @@ namespace Obsługa_Apteki.Entities
         public DbSet<Delivery> Deliveries { get; set; }
         public DbSet<ExpiredDate> ExpiredDates { get; set; }
         public DbSet<Medicine> Medicines { get; set; }
-
         public DbSet<Patient> Patients { get; set; }
         public DbSet<Pharmaceut> Pharmaceuts { get; set; }
         public DbSet<QuantityOnMagazine> QuantitiesOnMagazine { get; set; }
         public DbSet<Reciept> Reciepts { get; set; }
-
         public DbSet<Stock> Stocks { get; set; }
-
-        public DbSet<MedicineDelivery> MedicineDeliveries {get; set;}
+        public DbSet<MedicineDelivery> MedicineDeliveries { get; set; }
         public DbSet<MedicineReciept> MedicineReciepts { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+     
+
             modelBuilder.Configurations.Add(new BillConfiguration());
             modelBuilder.Configurations.Add(new BillQuantityConfiguration());
             modelBuilder.Configurations.Add(new DeliveryConfiguration());
@@ -42,9 +41,9 @@ namespace Obsługa_Apteki.Entities
             modelBuilder.Configurations.Add(new QuantityOnMagazineConfiguration());
             modelBuilder.Configurations.Add(new ReicieptConfiguration());
             modelBuilder.Configurations.Add(new StockConfiguration());
-          //  modelBuilder.Configurations.Add(new MedicineDeliveryConfiguration());   
+            modelBuilder.Configurations.Add(new MedicineDeliveryConfiguration());
+            modelBuilder.Configurations.Add(new MedicineRecieptConfiguration());
         }
-
     }
 
 }

@@ -1,15 +1,16 @@
 ﻿
 using Obsługa_Apteki.Entities;
 using Obsługa_Apteki.Modele;
-using Obsługa_Apteki.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
 using System.Windows.Forms;
 using System.Xml.Linq;
+//using Medicine = Obsługa_Apteki.Modele.Medicine;
 
 namespace Obsługa_Apteki
 {
@@ -57,32 +58,56 @@ namespace Obsługa_Apteki
             Close();
         }
 
+
         private void btnAccept_Click_1(object sender, EventArgs e)
         {
-            _dbAction = new DbActions();
-            _reciept.DateOfRegistry = DateTime.Now;
-            _reciept.DateOfExpire = DateTime.Parse(dtpDateOfExpire.Value.ToString());
-            _reciept.PatientId = int.Parse(cbPatients.SelectedValue.ToString());
-            var selectedPatient = cbPatients.SelectedItem as Patient;
-
-            if (selectedPatient != null)
+            try
             {
-                _reciept.PatientFullName = selectedPatient.FullName;
+                _reciept.DateOfRegistry = DateTime.Now;
+
+              
+
+               DateTime dateOfExpire = DateTime.Parse(dtpDateOfExpire.Value.ToString());
+
+                _reciept.DateOfExpire = dateOfExpire;
+
+                if (!int.TryParse(cbPatients.SelectedValue.ToString(), out int patientId))
+                {
+                    MessageBox.Show("Proszę wybrać pacjenta.");
+                    return;
+                }
+
+                _reciept.PatientId = patientId;
+
+                var selectedPatient = cbPatients.SelectedItem as Patient;
+                if (selectedPatient != null)
+                {
+                    _reciept.PatientFullName = selectedPatient.FullName;
+                }
+                else
+                {
+                    MessageBox.Show("Proszę wybrać pacjenta.");
+                    return;
+                }
+
+                _reciept.DoctorFullName = tbDoctor.Text;
+
+                _dbAction.AddRecieptWithMedicines(_reciept, _stockList);
+
+                Close();
             }
-            else
+            catch (DbUpdateException ex)
             {
-                MessageBox.Show("Proszę wybrać pacjenta.");
-                return;
+                var innerException = ex.InnerException?.InnerException?.Message ?? ex.InnerException?.Message ?? ex.Message;
+                MessageBox.Show("Błąd podczas zapisywania danych: " + innerException);
             }
-
-            _reciept.DoctorFullName = tbDoctor.Text;
-
-            _dbAction.AddRecieptWithMedicines(_reciept, _stockList);
-
-            Close();
+            catch (Exception ex)
+            {
+                MessageBox.Show("Błąd podczas zapisywania danych: " + ex.Message);
+            }
         }
 
-        private void btnAddToList_Click(object sender, EventArgs e)
+            private void btnAddToList_Click(object sender, EventArgs e)
         {
             stockItem = new MedicineReciept();
             stockItem.Quantity = int.Parse(nudQuantity.Value.ToString());

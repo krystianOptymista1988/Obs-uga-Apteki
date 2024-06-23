@@ -1,20 +1,19 @@
-﻿using Obsługa_Apteki.Modele;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Obsługa_Apteki
+namespace Obsługa_Apteki.Modele
 {
-    public class Medicine : IMedicineOnReciept
+    public class Medicine
     {
         public Medicine()
         {
-         Reciepts = new List<Reciept>();
-         Deliveries = new List<Delivery>();
-         ExpiredDates = new List<ExpiredDate>();
-         QuantityOnMagazines = new List<QuantityOnMagazine>();
-         MedicineDeliveries = new List<MedicineDelivery>();
+            MedicineReciepts = new List<MedicineReciept>();
+            Deliveries = new List<Delivery>();
+            ExpiredDates = new List<ExpiredDate>();
+            QuantityOnMagazines = new List<QuantityOnMagazine>();
+            MedicineDeliveries = new List<MedicineDelivery>();
         }
 
         [Key]
@@ -27,21 +26,18 @@ namespace Obsługa_Apteki
         public double PriceOfBuy { get; set; }
         public double Price { get; set; }
         public double PriceMarge { get; set; }
-        public int QuantityInPackage { get; set; } 
+        public int QuantityInPackage { get; set; }
         public bool IsRefunded { get; set; }
         public double? PercentageOfRefunding { get; set; }
         public double? PriceAfterRefunding { get; set; }
         public string ActiveSubstance { get; set; }
         public bool IsAntibiotique { get; set; }
-
         public bool IsOnReciept { get; set; }
-        public ICollection<Reciept> Reciepts { get; set; } // 1 do wielu tzn 1 lek może znaleźć się na wielu receptach
-        public ICollection<Delivery> Deliveries { get; set; }
-        public ICollection<QuantityOnMagazine> QuantityOnMagazines { get; set; }
-
-        public int Quantity {  get; set; }
-        public List<MedicineDelivery> MedicineDeliveries { get; set; }
-        public List<MedicineReciept> MedicineReciept { get; set; }
-
+        public virtual ICollection<Reciept> Reciepts { get; set; } // 1 do wielu tzn 1 lek może znaleźć się na wielu receptach
+        public virtual ICollection<Delivery> Deliveries { get; set; }
+        public virtual ICollection<QuantityOnMagazine> QuantityOnMagazines { get; set; }
+        public int Quantity { get; set; }
+        public virtual ICollection<MedicineDelivery> MedicineDeliveries { get; set; }
+        public virtual ICollection<MedicineReciept> MedicineReciepts { get; set; } // Dodano właściwość MedicineReciepts
     }
 }

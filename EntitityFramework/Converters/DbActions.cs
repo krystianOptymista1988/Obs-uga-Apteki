@@ -7,6 +7,8 @@ using System.Reflection;
 using System.Runtime.Remoting.Contexts;
 using System.Windows.Forms;
 using static Obsługa_Apteki.Modele.ExpiredMedicines;
+using ModeleReciept = Obsługa_Apteki.Modele.Reciept;
+using ModelsReciept = Obsługa_Apteki.Models.Reciept;
 
 namespace Obsługa_Apteki.Entities
 {
@@ -21,7 +23,7 @@ namespace Obsługa_Apteki.Entities
             return _context;
         }
 
-        public List<Medicine> GetMedicines()
+        public List<Modele.Medicine> GetMedicines()
         {
             using (var context = new AptekaTestDbContext()) 
             {
@@ -79,7 +81,7 @@ namespace Obsługa_Apteki.Entities
             }
         }
 
-        public List<Reciept> GetReciepts()
+        public List<Modele.Reciept> GetReciepts()
         {
             using (var context = _context)
             {
@@ -179,7 +181,7 @@ namespace Obsługa_Apteki.Entities
             _context.SaveChanges();
         }
 
-        public void RemoveReciept(Reciept reciept)
+        public void RemoveReciept(Modele.Reciept reciept)
         {
             _context = new AptekaTestDbContext();
             var existingReciept = _context.Reciepts.SingleOrDefault(p => p.RecieptId == reciept.RecieptId);
@@ -211,7 +213,7 @@ namespace Obsługa_Apteki.Entities
             _context.SaveChanges();
         }
 
-        public void RemoveMedicine(Medicine medicine)
+        public void RemoveMedicine(Modele.Medicine medicine)
         {
             _context = new AptekaTestDbContext();
             var existingMedicine = _context.Medicines.SingleOrDefault(p => p.MedicineId == medicine.MedicineId);
@@ -245,33 +247,52 @@ namespace Obsługa_Apteki.Entities
 
         public void AddDeliveryWithMedicines(Delivery delivery, List<MedicineDelivery> medicineDeliveries)
         {
-            _context.Set<Delivery>().Add(delivery);
-
-
-            foreach (var medicineInDelivery in medicineDeliveries)
+            using (var context = new AptekaTestDbContext())
             {
-                medicineInDelivery.DeliveryId = delivery.DeliveryId;
-                _context.Set<MedicineDelivery>().Add(medicineInDelivery);
-                _context.SaveChanges();
-            }
+                context.Deliveries.Add(delivery);
 
-            _context.SaveChanges();
+                foreach (var medicineInDelivery in medicineDeliveries)
+                {
+                    // Upewnij się, że usuwasz wszelkie poprzednie referencje
+                    medicineInDelivery.Delivery = null;
+                    medicineInDelivery.Medicine = null;
+
+                    medicineInDelivery.DeliveryId = delivery.DeliveryId;
+
+                    var existingMedicine = context.Medicines.Find(medicineInDelivery.MedicineId);
+                    if (existingMedicine != null)
+                    {
+                        existingMedicine.Quantity += medicineInDelivery.Quantity;
+                    }
+
+                    context.MedicineDeliveries.Add(medicineInDelivery);
+                }
+
+                context.SaveChanges();
+            }
         }
 
 
-        public void AddRecieptWithMedicines(Reciept reciept, List<MedicineReciept> medicineReciepts)
+        public void AddRecieptWithMedicines(Modele.Reciept reciept, List<MedicineReciept> medicineReciepts)
         {
-            _context.Set<Reciept>().Add(reciept);
-
-
-            foreach (var medicineInReciept in medicineReciepts)
+            using (var context = new AptekaTestDbContext())
             {
-                medicineInReciept.RecieptId = reciept.RecieptId;
-                _context.Set<MedicineReciept>().Add(medicineInReciept);
-                _context.SaveChanges();
-            }
+                // Sprawdź zakres daty przed dodaniem
+                if (reciept.DateOfExpire < new DateTime(1753, 1, 1) || reciept.DateOfExpire > new DateTime(9999, 12, 31))
+                {
+                    throw new ArgumentOutOfRangeException("Data wygaśnięcia musi mieścić się w zakresie od 1753-01-01 do 9999-12-31.");
+                }
 
-            _context.SaveChanges();
+                context.Reciepts.Add(reciept);
+
+                foreach (var medicineInReciept in medicineReciepts)
+                {
+                    medicineInReciept.RecieptId = reciept.RecieptId;
+                    context.MedicineReciepts.Add(medicineInReciept);
+                }
+
+                context.SaveChanges();
+            }
         }
 
 

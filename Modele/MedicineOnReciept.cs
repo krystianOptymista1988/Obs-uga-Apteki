@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Obsługa_Apteki.Modele;
+using System.Collections.Generic;
 
 namespace Obsługa_Apteki
 {

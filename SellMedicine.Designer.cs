@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SellMedicine));
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.dgvBillMedicines = new System.Windows.Forms.DataGridView();
+            this.btnAddToBill = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnPrintBill = new System.Windows.Forms.Button();
+            this.btnPrintInvoice = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -47,92 +47,96 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.tbQuantity = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvMedicinesOnStock = new System.Windows.Forms.DataGridView();
             this.lbPrice = new System.Windows.Forms.Label();
             this.lbtotalPrice = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBillMedicines)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMedicinesOnStock)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView2
+            // dgvBillMedicines
             // 
-            this.dataGridView2.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.GridColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dataGridView2.Location = new System.Drawing.Point(997, 188);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowHeadersWidth = 62;
-            this.dataGridView2.RowTemplate.Height = 28;
-            this.dataGridView2.Size = new System.Drawing.Size(489, 637);
-            this.dataGridView2.TabIndex = 1;
+            this.dgvBillMedicines.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBillMedicines.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvBillMedicines.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvBillMedicines.GridColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dgvBillMedicines.Location = new System.Drawing.Point(997, 188);
+            this.dgvBillMedicines.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.dgvBillMedicines.Name = "dgvBillMedicines";
+            this.dgvBillMedicines.RowHeadersWidth = 62;
+            this.dgvBillMedicines.RowTemplate.Height = 28;
+            this.dgvBillMedicines.Size = new System.Drawing.Size(489, 637);
+            this.dgvBillMedicines.TabIndex = 1;
             // 
-            // button1
+            // btnAddToBill
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button1.Location = new System.Drawing.Point(46, 808);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(355, 66);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "DODAJ";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnAddToBill.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnAddToBill.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAddToBill.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnAddToBill.Location = new System.Drawing.Point(46, 808);
+            this.btnAddToBill.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnAddToBill.Name = "btnAddToBill";
+            this.btnAddToBill.Size = new System.Drawing.Size(355, 66);
+            this.btnAddToBill.TabIndex = 2;
+            this.btnAddToBill.Text = "DODAJ";
+            this.btnAddToBill.UseVisualStyleBackColor = false;
+            this.btnAddToBill.Click += new System.EventHandler(this.btnAddToBill_Click);
             // 
-            // button2
+            // btnDelete
             // 
-            this.button2.BackColor = System.Drawing.Color.Tomato;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button2.Location = new System.Drawing.Point(1071, 891);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(355, 66);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "USUŃ";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnDelete.BackColor = System.Drawing.Color.Tomato;
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnDelete.Location = new System.Drawing.Point(1071, 891);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(355, 66);
+            this.btnDelete.TabIndex = 3;
+            this.btnDelete.Text = "USUŃ";
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // button4
+            // btnPrintBill
             // 
-            this.button4.BackColor = System.Drawing.Color.DarkMagenta;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
-            this.button4.Location = new System.Drawing.Point(577, 241);
-            this.button4.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(355, 87);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "Drukuj Paragon";
-            this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button4.UseVisualStyleBackColor = false;
+            this.btnPrintBill.BackColor = System.Drawing.Color.DarkMagenta;
+            this.btnPrintBill.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnPrintBill.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnPrintBill.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnPrintBill.Image = ((System.Drawing.Image)(resources.GetObject("btnPrintBill.Image")));
+            this.btnPrintBill.Location = new System.Drawing.Point(577, 241);
+            this.btnPrintBill.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnPrintBill.Name = "btnPrintBill";
+            this.btnPrintBill.Size = new System.Drawing.Size(355, 87);
+            this.btnPrintBill.TabIndex = 5;
+            this.btnPrintBill.Text = "Drukuj Paragon";
+            this.btnPrintBill.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnPrintBill.UseVisualStyleBackColor = false;
+            this.btnPrintBill.Click += new System.EventHandler(this.btnPrintBill_Click);
             // 
-            // button5
+            // btnPrintInvoice
             // 
-            this.button5.BackColor = System.Drawing.Color.Indigo;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button5.Image = ((System.Drawing.Image)(resources.GetObject("button5.Image")));
-            this.button5.Location = new System.Drawing.Point(614, 818);
-            this.button5.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(285, 87);
-            this.button5.TabIndex = 6;
-            this.button5.Text = "Wystaw Fakturę";
-            this.button5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button5.UseVisualStyleBackColor = false;
+            this.btnPrintInvoice.BackColor = System.Drawing.Color.Indigo;
+            this.btnPrintInvoice.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnPrintInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnPrintInvoice.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnPrintInvoice.Image = ((System.Drawing.Image)(resources.GetObject("btnPrintInvoice.Image")));
+            this.btnPrintInvoice.Location = new System.Drawing.Point(614, 818);
+            this.btnPrintInvoice.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnPrintInvoice.Name = "btnPrintInvoice";
+            this.btnPrintInvoice.Size = new System.Drawing.Size(285, 87);
+            this.btnPrintInvoice.TabIndex = 6;
+            this.btnPrintInvoice.Text = "Wystaw Fakturę";
+            this.btnPrintInvoice.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnPrintInvoice.UseVisualStyleBackColor = false;
+            this.btnPrintInvoice.Click += new System.EventHandler(this.btnPrintInvoice_Click);
             // 
             // label1
             // 
@@ -143,7 +147,7 @@
             this.label1.Location = new System.Drawing.Point(1066, 143);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(201, 20);
+            this.label1.Size = new System.Drawing.Size(289, 29);
             this.label1.TabIndex = 7;
             this.label1.Text = "ZAMÓWIENIE KLIENTA";
             // 
@@ -153,7 +157,7 @@
             this.textBox1.Location = new System.Drawing.Point(573, 367);
             this.textBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(359, 26);
+            this.textBox1.Size = new System.Drawing.Size(359, 35);
             this.textBox1.TabIndex = 8;
             // 
             // textBox2
@@ -162,7 +166,7 @@
             this.textBox2.Location = new System.Drawing.Point(573, 452);
             this.textBox2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(359, 26);
+            this.textBox2.Size = new System.Drawing.Size(359, 35);
             this.textBox2.TabIndex = 9;
             // 
             // textBox3
@@ -171,7 +175,7 @@
             this.textBox3.Location = new System.Drawing.Point(573, 601);
             this.textBox3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(359, 26);
+            this.textBox3.Size = new System.Drawing.Size(359, 35);
             this.textBox3.TabIndex = 10;
             // 
             // label2
@@ -181,7 +185,7 @@
             this.label2.Location = new System.Drawing.Point(497, 373);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 20);
+            this.label2.Size = new System.Drawing.Size(91, 29);
             this.label2.TabIndex = 11;
             this.label2.Text = "Nazwa";
             // 
@@ -192,7 +196,7 @@
             this.label3.Location = new System.Drawing.Point(503, 455);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 20);
+            this.label3.Size = new System.Drawing.Size(56, 29);
             this.label3.TabIndex = 12;
             this.label3.Text = "NIP";
             // 
@@ -203,7 +207,7 @@
             this.label4.Location = new System.Drawing.Point(497, 601);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(56, 20);
+            this.label4.Size = new System.Drawing.Size(81, 29);
             this.label4.TabIndex = 13;
             this.label4.Text = "Adres";
             // 
@@ -214,7 +218,7 @@
             this.label5.Location = new System.Drawing.Point(497, 530);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(120, 20);
+            this.label5.Size = new System.Drawing.Size(177, 29);
             this.label5.TabIndex = 14;
             this.label5.Text = "Kod Pocztowy";
             // 
@@ -224,7 +228,7 @@
             this.textBox4.Location = new System.Drawing.Point(635, 527);
             this.textBox4.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(235, 26);
+            this.textBox4.Size = new System.Drawing.Size(235, 35);
             this.textBox4.TabIndex = 15;
             // 
             // label6
@@ -236,7 +240,7 @@
             this.label6.Location = new System.Drawing.Point(153, 37);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(129, 20);
+            this.label6.Size = new System.Drawing.Size(192, 29);
             this.label6.TabIndex = 17;
             this.label6.Text = "ASORTYMENT";
             // 
@@ -249,7 +253,7 @@
             this.label7.Location = new System.Drawing.Point(115, 691);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(167, 20);
+            this.label7.Size = new System.Drawing.Size(244, 29);
             this.label7.TabIndex = 18;
             this.label7.Text = "ILOŚĆ OPAKOWAŃ";
             // 
@@ -259,21 +263,21 @@
             this.tbQuantity.Location = new System.Drawing.Point(133, 746);
             this.tbQuantity.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.tbQuantity.Name = "tbQuantity";
-            this.tbQuantity.Size = new System.Drawing.Size(192, 26);
+            this.tbQuantity.Size = new System.Drawing.Size(192, 35);
             this.tbQuantity.TabIndex = 19;
             // 
-            // dataGridView1
+            // dgvMedicinesOnStock
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(26, 88);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(335, 590);
-            this.dataGridView1.TabIndex = 20;
+            this.dgvMedicinesOnStock.BackgroundColor = System.Drawing.Color.White;
+            this.dgvMedicinesOnStock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMedicinesOnStock.Location = new System.Drawing.Point(26, 88);
+            this.dgvMedicinesOnStock.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.dgvMedicinesOnStock.Name = "dgvMedicinesOnStock";
+            this.dgvMedicinesOnStock.RowHeadersVisible = false;
+            this.dgvMedicinesOnStock.RowHeadersWidth = 62;
+            this.dgvMedicinesOnStock.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvMedicinesOnStock.Size = new System.Drawing.Size(335, 590);
+            this.dgvMedicinesOnStock.TabIndex = 20;
             // 
             // lbPrice
             // 
@@ -283,7 +287,7 @@
             this.lbPrice.Location = new System.Drawing.Point(1269, 842);
             this.lbPrice.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbPrice.Name = "lbPrice";
-            this.lbPrice.Size = new System.Drawing.Size(20, 24);
+            this.lbPrice.Size = new System.Drawing.Size(30, 32);
             this.lbPrice.TabIndex = 21;
             this.lbPrice.Text = "0";
             // 
@@ -295,7 +299,7 @@
             this.lbtotalPrice.Location = new System.Drawing.Point(1069, 843);
             this.lbtotalPrice.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbtotalPrice.Name = "lbtotalPrice";
-            this.lbtotalPrice.Size = new System.Drawing.Size(82, 24);
+            this.lbtotalPrice.Size = new System.Drawing.Size(120, 32);
             this.lbtotalPrice.TabIndex = 22;
             this.lbtotalPrice.Text = "RAZEM:";
             // 
@@ -308,21 +312,21 @@
             this.label8.Location = new System.Drawing.Point(571, -3);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(380, 36);
+            this.label8.Size = new System.Drawing.Size(544, 52);
             this.label8.TabIndex = 23;
             this.label8.Text = "PHARMACY ASSISTANT";
             // 
             // SellMedicine
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.ClientSize = new System.Drawing.Size(1507, 1213);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.lbtotalPrice);
             this.Controls.Add(this.lbPrice);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvMedicinesOnStock);
             this.Controls.Add(this.tbQuantity);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -335,11 +339,11 @@
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.dataGridView2);
+            this.Controls.Add(this.btnPrintInvoice);
+            this.Controls.Add(this.btnPrintBill);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnAddToBill);
+            this.Controls.Add(this.dgvBillMedicines);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -347,19 +351,20 @@
             this.MinimumSize = new System.Drawing.Size(1330, 675);
             this.Name = "SellMedicine";
             this.Text = "Kasa Apteki";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBillMedicines)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMedicinesOnStock)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.DataGridView dgvBillMedicines;
+        private System.Windows.Forms.Button btnAddToBill;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnPrintBill;
+        private System.Windows.Forms.Button btnPrintInvoice;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
@@ -372,7 +377,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox tbQuantity;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvMedicinesOnStock;
         private System.Windows.Forms.Label lbPrice;
         private System.Windows.Forms.Label lbtotalPrice;
         private System.Windows.Forms.Label label8;

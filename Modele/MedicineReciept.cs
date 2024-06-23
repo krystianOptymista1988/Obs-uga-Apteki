@@ -14,9 +14,9 @@ namespace Obsługa_Apteki.Modele
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int MedicineRecieptId { get; set; }
         public int RecieptId { get; set; }
-        public Reciept Reciept { get; set; }
+        public virtual Reciept Reciept { get; set; }
         public int MedicineId { get; set; }
-        public Medicine Medicine { get; set; }
+        public virtual Medicine Medicine { get; set; }
         public int Quantity { get; set; }
         public string DoctorFullName {  get; set; }
         public string MedicineName {  get; set; }

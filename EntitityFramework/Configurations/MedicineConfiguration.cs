@@ -15,6 +15,11 @@ namespace Obsługa_Apteki.Modele.Configurations
 
             HasKey(x => x.MedicineId);
 
+            HasMany(m => m.MedicineReciepts)
+                .WithRequired(mr => mr.Medicine)
+                .HasForeignKey(mr => mr.MedicineId);
+            // Usuwamy poniższy fragment, ponieważ powoduje on zduplikowanie EntitySet
+            /*
             HasMany(m => m.Deliveries)
                 .WithMany(d => d.OrderedMedicines)
                 .Map(md =>
@@ -23,17 +28,18 @@ namespace Obsługa_Apteki.Modele.Configurations
                     md.MapLeftKey("MedicineId");
                     md.MapRightKey("DeliveryId");
                 });
-            HasMany(m => m.Reciepts)
-                .WithMany(d => d.AddedMedicines)
-                .Map(md =>
-                {
-                    md.ToTable("MedicineReciepts");
-                    md.MapLeftKey("MedicineId");
-                    md.MapRightKey("RecieptId");
-                });
-            // Has(m => m.MedicineDeliveries)
-            // .WithRequired(md => md.Medicine)
-            // .HasForeignKey(md => md.MedicineId);
+            */
+            // Relacja wiele-do-wielu z tabelą Reciepts
+          //  HasMany(m => m.Reciepts)
+          //      .WithMany(r => (ICollection<Medicine>)r.Medicines)
+          //      .Map(mr =>
+          //      {
+          //          mr.ToTable("MedicineReciepts");
+          //          mr.MapLeftKey("MedicineId");
+           //         mr.MapRightKey("RecieptId");
+           //     });
+
+      
 
         }
     }

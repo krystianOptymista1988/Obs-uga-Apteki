@@ -1,8 +1,6 @@
 ﻿using Obsługa_Apteki.Entities;
 using Obsługa_Apteki.Modele;
-using Obsługa_Apteki.Models;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Windows.Forms;
@@ -13,7 +11,7 @@ namespace Obsługa_Apteki
     {
         private int medicineId = 0;
         private DbActions _dbAction = new DbActions();
-        private Medicine medicine = new Medicine();
+        private Modele.Medicine medicine = new Modele.Medicine();
         private AptekaTestDbContext _context = new AptekaTestDbContext();
         private bool isAntibiotique;
         private bool isOnReciept;
@@ -22,7 +20,6 @@ namespace Obsługa_Apteki
         public MedicineCard()
         {
             InitializeComponent();
-
         }
 
         public MedicineCard(int MediniceId, AptekaTestDbContext context)
@@ -35,16 +32,17 @@ namespace Obsługa_Apteki
 
         private void GetMedicineData()
         {
-            if (_context == null) 
-            _context = _dbAction.GetContext();
+            if (_context == null)
+                _context = _dbAction.GetContext();
+
             if (medicineId != 0)
             {
-                Text = "Edytowanie danych Pacjenta";
+                Text = "Edytowanie danych Leka";
                 medicine = _context.Medicines.FirstOrDefault(x => x.MedicineId == medicineId);
 
                 if (medicine == null)
                 {
-                    throw new Exception("Brak użytkownika o podanym Id");
+                    throw new Exception("Brak leku o podanym Id");
                 }
 
                 FillTextBoxes(medicine);
@@ -55,65 +53,54 @@ namespace Obsługa_Apteki
             }
         }
 
-        private void FillTextBoxes(Medicine medicine)
+        private void FillTextBoxes(Modele.Medicine medicine)
         {
             tbName.Text = medicine.Name;
-            tbId.Text = medicine.MedicineId.ToString() ;
+            tbId.Text = medicine.MedicineId.ToString();
             tbCategory.Text = medicine.Category;
             tbActiveSubstance.Text = medicine.ActiveSubstance;
             tbMargePrice.Text = medicine.PriceMarge.ToString();
-            tbPrice.Text = medicine.Price.ToString();   
-            tbPriceOfBuy.Text = medicine.PriceOfBuy.ToString(); 
+            tbPrice.Text = medicine.Price.ToString();
+            tbPriceOfBuy.Text = medicine.PriceOfBuy.ToString();
             tbProducent.Text = medicine.Producent.ToString();
             tbQuantityInPackage.Text = medicine.QuantityInPackage.ToString();
             tbRefundedPrice.Text = medicine.PriceAfterRefunding.ToString();
-            if (medicine.IsOnReciept)
-            {
-                cbIsOnReciept.CheckState = CheckState.Checked;
-            }
-            if (medicine.IsRefunded)
-            {
-                cbIsRefunded.CheckState = CheckState.Checked;
-            }
-            if (medicine.IsAntibiotique)
-            {
-                cbIsAntibiotique.CheckState = CheckState.Checked;   
-            }    
+            cbIsOnReciept.Checked = medicine.IsOnReciept;
+            cbIsRefunded.Checked = medicine.IsRefunded;
+            cbIsAntibiotique.Checked = medicine.IsAntibiotique;
         }
 
-        private void btnAdd_Click(object sender, System.EventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
         {
             try
             {
-                using (_context)
+                using (var context = new AptekaTestDbContext())
                 {
-
-                    if (!string.IsNullOrEmpty(tbId.Text))
+                    if (!string.IsNullOrEmpty(tbId.Text) && int.TryParse(tbId.Text, out int id))
                     {
-                        // Aktualizowanie istniejącego farmaceuty
-                        int id = int.Parse(tbId.Text);
-                        medicine = _context.Medicines.SingleOrDefault(p => p.MedicineId == id);
-                        if (medicine != null)
+                        // Aktualizowanie istniejącego leku
+                        var existingMedicine = context.Medicines.SingleOrDefault(p => p.MedicineId == id);
+                        if (existingMedicine != null)
                         {
-                            medicine = CreateMedicine();
-                            _context.Entry(medicine).State = EntityState.Modified;
-                            MessageBox.Show("Aktualizowano dane Leku");
+                            UpdateMedicine(existingMedicine);
+                            context.Entry(existingMedicine).State = EntityState.Modified;
+                            MessageBox.Show("Aktualizowano dane Leka");
                         }
                         else
                         {
-                            MessageBox.Show("Nie znaleziono Leku o podanym ID");
+                            MessageBox.Show("Nie znaleziono Leka o podanym ID");
                             return;
                         }
                     }
                     else
                     {
-                        // Dodawanie nowego farmaceuty
-                        medicine = new Medicine();
-                        medicine = CreateMedicine();
-                        _context.Medicines.Add(medicine);
-                        MessageBox.Show($"Dodano nowy Lek: ID {medicine.MedicineId}, Name {medicine.Name}");
+                        // Dodawanie nowego leku
+                        var newMedicine = new Modele.Medicine();
+                        UpdateMedicine(newMedicine);
+                        context.Medicines.Add(newMedicine);
+                        MessageBox.Show($"Dodano nowy Lek: ID {newMedicine.MedicineId}, Name {newMedicine.Name}");
                     }
-                    _context.SaveChanges();
+                    context.SaveChanges();
                 }
                 this.DialogResult = DialogResult.OK;
                 this.Close();
@@ -123,125 +110,91 @@ namespace Obsługa_Apteki
                 MessageBox.Show("Błąd podczas zapisywania danych: " + ex.Message);
             }
         }
-    
 
-        private Medicine CreateMedicine()
+        private void UpdateMedicine(Modele.Medicine medicine)
         {
-            Medicine medicine = new Medicine();
             medicine.Name = tbName.Text;
-
-            if (!double.TryParse(tbPrice.Text, out double price))
-            {
-              //  MessageBox.Show("Nieprawidłowy format ceny. Ustawiono wartość domyślną 0.");
-                price = 0;
-            }
-            medicine.Price = price;
-
-            if (!double.TryParse(cbPercentageOfRefunde.Text, out double percentageOfRefunding))
-            {
-              //  MessageBox.Show("Nieprawidłowy format procentu refundacji. Ustawiono wartość domyślną 0.");
-                percentageOfRefunding = 0;
-            }
-            medicine.PercentageOfRefunding = percentageOfRefunding;
-
-            if (!double.TryParse(tbPriceOfBuy.Text, out double priceOfBuy))
-            {
-               // MessageBox.Show("Nieprawidłowy format ceny zakupu. Ustawiono wartość domyślną 0.");
-                priceOfBuy = 0;
-            }
-            medicine.PriceOfBuy = priceOfBuy;
-
+            medicine.Category = tbCategory.Text;
             medicine.ActiveSubstance = tbActiveSubstance.Text;
             medicine.Producent = tbProducent.Text;
-            medicine.Category = tbCategory.Text;
 
-            if (!double.TryParse(tbMargePrice.Text, out double priceMarge))
+            if (double.TryParse(tbMargePrice.Text, out double priceMarge))
             {
-                //MessageBox.Show("Nieprawidłowy format marży ceny. Ustawiono wartość domyślną 0.");
-                priceMarge = 0;
+                medicine.PriceMarge = priceMarge;
             }
-            medicine.PriceMarge = priceMarge;
 
-            if (!int.TryParse(tbQuantityInPackage.Text, out int quantityInPackage))
+            if (double.TryParse(tbPrice.Text, out double price))
             {
-                //MessageBox.Show("Nieprawidłowy format ilości w opakowaniu. Ustawiono wartość domyślną 0.");
-                quantityInPackage = 0;
+                medicine.Price = price;
             }
-            medicine.QuantityInPackage = quantityInPackage;
 
-            if (!double.TryParse(tbPrice.Text, out double priceAfterRefunding))
+            if (double.TryParse(tbPriceOfBuy.Text, out double priceOfBuy))
             {
-               // MessageBox.Show("Nieprawidłowy format ceny po refundacji. Ustawiono wartość domyślną 0.");
-                priceAfterRefunding = 0;
+                medicine.PriceOfBuy = priceOfBuy;
             }
-            medicine.PriceAfterRefunding = priceAfterRefunding;
 
-            medicine.IsAntibiotique = isAntibiotique;
-            medicine.IsOnReciept = isOnReciept;
-            medicine.IsRefunded = isRefunded;
+            if (double.TryParse(cbPercentageOfRefunde.Text, out double percentageOfRefunding))
+            {
+                medicine.PercentageOfRefunding = percentageOfRefunding;
+            }
 
-            return medicine;
+            if (double.TryParse(tbRefundedPrice.Text, out double priceAfterRefunding))
+            {
+                medicine.PriceAfterRefunding = priceAfterRefunding;
+            }
+
+            if (int.TryParse(tbQuantityInPackage.Text, out int quantityInPackage))
+            {
+                medicine.QuantityInPackage = quantityInPackage;
+            }
+
+            medicine.IsOnReciept = cbIsOnReciept.Checked;
+            medicine.IsRefunded = cbIsRefunded.Checked;
+            medicine.IsAntibiotique = cbIsAntibiotique.Checked;
         }
+
         private void cbIsOnReciept_CheckedChanged(object sender, EventArgs e)
-        {   if (cbIsOnReciept.Checked == true)
-            isOnReciept = true;
-        else { isOnReciept = false; }
+        {
+            isOnReciept = cbIsOnReciept.Checked;
         }
 
         private void cbIsRefunded_CheckedChanged(object sender, EventArgs e)
         {
-            if (cbIsRefunded.Checked == true)
-            {
-                isRefunded = true;
-                cbPercentageOfRefunde.ReadOnly = false;
-            }
-            else
-            { 
-                isRefunded = false;
-                cbPercentageOfRefunde.ReadOnly = true;
-
-            }
-            
+            isRefunded = cbIsRefunded.Checked;
+            cbPercentageOfRefunde.ReadOnly = !cbIsRefunded.Checked;
         }
 
         private void cbPercentageOfRefunde_TextChanged(object sender, EventArgs e)
         {
-          
+            // Obsługa zmian tekstu w polu cbPercentageOfRefunde
         }
 
         private void tbPrice_TextChanged(object sender, EventArgs e)
         {
-       
+            // Obsługa zmian tekstu w polu tbPrice
         }
 
         private double NullCheck(string price)
         {
-            if (price == null)
-                return 0;
-            else    return double.Parse(price);
+            return double.TryParse(price, out double result) ? result : 0;
         }
 
         private void tbMargePrice_TextChanged(object sender, EventArgs e)
         {
-            string priceS = tbMargePrice.Text;
-            double marge = NullCheck(priceS);
+            double marge = NullCheck(tbMargePrice.Text);
             double price;
 
-            if (cbIsRefunded.Checked == true)
+            if (cbIsRefunded.Checked)
             {
-                priceS = tbPriceOfBuy.Text;
-                double priceOfBuy = NullCheck(priceS);
+                double priceOfBuy = NullCheck(tbPriceOfBuy.Text);
                 price = priceOfBuy + marge;
-                priceS = cbPercentageOfRefunde.Text;
-                double percentage = NullCheck(priceS);
-                priceS = cbPercentageOfRefunde.Text;
+                double percentage = NullCheck(cbPercentageOfRefunde.Text);
                 double price2 = price - (priceOfBuy * percentage / 100);
-                tbMargePrice.Text = price2.ToString();
+                tbRefundedPrice.Text = price2.ToString();
             }
             else
             {
-                priceS = tbPriceOfBuy.Text; 
-                double priceOfBuy = NullCheck(priceS);
+                double priceOfBuy = NullCheck(tbPriceOfBuy.Text);
                 price = priceOfBuy + marge;
                 tbPrice.Text = price.ToString();
             }
@@ -249,12 +202,12 @@ namespace Obsługa_Apteki
 
         private void cbIsAntibiotique_CheckedChanged(object sender, EventArgs e)
         {
-            if (cbIsAntibiotique.Checked == true)
-                isAntibiotique = true;
-            else { isAntibiotique = false; }
+            isAntibiotique = cbIsAntibiotique.Checked;
         }
 
-
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
-

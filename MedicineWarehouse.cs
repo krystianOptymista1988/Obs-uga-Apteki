@@ -8,6 +8,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Windows.Forms;
+using Medicine = Obsługa_Apteki.Modele.Medicine;
 
 namespace Obsługa_Apteki
 {
@@ -20,11 +21,12 @@ namespace Obsługa_Apteki
         public int medicineId;
         public MedicineWarehouse()
         {
+            _context = new AptekaTestDbContext();
             InitializeComponent();
             RefreshData();
             DGVHeadersFill();
-            LoadComboboxData();
-
+           
+           // dataGridView1.DataError += new DataGridViewDataErrorEventHandler(dataGridView1_DataError);
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -39,71 +41,81 @@ namespace Obsługa_Apteki
 
         public void DGVHeadersFill() 
         {
-            dataGridView1.Columns[nameof(Medicine.MedicineId)].HeaderText = "ID";
-            dataGridView1.Columns[nameof(Medicine.MedicineId)].DisplayIndex = 0;
-            dataGridView1.Columns[nameof(Medicine.Name)].HeaderText = "Nazwa";
-            dataGridView1.Columns[nameof(Medicine.Name)].DisplayIndex = 1;
-            dataGridView1.Columns[nameof(Medicine.Category)].HeaderText = "Kategoria";
-            dataGridView1.Columns[nameof(Medicine.Category)].DisplayIndex = 2;
-            dataGridView1.Columns[nameof(Medicine.ExpiredDates)].HeaderText = "Uwagi";
-            dataGridView1.Columns[nameof(Medicine.ExpiredDates)].DisplayIndex = 3;
-            dataGridView1.Columns[nameof(Medicine.IsRefunded)].HeaderText = "Refundacja";
-            dataGridView1.Columns[nameof(Medicine.IsOnReciept)].Visible = false;
-            dataGridView1.Columns[nameof(Medicine.ActiveSubstance)].HeaderText = "Substancja Aktywna";
-            dataGridView1.Columns[nameof(Medicine.Deliveries)].Visible = false;
-            dataGridView1.Columns[nameof(Medicine.ExpiredDates)].Visible = false;
-            dataGridView1.Columns[nameof(Medicine.Price)].HeaderText = "Cena";
-            dataGridView1.Columns[nameof(Medicine.Producent)].HeaderText = "Producent";
-            dataGridView1.Columns[nameof(Medicine.Producent)].DisplayIndex = 4;
-            dataGridView1.Columns[nameof(Medicine.PercentageOfRefunding)].Visible = false;
-            dataGridView1.Columns[nameof(Medicine.PriceAfterRefunding)].HeaderText = "Cena NFZ";
-            dataGridView1.Columns[nameof(Medicine.QuantityInPackage)].HeaderText = "Ilość w Op";
-            dataGridView1.Columns[nameof(Medicine.QuantityOnMagazines)].Visible = false; 
-            dataGridView1.Columns[nameof(Medicine.IsAntibiotique)].Visible = false;
-            dataGridView1.Columns[nameof(Medicine.Reciepts)].Visible = false;
-            dataGridView1.Columns[nameof(Medicine.PriceOfBuy)].Visible = false;
-            dataGridView1.Columns[nameof(Medicine.PriceMarge)].Visible = false;
-            dataGridView1.Columns[nameof(Medicine.Quantity)].HeaderText = "Na Magazynie";
-
-
-
-
+            if (dataGridView1.Columns.Count > 0)
+            {
+                dataGridView1.Columns["MedicineId"].HeaderText = "ID";
+                dataGridView1.Columns["MedicineId"].DisplayIndex = 0;
+                dataGridView1.Columns["Name"].HeaderText = "Nazwa";
+                dataGridView1.Columns["Name"].DisplayIndex = 1;
+                dataGridView1.Columns["Category"].HeaderText = "Kategoria";
+                dataGridView1.Columns["Category"].DisplayIndex = 2;
+                dataGridView1.Columns["ExpiredDates"].HeaderText = "Uwagi";
+                dataGridView1.Columns["ExpiredDates"].DisplayIndex = 3;
+                dataGridView1.Columns["IsRefunded"].HeaderText = "Refundacja";
+                dataGridView1.Columns["IsOnReciept"].Visible = false;
+                dataGridView1.Columns["ActiveSubstance"].HeaderText = "Substancja Aktywna";
+                dataGridView1.Columns["Deliveries"].Visible = false;
+                dataGridView1.Columns["ExpiredDates"].Visible = false;
+                dataGridView1.Columns["Price"].HeaderText = "Cena";
+                dataGridView1.Columns["Producent"].HeaderText = "Producent";
+                dataGridView1.Columns["Producent"].DisplayIndex = 4;
+                dataGridView1.Columns["PercentageOfRefunding"].Visible = false;
+                dataGridView1.Columns["PriceAfterRefunding"].HeaderText = "Cena NFZ";
+                dataGridView1.Columns["QuantityInPackage"].HeaderText = "Ilość w Op";
+                dataGridView1.Columns["QuantityOnMagazines"].Visible = false;
+                dataGridView1.Columns["IsAntibiotique"].Visible = false;
+                dataGridView1.Columns["Reciepts"].Visible = false;
+                dataGridView1.Columns["PriceOfBuy"].Visible = false;
+                dataGridView1.Columns["PriceMarge"].Visible = false;
+                dataGridView1.Columns["Quantity"].HeaderText = "Na Magazynie";
+            }
         }
-
+        
         public void RefreshData()
         {
-            dataGridView1.Rows.Clear();
-            
-            _medicinedelivery = _dbAction.GetMedicineDeliveries();
-            medicines = _dbAction.GetMedicines();
-
-            foreach (var medicine in medicines)
+            try
             {
-                foreach (var m in _medicinedelivery)
+                using (var context = new AptekaTestDbContext())
                 {
-                    if (medicine.MedicineId == m.MedicineId)
+                    context.Configuration.LazyLoadingEnabled = false;
+                    // Ładowanie danych z bazy danych, w tym powiązanych danych
+                    medicines = context.Medicines
+                        .Include("MedicineReciepts.Reciept")
+                        .Include("MedicineDeliveries.Delivery")
+                        .ToList();
+
+                    var medicineData = medicines.Select(m => new
                     {
-                        medicine.Quantity += m.Quantity;
-                    }
+                        m.MedicineId,
+                        m.Name,
+                        m.Category,
+                        m.ExpiredDates,
+                        m.IsRefunded,
+                        m.IsOnReciept,
+                        m.ActiveSubstance,
+                        m.Price,
+                        m.Producent,
+                        m.PercentageOfRefunding,
+                        m.PriceAfterRefunding,
+                        m.QuantityInPackage,
+                        m.IsAntibiotique,
+                        m.Quantity
+                    }).ToList();
+                    // Ustawienie danych źródłowych dla DataGridView
+                    dataGridView1.DataSource = null;
+                    dataGridView1.DataSource = medicines;
+
+                    // Ustawienie nagłówków kolumn
+                    DGVHeadersFill();
                 }
             }
-            dataGridView1.DataSource = medicines;  
-        }
-
-        private void LoadComboboxData()
-        {
-            comboBox1.Items.Clear();
-
-            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            catch (Exception ex)
             {
-                comboBox1.Items.Add(column.HeaderText);
-            }
-
-            if (comboBox1.Items.Count > 0)
-            {
-                comboBox1.SelectedIndex = 0;
+                MessageBox.Show("Wystąpił błąd podczas odświeżania danych: " + ex.Message);
             }
         }
+
+
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -118,14 +130,21 @@ namespace Obsługa_Apteki
             {
                 if (dataGridView1.CurrentRow != null)
                 {
-                    medicineId = (int)dataGridView1.CurrentRow.Cells["MedicineId"].Value;
-                    using (var _context = new AptekaTestDbContext())
+                    var value = dataGridView1.CurrentRow.Cells["MedicineId"].Value;
+                    if (value != null && int.TryParse(value.ToString(), out medicineId))
                     {
-                        MedicineCard editForm = new MedicineCard(medicineId, _context);
-                        if (editForm.ShowDialog() == DialogResult.OK)
+                        using (var context = new AptekaTestDbContext())
                         {
-                            DataLoad();
+                            MedicineCard editForm = new MedicineCard(medicineId, context);
+                            if (editForm.ShowDialog() == DialogResult.OK)
+                            {
+                                RefreshData();
+                            }
                         }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Nieprawidłowy format ID leku.");
                     }
                 }
                 else
@@ -171,30 +190,37 @@ namespace Obsługa_Apteki
 
         public void DataLoad()
         {
-            medicines = _dbAction.GetMedicines();
-            _medicinedelivery = _dbAction.GetMedicineDeliveries();
-
-
-            if (medicines == null || medicines.Count == 0)
+            using (var context = new AptekaTestDbContext())
             {
-                var columnNames = _dbAction.GetColumnNames<Medicine>();
-                var dataTable = new DataTable();
-                foreach (var columnName in columnNames)
+                medicines = context.Medicines.Include("MedicineReciepts").ToList();
+                _medicinedelivery = context.MedicineDeliveries.ToList();
+
+                if (medicines == null || medicines.Count == 0)
                 {
-                    dataTable.Columns.Add(columnName);
+                    var columnNames = _dbAction.GetColumnNames<Medicine>();
+                    var dataTable = new DataTable();
+                    foreach (var columnName in columnNames)
+                    {
+                        dataTable.Columns.Add(columnName);
+                    }
+                    dataGridView1.DataSource = dataTable;
                 }
-                dataGridView1.DataSource = dataTable;
-            }
-            else
-            {
-             
-                dataGridView1.DataSource = medicines;
+                else
+                {
+                    dataGridView1.DataSource = medicines;
+                }
             }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void dataGridView1_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            MessageBox.Show("Wystąpił błąd podczas ładowania danych. Szczegóły: " + e.Exception.Message);
+            e.ThrowException = false;
         }
     }
 }

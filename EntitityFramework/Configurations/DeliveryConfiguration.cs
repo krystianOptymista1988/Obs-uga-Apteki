@@ -15,6 +15,8 @@ namespace Obsługa_Apteki.Modele.Configurations
 
             HasKey(x => x.DeliveryId);
 
+            // Usuwamy poniższy fragment, ponieważ powoduje on zduplikowanie EntitySet
+            /*
             HasMany(d => d.OrderedMedicines)
                 .WithMany(m => m.Deliveries)
                 .Map(md =>
@@ -23,10 +25,11 @@ namespace Obsługa_Apteki.Modele.Configurations
                     md.MapLeftKey("DeliveryId");
                     md.MapRightKey("MedicineId");
                 });
-            HasMany(d => d.MedicineDeliveries)
-          .WithRequired(md => md.Delivery)
-          .HasForeignKey(md => md.DeliveryId);
+            */
 
+            HasMany(d => d.MedicineDeliveries)
+                .WithRequired(md => md.Delivery)
+                .HasForeignKey(md => md.DeliveryId);
 
             Property(c => c.DateOfDelivery)
                 .HasColumnType("date");

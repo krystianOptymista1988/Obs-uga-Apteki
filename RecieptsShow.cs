@@ -1,6 +1,6 @@
 ﻿using Obsługa_Apteki.Entities;
 using Obsługa_Apteki.Modele;
-using Obsługa_Apteki.Models;
+
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -127,7 +127,7 @@ namespace Obsługa_Apteki
                 dataGridView1.Columns[nameof(Reciept.PatientId)].Visible = false;
                 dataGridView1.Columns[nameof(Reciept.Medicines)].Visible = false;
                 dataGridView1.Columns[nameof(Reciept.Quantity)].Visible = false;
-                dataGridView1.Columns[nameof(Reciept.MedicineReciept)].Visible = false;
+                dataGridView1.Columns[nameof(Reciept.MedicineReciepts)].Visible = false;
                 dataGridView1.Columns[nameof(Reciept.AddedMedicines)].Visible = false;
                 dataGridView1.Columns[nameof(Reciept.Patient)].Visible = false;
             }

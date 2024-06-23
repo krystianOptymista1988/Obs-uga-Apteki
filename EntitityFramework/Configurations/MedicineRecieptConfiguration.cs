@@ -1,10 +1,5 @@
 ﻿using Obsługa_Apteki.Modele;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity.ModelConfiguration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Obsługa_Apteki.EntitityFramework.Configurations
 {
@@ -15,13 +10,13 @@ namespace Obsługa_Apteki.EntitityFramework.Configurations
             ToTable("dbo.MedicineReciepts");
             HasKey(m => m.MedicineRecieptId);
 
-            HasRequired(a => a.Reciept)
-                .WithMany(d => d.MedicineReciept)
-                .HasForeignKey(fk => fk.RecieptId);
+            HasRequired(mr => mr.Reciept)
+                .WithMany(r => r.MedicineReciepts)
+                .HasForeignKey(mr => mr.RecieptId);
 
-            HasRequired(m => m.Medicine)
-                .WithMany(m => m.MedicineReciept)
-                .HasForeignKey(fk => fk.MedicineId);
+            HasRequired(mr => mr.Medicine)
+                .WithMany(m => m.MedicineReciepts)
+                .HasForeignKey(mr => mr.MedicineId);
         }
     }
 }

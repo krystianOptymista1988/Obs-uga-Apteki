@@ -104,7 +104,7 @@ namespace Obsługa_Apteki
                 dataGridView1.Columns[nameof(Patient.PostalCode)].HeaderText = "Kod Pocztowy";
                 dataGridView1.Columns[nameof(Patient.PostalCode)].DisplayIndex = 5;
                 dataGridView1.Columns[nameof(Patient.Pharmaceut)].Visible = false;
-                dataGridView1.Columns[nameof(Patient.RecieptList)].Visible = false;
+                dataGridView1.Columns[nameof(Patient.Reciepts)].Visible = false;
                 dataGridView1.Columns[nameof(Patient.Mobile)].HeaderText = "Telefon";
                 dataGridView1.Columns[nameof(Patient.Mobile)].DisplayIndex = 7;
                 dataGridView1.Columns[nameof(Patient.PharmaceutId)].Visible = false;
