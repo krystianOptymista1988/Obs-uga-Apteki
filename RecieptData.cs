@@ -41,7 +41,7 @@ namespace Obsługa_Apteki
             {
                 tbDoctor.Text = _reciept.DoctorFullName;
                 tbPatient.Text = _reciept.PatientFullName;
-                tbDateOfExpire.Text = _reciept.DateOfExpire.ToString();
+             //   tbDateOfExpire.Text = _reciept.DateOfExpire.ToString();
                 LoadMedicinesFromReciept(_reciept.RecieptId);
             }
         }

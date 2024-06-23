@@ -37,7 +37,7 @@ namespace Obsługa_Apteki
             toolTip1.SetToolTip(btnPatient, "Zarządzaj pacjentami apteki w jednym miejscu");
             toolTip1.SetToolTip(btnRecipe, "Moduł do zarządzania receptami");
             toolTip1.SetToolTip(btnSell, "Moduł sprzedaży leków");
-            toolTip1.SetToolTip(btnUtilization, "Zgłoś przeterminowane leki do utylizacji");
+            
             toolTip1.SetToolTip(btnPharmaceuts, "Zarządzaj pracownikami Apteki");
             toolTip1.SetToolTip(btnSupport, "Informacje o autorach oraz kontakt");
 
@@ -47,11 +47,7 @@ namespace Obsługa_Apteki
 
         }
 
-        private void button5_Click(object sender, EventArgs e)
-        {
-            var Utilization = new Utilization();
-            Utilization.ShowDialog();
-        }
+ 
 
         private void toolTip1_Popup(object sender, PopupEventArgs e)
         {

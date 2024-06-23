@@ -278,10 +278,10 @@ namespace Obsługa_Apteki.Entities
             using (var context = new AptekaTestDbContext())
             {
                 // Sprawdź zakres daty przed dodaniem
-                if (reciept.DateOfExpire < new DateTime(1753, 1, 1) || reciept.DateOfExpire > new DateTime(9999, 12, 31))
-                {
-                    throw new ArgumentOutOfRangeException("Data wygaśnięcia musi mieścić się w zakresie od 1753-01-01 do 9999-12-31.");
-                }
+            //    if (reciept.DateOfExpire < new DateTime(1753, 1, 1) || reciept.DateOfExpire > new DateTime(9999, 12, 31))
+             //   {
+           //         throw new ArgumentOutOfRangeException("Data wygaśnięcia musi mieścić się w zakresie od 1753-01-01 do 9999-12-31.");
+          //      }
 
                 context.Reciepts.Add(reciept);
 

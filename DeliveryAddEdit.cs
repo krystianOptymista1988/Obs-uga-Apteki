@@ -26,20 +26,25 @@ namespace Obsługa_Apteki
             InitializeFields();
             ComboboxDataLoad();
             LoadComboboxData();
+            _context = new AptekaTestDbContext();
         }
 
         public DeliveryAddEdit(int deliveryId, AptekaTestDbContext context)
         {
             InitializeComponent();
-            _context = context;
-            InitializeFields();
+            _context = context ?? throw new ArgumentNullException(nameof(context));
+            _dbAction = new DbActions();
+            _deliveryList = new List<MedicineDelivery>();
+            _medicines = new List<Modele.Medicine>();
+            _pharmaceuts = new List<Pharmaceut>();
+            _delivery = new Delivery();
             deliveryID = deliveryId;
             ComboboxDataLoad();
             LoadComboboxData();
             GetDeliveryData();
         }
 
-        private void InitializeFields()
+            private void InitializeFields()
         {
             _dbAction = new DbActions();
             _deliveryList = new List<MedicineDelivery>();
@@ -68,21 +73,30 @@ namespace Obsługa_Apteki
 
         private void btnAddToList_Click(object sender, EventArgs e)
         {
-            var selectedMedicineId = int.Parse(cbMedicines.SelectedValue.ToString());
-            var selectedMedicine = _context.Medicines.Find(selectedMedicineId);
+            if (_context == null)
+            {
+                MessageBox.Show("Kontekst bazy danych jest null.");
+                return;
+            }
 
-            if (selectedMedicine == null)
+            if (cbMedicines.SelectedValue == null)
+            {
+                MessageBox.Show("Nie wybrano leku.");
+                return;
+            }
+
+            MedicineDelivery stockItem = new MedicineDelivery();
+            stockItem.Quantity = int.Parse(nudQuantity.Value.ToString());
+            stockItem.MedicineId = int.Parse(cbMedicines.SelectedValue.ToString());
+
+            var selectedMedicineId = int.Parse(cbMedicines.SelectedValue.ToString());
+            stockItem.Medicine = _context.Medicines.Find(selectedMedicineId);
+
+            if (stockItem.Medicine == null)
             {
                 MessageBox.Show("Nie można znaleźć leku o podanym ID.");
                 return;
             }
-
-            var stockItem = new MedicineDelivery
-            {
-                Quantity = int.Parse(nudQuantity.Value.ToString()),
-                MedicineId = selectedMedicineId,
-                Medicine = selectedMedicine
-            };
 
             bool found = false;
             foreach (MedicineDelivery item in _deliveryList)
@@ -105,6 +119,7 @@ namespace Obsługa_Apteki
             DGVComunSet();
             CountCostDelivery();
         }
+
 
         private void btnDeleteFromList_Click(object sender, EventArgs e)
         {

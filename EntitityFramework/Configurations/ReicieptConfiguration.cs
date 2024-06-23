@@ -19,9 +19,9 @@ namespace Obsługa_Apteki.Modele.Configurations
                 .WithRequired(mr => mr.Reciept)
                 .HasForeignKey(mr => mr.RecieptId);
             // Konfiguracja właściwości DateOfExpire do używania datetime2
-            Property(r => r.DateOfExpire)
+     //       Property(r => r.DateOfExpire)
               
-                .IsRequired();
+         //       .IsRequired();
 
             // Konfiguracja innych właściwości podobnie
             Property(r => r.DateOfRegistry)

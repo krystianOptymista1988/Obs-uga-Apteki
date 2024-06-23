@@ -24,7 +24,7 @@ namespace Obsługa_Apteki.Modele
         public ICollection<object> Medicines { get; internal set; }
         public DateTime DateOfRegistry { get; internal set; }
         
-        public DateTime DateOfExpire { get; set; }
+       // public DateTime DateOfExpire { get; set; }
         public int PatientId { get; internal set; }
         public int Quantity { get; set; }
         public virtual Patient Patient { get; set; }

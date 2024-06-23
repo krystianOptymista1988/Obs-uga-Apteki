@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SellMedicine));
             this.dgvBillMedicines = new System.Windows.Forms.DataGridView();
             this.btnAddToBill = new System.Windows.Forms.Button();
@@ -58,21 +58,23 @@
             // dgvBillMedicines
             // 
             this.dgvBillMedicines.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvBillMedicines.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBillMedicines.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvBillMedicines.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBillMedicines.GridColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dgvBillMedicines.Location = new System.Drawing.Point(997, 188);
+            this.dgvBillMedicines.Location = new System.Drawing.Point(1005, 189);
             this.dgvBillMedicines.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.dgvBillMedicines.Name = "dgvBillMedicines";
+            this.dgvBillMedicines.RowHeadersVisible = false;
             this.dgvBillMedicines.RowHeadersWidth = 62;
             this.dgvBillMedicines.RowTemplate.Height = 28;
+            this.dgvBillMedicines.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvBillMedicines.Size = new System.Drawing.Size(489, 637);
             this.dgvBillMedicines.TabIndex = 1;
             // 
@@ -276,7 +278,7 @@
             this.dgvMedicinesOnStock.RowHeadersVisible = false;
             this.dgvMedicinesOnStock.RowHeadersWidth = 62;
             this.dgvMedicinesOnStock.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMedicinesOnStock.Size = new System.Drawing.Size(335, 590);
+            this.dgvMedicinesOnStock.Size = new System.Drawing.Size(404, 590);
             this.dgvMedicinesOnStock.TabIndex = 20;
             // 
             // lbPrice

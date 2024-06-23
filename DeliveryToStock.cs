@@ -2,23 +2,20 @@
 using Obsługa_Apteki.Modele;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Obsługa_Apteki
 {
     public partial class DeliveryToStock : Form
-    { 
+    {
         private DbActions _dbAction = new DbActions();
         private AptekaTestDbContext _context = new AptekaTestDbContext();
         private List<Delivery> _deliveries;
         private List<MedicineDelivery> _medicineDelivery;
         private List<Medicine> _medicinesShow = new List<Medicine>();
+
         public DeliveryToStock()
         {
             InitializeComponent();
@@ -28,24 +25,30 @@ namespace Obsługa_Apteki
 
         private void LoadDGVDeliveries()
         {
-            _deliveries = _context.Deliveries.ToList();
-            List<Delivery> deliveriesInMagazine = new List<Delivery>();
-            List<Delivery> deliveryInFuture = new List<Delivery>();
-
-            foreach (Delivery delivery in _deliveries) 
+            using (var context = new AptekaTestDbContext())
             {
-                if(delivery.DateOfDelivery > DateTime.Now)
-                {
-                    deliveryInFuture.Add(delivery);
-                }
-                else
-                {
-                    deliveriesInMagazine.Add(delivery);
-                }
-            }
+                _deliveries = context.Deliveries
+                                     .Include(d => d.MedicineDeliveries.Select(md => md.Medicine))
+                                     .ToList();
 
-            dgvDeliveryStock.DataSource = deliveriesInMagazine;
-            dgvDelivryInFuture.DataSource = deliveryInFuture;
+                List<Delivery> deliveriesInMagazine = new List<Delivery>();
+                List<Delivery> deliveryInFuture = new List<Delivery>();
+
+                foreach (Delivery delivery in _deliveries)
+                {
+                    if (delivery.DateOfDelivery > DateTime.Now)
+                    {
+                        deliveryInFuture.Add(delivery);
+                    }
+                    else
+                    {
+                        deliveriesInMagazine.Add(delivery);
+                    }
+                }
+
+                dgvDeliveryStock.DataSource = deliveriesInMagazine;
+                dgvDelivryInFuture.DataSource = deliveryInFuture;
+            }
         }
 
         private void DGVHeadersSet()
@@ -59,7 +62,7 @@ namespace Obsługa_Apteki
             dgvDeliveryStock.Columns[nameof(Delivery.Value)].HeaderText = "Wartość";
             dgvDeliveryStock.Columns[nameof(Delivery.PharmaceutOrdering)].HeaderText = "Zamawiający";
             dgvDeliveryStock.Columns[nameof(Delivery.ExpiredDates)].Visible = false;
-            dgvDeliveryStock.Columns[nameof(Delivery.MedicineDeliveries)].Visible = false;
+            dgvDeliveryStock.Columns[nameof(Delivery.MedicineDeliveries)].Visible = false; // Ukrywamy powiązane dane
             dgvDeliveryStock.Columns[nameof(Delivery.OrderedMedicines)].Visible = false;
 
             dgvDelivryInFuture.Columns[nameof(Delivery.DeliveryId)].HeaderText = "ID";
@@ -71,10 +74,8 @@ namespace Obsługa_Apteki
             dgvDelivryInFuture.Columns[nameof(Delivery.Value)].HeaderText = "Wartość";
             dgvDelivryInFuture.Columns[nameof(Delivery.PharmaceutOrdering)].HeaderText = "Zamawiający";
             dgvDelivryInFuture.Columns[nameof(Delivery.ExpiredDates)].Visible = false;
-            dgvDelivryInFuture.Columns[nameof(Delivery.MedicineDeliveries)].Visible = false;
+            dgvDelivryInFuture.Columns[nameof(Delivery.MedicineDeliveries)].Visible = false; // Ukrywamy powiązane dane
             dgvDelivryInFuture.Columns[nameof(Delivery.OrderedMedicines)].Visible = false;
-
-
         }
 
         private void DGVDetailsHS()
@@ -100,109 +101,102 @@ namespace Obsługa_Apteki
             dgvDeliveryDetails.Columns[nameof(Medicine.Reciepts)].Visible = false;
             dgvDeliveryDetails.Columns[nameof(Medicine.PriceOfBuy)].HeaderText = "Cena zakupu";
             dgvDeliveryDetails.Columns[nameof(Medicine.PriceMarge)].Visible = false;
-
-            dgvDeliveryDetails.Columns[nameof(Medicine.Quantity)].HeaderText = "ilośc zamówiona";
-
+            dgvDeliveryDetails.Columns[nameof(Medicine.Quantity)].HeaderText = "Ilość zamówiona";
+            dgvDeliveryDetails.Columns[nameof(Medicine.MedicineDeliveries)].Visible = false;
+            dgvDeliveryDetails.Columns[nameof(Medicine.MedicineReciepts)].Visible = false;  
         }
+
         private void btnShow_Click(object sender, EventArgs e)
         {
             _medicinesShow = new List<Medicine>();
-            _context = new AptekaTestDbContext();
-            List<Medicine> list = new List<Medicine>();
-            list = _dbAction.GetMedicines().ToList();
-
-            if (dgvDeliveryStock.SelectedRows.Count > 0)
+            using (var context = new AptekaTestDbContext())
             {
-                int deliveryId = Convert.ToInt32(dgvDeliveryStock.SelectedRows[0].Cells["DeliveryId"].Value);
-                _medicineDelivery = _dbAction.GetMedicineDeliveries();
-                List<MedicineDelivery> medicines = new List<MedicineDelivery>();
-                foreach (MedicineDelivery medicinesIn in _medicineDelivery)
+                List<Medicine> list = _dbAction.GetMedicines().ToList();
+
+                if (dgvDeliveryStock.SelectedRows.Count > 0)
                 {
-                   if(medicinesIn.DeliveryId == deliveryId)
+                    int deliveryId = Convert.ToInt32(dgvDeliveryStock.SelectedRows[0].Cells["DeliveryId"].Value);
+                    _medicineDelivery = context.MedicineDeliveries
+                                               .Where(md => md.DeliveryId == deliveryId)
+                                               .Include(md => md.Medicine)
+                                               .ToList();
+
+                    foreach (var med in _medicineDelivery)
                     {
-                        medicines.Add(medicinesIn);
-                    }
-                }
-                
-                foreach(MedicineDelivery med in medicines)
-                {
-                    foreach (Medicine medicineShow in list)
-                    if(med.MedicineId == medicineShow.MedicineId)
+                        var medicineShow = list.FirstOrDefault(m => m.MedicineId == med.MedicineId);
+                        if (medicineShow != null)
                         {
                             medicineShow.Quantity = med.Quantity;
                             _medicinesShow.Add(medicineShow);
                         }
+                    }
+                    dgvDeliveryDetails.DataSource = _medicinesShow;
+                    DGVDetailsHS();
                 }
-                dgvDeliveryDetails.DataSource = _medicinesShow;
-                DGVDetailsHS();
-            }
-            else
-            {
-                MessageBox.Show("Proszę zaznaczyć dostawę do wyświetlenia.");
+                else
+                {
+                    MessageBox.Show("Proszę zaznaczyć dostawę do wyświetlenia.");
+                }
             }
         }
 
         private void btnShowOrdered_Click(object sender, EventArgs e)
         {
             _medicinesShow = new List<Medicine>();
-            _context = new AptekaTestDbContext();
-            List<Medicine> list = new List<Medicine>();
-            list = _dbAction.GetMedicines().ToList();
-            Medicine medd = new Medicine();
-
-            if (dgvDelivryInFuture.SelectedRows.Count > 0)
+            using (var context = new AptekaTestDbContext())
             {
-                int deliveryId = Convert.ToInt32(dgvDelivryInFuture.SelectedRows[0].Cells["DeliveryId"].Value);
-                _medicineDelivery = _dbAction.GetMedicineDeliveries();
-                List<MedicineDelivery> medicines = new List<MedicineDelivery>();
-                foreach (MedicineDelivery medicinesIn in _medicineDelivery)
-                {
-                    if (medicinesIn.DeliveryId == deliveryId)
-                    {
-                         
-                        medicines.Add(medicinesIn);
-                    }
-                }
+                List<Medicine> list = _dbAction.GetMedicines().ToList();
 
-                foreach (MedicineDelivery med in medicines)
+                if (dgvDelivryInFuture.SelectedRows.Count > 0)
                 {
-                    foreach (Medicine medicineShow in list)
-                        if (med.MedicineId == medicineShow.MedicineId)
+                    int deliveryId = Convert.ToInt32(dgvDelivryInFuture.SelectedRows[0].Cells["DeliveryId"].Value);
+                    _medicineDelivery = context.MedicineDeliveries
+                                               .Where(md => md.DeliveryId == deliveryId)
+                                               .Include(md => md.Medicine)
+                                               .ToList();
+
+                    foreach (var med in _medicineDelivery)
+                    {
+                        var medicineShow = list.FirstOrDefault(m => m.MedicineId == med.MedicineId);
+                        if (medicineShow != null)
                         {
                             medicineShow.Quantity = med.Quantity;
                             _medicinesShow.Add(medicineShow);
                         }
+                    }
+                    dgvDeliveryDetails.DataSource = _medicinesShow;
+                    DGVDetailsHS();
                 }
-                dgvDeliveryDetails.DataSource = _medicinesShow;
-                DGVDetailsHS();
-            }
-            else
-            {
-                MessageBox.Show("Proszę zaznaczyć dostawę do wyświetlenia.");
+                else
+                {
+                    MessageBox.Show("Proszę zaznaczyć dostawę do wyświetlenia.");
+                }
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-             var DialogResult = MessageBox.Show("Czy jesteś pewien że chcesz przyjąć dostawę ?","Uwaga",MessageBoxButtons.YesNoCancel);
-            if(DialogResult == DialogResult.Yes) 
+            var result = MessageBox.Show("Czy jesteś pewien, że chcesz przyjąć dostawę?", "Uwaga", MessageBoxButtons.YesNoCancel);
+            if (result == DialogResult.Yes)
             {
                 if (dgvDeliveryStock.SelectedRows.Count > 0)
                 {
                     int deliveryId = Convert.ToInt32(dgvDeliveryStock.SelectedRows[0].Cells["DeliveryId"].Value);
-                    List<Delivery> _deliveryContext = _dbAction.GetDeliveries();
-                    foreach (Delivery delivery in _deliveryContext)
+                    using (var context = new AptekaTestDbContext())
                     {
-                        if (delivery.DeliveryId == deliveryId)
-                        {
+                        var delivery = context.Deliveries
+                                              .Include(d => d.MedicineDeliveries)
+                                              .FirstOrDefault(d => d.DeliveryId == deliveryId);
 
+                        if (delivery != null)
+                        {
                             _dbAction.AddToStock(delivery);
                             _dbAction.RemoveDelivery(delivery);
                             LoadDGVDeliveries();
                         }
                         else
-                        { 
-                                MessageBox.Show("Dostawa nie została znaleziona.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        {
+                            MessageBox.Show("Dostawa nie została znaleziona.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
@@ -211,7 +205,6 @@ namespace Obsługa_Apteki
                     MessageBox.Show("Nie zaznaczono żadnej dostawy.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
-            
         }
     }
 }

@@ -69,7 +69,7 @@ namespace Obsługa_Apteki
 
                DateTime dateOfExpire = DateTime.Parse(dtpDateOfExpire.Value.ToString());
 
-                _reciept.DateOfExpire = dateOfExpire;
+              //  _reciept.DateOfExpire = dateOfExpire;
 
                 if (!int.TryParse(cbPatients.SelectedValue.ToString(), out int patientId))
                 {
